@@ -7,8 +7,6 @@ from BaseClasses import Location
 
 from enum import IntFlag, auto
 
-from worlds.kdl3.names import location_name
-
 
 if TYPE_CHECKING:
     from .__init__ import LookOutsideWorld
