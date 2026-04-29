@@ -1,8 +1,10 @@
+from MultiServer import console
 import settings
 import typing
 
-from worlds.look_outside.items import ItemCat, ItemTag, item_table, get_item_id, item_name_groups
-from .locations import get_location_id, location_table
+from worlds.look_outside.items import ItemCat, ItemTag, item_table, get_item_id, item_name_groups,\
+    num_multiple_items
+from .locations import get_location_id, get_location_name, location_table, create_all_locations
 
 from .options import LookOutsideOptions  # the options we defined earlier
 from worlds.AutoWorld import World
@@ -10,7 +12,6 @@ from BaseClasses import Item, ItemClassification
 from rule_builder.cached_world import CachedRuleBuilderWorld
 from worlds.look_outside.regions import create_and_connect_regions
 from worlds.look_outside.rules import set_all_rules
-from worlds.look_outside.locations import create_all_locations
 from worlds.look_outside.web_world import LookOutsideWebworld
 
 
@@ -35,21 +36,26 @@ class LookOutsideWorld(CachedRuleBuilderWorld):
 
     item_name_groups = item_name_groups
 
-    origin_region_name = "APT_33"
+    origin_region_name = "APT_33_HOME"
 
     item_name_to_id = {name: get_item_id(item_table[name]) for name in item_table}
-    location_name_to_id = {name: get_location_id(location_table[name]) for name in location_table}
+    location_name_to_id = {get_location_name(location_table[location_str_id], False): get_location_id(location_table[location_str_id]) for location_str_id, n in location_table.items()}
 
     web = LookOutsideWebworld()
 
     def create_regions(self) -> None:
         create_and_connect_regions(self)
         create_all_locations(self)
+        # TEST CODE FOR REGION MAPPING
+        from Utils import visualize_regions
+        visualize_regions(self.multiworld.get_region("APT_33_HOME", self.player), "my_world.puml")
 
     def create_item(self, item: str) -> LOItem:
         classification = ItemClassification.filler
         item_info = item_table[item]
         if item_info.category == ItemCat.SKILL:
+            classification = ItemClassification.useful
+        if item_info.category == ItemCat.RECRUIT:
             classification = ItemClassification.useful
         if ItemTag.CHECK_GATE in item_info.tags:
             classification = ItemClassification.progression
@@ -69,8 +75,46 @@ class LookOutsideWorld(CachedRuleBuilderWorld):
 
         # TODO: IMPLEMENT WITH LOGIC
 
-        self.multiworld.itempool += [self.create_item(item) for item in ["Testsword", "Roof Access Key", "Padlock Key"]]
+        mandatory_items = []
+        unique_items = []
+        remaining_items = []
+        excluded_items = {"Simple Key", "Iris Key"}
 
+        for item_name, item_info in item_table.items():
+            if item_name in excluded_items:
+                continue
+            category = item_info.category
+            tags = item_info.tags
+            if ItemTag.PROGRESSIVE in tags or ItemTag.BREAKABLE_KEY in tags:
+                mandatory_items += [item_name] * num_multiple_items[item_name]
+            if category in {ItemCat.SKILL, ItemCat.RECRUIT, ItemCat.MISC}:
+                mandatory_items.append(item_name)
+            elif ItemTag.UNIQUE in tags:
+                unique_items.append(item_name)
+            elif ItemTag.CHECK_GATE in tags:
+                mandatory_items.append(item_name)
+            else:
+                remaining_items.append(item_name)
+        
+        for item in mandatory_items:
+            self.multiworld.itempool += [self.create_item(item)]
+
+        for item in unique_items:
+            self.multiworld.itempool += [self.create_item(item)]
+
+        num_locations = len(self.multiworld.get_unfilled_locations())
+        num_itempool = len(self.multiworld.itempool)
+        print('***difference between num regions and num items: ' + str(num_locations - num_itempool))
+    
+        slots_to_fill = num_locations - num_itempool
+
+        self.random.shuffle(remaining_items)
+
+        for i in range(slots_to_fill):
+            filler_item = remaining_items[i % len(remaining_items)]
+            self.multiworld.itempool += [self.create_item(filler_item)]
+
+        # todo: bring in filler items; floor 3 doesnt have enough locations for everything       
 
     def set_rules(self) -> None:
         set_all_rules(self)
@@ -82,9 +126,3 @@ class LookOutsideWorld(CachedRuleBuilderWorld):
             "include_shades", "include_mask", "include_roommate_quests", "lockpicks_in_logic", "starting_games", 
             "death_link"
         )
-
-# for debugging purposes, you may want to visualize the layout of your world. Uncomment the following code to
-# write a PlantUML diagram to the file "my_world.puml" that can help you see whether your regions and locations
-# are connected and placed as desired
-# from Utils import visualize_regions
-# visualize_regions(self.multiworld.get_region("Menu", self.player), "my_world.puml")

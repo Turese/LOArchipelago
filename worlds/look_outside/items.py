@@ -1,6 +1,7 @@
 from typing import Dict, Set, NamedTuple
 from enum import IntFlag, auto
 
+
 class ItemCat(IntFlag):
     ITEM = auto()
     WEAPON = auto()
@@ -17,6 +18,8 @@ class ItemTag(IntFlag):
     INGREDIENT = auto()
     CHECK_GATE = auto()  # all keys or items that can be turned in for a location
     OFFERING = auto()
+    BREAKABLE_KEY = auto()
+    PROGRESSIVE = auto()
     SPECIAL_CURRENCY = auto()
     UNIQUE = auto()
 
@@ -25,7 +28,6 @@ class ItemData(NamedTuple):
     category: ItemCat
     tags: Set[ItemTag]
     category_id: int
-
 
 
 def get_item_id(item_data: ItemData) -> int:
@@ -252,9 +254,9 @@ main_item_table: dict[str, ItemData] = {
     "Watch": ItemData(ItemCat.ITEM, {ItemTag.UNIQUE}, 280),
     "Fitness Tracker": ItemData(ItemCat.ITEM, {ItemTag.UNIQUE}, 281),
     "Old Mail": ItemData(ItemCat.ITEM, {ItemTag.UNIQUE}, 285),
-    "Ice Melt Salt": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE}, 286),
+    "Ice Melt Salt": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.BREAKABLE_KEY}, 286),
     "Length of Rope": ItemData(ItemCat.ITEM, set(), 287),
-    "Sapper Charge": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE}, 289),
+    "Sapper Charge": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.BREAKABLE_KEY }, 289),
     "Defused Mine": ItemData(ItemCat.ITEM, set(), 290),
     "Dog Tags": ItemData(ItemCat.ITEM, {ItemTag.SPECIAL_CURRENCY}, 291),
     "Supply Crate": ItemData(ItemCat.ITEM, {ItemTag.USEFUL}, 292),
@@ -279,7 +281,7 @@ main_item_table: dict[str, ItemData] = {
     "Stationery": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 317),
     "Fountain Pen": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 318),
     "Batteries": ItemData(ItemCat.ITEM, set(), 319),
-    "Simple Key": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE}, 320),
+    "Simple Key": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.BREAKABLE_KEY}, 320),
     "Sun Disc": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 321),
     "Mercury Disc": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 322),
     "Venus Disc": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 323),
@@ -304,7 +306,7 @@ main_item_table: dict[str, ItemData] = {
     "Correct Painting": ItemData(ItemCat.ITEM, {ItemTag.OFFERING, ItemTag.UNIQUE}, 343),
     "Crumpled Manuscript": ItemData(ItemCat.ITEM, {ItemTag.OFFERING, ItemTag.UNIQUE}, 344),
     "Clean Manuscript": ItemData(ItemCat.ITEM, {ItemTag.OFFERING, ItemTag.UNIQUE}, 345),
-    "Progressive Loose Manuscript": ItemData(ItemCat.ITEM, {ItemTag.OFFERING}, 346),
+    "Progressive Loose Manuscript": ItemData(ItemCat.ITEM, {ItemTag.OFFERING, ItemTag.PROGRESSIVE}, 346),
     "Clown Drawing": ItemData(ItemCat.ITEM, set(), 347),
     "Metro Ticket": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 349),
     "Tongue": ItemData(ItemCat.ITEM, set(), 350),
@@ -347,7 +349,7 @@ main_item_table: dict[str, ItemData] = {
     "Old Tape": ItemData(ItemCat.ITEM, {ItemTag.OFFERING}, 391),
     "Old Photograph": ItemData(ItemCat.ITEM, {ItemTag.OFFERING}, 392),
     "Wrapped Painting": ItemData(ItemCat.ITEM, {ItemTag.OFFERING}, 393),
-    "Iris Key": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE}, 395),
+    "Iris Key": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.BREAKABLE_KEY}, 395),
     "Rebreather": ItemData(ItemCat.ITEM, {ItemTag.UNIQUE}, 396),
     "Cooking Book": ItemData(ItemCat.ITEM, set(), 397),
     "Strange Key": ItemData(ItemCat.ITEM, {ItemTag.UNIQUE, ItemTag.CHECK_GATE}, 398),
@@ -381,12 +383,12 @@ main_item_table: dict[str, ItemData] = {
     "Jacket Figure": ItemData(ItemCat.ITEM, {ItemTag.UNIQUE}, 436),
     "Lute Figure": ItemData(ItemCat.ITEM, {ItemTag.UNIQUE}, 437),
     "Cerulean Figure": ItemData(ItemCat.ITEM, {ItemTag.UNIQUE}, 438),
-    "green key": ItemData(ItemCat.ITEM, set(), 651),
-    "red key": ItemData(ItemCat.ITEM, set(), 652),
-    "yellow key": ItemData(ItemCat.ITEM, set(), 653),
-    "blue key": ItemData(ItemCat.ITEM, set(), 654),
-    "white key": ItemData(ItemCat.ITEM, set(), 655),
-    "black key": ItemData(ItemCat.ITEM, set(), 656),
+    "green key": ItemData(ItemCat.ITEM, {ItemTag.BREAKABLE_KEY}, 651),
+    "red key": ItemData(ItemCat.ITEM, {ItemTag.BREAKABLE_KEY}, 652),
+    "yellow key": ItemData(ItemCat.ITEM, {ItemTag.BREAKABLE_KEY}, 653),
+    "blue key": ItemData(ItemCat.ITEM, {ItemTag.BREAKABLE_KEY}, 654),
+    "white key": ItemData(ItemCat.ITEM, {ItemTag.BREAKABLE_KEY}, 655),
+    "black key": ItemData(ItemCat.ITEM, {ItemTag.BREAKABLE_KEY}, 656),
     "Scroll of Shatter": ItemData(ItemCat.ITEM, {ItemTag.USEFUL}, 470),
     "Scroll of Incision": ItemData(ItemCat.ITEM, {ItemTag.USEFUL}, 471),
     "Scroll of Impale": ItemData(ItemCat.ITEM, {ItemTag.USEFUL}, 472),
@@ -419,7 +421,8 @@ skill_table: dict[str, ItemData] = {
     "Garrison": ItemData(ItemCat.SKILL, {ItemTag.UNIQUE}, 417),
     "Risk Taker": ItemData(ItemCat.SKILL, {ItemTag.UNIQUE}, 418),
     "Confusing Word": ItemData(ItemCat.SKILL, {ItemTag.UNIQUE}, 419),
-    "Unleashed Beast": ItemData(ItemCat.SKILL, {ItemTag.UNIQUE}, 103)
+    "Tadasana": ItemData(ItemCat.SKILL, {ItemTag.UNIQUE}, 920),
+    "Unleashed Beast": ItemData(ItemCat.SKILL, {ItemTag.UNIQUE}, 103),
 }
 
 weapon_table: dict[str, ItemData] = {
@@ -729,32 +732,61 @@ armor_table: dict[str, ItemData] = {
     "Slime Boots": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL}, 377)
 }
 
-misc_table: dict[str, ItemData] = {}
+misc_table: dict[str, ItemData] = {
+    "Aster": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL}, 1),
+    "Audrey": ItemData(ItemCat.RECRUIT, {ItemTag.CHECK_GATE}, 2),
+    "Joel": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL}, 3),
+    "Leigh": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL}, 4),
+    "Lyle": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL}, 5),
+    "Xaria and Montgomery": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL}, 6),
+    "Morton": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL}, 7),
+    "Progressive Rat Child": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL, ItemTag.PROGRESSIVE}, 8),
+    "Spider": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL}, 9),
+    "Hellen": ItemData(ItemCat.RECRUIT, {ItemTag.CHECK_GATE}, 10),
+    "Dan": ItemData(ItemCat.RECRUIT, {ItemTag.CHECK_GATE}, 11),
+    "Ernest": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL}, 12),
+    "Roaches": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL}, 13),
+    "Sophie": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL}, 14),
+    "Phillippe": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL}, 15),
+    "Papineau": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL}, 16),
+    "Masked Shadow Roommate": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL}, 17),
+    "Wiggly Fred Roommate": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL}, 18),
+    "Player's Left Arm": ItemData(ItemCat.MISC, {ItemTag.USEFUL}, 19),
+    "Player's Right Arm": ItemData(ItemCat.MISC, {ItemTag.USEFUL}, 20),
+    "Crafting Kit": ItemData(ItemCat.MISC, {ItemTag.USEFUL}, 21),
+    "Book of Crossword Puzzles": ItemData(ItemCat.MISC, {ItemTag.CHECK_GATE}, 22),
+    "Elevator Activation": ItemData(ItemCat.MISC, {ItemTag.CHECK_GATE}, 23)
+}
 
 resource_pack_table: dict[str, ItemData] = {}
 
-item_table: dict[str, ItemData] = {**main_item_table, **skill_table, **weapon_table, **armor_table, **resource_pack_table}
-
+item_table: dict[str, ItemData] = {
+    **main_item_table,
+    **skill_table,
+    **weapon_table,
+    **armor_table,
+    **resource_pack_table,
+    **misc_table
+}
 
 item_name_groups: dict[str, set[str]] = {
     "OFFERING": {k for k, v in item_table.items() if ItemTag.OFFERING in v.tags},
-    "PERFECT_OFFERING": {"Progressive Loose Manuscript", 
-                         "Correct Painting", 
-                         "Correct Photograph", 
+    "PERFECT_OFFERING": {"Progressive Loose Manuscript",
+                         "Correct Painting",
+                         "Correct Photograph",
                          "Correct CCTV Recording"},
-    "MASK_OFFERING": {"Last Will", 
-                      "Old Tape", 
-                      "Old Photograph", 
+    "MASK_OFFERING": {"Last Will",
+                      "Old Tape",
+                      "Old Photograph",
                       "Wrapped Painting"},
     "XIN_AMON_OFFERING": {"Guinea Pig"},
-    "BROKEN_TEST_ITEM": {"Testarmor", 
-                         "Testarmor mk2", 
-                         "Testsword", 
+    "BROKEN_TEST_ITEM": {"Testarmor",
+                         "Testarmor mk2",
+                         "Testsword",
                          "Testsword mk2"},
-    #"ARM": {"Player's Left Arm", 
-    #        "Player's Right Arm"},
-    "NESTOR_QUEST_INTRO": {"Fountain Pen", 
-                           "Stationery", 
+     "ARM": {"Player's Left Arm", "Player's Right Arm"},
+    "NESTOR_QUEST_INTRO": {"Fountain Pen",
+                           "Stationery",
                            "Love Letter"},  # should raftas part have to be done before nestors can?
     "CHARACTER_LOCKED_EQUIPMENT": {"Fuzzy"},
     "VIDEO_GAME": {"Wake the Blood Knight",
@@ -784,24 +816,32 @@ item_name_groups: dict[str, set[str]] = {
 crafting_recipes: dict[str, set[tuple[str, str]]] = {
     "Molotov": {("Whiskey", "Cloth"), ("Vodka", "Cloth")},
     "Fire Bomb": {("Gasoline", "Cloth")},
-    #"Herbicide": set(),
+    # "Herbicide": set(),
     # todo: fill out
     }
 
+
+# map each progressive item to the number of upgrades it has
 # map each key type to the number of corresponding locks
 # todo need to find all numbers
-num_locks: Dict[str, int] = {
-    "Simple Key": 0,
+num_multiple_items: Dict[str, int] = {
+    "Progressive Loose Manuscript": 2,
+    "Progressive Rat Child": 2,
+    "Simple Key": 0, # todo: REAL NUMBER
     "green key": 1,
     "red key": 1,
     "yellow key": 2,
     "blue key": 3,
     "white key": 4,
-    "black key": 5
+    "black key": 5,
+    "Sapper Charge": 0, # todo: REAL NUMBER
+    "Iris Key": 0, # todo: REAL NUMBER
+    "Ice Melt Salt": 19
 }
 
-# map each progressive item to the number of upgrades it has
-num_progressive: Dict[str, int] = {
-    "Progressive Loose Manuscript": 2,
-    "Progressive Rat Child": 2
+currency_counts: Dict[str, int] = {
+    "Junk": 1,
+    "Worm Egg": 1,
+    "Casette Tape": 1,
+
 }
