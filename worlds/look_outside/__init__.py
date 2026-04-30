@@ -1,4 +1,3 @@
-from MultiServer import console
 import settings
 import typing
 
@@ -39,7 +38,7 @@ class LookOutsideWorld(CachedRuleBuilderWorld):
     origin_region_name = "APT_33_HOME"
 
     item_name_to_id = {name: get_item_id(item_table[name]) for name in item_table}
-    location_name_to_id = {get_location_name(location_table[location_str_id], False): get_location_id(location_table[location_str_id]) for location_str_id, n in location_table.items()}
+    location_name_to_id = {get_location_name(location_str_id, False): get_location_id(location_table[location_str_id]) for location_str_id, n in location_table.items()}
 
     web = LookOutsideWebworld()
 
@@ -53,13 +52,13 @@ class LookOutsideWorld(CachedRuleBuilderWorld):
     def create_item(self, item: str) -> LOItem:
         classification = ItemClassification.filler
         item_info = item_table[item]
-        if item_info.category == ItemCat.SKILL:
-            classification = ItemClassification.useful
-        if item_info.category == ItemCat.RECRUIT:
-            classification = ItemClassification.useful
         if ItemTag.CHECK_GATE in item_info.tags:
             classification = ItemClassification.progression
-        if ItemTag.USEFUL in item_info.tags:
+        elif item_info.category == ItemCat.SKILL:
+            classification = ItemClassification.useful
+        elif item_info.category == ItemCat.RECRUIT:
+            classification = ItemClassification.useful
+        elif ItemTag.USEFUL in item_info.tags:
             classification = ItemClassification.useful
         return LOItem(item, classification, self.item_name_to_id[item], self.player)
 
@@ -87,24 +86,23 @@ class LookOutsideWorld(CachedRuleBuilderWorld):
             tags = item_info.tags
             if ItemTag.PROGRESSIVE in tags or ItemTag.BREAKABLE_KEY in tags:
                 mandatory_items += [item_name] * num_multiple_items[item_name]
-            if category in {ItemCat.SKILL, ItemCat.RECRUIT, ItemCat.MISC}:
-                mandatory_items.append(item_name)
-            elif ItemTag.UNIQUE in tags:
-                unique_items.append(item_name)
-            elif ItemTag.CHECK_GATE in tags:
-                mandatory_items.append(item_name)
+                
+            elif category == ItemCat.SKILL or category == ItemCat.RECRUIT or category == ItemCat.MISC:
+                mandatory_items += [item_name]
+            elif ItemTag.UNIQUE in tags or ItemTag.CHECK_GATE in tags:
+                unique_items += [item_name]
             else:
-                remaining_items.append(item_name)
+                remaining_items += [item_name]
         
         for item in mandatory_items:
             self.multiworld.itempool += [self.create_item(item)]
+
 
         for item in unique_items:
             self.multiworld.itempool += [self.create_item(item)]
 
         num_locations = len(self.multiworld.get_unfilled_locations())
         num_itempool = len(self.multiworld.itempool)
-        print('***difference between num regions and num items: ' + str(num_locations - num_itempool))
     
         slots_to_fill = num_locations - num_itempool
 
@@ -114,7 +112,7 @@ class LookOutsideWorld(CachedRuleBuilderWorld):
             filler_item = remaining_items[i % len(remaining_items)]
             self.multiworld.itempool += [self.create_item(filler_item)]
 
-        # todo: bring in filler items; floor 3 doesnt have enough locations for everything       
+        # todo: bring in filler items; floor 3 doesnt have enough locations for everything   
 
     def set_rules(self) -> None:
         set_all_rules(self)

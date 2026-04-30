@@ -9,6 +9,7 @@ class LocationCat(IntFlag):
     RECRUIT = auto()
     COMBAT_VICTORY = auto()  # combat victory for aggressive npcs
     FRIENDLY_FIRE = auto() # combat victory for nonaggressive npcs
+    RAT_FRIENDLY_FIRE = auto() # combat victory for rats that are nonaggressive towards the rat king
     MERCHANT = auto()
     DOOR_MERCHANT = auto()  # merchants that appear at the door
     EVENT_ITEM = auto()
@@ -76,7 +77,6 @@ F3_HALL_LOCATIONS: dict[str, LocationData] = {
 }
 
 APT_30_MAIN_LOCATIONS: dict[str, LocationData] = {
-    "APT_30_TAXIDERMY_COMBAT_VICTORY": LocationData("Apt. 30 Entryway - Slay Taxidermy", LocationCat.COMBAT_VICTORY, 1101),
     "APT_30_TAXIDERMY_AUDREY_LOOT": LocationData("Apt. 30 Entryway - Taxidermy Audrey Loot", LocationCat.EVENT_ITEM, 1102),
     "APT_30_TAXIDERMY_EAGLE": LocationData("Apt. 30 Entryway - Item Near Front Door", LocationCat.OVERWORLD_ITEM, 1103),
     "APT_30_TAXIDERMY_DOG": LocationData("Apt. 30 Entryway - Item on Table Near Couch", LocationCat.OVERWORLD_ITEM, 1104),
@@ -100,7 +100,9 @@ APT_30_MAIN_LOCATIONS: dict[str, LocationData] = {
     "APT_30_SE_CHEFS_KNIFE": LocationData("Apt. 30 Kitchen - Item on Counter", LocationCat.OVERWORLD_ITEM, 1122),
     "APT_30_FRIDGE": LocationData("Apt. 30 Kitchen - Fridge Loot", LocationCat.LOOT, 1123),
 }
+
 APT_30_FLESH_LOCATIONS: dict[str, LocationData] = {
+    "APT_30_TAXIDERMY_COMBAT_VICTORY": LocationData("Apt. 30 Entryway - Slay Taxidermy", LocationCat.COMBAT_VICTORY, 1101),
     "APT_30_FLESH_ROGUE_COMBAT_VICTORY": LocationData("Apt. 30 Flesh - Slay Rogue Taxidermy", LocationCat.COMBAT_VICTORY, 1124),
     "APT_30_FLESH_TIGER_COMBAT_VICTORY": LocationData("Apt. 30 Flesh - Slay Tiger", LocationCat.COMBAT_VICTORY, 1125),
     "APT_30_FLESH_ABOM_COMBAT_VICTORY": LocationData("Apt. 30 Flesh - Slay Abomination", LocationCat.COMBAT_VICTORY, 1126),
@@ -176,7 +178,8 @@ APT_32_TEETH_LOCATIONS_MAIN: dict[str, LocationData] = {
     "APT_32_TUNNELS_TOOTH_GROUP_B_COMBAT_VICTORY": LocationData("Teeth Hell - Slay Tooth Group (Bottom Right Tunnel)", LocationCat.OVERWORLD_ITEM, 349)
 }
 
-APT_32_TEETH_BEHIND_DOOR_KNOB: dict[str, LocationData] = {"APT_32_MASTER_BEDROOM_TANK_TOP": LocationData("Apt. 32 Master Bedroom - Item on Table Near Door (Day 2-5)", LocationCat.OVERWORLD_ITEM, 321),
+APT_32_TEETH_BEHIND_DOOR_KNOB: dict[str, LocationData] = {
+    "APT_32_MASTER_BEDROOM_TANK_TOP": LocationData("Apt. 32 Master Bedroom - Item on Table Near Door (Day 2-5)", LocationCat.OVERWORLD_ITEM, 321),
     "APT_32_MASTER_BEDROOM_SAFE_ITEM": LocationData("Apt. 32 Master Bedroom - Item in Safe (Day 2-5)", LocationCat.LOOT, 322),
     "APT_32_MASTER_BEDROOM_TERATOMA_COMBAT_VICTORY": LocationData("Apt. 32 Master Bedroom - Slay Teratoma (Day 2-5)", LocationCat.COMBAT_VICTORY, 323),
     "APT_32_MASTER_BEDROOM_BALM": LocationData("Apt. 32 Master Bedroom - Item on Table by Bed (Day 2-5)", LocationCat.OVERWORLD_ITEM, 324),

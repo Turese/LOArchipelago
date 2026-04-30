@@ -41,6 +41,7 @@ can_access_basement = Or(can_access_elevator, And(
 can_access_floor_4 = can_access_elevator
 can_access_metro = And(can_access_floor_4, Has("Metro Ticket"))
 can_access_glitch_world = Has("Unlabeled Cartridge")
+can_nestor_rafta = And(HasAll(*item_name_groups["NESTOR_QUEST_INTRO"]), can_access_floor_1, can_access_ground_floor)
 
 can_perform_flawed_ritual = And(can_access_roof, has_any_perfect_offering)
 can_perform_perfect_ritual = And(can_access_roof, has_all_perfect_offerings)
@@ -231,33 +232,34 @@ frozen_apartment_regions_table = {
     "APT_34_FROZEN_CLOSET": RegionData(),
 }
 
-f2_regions_table = {
+f2_west_regions_table = {
     "FLOOR_2_WEST": RegionData(exits={
-        "APT_25_DOOR": ExitData("APT_25_DAN"),  # todo: rule that you need dan
+        "APT_25_DOOR": ExitData("APT_25_DAN", Has("Dan")),
         "APT_27_DOOR": ExitData("APT_27_TYPEWRITHER"),
         "APT_28_DOOR": ExitData("APT_28_FLOODED_ENTRYWAY"),
     }),
+    "APT_25_DAN": RegionData(),
+    "APT_27_TYPEWRITHER": RegionData(),
+    "APT_28_FLOODED_ENTRYWAY": RegionData()
+}
+
+f2_east_regions_table = {
     "FLOOR_2_EAST": RegionData(exits={
         "APT_20_DOOR": ExitData("APT_20_JEANNE"),
-        # todo: jeanne mutates after the ground floor right
-        "APT_20_DOOR_MUTATED": ExitData("APT_20_JEANNE_MUTATED", can_access_ground_floor),
+        "APT_20_DOOR_HYDRA": ExitData("APT_20_JEANNE_HYDRA", can_access_ground_floor),
         "APT_21_DOOR": ExitData("APT_21_LYLE", Has("Apt. 21 Key")),
         "APT_22_DOOR": ExitData("APT_22_HARRIET"),
-        "LEIGHS_APARTMENT_DOOR": ExitData("LEIGHS_APARTMENT"),
-        # todo: need a rule that you have leigh and the cellphone
-        "LEIGHS_APARTMENT_QUEST_DOOR": ExitData("LEIGHS_APARTMENT_QUEST"),
+        "LEIGHS_APARTMENT_DOOR": ExitData("LEIGHS_APARTMENT"),  
+        "LEIGHS_APARTMENT_QUEST_DOOR": ExitData("LEIGHS_APARTMENT_QUEST" , And(Has("Leigh"), Has("Cellphone"))),
         "APT_24_DOOR": ExitData("APT_24_EUGENE")
     }),
     "APT_20_JEANNE": RegionData(),
-    "APT_20_JEANNE_MUTATED": RegionData(),
+    "APT_20_JEANNE_HYDRA": RegionData(),
     "APT_21_LYLE": RegionData(exits={"LYLE_BATHROOM_F1_CONNECTION": ExitData("FLOOR_1_MAZE")}),
     "APT_22_HARRIET": RegionData(),
     "LEIGHS_APARTMENT": RegionData(),
     "LEIGHS_APARTMENT_QUEST": RegionData(),
     "APT_24_EUGENE": RegionData(),
-    "APT_25_DAN": RegionData(),
-    "APT_27_TYPEWRITHER": RegionData(),
-    "APT_28_FLOODED_ENTRYWAY": RegionData()
 }
 
 f1_regions_table: dict[str, RegionData] = {
@@ -313,6 +315,7 @@ all_regions_table = {
     **f3_regions_table,
     **frozen_apartment_regions_table,
     **kaeley_regions_table,
+    #**f2_east_regions_table,
 }
 
 """

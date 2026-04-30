@@ -15,7 +15,8 @@ class LOLocation(Location):
 def get_location_id(location_data: LocationData) -> int:
     return location_data.id
 
-def get_location_name(location_data: LocationData, world: LookOutsideWorld) -> str:
+def get_location_name(location_name: str, world: LookOutsideWorld) -> str:
+    location_data = location_table[location_name]
     if False: # todo: check cursed mode version modifier
         return location_data.cursed_name
     return location_data.str_name
