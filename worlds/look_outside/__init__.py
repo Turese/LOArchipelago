@@ -7,16 +7,13 @@ from .locations import get_location_id, get_location_name, location_table, creat
 
 from .options import LookOutsideOptions  # the options we defined earlier
 from worlds.AutoWorld import World
-from BaseClasses import Item, ItemClassification
+from BaseClasses import ItemClassification
 from rule_builder.cached_world import CachedRuleBuilderWorld
 from worlds.look_outside.regions import create_and_connect_regions
 from worlds.look_outside.rules import set_all_rules
 from worlds.look_outside.web_world import LookOutsideWebworld
 
-
-class LOItem(Item):  # or from Items import MyGameItem
-    game = "Look Outside"
-
+from .items import LOItem
 
 class LOSettings(settings.Group):
     pass
@@ -52,7 +49,7 @@ class LookOutsideWorld(CachedRuleBuilderWorld):
     def create_item(self, item: str) -> LOItem:
         classification = ItemClassification.filler
         item_info = item_table[item]
-        if ItemTag.CHECK_GATE in item_info.tags:
+        if ItemTag.CHECK_GATE in item_info.tags or ItemTag.BREAKABLE_KEY in item_info.tags or ItemTag.OFFERING in item_info.tags:
             classification = ItemClassification.progression
         elif item_info.category == ItemCat.SKILL:
             classification = ItemClassification.useful

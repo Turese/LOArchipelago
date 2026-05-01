@@ -1,6 +1,10 @@
 from typing import Dict, Set, NamedTuple
 from enum import IntFlag, auto
 
+from BaseClasses import Item
+
+class LOItem(Item):  # or from Items import MyGameItem
+    game = "Look Outside"
 
 class ItemCat(IntFlag):
     ITEM = auto()
@@ -184,7 +188,7 @@ main_item_table: dict[str, ItemData] = {
     "Medicell": ItemData(ItemCat.ITEM, {ItemTag.INGREDIENT}, 165),
     "Purocare": ItemData(ItemCat.ITEM, {ItemTag.INGREDIENT}, 166),
     "Cleanerex": ItemData(ItemCat.ITEM, {ItemTag.INGREDIENT}, 167),
-    "Herbicide": ItemData(ItemCat.ITEM, {ItemTag.INGREDIENT}, 168),
+    "Herbicide": ItemData(ItemCat.ITEM, {ItemTag.INGREDIENT, ItemTag.BREAKABLE_KEY}, 168),
     "Roach (Inventory Item)": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE}, 170),
     "Mushroom": ItemData(ItemCat.ITEM, {ItemTag.INGREDIENT}, 172),
     "Soap": ItemData(ItemCat.ITEM, {ItemTag.USEFUL}, 173),
@@ -254,9 +258,9 @@ main_item_table: dict[str, ItemData] = {
     "Watch": ItemData(ItemCat.ITEM, {ItemTag.UNIQUE}, 280),
     "Fitness Tracker": ItemData(ItemCat.ITEM, {ItemTag.UNIQUE}, 281),
     "Old Mail": ItemData(ItemCat.ITEM, {ItemTag.UNIQUE}, 285),
-    "Ice Melt Salt": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.BREAKABLE_KEY}, 286),
+    "Ice Melt Salt": ItemData(ItemCat.ITEM, {ItemTag.BREAKABLE_KEY}, 286),
     "Length of Rope": ItemData(ItemCat.ITEM, set(), 287),
-    "Sapper Charge": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.BREAKABLE_KEY }, 289),
+    "Sapper Charge": ItemData(ItemCat.ITEM, {ItemTag.BREAKABLE_KEY }, 289),
     "Defused Mine": ItemData(ItemCat.ITEM, set(), 290),
     "Dog Tags": ItemData(ItemCat.ITEM, {ItemTag.SPECIAL_CURRENCY}, 291),
     "Supply Crate": ItemData(ItemCat.ITEM, {ItemTag.USEFUL}, 292),
@@ -281,7 +285,7 @@ main_item_table: dict[str, ItemData] = {
     "Stationery": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 317),
     "Fountain Pen": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 318),
     "Batteries": ItemData(ItemCat.ITEM, set(), 319),
-    "Simple Key": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.BREAKABLE_KEY}, 320),
+    "Simple Key": ItemData(ItemCat.ITEM, {ItemTag.BREAKABLE_KEY}, 320),
     "Sun Disc": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 321),
     "Mercury Disc": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 322),
     "Venus Disc": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 323),
@@ -349,7 +353,7 @@ main_item_table: dict[str, ItemData] = {
     "Old Tape": ItemData(ItemCat.ITEM, {ItemTag.OFFERING}, 391),
     "Old Photograph": ItemData(ItemCat.ITEM, {ItemTag.OFFERING}, 392),
     "Wrapped Painting": ItemData(ItemCat.ITEM, {ItemTag.OFFERING}, 393),
-    "Iris Key": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.BREAKABLE_KEY}, 395),
+    "Iris Key": ItemData(ItemCat.ITEM, {ItemTag.BREAKABLE_KEY}, 395),
     "Rebreather": ItemData(ItemCat.ITEM, {ItemTag.UNIQUE}, 396),
     "Cooking Book": ItemData(ItemCat.ITEM, set(), 397),
     "Strange Key": ItemData(ItemCat.ITEM, {ItemTag.UNIQUE, ItemTag.CHECK_GATE}, 398),
@@ -736,7 +740,7 @@ misc_table: dict[str, ItemData] = {
     "Aster": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL}, 1),
     "Audrey": ItemData(ItemCat.RECRUIT, {ItemTag.CHECK_GATE}, 2),
     "Joel": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL}, 3),
-    "Leigh": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL}, 4),
+    "Leigh": ItemData(ItemCat.RECRUIT, {ItemTag.CHECK_GATE}, 4),
     "Lyle": ItemData(ItemCat.RECRUIT, {ItemTag.CHECK_GATE}, 5),
     "Xaria and Montgomery": ItemData(ItemCat.RECRUIT, {ItemTag.CHECK_GATE}, 6),
     "Morton": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL}, 7),
@@ -836,6 +840,7 @@ num_multiple_items: Dict[str, int] = {
     "black key": 5,
     "Sapper Charge": 0, # todo: REAL NUMBER
     "Iris Key": 0, # todo: REAL NUMBER
+    "Herbicide": 2, # todo: REAL NUMBER
     "Ice Melt Salt": 19
 }
 

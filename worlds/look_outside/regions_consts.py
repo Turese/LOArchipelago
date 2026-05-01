@@ -26,6 +26,7 @@ has_all_perfect_offerings = And(
 
 can_open_any_simple_lock = Has("Lockpicks")  # todo: count keys
 can_access_stairwell = Has("Padlock Key")
+can_clear_with_herbicide = Has("Herbicide", count=num_multiple_items["Herbicide"])
 can_access_elevator = Has("Elevator Activation")
 can_access_floor_2_east = can_access_stairwell
 can_access_floor_2_west = can_access_elevator
@@ -34,14 +35,14 @@ can_access_floor_1 = Or(And(can_access_floor_2_east, Has(
     "Apt. 21 Key")), can_awaken_sibyl, stairwell_planet_lock)
 can_access_ground_floor = Or(can_access_elevator, And(
     can_access_stairwell, stairwell_planet_lock))
-can_access_apt_21_depths = Or(And(can_access_floor_1, Has(
-    "Herbicide"), Has("Jasper's Key")), can_awaken_sibyl)
+can_access_apt_21_depths = Or(And(can_access_floor_1, can_clear_with_herbicide, Has("Jasper's Key")), can_awaken_sibyl)
 can_access_basement = Or(can_access_elevator, And(
     can_access_stairwell, Has("Basement Key")))
 can_access_floor_4 = can_access_elevator
 can_access_metro = And(can_access_floor_4, Has("Metro Ticket"))
-can_access_glitch_world = Has("Unlabeled Cartridge")
 can_nestor_rafta = And(HasAll(*item_name_groups["NESTOR_QUEST_INTRO"]), can_access_floor_1, can_access_ground_floor)
+can_leigh_quest = And(Has("Leigh"), Has("Phone"))
+
 
 can_perform_flawed_ritual = And(can_access_roof, has_any_perfect_offering)
 can_perform_perfect_ritual = And(can_access_roof, has_all_perfect_offerings)
@@ -106,7 +107,7 @@ f3_regions_table: dict[str, RegionData] = {
         "TAXIDERMY_DOOR": ExitData("APT_30_TAXIDERMY_FLESH", Has("Shrunken Head"))}),
     "APT_30_TAXIDERMY_FLESH": RegionData(),
     "APT_31_STARGAZER": RegionData(exits={
-        "GLITCH_WORLD_TV": ExitData("GLITCH_WORLD_MAIN", can_access_glitch_world)
+        "GLITCH_WORLD_TV": ExitData("GLITCH_WORLD_MAIN", Has("Unlabeled Cartridge"))
     }),
     "GLITCH_WORLD_MAIN": RegionData(),
     "APT_32_TEETH": RegionData(exits={
@@ -240,39 +241,62 @@ f2_west_regions_table = {
     }),
     "APT_25_DAN": RegionData(),
     "APT_27_TYPEWRITHER": RegionData(),
-    "APT_28_FLOODED_ENTRYWAY": RegionData()
+    "APT_28_FLOODED_ENTRYWAY": RegionData(exits={
+        "TWILIGHT_DOOR": ExitData("APT_28_FLOODED_TWILIGHT", Has("Twilight Valve")),
+        "MIDNIGHT_DOOR": ExitData("APT_28_FLOODED_MIDNIGHT", Has("Midnight Valve")),
+        "ABYSSAL_DOOR": ExitData("APT_28_FLOODED_ABYSSAL", Has("Abyssal Valve"))
+    }),
+    "APT_28_FLOODED_TWILIGHT": RegionData(),
+    "APT_28_FLOODED_MIDNIGHT": RegionData(),
+    "APT_28_FLOODED_ABYSSAL": RegionData(exits={
+        "HADAL_DOOR": ExitData("APT_28_FLOODED_HADAL", Has("Hadal Valve"))
+    }),
+    "APT_28_FLOODED_HADAL": RegionData()
 }
 
 f2_east_regions_table = {
     "FLOOR_2_EAST": RegionData(exits={
         "APT_20_DOOR": ExitData("APT_20_JEANNE"),
-        "APT_20_DOOR_HYDRA": ExitData("APT_20_JEANNE_HYDRA", can_access_ground_floor),
+        "APT_20_DOOR_HYDRA": ExitData("APT_20_JEANNE_HYDRA", Has("OPENED_GROUND_FLOOR_FROM_STAIRWELL")),
         "APT_21_DOOR": ExitData("APT_21_LYLE", Has("Apt. 21 Key")),
         "APT_22_DOOR": ExitData("APT_22_HARRIET"),
         "LEIGHS_APARTMENT_DOOR": ExitData("LEIGHS_APARTMENT"),  
-        "LEIGHS_APARTMENT_QUEST_DOOR": ExitData("LEIGHS_APARTMENT_QUEST" , And(Has("Leigh"), Has("Cellphone"))),
-        "APT_24_DOOR": ExitData("APT_24_EUGENE")
+        "LEIGHS_APARTMENT_QUEST_DOOR": ExitData("LEIGHS_APARTMENT_QUEST", can_leigh_quest),
+        "APT_24_DOOR": ExitData("APT_24_EUGENE_SHOP")
     }),
     "APT_20_JEANNE": RegionData(),
     "APT_20_JEANNE_HYDRA": RegionData(),
-    "APT_21_LYLE": RegionData(exits={"LYLE_BATHROOM_F1_CONNECTION": ExitData("FLOOR_1_MAZE")}),
+    "APT_21_LYLE": RegionData(
+        exits={
+            "LYLE_BATHROOM_F1_CONNECTION": ExitData("FLOOR_1_MAZE"),
+            "LYLE_DARK_ROOM_DOOR": ExitData("LYLE_DARK_ROOM", Has("Dark Room Key")),
+            "LYLE_BEDROOM_DOOR": ExitData("LYLE_BEDROOM", can_clear_with_herbicide)
+            }),
+    "LYLE_DARK_ROOM": RegionData(),
+    "LYLE_BEDROOM": RegionData(),
     "APT_22_HARRIET": RegionData(),
     "LEIGHS_APARTMENT": RegionData(),
     "LEIGHS_APARTMENT_QUEST": RegionData(),
-    "APT_24_EUGENE": RegionData(),
+    "APT_24_EUGENE_SHOP": RegionData(exits={
+        "APT_24_EUGENE_BACKDOOR": ExitData("APT_24_EUGENE_APT", Has("Eugene's Key"))
+    }),
+    "APT_24_EUGENE_APT": RegionData(exits={
+        "APT_24_EUGENE_SECRET_BOOKCASE": ExitData("APT_24_EUGENE_SEWING_CLOSET")
+    }),
+    "APT_24_EUGENE_SEWING_CLOSET": RegionData(),
 }
 
 f1_regions_table: dict[str, RegionData] = {
     "FLOOR_1_MAZE": RegionData(
         exits={
             "F1_ELEVATOR_EXIT": ExitData("ELEVATOR", can_access_elevator),
-            "FRED_APARTMENT_DOOR": ExitData("FRED_APARTMENT"),
+            #"FRED_APARTMENT_DOOR": ExitData("FRED_APARTMENT"),
             # same for here, is rat hell activated by f1
-            "RAT_HELL_ENTRANCE": ExitData("RAT_HELL", can_access_floor_1),
+            #"RAT_HELL_ENTRANCE": ExitData("RAT_HELL", can_access_floor_1),
         }
     ),
-    "FRED_APARTMENT": RegionData(),
-    "RAT_HELL": RegionData()
+    #"FRED_APARTMENT": RegionData(),
+    #"RAT_HELL": RegionData()
 }
 
 basement_regions_table: dict[str, RegionData] = {
@@ -290,7 +314,7 @@ misc_regions_table: dict[str, RegionData] = {
     "STAIRWELL": RegionData(
         exits={
             "ROOF_DOOR": ExitData("ROOF", can_access_roof),
-            #"FLOOR_2_STAIRWELL_DOOR": ExitData("FLOOR_2_EAST"),
+            "FLOOR_2_STAIRWELL_DOOR": ExitData("FLOOR_2_EAST"),
             # floor 1 is skipped here since it unlocks from the other side
             #"GROUND_FLOOR_STAIRWELL_DOOR": ExitData("GROUND_FLOOR_EAST", stairwell_planet_lock),
             #"BASEMENT_STAIRWELL_DOOR": ExitData("BASEMENT_HALL", Has("Basement Key")),
@@ -302,7 +326,7 @@ misc_regions_table: dict[str, RegionData] = {
     "ELEVATOR": RegionData(
         exits={
             "ELEVATOR_FLOOR_3_EXIT": ExitData("FLOOR_3_HALL", can_access_elevator),
-            #"ELEVATOR_FLOOR_2_EXIT": ExitData("FLOOR_2_WEST", can_access_elevator),
+            "ELEVATOR_FLOOR_2_EXIT": ExitData("FLOOR_2_WEST", can_access_elevator),
             #"ELEVATOR_FLOOR_1_EXIT": ExitData("FLOOR_1_MAZE", can_access_elevator),
             #"ELEVATOR_GROUND_FLOOR_EXIT": ExitData("GROUND_FLOOR_WEST", can_access_elevator),
         }
@@ -315,14 +339,15 @@ all_regions_table = {
     **f3_regions_table,
     **frozen_apartment_regions_table,
     **kaeley_regions_table,
-    #**f2_east_regions_table,
+    **f2_east_regions_table,
+    **f2_west_regions_table,
+    **f1_regions_table,
 }
 
 """
-LEAVING THESE OUT AND TESTING WITH F3 FOR NOW:
+LEAVING THESE OUT AND TESTING WITH F3/2 FOR NOW:
 
-**f2_regions_table,
-    **f1_regions_table,
+
     **ground_regions_table,
     **basement_regions_table
 """

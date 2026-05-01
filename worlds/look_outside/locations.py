@@ -4,6 +4,8 @@ from typing import TYPE_CHECKING
 
 from BaseClasses import Location
 from worlds.look_outside.locations_consts import APT_33_LOCATIONS, LocationData, location_table, location_to_region
+from worlds.look_outside.items import LOItem
+
 
 if TYPE_CHECKING:
     from .__init__ import LookOutsideWorld
@@ -33,4 +35,12 @@ def create_regular_locations(world: LookOutsideWorld) -> None:
         parent_region.locations.append(location)
 
 def create_events(world: LookOutsideWorld) -> None:
-    pass
+    stairwell = world.get_region("STAIRWELL")
+    stairwell.add_event(
+        "GROUND_FLOOR_STAIRWELL_DOOR", "OPENED_GROUND_FLOOR_FROM_STAIRWELL", location_type=LOLocation, item_type=LOItem
+    )
+
+    twilight_room = world.get_region("APT_28_FLOODED_TWILIGHT")
+    twilight_room.add_event(
+        "TWILIGHT_CLOSET", "ACTIVATED_PIRANHAS", location_type=LOLocation, item_type=LOItem
+    )

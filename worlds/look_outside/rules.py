@@ -7,7 +7,8 @@ from worlds.look_outside.locations import get_location_name
 
 from .options import PlayerGoal
 from worlds.look_outside.regions_consts import all_regions_table,\
-    can_nestor_rafta, can_open_any_simple_lock
+    can_nestor_rafta, can_open_any_simple_lock, can_access_floor_1,\
+    can_access_ground_floor, can_access_basement, can_leigh_quest
 from rule_builder.rules import Has, And
 
 if TYPE_CHECKING:
@@ -60,13 +61,40 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
 
     world.set_rule(world.get_location(get_location_name("APT_37_PROJECTOR_ROOM_PHOTO", world)), And(Has("Negative Disc"), Has("Photo Paper")))
 
+    #f2 rules
+    world.set_rule(world.get_location(get_location_name("F2_RECRUIT_ASTER", world)), And(can_access_floor_1, can_access_ground_floor, can_access_basement)) # todo: event for meeting astronomers instead?
+    world.set_rule(world.get_location(get_location_name("F2_GRASSHOPPER_COMBAT_VICTORY", world)), can_leigh_quest)
+
+    world.set_rule(world.get_location(get_location_name("APT_20_HYDRA_LAUNDRY", world)), Has("Laundry"))
+
+    world.set_rule(world.get_location(get_location_name("APT_21_DARK_ROOM_PHOTO", world)), Has("Exposed Paper"))
+    world.set_rule(world.get_location(get_location_name("APT_21_SECOND_KISS_GIFT", world)), Has("Exposed Paper"))
+
+    world.set_rule(world.get_location(get_location_name("APT_27_COMPLETE_MANUSCRIPT", world)), Has("Progressive Loose Manuscript"))
+
+    # one more piranhas fight, dragonfish + 2x piranhas, is defeatable before piranhas activated. 
+    # player will fight only the dragonfish, but the victory will still count.
+    world.set_rule(world.get_location(get_location_name("APT_28_PIRANHAS_COMBAT_VICTORY", world)), Has("ACTIVATED_PIRANHAS"))
+    world.set_rule(world.get_location(get_location_name("APT_28_GARBAGE_PIRANHAS_COMBAT_VICTORY", world)), Has("ACTIVATED_PIRANHAS"))
+    world.set_rule(world.get_location(get_location_name("APT_28_TWILIGHT_PIRANHAS_COMBAT_VICTORY", world)), Has("ACTIVATED_PIRANHAS"))
+
     #locked safes
     world.set_rule(world.get_location(get_location_name("APT_31_BEDROOM_SAFE_ITEM", world)), can_open_any_simple_lock)
     world.set_rule(world.get_location(get_location_name("APT_32_MASTER_BEDROOM_SAFE_ITEM", world)), can_open_any_simple_lock)
     world.set_rule(world.get_location(get_location_name("APT_36_BEDROOM_SAFE_ITEM", world)), can_open_any_simple_lock)
+    world.set_rule(world.get_location(get_location_name("APT_21_CLOSET_SAFE", world)), can_open_any_simple_lock)
 
     #nestor quest rules
     world.set_rule(world.get_location(get_location_name("F3_HAND_WORMS_COMBAT_VICTORY", world)), can_nestor_rafta)
+    world.set_rule(world.get_location(get_location_name("F2_NESTOR_HAND_WORMS_COMBAT_VICTORY", world)), can_nestor_rafta)
+    world.set_rule(world.get_location(get_location_name("APT_27_BATHROOM_LEG_WORMS", world)), can_nestor_rafta)
+    world.set_rule(world.get_location(get_location_name("APT_24_LIVINGROOM_FACE_WORMS_COMBAT_VICTORY", world)), can_nestor_rafta)
+    world.set_rule(world.get_location(get_location_name("APT_24_BEDROOM_FACE_WORMS_COMBAT_VICTORY", world)), can_nestor_rafta)
+
+    #audrey rules
+    world.set_rule(world.get_location(get_location_name("APT_30_TAXIDERMY_AUDREY_LOOT", world)), Has("Audrey"))
+    world.set_rule(world.get_location(get_location_name("APT_28_SHRIMP_KNIGHT_AUDREY_LOOT", world)), Has("Audrey"))
+
 
 
 
