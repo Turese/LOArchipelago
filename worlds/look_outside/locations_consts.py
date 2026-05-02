@@ -7,7 +7,7 @@ class LocationCat(IntFlag):
     OVERWORLD_ITEM = auto()
     SKILL_UNLOCK = auto()
     RECRUIT = auto()
-    COMBAT_VICTORY = auto()  # combat victory for aggressive npcs
+    COMBAT_VICTORY = auto() # combat victory for aggressive npcs
     FRIENDLY_FIRE = auto() # combat victory for nonaggressive npcs
     RAT_FRIENDLY_FIRE = auto() # combat victory for rats that are nonaggressive towards the rat king
     MERCHANT = auto()
@@ -486,39 +486,33 @@ APT_38_ROOMMATES_LOCATIONS = {
     **KAELEY_NE_LOCATIONS
 }
 
-
-GLITCH_WORLD_LOCATIONS: dict[str, LocationData] = {
+GLITCH_WORLD_MAIN_LOCATIONS: dict[str, LocationData] = {
     "GLITCH_BGRAAT_COMBAT_VICTORY": LocationData("Glitch World - Slay bgR aa|t", LocationCat.COMBAT_VICTORY, 1401),
     "GLITCH_GA2RD_COMBAT_VICTORY": LocationData("Glitch World - Slay gaA2 rd", LocationCat.COMBAT_VICTORY, 1402),
+}
+
+GLITCH_WORLD_END_CHAMBER_LOCATIONS: dict[str, LocationData] = {
     "GLITCH_LAST_WILL": LocationData("Glitch World End Chamber - Item on Pedestal", LocationCat.OVERWORLD_ITEM, 1403),
     "GLITCH_EYEW0RM_COMBAT_VICTORY": LocationData("Glitch World End Chamber - Slay eyEW0rm", LocationCat.COMBAT_VICTORY, 1404),
     "GLITCH_BLACK_KEY": LocationData("Glitch World End Chamber - Item on Floor", LocationCat.OVERWORLD_ITEM, 1405),
-    "GLITCH_SHORTCUT_BLUE_KEY": LocationData("Glitch World Gate Room - Item in Dead End", LocationCat.OVERWORLD_ITEM, 1406),
-    "GLITCH_HAIRHE3AD_COMBAT_VICTORY": LocationData("Glitch World Gate Room East - Slay hAiRhE3ad", LocationCat.COMBAT_VICTORY, 1407),
-    "GLITCH_GUN_COMBAT_VICTORY": LocationData("Glitch World Gate Room East - Slay gun", LocationCat.COMBAT_VICTORY, 1408),
-    "GLITCH_GHOS7T_COMBAT_VICTORY": LocationData("Glitch World Gate Room West - Slay gHos7 T", LocationCat.COMBAT_VICTORY, 1409),
-    "GLITCH_METTAL_BA2T": LocationData("Glitch World Gate Room West - Item at Dead End", LocationCat.OVERWORLD_ITEM, 1410),
-    "GLITCH_E_TR2NK_COMBAT_VICTORY": LocationData("Glitch World East - Slay tR2 nk", LocationCat.COMBAT_VICTORY, 1411),
-    "GLITCH_E_LLEECH_COMBAT_VICTORY": LocationData("Glitch World East - Slay lLEeCh", LocationCat.COMBAT_VICTORY, 1412),
-    "GLITCH_E_RED_KEY": LocationData("Glitch World East - Item in Center Chamber", LocationCat.OVERWORLD_ITEM, 1413),
-    "GLITCH_E_YELLOW_KEY": LocationData("Glitch World East - Item Behind lLEeCh", LocationCat.OVERWORLD_ITEM, 1414),
-    "GLITCH_NE_PULLOUT_COMBAT_VICTORY": LocationData("Glitch World Northeast - Slay PUl#Lout", LocationCat.COMBAT_VICTORY, 1415),
-    "GLITCH_NE_GREEN_KEY": LocationData("Glitch World Northeast - Item Behind PUl#Lout", LocationCat.OVERWORLD_ITEM, 1416),
-    "GLITCH_NE_R0ACH3_A": LocationData("Glitch World Northeast - Slay r0 Ach3 North", LocationCat.COMBAT_VICTORY, 1417),
-    "GLITCH_NE_R0ACH3_B": LocationData("Glitch World Northeast - Slay r0 Ach3 South", LocationCat.COMBAT_VICTORY, 1418),
-    "GLITCH_SE_CRIM50N_IM92_COMBAT_VICTORY": LocationData("Glitch World Southeast - Slay crIm\50n Im9*2", LocationCat.COMBAT_VICTORY, 1419),
-    "GLITCH_HONKO_COMBAT_VICTORY": LocationData("Glitch World - Slay Honko", LocationCat.COMBAT_VICTORY, 1420),
-    "GLITCH_E_SE_P1TCH5_COMBAT_VICTORY": LocationData("Glitch World East by Southeast - Slay p1tc h5", LocationCat.COMBAT_VICTORY, 1421),
-    "GLITCH_E_SE_RMYJCKET": LocationData("Glitch World East by Southeast - Item", LocationCat.OVERWORLD_ITEM, 1422),
+}
+
+GLITCH_WORLD_WEST_AND_SOUTHWEST_LOCATIONS: dict[str, LocationData] = {
     "GLITCH_W_GLITCH_ELIXIR": LocationData("Glitch World West - Item From NPC", LocationCat.EVENT_ITEM, 1423),
     "GLITCH_W_CRIM50N_IM92_COMBAT_VICTORY": LocationData("Glitch World West - Slay crIm\50n Im9*2", LocationCat.COMBAT_VICTORY, 1424),
     "GLITCH_W_FTBLHELMT": LocationData("Glitch World West - Item Behind crIm\50n Im9*2", LocationCat.OVERWORLD_ITEM, 1425),
-    "GLITCH_S_TR2NK_COMBAT_VICTORY": LocationData("Glitch World South - Slay tR2 nk", LocationCat.COMBAT_VICTORY, 1426),
-    "GLITCH_S_YELLOW_KEY": LocationData("Glitch World South - Item in North Room", LocationCat.OVERWORLD_ITEM, 1427),
-    "GLITCH_S_AMBROSE": LocationData("Glitch World South - Take Ambrose", LocationCat.EVENT_ITEM, 1428),
-    "GLITCH_SE_SLIME_COMBAT_VICTORY": LocationData("Glitch World Southeast - Slay ****** (Slime)", LocationCat.COMBAT_VICTORY, 1429),
+    "GLITCH_SW_TR2NK_COMBAT_VICTORY": LocationData("Glitch World Southwest - Slay tR2 nk", LocationCat.COMBAT_VICTORY, 1426),
+    "GLITCH_SW_YELLOW_KEY": LocationData("Glitch World Southwest - Item in North Room", LocationCat.OVERWORLD_ITEM, 1427),
+    "GLITCH_SW_AMBROSE": LocationData("Glitch World Southwest - Take Ambrose", LocationCat.EVENT_ITEM, 1428),
     "GLITCH_SW_SKNFCE_COMBAT_VICTORY": LocationData("Glitch World Southwest - Sk?nFce", LocationCat.COMBAT_VICTORY, 1430),
-    "GLITCH_SW_WHITE_KEY": LocationData("Glitch World Southwest - Item", LocationCat.OVERWORLD_ITEM, 1431),
+    "GLITCH_SW_WHITE_KEY": LocationData("Glitch World Southwest - Item Behind Sk?nFce", LocationCat.OVERWORLD_ITEM, 1431),
+}
+
+GLITCH_WORLD_SLIME_ROOM_LOCATIONS: dict[str, LocationData] = {
+    "GLITCH_SW_SLIME_COMBAT_VICTORY": LocationData("Glitch World Southwest - Slay ****** (Slime)", LocationCat.COMBAT_VICTORY, 1429),
+}
+
+GLITCH_WORLD_MAZE_LOCATIONS: dict[str, LocationData] = {
     "GLITCH_MAZE_SKEL3TON_NE_COMBAT_VICTORY": LocationData("Glitch World Maze - Slay First skE l3t{On", LocationCat.COMBAT_VICTORY, 1432),
     "GLITCH_MAZE_SKEL3TON_CENTER_COMBAT_VICTORY": LocationData("Glitch World Maze - Slay Second skE l3t{On", LocationCat.COMBAT_VICTORY, 1433),
     "GLITCH_MAZE_SKEL3TON_W_COMBAT_VICTORY": LocationData("Glitch World Maze - Slay Third skE l3t{On", LocationCat.COMBAT_VICTORY, 1434),
@@ -527,6 +521,70 @@ GLITCH_WORLD_LOCATIONS: dict[str, LocationData] = {
     "GLITCH_MAZE_YELLOW_KEY": LocationData("Glitch World Maze - Second Item", LocationCat.OVERWORLD_ITEM, 1437),
     "GLITCH_MAZE_VNAGE_UCKY_TIEAKERS": LocationData("Glitch World Maze - Third Item", LocationCat.OVERWORLD_ITEM, 1438)
 }
+
+GLITCH_WORLD_EAST_W_LOCATIONS: dict[str, LocationData] = {
+    "GLITCH_E_RED_KEY": LocationData("Glitch World East - Item in Center Chamber", LocationCat.OVERWORLD_ITEM, 1413),
+    "GLITCH_E_TR2NK_COMBAT_VICTORY": LocationData("Glitch World East - Slay tR2 nk", LocationCat.COMBAT_VICTORY, 1411),
+}
+
+GLITCH_WORLD_EAST_E_LOCATIONS: dict[str, LocationData] = {
+    "GLITCH_E_LLEECH_COMBAT_VICTORY": LocationData("Glitch World East - Slay lLEeCh", LocationCat.COMBAT_VICTORY, 1412),
+    "GLITCH_E_YELLOW_KEY": LocationData("Glitch World East - Item Behind lLEeCh", LocationCat.OVERWORLD_ITEM, 1414),
+}
+
+GLITCH_WORLD_NE_LOCATIONS: dict[str, LocationData] = {
+    "GLITCH_NE_PULLOUT_COMBAT_VICTORY": LocationData("Glitch World Northeast - Slay PUl#Lout", LocationCat.COMBAT_VICTORY, 1415),
+    "GLITCH_NE_GREEN_KEY": LocationData("Glitch World Northeast - Item Behind PUl#Lout", LocationCat.OVERWORLD_ITEM, 1416),
+    "GLITCH_NE_R0ACH3_A": LocationData("Glitch World Northeast - Slay r0 Ach3 North", LocationCat.COMBAT_VICTORY, 1417),
+    "GLITCH_NE_R0ACH3_B": LocationData("Glitch World Northeast - Slay r0 Ach3 South", LocationCat.COMBAT_VICTORY, 1418),
+}
+
+GLITCH_WORLD_NE_HYDRA_LAIR_LOCATIONS: dict[str, LocationData] = {
+    "GLITCH_SLIME_HYDRA_COMBAT_VICTORY": LocationData("Glitch World - Slay Slime Hydra", LocationCat.COMBAT_VICTORY, 1439),
+}
+
+GLITCH_WORLD_SE_LOCATIONS: dict[str, LocationData] = {
+    "GLITCH_SE_CRIM50N_IM92_COMBAT_VICTORY": LocationData("Glitch World Southeast - Slay crIm\50n Im9*2", LocationCat.COMBAT_VICTORY, 1419),
+    "GLITCH_E_SE_P1TCH5_COMBAT_VICTORY": LocationData("Glitch World East by Southeast - Slay p1tc h5", LocationCat.COMBAT_VICTORY, 1421),
+    "GLITCH_E_SE_RMYJCKET": LocationData("Glitch World East by Southeast - Item", LocationCat.OVERWORLD_ITEM, 1422),
+}
+
+GLITCH_WORLD_HONKO_LOCATIONS: dict[str, LocationData] = {
+    "GLITCH_HONKO_COMBAT_VICTORY": LocationData("Glitch World - Slay Honko", LocationCat.COMBAT_VICTORY, 1420),
+}
+
+GATE_ROOM_NE_LOCATIONS: dict[str, LocationData] = {
+    "GLITCH_SHORTCUT_BLUE_KEY": LocationData("Glitch World Gate Room - Item in Dead End", LocationCat.OVERWORLD_ITEM, 1406),
+}
+
+GATE_ROOM_WEST_GHOST_METALBAT_LOCATIONS: dict[str, LocationData] = {
+    "GLITCH_GHOS7T_COMBAT_VICTORY": LocationData("Glitch World Gate Room West - Slay gHos7 T", LocationCat.COMBAT_VICTORY, 1409),
+    "GLITCH_METTAL_BA2T": LocationData("Glitch World Gate Room West - Item at Dead End", LocationCat.OVERWORLD_ITEM, 1410),
+}
+
+GATE_ROOM_SE_HAIRHEAD_GUN_LOCATIONS: dict[str, LocationData] = {
+    "GLITCH_HAIRHE3AD_COMBAT_VICTORY": LocationData("Glitch World Gate Room East - Slay hAiRhE3ad", LocationCat.COMBAT_VICTORY, 1407),
+    "GLITCH_GUN_COMBAT_VICTORY": LocationData("Glitch World Gate Room East - Slay gun", LocationCat.COMBAT_VICTORY, 1408),
+}
+
+GLITCH_WORLD_LOCATIONS: dict[str, LocationData] = {
+    **GLITCH_WORLD_MAIN_LOCATIONS,
+    **GLITCH_WORLD_END_CHAMBER_LOCATIONS,
+    **GLITCH_WORLD_WEST_AND_SOUTHWEST_LOCATIONS,
+    **GLITCH_WORLD_SLIME_ROOM_LOCATIONS,
+    **GLITCH_WORLD_MAZE_LOCATIONS,
+    **GLITCH_WORLD_EAST_W_LOCATIONS,
+    **GLITCH_WORLD_EAST_E_LOCATIONS,
+    **GLITCH_WORLD_NE_LOCATIONS,
+    **GLITCH_WORLD_NE_HYDRA_LAIR_LOCATIONS,
+    **GLITCH_WORLD_SE_LOCATIONS,
+    **GLITCH_WORLD_HONKO_LOCATIONS,
+    **GATE_ROOM_NE_LOCATIONS,
+    **GATE_ROOM_WEST_GHOST_METALBAT_LOCATIONS,
+    **GATE_ROOM_SE_HAIRHEAD_GUN_LOCATIONS
+}
+
+
 
 """
 --- F2 LOCATIONS --- 
@@ -751,7 +809,6 @@ APT_28_TWILIGHT_LOCATIONS = {
 APT_28_MIDNIGHT_LOCATIONS = {
     "APT_28_MIDNIGHT_DRAGONFISH_COMBAT_VICTORY": LocationData("Apt. 28 Midnight Room - Slay Dragonfish and Piranhas", LocationCat.COMBAT_VICTORY, 2317),
     "APT_28_ABYSSAL_VALVE": LocationData("Apt. 28 Midnight Room Closet - Item", LocationCat.OVERWORLD_ITEM, 2318),
-    
 }
 
 APT_28_ABYSSAL_LOCATIONS = {
@@ -815,7 +872,21 @@ region_locs: dict[str, set[str]] = {
     "APT_30_TAXIDERMY": APT_30_MAIN_LOCATIONS.keys(),
     "APT_30_TAXIDERMY_FLESH": APT_30_FLESH_LOCATIONS.keys(),
     "APT_31_STARGAZER": APT_31_STARGAZER_LOCATIONS.keys() | APT_33_MEAT_LOCATIONS.keys() ,
-    "GLITCH_WORLD_MAIN": GLITCH_WORLD_LOCATIONS.keys(),
+    "GLITCH_WORLD_MAIN": GLITCH_WORLD_MAIN_LOCATIONS.keys(),
+    "GLITCH_WORLD_WEST_AND_SOUTHWEST": GLITCH_WORLD_WEST_AND_SOUTHWEST_LOCATIONS.keys(),
+    "GLITCH_WORLD_SLIME_ROOM": GLITCH_WORLD_SLIME_ROOM_LOCATIONS.keys(),
+    "GLITCH_WORLD_END_CHAMBER": GLITCH_WORLD_END_CHAMBER_LOCATIONS.keys(),
+    "GATE_ROOM_SOUTH": {},
+    "GATE_ROOM_WEST_GHOST_METALBAT": GATE_ROOM_WEST_GHOST_METALBAT_LOCATIONS.keys(),
+    "GATE_ROOM_NE": GATE_ROOM_NE_LOCATIONS.keys(),
+    "GATE_ROOM_SE_HAIRHEAD_GUN": GATE_ROOM_SE_HAIRHEAD_GUN_LOCATIONS.keys(),
+    "GLITCH_WORLD_EAST_W": GLITCH_WORLD_EAST_W_LOCATIONS.keys(),
+    "GLITCH_WORLD_EAST_E": GLITCH_WORLD_EAST_E_LOCATIONS.keys(),
+    "GLITCH_WORLD_SE": GLITCH_WORLD_SE_LOCATIONS.keys(),
+    "GLITCH_WORLD_HONKO": GLITCH_WORLD_HONKO_LOCATIONS.keys(),
+    "GLITCH_WORLD_NE": GLITCH_WORLD_NE_LOCATIONS.keys(),
+    "GLITCH_WORLD_NE_HYDRA_LAIR": GLITCH_WORLD_NE_HYDRA_LAIR_LOCATIONS.keys(),
+    "GLITCH_WORLD_MAZE": GLITCH_WORLD_MAZE_LOCATIONS.keys(),
     "APT_32_TEETH": APT_32_TEETH_LOCATIONS_MAIN.keys(),
     "APT_32_MASTER_BEDROOM_KITCHEN": APT_32_TEETH_BEHIND_DOOR_KNOB.keys(),
     "APT_34_FROZEN_ENTRANCE": APT_34_FROZEN_ENTRYWAY_LOCATIONS.keys(),

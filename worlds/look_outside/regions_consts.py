@@ -43,7 +43,6 @@ can_access_metro = And(can_access_floor_4, Has("Metro Ticket"))
 can_nestor_rafta = And(HasAll(*item_name_groups["NESTOR_QUEST_INTRO"]), can_access_floor_1, can_access_ground_floor)
 can_leigh_quest = And(Has("Leigh"), Has("Phone"))
 
-
 can_perform_flawed_ritual = And(can_access_roof, has_any_perfect_offering)
 can_perform_perfect_ritual = And(can_access_roof, has_all_perfect_offerings)
 can_true_final = And(can_perform_perfect_ritual, Has("Meteor Strike"))
@@ -109,7 +108,6 @@ f3_regions_table: dict[str, RegionData] = {
     "APT_31_STARGAZER": RegionData(exits={
         "GLITCH_WORLD_TV": ExitData("GLITCH_WORLD_MAIN", Has("Unlabeled Cartridge"))
     }),
-    "GLITCH_WORLD_MAIN": RegionData(),
     "APT_32_TEETH": RegionData(exits={
         "MASTER_BEDROOM_DOOR": ExitData("APT_32_MASTER_BEDROOM_KITCHEN", Has("Door Knob"))}),
     "APT_32_MASTER_BEDROOM_KITCHEN": RegionData(),
@@ -143,7 +141,7 @@ kaeley_regions_table: dict[str, RegionData] = {
     }),
     "KAELEY_CENTER_RIGHT_TOP": RegionData(exits={
         "KAELEY_CENTER_RIGHT_LOCK2": ExitData("KAELEY_CENTER_RIGHT", can_open_any_simple_lock)
-    }), # this area has trickster in it
+    }),  # this area has trickster in it
     "KAELEY_CENTER_RIGHT": RegionData(exits={
         "KAELEY_CENTER_HALL_LOCK_R": ExitData("KAELEY_CENTER_HALL", can_open_any_simple_lock),
         "KAELEY_E_LOCK": ExitData("KAELEY_E", can_open_any_simple_lock),
@@ -161,7 +159,6 @@ kaeley_regions_table: dict[str, RegionData] = {
     }),
     "KAELEY_NW": RegionData(),
 }
-
 
 # theres a total of 18 meltable blocks in apartment 34
 # assumes worst case scenario: player has spent enough ice melts to go to every
@@ -233,6 +230,64 @@ frozen_apartment_regions_table = {
     "APT_34_FROZEN_CLOSET": RegionData(),
 }
 
+glitch_world_regions_table = {
+    "GLITCH_WORLD_MAIN": RegionData(exits={
+        "GLITCH_WORLD_MAIN_SOUTH_EXIT": ExitData("GATE_ROOM_NORTH"),
+        "GLITCH_WORLD_MAIN_EAST_EXIT": ExitData("GLITCH_WORLD_EAST_W"),
+        "GLITCH_WORLD_MAIN_WEST_EXIT": ExitData("GLITCH_WORLD_WEST_AND_SOUTHWEST")
+    }),
+    "GLITCH_WORLD_WEST_AND_SOUTHWEST": RegionData(exits={
+        "GLITCH_WORLD_WEST_NORTH_AND_SOUTH_EXITS": ExitData("GLITCH_WORLD_MAZE"),
+        "GLITCH_WORLD_SOUTHWEST_EAST_EXIT": ExitData("GLITCH_WORLD_SLIME_ROOM", Has("black key", count=num_multiple_items["black key"]))
+    }),
+    "GLITCH_WORLD_SLIME_ROOM": RegionData(),
+    "GLITCH_WORLD_END_CHAMBER": RegionData(exits={
+        "GLITCH_WORLD_END_NORTH_EXIT": ExitData("GATE_ROOM_NORTH")
+    }),
+    "GATE_ROOM_SOUTH": RegionData(exits={
+        "GATE_ROOM_NORTH_GATE_BOTTOM": ExitData("GATE_ROOM_NORTH", Has("black key", count=num_multiple_items["black key"])),
+        "GATE_ROOM_WEST_GATE": ExitData("GATE_ROOM_WEST_GHOST_METALBAT", Has("yellow key", count=num_multiple_items["yellow key"])),
+        "GATE_ROOM_EAST_GATE_WEST": ExitData("GATE_ROOM_NE", Has("blue key", count=num_multiple_items["blue key"])),
+    }),
+    "GATE_ROOM_WEST_GHOST_METALBAT": RegionData(),
+    "GATE_ROOM_NORTH": RegionData(exits={
+        "GATE_ROOM_NORTH_EXIT": ExitData("GLITCH_WORLD_END_CHAMBER"),
+        "GATE_ROOM_NORTH_GATE_TOP": ExitData("GATE_ROOM_SOUTH", Has("black key", count=num_multiple_items["black key"])),
+    }),
+    "GATE_ROOM_NE": RegionData(exits={
+        "GATE_ROOM_EAST_GATE_EAST": ExitData("GATE_ROOM_SOUTH", Has("blue key", count=num_multiple_items["blue key"])),
+        "GATE_ROOM_NE_GATE": ExitData("GATE_ROOM_SE_HAIRHEAD_GUN", And(
+            Has("red key", count=num_multiple_items["red key"]),
+            Has("green key", count=num_multiple_items["green key"])
+        ))
+    }),
+    "GATE_ROOM_SE_HAIRHEAD_GUN": RegionData(),
+    "GLITCH_WORLD_EAST_E": RegionData(exits={
+        "GLITCH_WORLD_EAST_E_WEST_EXIT": ExitData("GLITCH_WORLD_END_CHAMBER"),
+        "GLITCH_WORLD_EAST_E_EAST_EXIT": ExitData("GLITCH_WORLD_SE")
+    }),
+    "GLITCH_WORLD_EAST_W": RegionData(exits={
+        "GLITCH_WORLD_EAST_W_SOUTH_EXIT": ExitData("GLITCH_WORLD_SE", Has("white key", count=num_multiple_items["white key"])),
+        "GLITCH_WORLD_EAST_W_NORTH_EXIT": ExitData("GLITCH_WORLD_NE")
+    }),
+    "GLITCH_WORLD_SE": RegionData(exits={
+        "GLITCH_WORLD_SE_NORTH_EXIT": ExitData("GLITCH_WORLD_EAST_E"),
+        "GLITCH_WORLD_SE_HONKO_PATH": ExitData("GLITCH_WORLD_HONKO", Has("Honko's Grand Journey"))
+    }),
+    "GLITCH_WORLD_HONKO": RegionData(),
+    "GLITCH_WORLD_NE": RegionData(exits={
+        "GLITCH_WORLD_NE_HYDRA_PATH": ExitData("GLITCH_WORLD_NE_HYDRA_LAIR"),  # todo: KOTD requirement
+        "GLITCH_WORLD_NE_NORTH_EXIT": ExitData("GLITCH_WORLD_MAZE")
+    }),
+    "GLITCH_WORLD_NE_HYDRA_LAIR": RegionData(),
+    "GLITCH_WORLD_MAZE": RegionData(exits={
+        "GLITCH_WORLD_MAZE_SE_EXIT": ExitData("GLITCH_WORLD_NE"),
+        "GLITCH_WORLD_MAZE_NE_EXIT": ExitData("GATE_ROOM_NE"),
+        "GLITCH_WORLD_MAZE_S_AND_N_EXITS": ExitData("GLITCH_WORLD_WEST_AND_SOUTHWEST"),
+    })
+
+}
+
 f2_west_regions_table = {
     "FLOOR_2_WEST": RegionData(exits={
         "APT_25_DOOR": ExitData("APT_25_DAN", Has("Dan")),
@@ -260,7 +315,7 @@ f2_east_regions_table = {
         "APT_20_DOOR_HYDRA": ExitData("APT_20_JEANNE_HYDRA", Has("OPENED_GROUND_FLOOR_FROM_STAIRWELL")),
         "APT_21_DOOR": ExitData("APT_21_LYLE", Has("Apt. 21 Key")),
         "APT_22_DOOR": ExitData("APT_22_HARRIET"),
-        "LEIGHS_APARTMENT_DOOR": ExitData("LEIGHS_APARTMENT"),  
+        "LEIGHS_APARTMENT_DOOR": ExitData("LEIGHS_APARTMENT"),
         "LEIGHS_APARTMENT_QUEST_DOOR": ExitData("LEIGHS_APARTMENT_QUEST", can_leigh_quest),
         "APT_24_DOOR": ExitData("APT_24_EUGENE_SHOP")
     }),
@@ -290,13 +345,13 @@ f1_regions_table: dict[str, RegionData] = {
     "FLOOR_1_MAZE": RegionData(
         exits={
             "F1_ELEVATOR_EXIT": ExitData("ELEVATOR", can_access_elevator),
-            #"FRED_APARTMENT_DOOR": ExitData("FRED_APARTMENT"),
+            # "FRED_APARTMENT_DOOR": ExitData("FRED_APARTMENT"),
             # same for here, is rat hell activated by f1
-            #"RAT_HELL_ENTRANCE": ExitData("RAT_HELL", can_access_floor_1),
+            # "RAT_HELL_ENTRANCE": ExitData("RAT_HELL", can_access_floor_1),
         }
     ),
-    #"FRED_APARTMENT": RegionData(),
-    #"RAT_HELL": RegionData()
+    # "FRED_APARTMENT": RegionData(),
+    # "RAT_HELL": RegionData()
 }
 
 basement_regions_table: dict[str, RegionData] = {
@@ -316,8 +371,8 @@ misc_regions_table: dict[str, RegionData] = {
             "ROOF_DOOR": ExitData("ROOF", can_access_roof),
             "FLOOR_2_STAIRWELL_DOOR": ExitData("FLOOR_2_EAST"),
             # floor 1 is skipped here since it unlocks from the other side
-            #"GROUND_FLOOR_STAIRWELL_DOOR": ExitData("GROUND_FLOOR_EAST", stairwell_planet_lock),
-            #"BASEMENT_STAIRWELL_DOOR": ExitData("BASEMENT_HALL", Has("Basement Key")),
+            # "GROUND_FLOOR_STAIRWELL_DOOR": ExitData("GROUND_FLOOR_EAST", stairwell_planet_lock),
+            # "BASEMENT_STAIRWELL_DOOR": ExitData("BASEMENT_HALL", Has("Basement Key")),
         }
     ),
     "ROOF": RegionData(
@@ -327,8 +382,8 @@ misc_regions_table: dict[str, RegionData] = {
         exits={
             "ELEVATOR_FLOOR_3_EXIT": ExitData("FLOOR_3_HALL", can_access_elevator),
             "ELEVATOR_FLOOR_2_EXIT": ExitData("FLOOR_2_WEST", can_access_elevator),
-            #"ELEVATOR_FLOOR_1_EXIT": ExitData("FLOOR_1_MAZE", can_access_elevator),
-            #"ELEVATOR_GROUND_FLOOR_EXIT": ExitData("GROUND_FLOOR_WEST", can_access_elevator),
+            # "ELEVATOR_FLOOR_1_EXIT": ExitData("FLOOR_1_MAZE", can_access_elevator),
+            # "ELEVATOR_GROUND_FLOOR_EXIT": ExitData("GROUND_FLOOR_WEST", can_access_elevator),
         }
     )
 
@@ -339,6 +394,7 @@ all_regions_table = {
     **f3_regions_table,
     **frozen_apartment_regions_table,
     **kaeley_regions_table,
+    **glitch_world_regions_table,
     **f2_east_regions_table,
     **f2_west_regions_table,
     **f1_regions_table,

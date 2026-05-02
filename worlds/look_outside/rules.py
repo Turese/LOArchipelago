@@ -83,6 +83,7 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     world.set_rule(world.get_location(get_location_name("APT_32_MASTER_BEDROOM_SAFE_ITEM", world)), can_open_any_simple_lock)
     world.set_rule(world.get_location(get_location_name("APT_36_BEDROOM_SAFE_ITEM", world)), can_open_any_simple_lock)
     world.set_rule(world.get_location(get_location_name("APT_21_CLOSET_SAFE", world)), can_open_any_simple_lock)
+    world.set_rule(world.get_location(get_location_name("APT_24_SAFE_ITEM", world)), can_open_any_simple_lock)
 
     #nestor quest rules
     world.set_rule(world.get_location(get_location_name("F3_HAND_WORMS_COMBAT_VICTORY", world)), can_nestor_rafta)
