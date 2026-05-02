@@ -5,6 +5,8 @@ from typing import TYPE_CHECKING
 from BaseClasses import Location
 from worlds.look_outside.locations_consts import APT_33_LOCATIONS, LocationData, location_table, location_to_region
 from worlds.look_outside.items import LOItem
+from worlds.look_outside.regions_consts import stairwell_planet_lock
+from rule_builder.rules import Has
 
 
 if TYPE_CHECKING:
@@ -37,10 +39,26 @@ def create_regular_locations(world: LookOutsideWorld) -> None:
 def create_events(world: LookOutsideWorld) -> None:
     stairwell = world.get_region("STAIRWELL")
     stairwell.add_event(
-        "GROUND_FLOOR_STAIRWELL_DOOR", "OPENED_GROUND_FLOOR_FROM_STAIRWELL", location_type=LOLocation, item_type=LOItem
+        "GROUND_FLOOR_STAIRWELL_DOOR", "OPENED_GROUND_FLOOR_FROM_STAIRWELL", rule=stairwell_planet_lock, location_type=LOLocation, item_type=LOItem
     )
+
+    f2_hall = world.get_region("FLOOR_2_EAST")
+    f2_hall.add_event("F2_ASTER", "F2_MET_ASTER", location_type=LOLocation, item_type=LOItem);
+
+    f1_aurelius_closet = world.get_region("AURELIUS_CLOSET")
+    f1_aurelius_closet.add_event("AURELIUS_CLOSET_AURELIUS", "MET_AURELIUS", location_type=LOLocation, item_type=LOItem)
 
     twilight_room = world.get_region("APT_28_FLOODED_TWILIGHT")
     twilight_room.add_event(
         "TWILIGHT_CLOSET", "ACTIVATED_PIRANHAS", location_type=LOLocation, item_type=LOItem
+    )
+
+    # ENDINGS
+
+    world.get_region("APT_35_SIBYL").add_event(
+        "SIBYL", "AWAKEN_SIBYL", rule=Has("Telescope"), location_type=LOLocation, item_type=LOItem
+    )
+
+    world.get_region("APT_12_UNITY_ROOM").add_event(
+        "UNITY_ENDING_NOTE", "UNITY_ENDING", location_type=LOLocation, item_type=LOItem
     )

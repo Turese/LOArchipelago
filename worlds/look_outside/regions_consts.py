@@ -10,6 +10,17 @@ can_access_roof = Has("Roof Access Key")
 
 stairwell_planet_lock = Or(
     HasAll("Mars Disc", "Earth Disc"), HasAll("Sun Disc", "Negative Disc"))
+planetarium_lock = HasAll(
+    "Sun Disc",
+    "Mercury Disc", 
+    "Venus Disc", 
+    "Earth Disc", 
+    "Mars Disc", 
+    "Jupiter Disc", 
+    "Saturn Disc",
+    "Uranus Disc", 
+    "Neptune Disc"
+)
 
 # Perfect offering requirements
 has_complete_manuscript = Has("Progressive Loose Manuscript", count=2)
@@ -242,7 +253,8 @@ glitch_world_regions_table = {
     }),
     "GLITCH_WORLD_SLIME_ROOM": RegionData(),
     "GLITCH_WORLD_END_CHAMBER": RegionData(exits={
-        "GLITCH_WORLD_END_NORTH_EXIT": ExitData("GATE_ROOM_NORTH")
+        "GLITCH_WORLD_END_SOUTH_EXIT": ExitData("GATE_ROOM_NORTH"),
+        "GLITCH_WORLD_END_EAST_EXIT": ExitData("GLITCH_WORLD_EAST_E")
     }),
     "GATE_ROOM_SOUTH": RegionData(exits={
         "GATE_ROOM_NORTH_GATE_BOTTOM": ExitData("GATE_ROOM_NORTH", Has("black key", count=num_multiple_items["black key"])),
@@ -255,6 +267,7 @@ glitch_world_regions_table = {
         "GATE_ROOM_NORTH_GATE_TOP": ExitData("GATE_ROOM_SOUTH", Has("black key", count=num_multiple_items["black key"])),
     }),
     "GATE_ROOM_NE": RegionData(exits={
+        "GATE_ROOM_EAST_EXIT": ExitData("GLITCH_WORLD_MAZE"),
         "GATE_ROOM_EAST_GATE_EAST": ExitData("GATE_ROOM_SOUTH", Has("blue key", count=num_multiple_items["blue key"])),
         "GATE_ROOM_NE_GATE": ExitData("GATE_ROOM_SE_HAIRHEAD_GUN", And(
             Has("red key", count=num_multiple_items["red key"]),
@@ -323,7 +336,7 @@ f2_east_regions_table = {
     "APT_20_JEANNE_HYDRA": RegionData(),
     "APT_21_LYLE": RegionData(
         exits={
-            "LYLE_BATHROOM_F1_CONNECTION": ExitData("FLOOR_1_MAZE"),
+            "LYLE_BATHROOM_F1_CONNECTION": ExitData("F1_RUINED_APARTMENT"),
             "LYLE_DARK_ROOM_DOOR": ExitData("LYLE_DARK_ROOM", Has("Dark Room Key")),
             "LYLE_BEDROOM_DOOR": ExitData("LYLE_BEDROOM", can_clear_with_herbicide)
             }),
@@ -344,14 +357,56 @@ f2_east_regions_table = {
 f1_regions_table: dict[str, RegionData] = {
     "FLOOR_1_MAZE": RegionData(
         exits={
+            "APT_18_OVERGROWN_DOOR": ExitData("APT_18_OVERGROWN"),
+            "APT_11_PLANET_DOOR": ExitData("APT_11_ABYSS", Has("Earth Disc")),
+            "APT_12_MEAT_DOOR": ExitData("APT_12_ENTRYWAY", can_clear_with_herbicide),
             "F1_ELEVATOR_EXIT": ExitData("ELEVATOR", can_access_elevator),
-            # "FRED_APARTMENT_DOOR": ExitData("FRED_APARTMENT"),
-            # same for here, is rat hell activated by f1
-            # "RAT_HELL_ENTRANCE": ExitData("RAT_HELL", can_access_floor_1),
+            "RAT_LAIR_DOOR": ExitData("RAT_LAIR"),
+            "RAT_INFESTED_APARTMENT_DOOR": ExitData("RAT_INFESTED_APARTMENT"),
+            "FRED_APARTMENT_DOOR": ExitData("FRED_APARTMENT_ENTRANCE"),
+            "RAT_HELL_ENTRANCE": ExitData("RAT_HELL", Has("OPENED_GROUND_FLOOR_FROM_STAIRWELL")), # might want a new event for activating ernestquest
+            "ERNESTS_DOOR": ExitData("ERNESTS_HIDEOUT"),
+            "RUINED_APARTMENT_DOOR": ExitData("F1_RUINED_APARTMENT"),
+            "AURELIUS_CLOSET_DOOR": ExitData("AURELIUS_CLOSET"),
+            "F1_STAIRWELL_EXIT": ExitData("STAIRWELL")
         }
     ),
-    # "FRED_APARTMENT": RegionData(),
-    # "RAT_HELL": RegionData()
+    "AURELIUS_CLOSET": RegionData(),
+    "F1_RUINED_APARTMENT": RegionData(exits={
+        "RUINED_APARTMENT_NORTH_EXIT": ExitData("APT_21_LYLE"),
+        "RUINED_APARTMENT_SOUTH_EXIT": ExitData("FLOOR_1_MAZE"),
+    }),
+    "RAT_INFESTED_APARTMENT": RegionData(exits={
+        "BABY_GATE": ExitData("RAT_INFESTED_APARTMENT_NURSERY", Has("Child Barrier Key"))
+    }),
+    "RAT_INFESTED_APARTMENT_NURSERY": RegionData(),
+    "FRED_APARTMENT_ENTRANCE": RegionData(exits={
+        "FRED_APARTMENT_ENTRANCE_DOORS": ExitData("FRED_APARTMENT_MAIN", Has("Painter's Key")),
+    }),
+    "FRED_APARTMENT_MAIN": RegionData(exits={
+        "FRED_LOCKED_CLOSET": ExitData("TRUE_FRED_CLOSET", Has("Stained Key")),
+    }),
+    "TRUE_FRED_CLOSET": RegionData(),
+    "ERNESTS_HIDEOUT": RegionData(),
+    "RAT_HELL": RegionData(),
+    "RAT_LAIR": RegionData(),
+    "APT_11_ABYSS": RegionData(),
+    "APT_12_ENTRYWAY": RegionData(exits={
+        "APT_12_HIDDEN_DOOR": ExitData("APT_12_MAIN", Has("Jasper's Key"))
+    }),
+    "APT_12_MAIN": RegionData(exits={
+        "APT_12_WAll_GAP": ExitData("APT_12_WALLS", can_clear_with_herbicide),
+    }),
+    "APT_12_WALLS": RegionData(exits={
+        "APT_12_UNITY_DOOR": ExitData("APT_12_UNITY_ROOM", Has("Small Red Key")),
+        "APT_12_PLANETARIUM_LOCK": ExitData("APT_12_PLANETARIUM_SOUTH", planetarium_lock)
+    }),
+    "APT_12_UNITY_ROOM": RegionData(),
+    "APT_12_PLANETARIUM_SOUTH": RegionData(),
+    "APT_18_OVERGROWN": RegionData(exits={
+        "APT_18_HELLEN_QUEST_DOOR": ExitData("APT_18_HELLEN_QUEST", Has("Hellen")),
+    }),
+    "APT_18_HELLEN_QUEST": RegionData()
 }
 
 basement_regions_table: dict[str, RegionData] = {
@@ -382,7 +437,7 @@ misc_regions_table: dict[str, RegionData] = {
         exits={
             "ELEVATOR_FLOOR_3_EXIT": ExitData("FLOOR_3_HALL", can_access_elevator),
             "ELEVATOR_FLOOR_2_EXIT": ExitData("FLOOR_2_WEST", can_access_elevator),
-            # "ELEVATOR_FLOOR_1_EXIT": ExitData("FLOOR_1_MAZE", can_access_elevator),
+            "ELEVATOR_FLOOR_1_EXIT": ExitData("FLOOR_1_MAZE", can_access_elevator),
             # "ELEVATOR_GROUND_FLOOR_EXIT": ExitData("GROUND_FLOOR_WEST", can_access_elevator),
         }
     )

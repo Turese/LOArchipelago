@@ -37,6 +37,10 @@ video_game_requirements: dict[str, set[str]] = {
     # "VIDEO_GAME_LOCATION_NAME": {"REQUIRED_ITEM_NAME"},
 }
 
+"""
+--- F1 LOCATIONS --- 
+"""
+
 VIDEO_GAME_LOCATIONS: dict[str, LocationData] = {
     "GAME_SKILL_WAKE_THE_BLOOD_KNIGHT": LocationData("Complete Video Game - Wake the Blood Knight", LocationCat.SKILL_UNLOCK, 1),
     "GAME_SKILL_WIZARDS_HELL": LocationData("Complete Video Game - Wizards Hell: Arcane Tears", LocationCat.SKILL_UNLOCK, 2),
@@ -584,8 +588,6 @@ GLITCH_WORLD_LOCATIONS: dict[str, LocationData] = {
     **GATE_ROOM_SE_HAIRHEAD_GUN_LOCATIONS
 }
 
-
-
 """
 --- F2 LOCATIONS --- 
 """
@@ -600,7 +602,8 @@ F2_HALL_EAST_LOCATIONS: dict[str, LocationData] = {
     "F2_GRASSHOPPER_COMBAT_VICTORY": LocationData("Floor 2 Hall - Slay Grasshopper", LocationCat.COMBAT_VICTORY, 1507),
     "F2_GRINNING_BEAST_CHASE_POOL_CUE": LocationData("Floor 2 Hall - Item During Beast Chase", LocationCat.OVERWORLD_ITEM, 1508, difficulty_lock={DL.CURSED}),
     "F2_GRINNING_BEAST_COMBAT_VICTORY": LocationData("Floor 2 Hall - Defeat the Grinning Beast", LocationCat.COMBAT_VICTORY, 1509),
-    "F2_RECRUIT_ASTER": LocationData("Floor 2 Hall - Recruit Aster", LocationCat.RECRUIT, 1510)
+    "F2_RECRUIT_ASTER": LocationData("Floor 2 Hall - Recruit Aster", LocationCat.RECRUIT, 1510),
+    "F2_ASTER_COMBAT_VICTORY": LocationData("Floor 2 Hall - Slay Aster", LocationCat.FRIENDLY_FIRE, 1511)
 }
 
 APT_20_JEANNE_PHASE1_LOCATIONS: dict[str, LocationData] = {
@@ -612,7 +615,7 @@ APT_20_JEANNE_PHASE1_LOCATIONS: dict[str, LocationData] = {
     "APT_20_CLEAVER": LocationData("Apt. 20 Phase 1 - Item on Lower Counter", LocationCat.OVERWORLD_ITEM, 1606),
     "APT_20_FRIDGE": LocationData("Apt. 20 Phase 1 - Fridge Loot", LocationCat.LOOT, 1607),
     "APT_20_BATHROOM_MEDICINE_CABINET": LocationData("Apt. 20 Bathroom Phase 1 - Medicine Cabinet Loot", LocationCat.OVERWORLD_ITEM, 1608),
-    "APT_20_BATHROOM_ROACH": LocationData("Apt. 20 Bathroom Phase 1 - Cockroach", LocationCat.OVERWORLD_ITEM, 1609),
+    "APT_20_BATHROOM_ROACH": LocationData("Apt. 20 Bathroom Phase 1 - Roach", LocationCat.OVERWORLD_ITEM, 1609),
     "APT_20_BATHROOM_SOAP": LocationData("Apt. 20 Bathroom Phase 1 - Item on Counter", LocationCat.OVERWORLD_ITEM, 1610),
 }
 
@@ -646,16 +649,16 @@ APT_21_LYLE_MAIN_LOCATIONS = {
     "APT_21_LYLE_COMBAT_VICTORY": LocationData("Apt. 21 - Slay Shutterbug", LocationCat.FRIENDLY_FIRE, 1704),
     "APT_21_FIRST_KISS_GIFT": LocationData("Apt. 21 - First Trade With Lyle", LocationCat.EVENT_ITEM, 1705),
     "APT_21_SECOND_KISS_GIFT": LocationData("Apt. 21 - Second Trade With Lyle", LocationCat.EVENT_ITEM, 1706),
-    "APT_21_CLOSET_JUNK": LocationData("Apt. 21 Closet - First Item on Table", LocationCat.OVERWORLD_ITEM, 1707),
-    "APT_21_CLOSET_DCLOGGER": LocationData("Apt. 21 Closet - Second Item on Table", LocationCat.OVERWORLD_ITEM, 1708),
+    "APT_21_CLOSET_JUNK": LocationData("Apt. 21 Closet - Item on Table 1", LocationCat.OVERWORLD_ITEM, 1707),
+    "APT_21_CLOSET_DCLOGGER": LocationData("Apt. 21 Closet - Item on Table 2", LocationCat.OVERWORLD_ITEM, 1708),
     "APT_21_CLOSET_BROOM": LocationData("Apt. 21 Closet - Item Between Boxes", LocationCat.OVERWORLD_ITEM, 1709),
     "APT_21_CLOSET_ANTIDOTE": LocationData("Apt. 21 Closet - Item on Shelf", LocationCat.OVERWORLD_ITEM, 1710),
     "APT_21_CLOSET_LOKJAW_COMBAT_VICTORY": LocationData("Apt. 21 Closet - Slay Lokjaw", LocationCat.COMBAT_VICTORY, 1711),
     "APT_21_CLOSET_SAFE": LocationData("Apt. 21 Closet - Item in Safe", LocationCat.LOOT, 1712),
     "APT_21_BATHROOM_SOAP": LocationData("Apt. 21 Bathroom - Item on Floor Near Tub", LocationCat.OVERWORLD_ITEM, 1713),
-    "APT_21_BATHROOM_ANXIETY_MEDS": LocationData("Apt. 21 Bathroom - First Item on Counter", LocationCat.OVERWORLD_ITEM, 1714),
-    "APT_21_BATHROOM_MEDICELL": LocationData("Apt. 21 Bathroom - Second Item on Counter", LocationCat.OVERWORLD_ITEM, 1715),
-    "APT_21_BATHROOM_EYECLUSTER_COMBAT_VICTORY": LocationData("Apt. 21 Bathroom - Eyecluster Combat Victory", LocationCat.COMBAT_VICTORY, 1716),
+    "APT_21_BATHROOM_ANXIETY_MEDS": LocationData("Apt. 21 Bathroom - Item on Counter 1", LocationCat.OVERWORLD_ITEM, 1714),
+    "APT_21_BATHROOM_MEDICELL": LocationData("Apt. 21 Bathroom - Item on Counter 2", LocationCat.OVERWORLD_ITEM, 1715),
+    "APT_21_BATHROOM_EYECLUSTER_COMBAT_VICTORY": LocationData("Apt. 21 Bathroom - Slay Eyecluster", LocationCat.COMBAT_VICTORY, 1716),
     "APT_21_BATHROOM_MEDICINE_CABINET": LocationData("Apt. 21 Bathroom - Medicine Cabinet", LocationCat.LOOT, 1717),
 }
 
@@ -666,17 +669,17 @@ APT_21_LYLE_DARK_ROOM_LOCATIONS = {
 }
 
 APT_21_LYLE_BEDROOM_LOCATIONS = {
-    "APT_21_BEDROOM_BEEF_1": LocationData("Apt. 21 Bedroom - First Item on Meat Floor", LocationCat.OVERWORLD_ITEM, 1720),
-    "APT_21_BEDROOM_BEEF_2": LocationData("Apt. 21 Bedroom - Second Item on Meat Floor", LocationCat.OVERWORLD_ITEM, 1721),
-    "APT_21_BEDROOM_BEEF_3": LocationData("Apt. 21 Bedroom - Third Item on Meat Floor", LocationCat.OVERWORLD_ITEM, 1722, difficulty_lock={DL.EXPLORER}),
-    "APT_21_BEDROOM_BEEF_4": LocationData("Apt. 21 Bedroom - First Item on South Table", LocationCat.OVERWORLD_ITEM, 1723),
-    "APT_21_BEDROOM_SPACE_TRUCKERZ": LocationData("Apt. 21 Bedroom - Second Item on South Table", LocationCat.OVERWORLD_ITEM, 1724),
+    "APT_21_BEDROOM_BEEF_1": LocationData("Apt. 21 Bedroom - Item on Meat Floor 1", LocationCat.OVERWORLD_ITEM, 1720),
+    "APT_21_BEDROOM_BEEF_2": LocationData("Apt. 21 Bedroom - Item on Meat Floor 2", LocationCat.OVERWORLD_ITEM, 1721),
+    "APT_21_BEDROOM_BEEF_3": LocationData("Apt. 21 Bedroom - Item on Meat Floor 3", LocationCat.OVERWORLD_ITEM, 1722, difficulty_lock={DL.EXPLORER}),
+    "APT_21_BEDROOM_BEEF_4": LocationData("Apt. 21 Bedroom - Item on South Table 1", LocationCat.OVERWORLD_ITEM, 1723),
+    "APT_21_BEDROOM_SPACE_TRUCKERZ": LocationData("Apt. 21 Bedroom - Item on South Table 2", LocationCat.OVERWORLD_ITEM, 1724),
     "APT_21_BEDROOM_MNW": LocationData("Apt. 21 Bedroom - Item on Southeast Table", LocationCat.OVERWORLD_ITEM, 1725),
-    "APT_21_BEDROOM_FORK": LocationData("Apt. 21 Bedroom - First Item on Northwest Table", LocationCat.OVERWORLD_ITEM, 1726),
-    "APT_21_BEDROOM_BEEF_5": LocationData("Apt. 21 Bedroom - Second Item on Northwest Table", LocationCat.OVERWORLD_ITEM, 1727),
-    "APT_21_BEDROOM_PLATE": LocationData("Apt. 21 Bedroom - Third Item on Northwest Table", LocationCat.OVERWORLD_ITEM, 1728),
-    "APT_21_BEDROOM_KNIFE": LocationData("Apt. 21 Bedroom - Fourth Item on Northwest Table", LocationCat.OVERWORLD_ITEM, 1729),
-    "APT_21_BEDROOM_BEEF_6": LocationData("Apt. 21 Bedroom - Fifth Item on Northwest Table", LocationCat.OVERWORLD_ITEM, 1730, difficulty_lock={DL.EXPLORER}),
+    "APT_21_BEDROOM_FORK": LocationData("Apt. 21 Bedroom - Item on Northwest Table 1", LocationCat.OVERWORLD_ITEM, 1726),
+    "APT_21_BEDROOM_BEEF_5": LocationData("Apt. 21 Bedroom - Item on Northwest Table 2", LocationCat.OVERWORLD_ITEM, 1727),
+    "APT_21_BEDROOM_PLATE": LocationData("Apt. 21 Bedroom - Item on Northwest Table 3", LocationCat.OVERWORLD_ITEM, 1728),
+    "APT_21_BEDROOM_KNIFE": LocationData("Apt. 21 Bedroom - Item on Northwest Table 4", LocationCat.OVERWORLD_ITEM, 1729),
+    "APT_21_BEDROOM_BEEF_6": LocationData("Apt. 21 Bedroom - Item on Northwest Table 5", LocationCat.OVERWORLD_ITEM, 1730, difficulty_lock={DL.EXPLORER}),
     "APT_21_BEDROOM_BATTERIES": LocationData("Apt. 21 Bedroom - Item on Shelf", LocationCat.OVERWORLD_ITEM, 1731)
 }
 
@@ -715,7 +718,6 @@ APT_23_LEIGH_LOCATIONS = {
     **LEIGH_QUEST_LOCATION
 }
 
-# modifier 2000
 APT_24_EUGENE_SHOP_LOCATIONS = {
     "APT_24_REPTILE_FOOTBALL": LocationData("Eugene's Shop - Buy Shop Level 5 Item", LocationCat.MERCHANT, 2001),
     "APT_24_EUGENE_COMBAT_VICTORY": LocationData("Eugene's Shop - Slay Eugene", LocationCat.FRIENDLY_FIRE, 2002),
@@ -759,8 +761,8 @@ APT_24_EUGENE_LOCATIONS = {
 APT_25_DAN_LOCATIONS = {
     "APT_25_KLYSOX": LocationData("Apt. 25 - Item on Counter", LocationCat.OVERWORLD_ITEM, 2101),
     "APT_25_FRIDGE": LocationData("Apt. 25 - Fridge Loot", LocationCat.LOOT, 2102),
-    "APT_25_PLATE": LocationData("Apt. 25 - First Item on Table", LocationCat.OVERWORLD_ITEM, 2103),
-    "APT_25_FORK": LocationData("Apt. 25 - Second Item on Table", LocationCat.OVERWORLD_ITEM, 2104),
+    "APT_25_PLATE": LocationData("Apt. 25 - Item on Table 1", LocationCat.OVERWORLD_ITEM, 2103),
+    "APT_25_FORK": LocationData("Apt. 25 - Item on Table 2", LocationCat.OVERWORLD_ITEM, 2104),
     "APT_25_DANS_MOM_COMBAT_VICTORY": LocationData("Apt. 25 - Slay Dan's Mom", LocationCat.COMBAT_VICTORY, 2105),
     "APT_25_DANS_ROOM_NEODUO": LocationData("Apt. 25 Dan's Room - Item on Table", LocationCat.OVERWORLD_ITEM, 2106),
     "APT_25_DANS_ROOM_ORANGE_DRINK": LocationData("Apt. 25 Dan's Room - Item on Floor", LocationCat.OVERWORLD_ITEM, 2107)
@@ -774,7 +776,7 @@ APT_27_TYPEWRITHER_LOCATIONS = {
     "APT_27_FRIDGE": LocationData("Apt. 27 Kitchen - Fridge Loot", LocationCat.LOOT, 2205),
     "APT_27_TRASH": LocationData("Apt. 27 Kitchen - Trash Can", LocationCat.LOOT, 2206),
     "APT_27_BATHROOM_LEG_WORMS": LocationData("Apt. 27 Bathroom - Slay Leg Worms", LocationCat.COMBAT_VICTORY, 2207),
-    "APT_27_BATHROOM_ROACH": LocationData("Apt. 27 Bathroom - Cockroach", LocationCat.OVERWORLD_ITEM, 2208),
+    "APT_27_BATHROOM_ROACH": LocationData("Apt. 27 Bathroom - Roach", LocationCat.OVERWORLD_ITEM, 2208),
     "APT_27_BEDROOM_KITSCH_LAMP": LocationData("Apt. 27 Bedroom - Item Near Bed", LocationCat.OVERWORLD_ITEM, 2209),
     "APT_27_BEDROOM_CLEAN_MANUSCRIPT": LocationData("Apt. 27 Bedroom - Item on Table", LocationCat.OVERWORLD_ITEM, 2210),
     "APT_27_COMPLETE_MANUSCRIPT": LocationData("Apt. 27 Office - Complete Manuscript", LocationCat.EVENT_ITEM, 2211),
@@ -837,6 +839,264 @@ APT_28_FLOODED_LOCATIONS = {
     **APT_28_HADAL_LOCATIONS
 }
 
+"""
+--- F1 LOCATIONS --- 
+"""
+
+F1_RUINED_APARTMENT_LOCATIONS = {
+    "F1_PIPE_ROOM_RAT_COMBAT_VICTORY": LocationData("Floor 1 Pipe Room - Slay Rats", LocationCat.RAT_FRIENDLY_FIRE, 2401),
+    "F1_PIPE_ROOM_RAT_MERCHANT": LocationData("Floor 1 Pipe Room - Secret Rat Shop Item", LocationCat.MERCHANT, 2402),
+    "F1_PIPE_ROOM_KEVIN_COMBAT_VICTORY": LocationData("Floor 1 Pipe Room - Slay Kevin", LocationCat.FRIENDLY_FIRE, 2403),
+    "F1_PIPE_ROOM_KEVIN_MERCHANT": LocationData("Floor 1 Pipe Room - Kevin Shop Item", LocationCat.MERCHANT, 2404),
+    "F1_NESTOR_COMBAT_VICTORY": LocationData("Slay Nestor's Body", LocationCat.COMBAT_VICTORY, 2405),
+    "F1_NESTOR_HEAD_COMBAT_VICTORY": LocationData("Slay Nestor's Head", LocationCat.COMBAT_VICTORY, 2406),
+    "F1_NESTOR_FOOT_COMBAT_VICTORY": LocationData("Slay Nestor's Foot", LocationCat.COMBAT_VICTORY, 2407),
+    "F1_NESTOR_HAND_COMBAT_VICTORY": LocationData("Slay Nestor's Hand", LocationCat.COMBAT_VICTORY, 2408)
+}
+
+F1_MAZE_LOCATIONS = {
+    "F1_LARGE_SHADE_COMBAT_VICTORY": LocationData("Floor 1 - Slay Large Shade '? ???? ?????'", LocationCat.COMBAT_VICTORY, 2501),
+    "F1_RAT_KING_COMBAT_VICTORY": LocationData("Floor 1 Maze - Slay Rat King", LocationCat.COMBAT_VICTORY, 2502),
+    "F1_AUDREY_RECRUIT": LocationData("Floor 1 Maze - Recruit Audrey", LocationCat.RECRUIT, 2503),
+    "F1_HAND_WORMS": LocationData("Floor 1 Maze - Slay Hand Worms", LocationCat.COMBAT_VICTORY, 2504),
+    "F1_DEAD_END_WINGED": LocationData("Floor 1 Maze - Slay Winged", LocationCat.COMBAT_VICTORY, 2505, difficulty_lock= {DL.CURSED}),
+    "APT_13_DISC": LocationData("Apt. 13 - Item From Wall Mouth", LocationCat.OVERWORLD_ITEM, 2506),
+    "EYEBALL_SIMPLE_KEY": LocationData("Floor 1 Eyeball Room - Item", LocationCat.OVERWORLD_ITEM, 2507),
+    "F1_PASSAGE_RAT_HOLE_MERCHANT": LocationData("Floor 1 Passage - Rat Hole Shop Item", LocationCat.MERCHANT, 2508)
+}
+
+RAT_APARTMENT_MAIN_LOCATIONS = {
+    "RAT_APT_URN": LocationData("Rat Apt. - Item on West Table", LocationCat.OVERWORLD_ITEM, 2601),
+    "RAT_APT_ROLLING_PIN": LocationData("Rat Apt. - Item on Dining Table", LocationCat.OVERWORLD_ITEM, 2602),
+    "RAT_APT_FRIDGE": LocationData("Rat Apt. - Fridge Loot", LocationCat.LOOT, 2603),
+    "RAT_APT_RATS_COMBAT_VOICTORY": LocationData("Rat Apt. - Slay Entryway Rats", LocationCat.RAT_FRIENDLY_FIRE, 2604),
+    "RAT_APT_TRASH": LocationData("Rat Apt. - Trash Can", LocationCat.LOOT, 2605),
+    "RAT_APT_FOUNTAIN_PEN": LocationData("Rat Apt. - Item on Coffee Table", LocationCat.OVERWORLD_ITEM, 2606),
+    "RAT_APT_CHEFS_KNIFE": LocationData("Rat Apt. - Item on Kitchen Counter", LocationCat.OVERWORLD_ITEM, 2607),
+    "RAT_APT_BEDROOM_MAGAZINES": LocationData("Rat Apt. Bedroom - Item on North Table", LocationCat.OVERWORLD_ITEM, 2612),
+    "RAT_APT_BEDROOM_DIRTY_MAGAZINES": LocationData("Rat Apt. Bedroom - Item on North Table (2nd Interaction)", LocationCat.OVERWORLD_ITEM, 2613),
+    "RAT_APT_BEDROOM_SLAY_TAIL_RAT": LocationData("Rat Apt. Bedroom - Slay Tail Rat", LocationCat.RAT_FRIENDLY_FIRE, 2614),
+    "RAT_APT_BEDROOM_CHILD_BARRIER_KEY": LocationData("Rat Apt. Bedroom - Item on Table", LocationCat.OVERWORLD_ITEM, 2615),
+    "RAT_APT_BEDROOM_TRENCH_COAT": LocationData("Rat Apt. Bedroom - Item on South Table 1", LocationCat.OVERWORLD_ITEM, 2616, difficulty_lock= {DL.EXPLORER}),
+    "RAT_APT_BEDROOM_DENIM_JACKET": LocationData("Rat Apt. Bedroom - Item on South Table 2", LocationCat.OVERWORLD_ITEM, 2617, difficulty_lock= {DL.SURVIVOR}),
+    "RAT_APT_BEDROOM_HOODIE": LocationData("Rat Apt. Bedroom - Item on South Table 3", LocationCat.OVERWORLD_ITEM, 2618, difficulty_lock= {DL.CURSED}),
+    "RAT_APT_BATHROOM_LEG_WORMS_COMBAT_VICTORY": LocationData("Rat Apt. Bathroom - Slay Leg Worms", LocationCat.COMBAT_VICTORY, 2619),
+    "RAT_APT_BATHROOM_TONIC": LocationData("Rat Apt. Bathroom - Item on Center Counter", LocationCat.OVERWORLD_ITEM, 2620, difficulty_lock= {DL.EXPLORER}),
+    "RAT_APT_BATHROOM_TOOTHPASTE": LocationData("Rat Apt. Bathroom - Item on Counter", LocationCat.OVERWORLD_ITEM, 2621)
+}
+
+RAT_APARTMENT_NURSERY_LOCATIONS = {
+    "RAT_APT_BABY_ROOM_MUSIC_BOX": LocationData("Rat Apt. Baby's Room - Item Near Crib", LocationCat.OVERWORLD_ITEM, 2608),
+    "RAT_APT_BABY_ROOM_RATS_COMBAT_VICTORY": LocationData("Rat Apt. Baby's Room - Slay Mouth and Throat Rats", LocationCat.RAT_FRIENDLY_FIRE, 2609, difficulty_lock= {DL.CURSED}),
+    "RAT_APT_BABY_ROOM_BANDAGES": LocationData("Rat Apt. Baby's Room - Item on Table", LocationCat.OVERWORLD_ITEM, 2610),
+    "RAT_APT_BABY_ROOM_DRAWINGS": LocationData("Rat Apt. Baby's Room - Item on Wall", LocationCat.OVERWORLD_ITEM, 2611),
+}
+
+F1_RAT_APARTMENT_LOCATIONS = {
+    **RAT_APARTMENT_MAIN_LOCATIONS,
+    **RAT_APARTMENT_NURSERY_LOCATIONS
+}
+
+F1_RAT_LAIR_LOCATIONS = {
+    "RAT_LAIR_GIANT_RAT_COMBAT_VICTORY": LocationData("Rat Lair - Slay Giant Rat", LocationCat.RAT_FRIENDLY_FIRE, 2701),
+    "RAT_LAIR_GIANT_RAT_BURRITO": LocationData("Rat Lair - Gift From Giant Rat", LocationCat.EVENT_ITEM, 2702),
+    "RAT_LAIR_CLEAVER": LocationData("Rat Lair East - Item on Table", LocationCat.OVERWORLD_ITEM, 2703),
+    "RAT_LAIR_TEETH_RAT_COMBAT_VICTORY": LocationData("Rat Lair East - Slay Teeth Rat", LocationCat.RAT_FRIENDLY_FIRE, 2704),
+    "RAT_LAIR_BELLY_RAT_COMBAT_VICTORY": LocationData("Rat Lair North - Slay Belly Rat", LocationCat.RAT_FRIENDLY_FIRE, 2705),
+    "RAT_LAIR_SIMPLE_KEY": LocationData("Rat Lair North - Item in Northeast Corner", LocationCat.OVERWORLD_ITEM, 2706),
+    "RAT_LAIR_COWBOY_HAT": LocationData("Rat Lair North - Item on Table", LocationCat.OVERWORLD_ITEM, 2707),
+    "RAT_LAIR_EYE_RATS_COMBAT_VICTORY": LocationData("Rat Lair South - Slay Eye Rats", LocationCat.RAT_FRIENDLY_FIRE, 2708),
+    "RAT_LAIR_JUICE_BOX": LocationData("Rat Lair South - Item on South Tables Top 1", LocationCat.OVERWORLD_ITEM, 2709),
+    "RAT_LAIR_CHEEZ_STIX": LocationData("Rat Lair South - Item on South Tables Top 2", LocationCat.OVERWORLD_ITEM, 2710),
+    "RAT_LAIR_CHOCKY_BAR_1": LocationData("Rat Lair South - Item on South Tables Bottom 1", LocationCat.OVERWORLD_ITEM, 2711),
+    "RAT_LAIR_CHOCKY_BAR_2": LocationData("Rat Lair South - Item on South Tables Bottom 2", LocationCat.OVERWORLD_ITEM, 2712),
+    "RAT_LAIR_GUARDIAN_COMBAT_VICTORY": LocationData("Rat Lair South - Slay Rat Guardian", LocationCat.RAT_FRIENDLY_FIRE, 2713),
+    "RAT_LAIR_GUARDED_CHEESE_1": LocationData("Rat Lair South - Item From Stash 1", LocationCat.RAT_FRIENDLY_FIRE, 2714),
+    "RAT_LAIR_GUARDED_CHEESE_2": LocationData("Rat Lair South - Item From Stash 2", LocationCat.RAT_FRIENDLY_FIRE, 2715),
+    "RAT_LAIR_GUARDED_CHEESE_3": LocationData("Rat Lair South - Item From Stash 3", LocationCat.RAT_FRIENDLY_FIRE, 2716),
+    "RAT_LAIR_GUARDED_CHEESE_4": LocationData("Rat Lair South - Item From Stash 4", LocationCat.RAT_FRIENDLY_FIRE, 2717)
+}
+
+AURELIUS_CLOSET_LOCATIONS = {
+    "AURELIUS_MOLOTOV": LocationData("Aurelius' Closet - Item on East Table 1", LocationCat.OVERWORLD_ITEM, 2801),
+    "AURELIUS_JUNK_1": LocationData("Aurelius' Closet - Item on East Table 2", LocationCat.OVERWORLD_ITEM, 2802),
+    "AURELIUS_JUNK_2": LocationData("Aurelius' Closet - Item on East Table 3", LocationCat.OVERWORLD_ITEM, 2803),
+    "AURELIUS_BROOM": LocationData("Aurelius' Closet - Item Below East Table", LocationCat.OVERWORLD_ITEM, 2804),
+    "AURELIUS_GASOLINE": LocationData("Aurelius' Closet - Item on South Table", LocationCat.OVERWORLD_ITEM, 2805),
+    "AURELIUS_FIRST_AID_KIT": LocationData("Aurelius' Closet - Item on Center Table 1", LocationCat.OVERWORLD_ITEM, 2806, difficulty_lock= {DL.EXPLORER}),
+    "AURELIUS_DUSTIN_FIGURINE": LocationData("Aurelius' Closet - Item on Center Table 2", LocationCat.OVERWORLD_ITEM, 2807),
+    "AURELIUS_COMBAT_VICTORY": LocationData("Aurelius' Closet - Slay Aurelius", LocationCat.FRIENDLY_FIRE, 2808)
+}
+
+ERNEST_HIDEOUT_LOCATIONS = {
+    "ERNEST_VODKA": LocationData("Ernest's Hideout - Item in Southwest", LocationCat.OVERWORLD_ITEM, 2901),
+    "ERNEST_CHEESE": LocationData("Ernest's Hideout - Item in Chest", LocationCat.LOOT, 2902),
+    "ERNEST_COMBAT_VICTORY": LocationData("Ernest's Hideout - Slay Ernest", LocationCat.FRIENDLY_FIRE, 2903),
+    "ERNEST_COLONEL_COMBAT_VICTORY": LocationData("Ernest's Hideout - Slay Colonel Squeakums", LocationCat.FRIENDLY_FIRE, 2904),
+ }
+
+RAT_HELL_LOCATIONS = {   
+    "RAT_HELL_ENTRANCE_COMBAT_VICTORY": LocationData("Rat Hell - Slay Rat Swarm", LocationCat.COMBAT_VICTORY, 2905),
+    "RAT_HELL_FIRST_COMBAT_VICTORY": LocationData("Rat Hell - Slay Poison and Lantern Rat", LocationCat.COMBAT_VICTORY, 2906),
+    "RAT_HELL_SECOND_COMBAT_VICTORY": LocationData("Rat Hell - Slay Ratiarus, Rodencutor, and Brainrattler", LocationCat.COMBAT_VICTORY, 2907),
+    "RAT_HELL_THIRD_COMBAT_VICTORY": LocationData("Rat Hell - Slay the Beast or Champion", LocationCat.COMBAT_VICTORY, 2908),
+    "RAT_HELL_RECRUIT_ERNEST": LocationData("Rat Hell - Recruit Ernest", LocationCat.RECRUIT, 2909)
+}
+
+APT_11_ABYSS_LOCATIONS = {
+    "APT_11_RAT_FREAK_COMBAT_VICTORY": LocationData("Apt. 11 - Slay Rat Freak", LocationCat.RAT_FRIENDLY_FIRE, 3001),
+    "APT_11_RAT_FREAK_GIFT": LocationData("Apt. 11 - Gift From Rat Freak", LocationCat.EVENT_ITEM, 3002),
+    "APT_11_MARS_DISC": LocationData("Apt. 11 - Item Behind Rat Freak", LocationCat.OVERWORLD_ITEM, 3003),
+    "APT_11_ODD_NECKLACE": LocationData("Apt. 11 - Side Room Item", LocationCat.OVERWORLD_ITEM, 3004)
+}
+
+FRED_APT_ENTRYWAY_LOCATIONS = {
+    "FRED_FIRST_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay a Fred", LocationCat.COMBAT_VICTORY, 3101),
+    "FRED_SECOND_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay Two Freds", LocationCat.COMBAT_VICTORY, 3102),
+    "FRED_ENTRYWAY_CHEEZ_STIX": LocationData("Fred's Apt. Kitchen - Item on Dining Table 1", LocationCat.OVERWORLD_ITEM, 3111),
+    "FRED_ENTRYWAY_KNIVES": LocationData("Fred's Apt. Kitchen - Item on Dining Table 2", LocationCat.OVERWORLD_ITEM, 3112),
+    "FRED_ENTRYWAY_TRASH": LocationData("Fred's Apt. Kitchen - Trash Can", LocationCat.LOOT, 3113),
+    "FRED_ENTRYWAY_MACHETE": LocationData("Fred's Apt. Kitchen - Machete", LocationCat.OVERWORLD_ITEM, 3114, difficulty_lock= {DL.EXPLORER}),
+}
+
+FRED_APT_MAIN_LOCATIONS = {
+    "FRED_THIRD_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay Three Freds", LocationCat.COMBAT_VICTORY, 3103),
+    "FRED_FOURTH_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay Four Freds", LocationCat.COMBAT_VICTORY, 3104),
+    "FRED_FIFTH_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay Five Freds", LocationCat.COMBAT_VICTORY, 3105),
+    "FRED_SIXTH_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay Six Freds", LocationCat.COMBAT_VICTORY, 3106),
+    "FRED_SEVENTH_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay Seven Freds", LocationCat.COMBAT_VICTORY, 3107),
+    "FRED_EIGHTH_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay Eight Freds", LocationCat.COMBAT_VICTORY, 3108),
+    "FRED_NINTH_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay Nine Freds", LocationCat.COMBAT_VICTORY, 3109),
+    "FRED_LIVING_ROOM_VINTAGE_CONSOLE": LocationData("Fred's Apt. Living Room - Item Near TV", LocationCat.OVERWORLD_ITEM, 3115),
+    "FRED_LIVING_ROOM_BEER_STEIN": LocationData("Fred's Apt. Living Room - Item on South Table 1", LocationCat.OVERWORLD_ITEM, 3116),
+    "FRED_LIVING_ROOM_WHISKEY": LocationData("Fred's Apt. Living Room - Item on South Table 2", LocationCat.OVERWORLD_ITEM, 3117),
+    "FRED_CLOSET_FIRST_AID_KIT": LocationData("Fred's Apt. Bright Fred Closet - Item 1", LocationCat.OVERWORLD_ITEM, 3118),
+    "FRED_CLOSET_BANDAGES": LocationData("Fred's Apt. Bright Fred Closet - Item 2", LocationCat.OVERWORLD_ITEM, 3119),
+    "FRED_BATHROOM_MEDICATION": LocationData("Fred's Apt. Bathroom - Item on Floor 1", LocationCat.OVERWORLD_ITEM, 3120),
+    "FRED_BATHROOM_ANXIETY_MEDS": LocationData("Fred's Apt. Bathroom - Item on Floor 2", LocationCat.OVERWORLD_ITEM, 3121),
+    "FRED_BATHROOM_MEDICATION_2": LocationData("Fred's Apt. Bathroom - Item on Floor 3", LocationCat.OVERWORLD_ITEM, 3122),
+    "FRED_BATHROOM_TONIC": LocationData("Fred's Apt. Bathroom - Item on Counter", LocationCat.OVERWORLD_ITEM, 3123),
+    "FRED_HALL_CLOSET_PLASTIC_GLOVES": LocationData("Fred's Apt. Hall Closet - Item on Table", LocationCat.OVERWORLD_ITEM, 3124),
+    "FRED_HALL_CLOSET_ROACH": LocationData("Fred's Apt. Hall Closet - Roach", LocationCat.OVERWORLD_ITEM, 3125),
+    "FRED_HAT_ROOM_HAT": LocationData("Fred's Apt. Hat Room - Item", LocationCat.OVERWORLD_ITEM, 3126),
+    "FRED_HAT_ROOM_ROACH": LocationData("Fred's Apt. Hat Room - Roach", LocationCat.OVERWORLD_ITEM, 3127),
+    "FRED_TOXIC_ROOM_WINDBREAKER": LocationData("Toxic Fred's Room - Item on South Table", LocationCat.OVERWORLD_ITEM, 3128),
+    "FRED_TOXIC_ROOM_CASH": LocationData("Toxic Fred's Room - Item on Center Table", LocationCat.OVERWORLD_ITEM, 3129),
+    "FRED_TOXIC_ROOM_TONIC": LocationData("Toxic Fred's Room East - Item on Table 1", LocationCat.OVERWORLD_ITEM, 3130, difficulty_lock= {DL.EXPLORER}),
+    "FRED_TOXIC_ROOM_JUNK": LocationData("Toxic Fred's Room East - Item on Table 2", LocationCat.OVERWORLD_ITEM, 3131),
+    "FRED_TOXIC_ROOM_COMIC_BOOKS": LocationData("Toxic Fred's Room East - Item on South Table", LocationCat.OVERWORLD_ITEM, 3132),
+    "FRED_TOXIC_ROOM_SAFE": LocationData("Toxic Fred's Room East - Item in Safe", LocationCat.LOOT, 3133),
+    "FRED_GODHEAD_ROOM_SHOTGUN_SHELLS": LocationData("Godhead Fred's Room - Item on Table 1", LocationCat.OVERWORLD_ITEM, 3134),
+    "FRED_GODHEAD_ROOM_SHOTGUN": LocationData("Godhead Fred's Room - Item on Table 2", LocationCat.OVERWORLD_ITEM, 3135),
+    "FRED_GODHEAD_ROOM_SHOTGUN_SHELLS_BOX": LocationData("Godhead Fred's Room - Item on Table 3", LocationCat.OVERWORLD_ITEM, 3136),
+    "FRED_GODHEAD_ROOM_TURPENTINE": LocationData("Godhead Fred's Room - Item on Far Table", LocationCat.OVERWORLD_ITEM, 3137),
+    "FRED_DARK_ROOM_CORRECT_PAINTING": LocationData("Fred's Studio - Find the Correct Painting", LocationCat.EVENT_ITEM, 3138),
+    "FRED_DARK_ROOM_BOTTLE": LocationData("Fred's Studio - Item on Table Near Entrance", LocationCat.OVERWORLD_ITEM, 3139),
+    "FRED_DARK_ROOM_CHOCKY_BAR": LocationData("Fred's Studio - Item on West Room Counter", LocationCat.OVERWORLD_ITEM, 3140),
+    "FRED_DARK_ROOM_TURPENTINE": LocationData("Fred's Studio - Item on West Room Table", LocationCat.OVERWORLD_ITEM, 3141),
+    "FRED_DARK_ROOM_BEER_1": LocationData("Fred's Studio - Item on East Room Table", LocationCat.OVERWORLD_ITEM, 3142),
+    "FRED_DARK_ROOM_BEER_2": LocationData("Fred's Studio - Second Item on East Room Table", LocationCat.OVERWORLD_ITEM, 3143, difficulty_lock= {DL.EXPLORER}),
+    "FRED_ROOM_HONKO": LocationData("Fred's Studio - Item on East Room Counter", LocationCat.OVERWORLD_ITEM, 3144),
+}
+
+TRUE_FRED_CLOSET_LOCATIONS = {
+    "TRUE_FRED_CLOSET_COMIC_BOOK": LocationData("True Fred Closet - Item on West Table", LocationCat.OVERWORLD_ITEM, 3145),
+    "TRUE_FRED_CLOSET_TURPENTINE_1": LocationData("True Fred Closet - Item on South Table 1", LocationCat.OVERWORLD_ITEM, 3146),
+    "TRUE_FRED_CLOSET_TURPENTINE_2": LocationData("True Fred Closet - Item on South Table 2", LocationCat.OVERWORLD_ITEM, 3147),
+    "TRUE_FRED_CLOSET_ROACH": LocationData("True Fred Closet - Roach", LocationCat.OVERWORLD_ITEM, 3148),
+    "FRED_ALL_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay All Freds", LocationCat.FRIENDLY_FIRE, 3110),
+}
+
+FRED_APT_LOCATIONS = {
+    **FRED_APT_ENTRYWAY_LOCATIONS,
+    **FRED_APT_MAIN_LOCATIONS,
+    **TRUE_FRED_CLOSET_LOCATIONS
+}
+
+APT_12_ENTRYWAY_LOCATIONS = {
+    "APT_12_SHOTGUN_SHELLS": LocationData("Apt. 12 Entryway - Item on Table 1", LocationCat.OVERWORLD_ITEM, 3201),
+    "APT_12_PISTOL_BULLETS": LocationData("Apt. 12 Entryway - Item on Table 2", LocationCat.OVERWORLD_ITEM, 3202),
+    "APT_12_GRENADE": LocationData("Apt. 12 Entryway - Item on Table 3", LocationCat.OVERWORLD_ITEM, 3203),
+    "APT_12_SHOTGUN_SHELLS_2": LocationData("Apt. 12 Entryway - Item on Table 4", LocationCat.OVERWORLD_ITEM, 3204, difficulty_lock= {DL.EXPLORER}),
+    "APT_12_PISTOL_BULLETS_2": LocationData("Apt. 12 Entryway - Item on Table 5", LocationCat.OVERWORLD_ITEM, 3205, difficulty_lock= {DL.EXPLORER}),
+    }
+
+APT_12_TRUE_LOCATIONS = {
+    "APT_12_DROOLING_HUSK_COMBAT_VICTORY": LocationData("Apt. 12 - Slay Drooling Husk", LocationCat.FRIENDLY_FIRE, 3206),
+    "APT_12_BATHROOM_SPIDER_HUSK_COMBAT_VICTORY": LocationData("Apt. 12 Bathroom - Slay Spider Husk", LocationCat.FRIENDLY_FIRE, 3207),
+    "APT_12_BATHROOM_VINEGAR": LocationData("Apt. 12 Bathroom - Item on Counter", LocationCat.OVERWORLD_ITEM, 3208),
+    "APT_12_BATHROOM_CLEANEREX": LocationData("Apt. 12 Bathroom - Item Near Toilet", LocationCat.OVERWORLD_ITEM, 3209),
+    "APT_12_KITCHEN_FLESHY_HUSK_COMBAT_VICTORY": LocationData("Apt. 12 Kitchen - Slay Fleshy Husk", LocationCat.FRIENDLY_FIRE, 3210),
+    "APT_12_GAUNT_HUSK_COMBAT_VICTORY": LocationData("Apt. 12 Bedroom - Slay Gaunt Husk", LocationCat.FRIENDLY_FIRE, 3212),
+    "APT_12_HOLLOW_HUSK_COMBAT_VICTORY": LocationData("Apt. 12 Closet - Slay Hollow Husk", LocationCat.COMBAT_VICTORY, 3213),
+   }
+
+APT_12_WALLS_LOCATIONS = {
+    "APT_12_INNER_WALL_HEALING_SPRAY": LocationData("Apt. 12 Inside Wall - Item in North Room", LocationCat.OVERWORLD_ITEM, 3214),
+    "APT_12_PLANETARIUM_MUFFIN": LocationData("Apt. 12 Planetarium - Item in North Closet", LocationCat.OVERWORLD_ITEM, 3216),
+    "APT_12_WALLS_PISTOL_BULLETS": LocationData("Apt. 12 Walls - South Room Item 1", LocationCat.OVERWORLD_ITEM, 3217),
+    "APT_12_WALLS_SHOTGUN_SHELLS": LocationData("Apt. 12 Walls - South Room Item 2", LocationCat.OVERWORLD_ITEM, 3218),
+    "APT_12_WALLS_OBSESSION": LocationData("Apt. 12 Walls - Slay Obsession", LocationCat.COMBAT_VICTORY, 3219),
+    "APT_12_WALLS_APT_35_KEY": LocationData("Apt. 12 Walls Large Room - Item on Floor", LocationCat.OVERWORLD_ITEM, 3220),
+    "APT_12_WALLS_SMG_BULLETS": LocationData("Apt. 12 Walls Large Room - Item on Table", LocationCat.OVERWORLD_ITEM, 3221),
+    "APT_12_WALLS_MAGNUM_BULLETS": LocationData("Apt. 12 Walls Large Room South - Item on West Table", LocationCat.OVERWORLD_ITEM, 3222),
+    "APT_12_WALLS_PITCHFORK": LocationData("Apt. 12 Walls Large Room South - Item on East Table", LocationCat.OVERWORLD_ITEM, 3223),
+    "APT_12_WALLS_RIFLE_BULLETS": LocationData("Apt. 12 Walls Large Room North - Item on West Table", LocationCat.OVERWORLD_ITEM, 3224),
+    "APT_12_WALLS_SHURIKEN": LocationData("Apt. 12 Walls Large Room North - Item on North Table 1", LocationCat.OVERWORLD_ITEM, 3225),
+    "APT_12_WALLS_TONIC": LocationData("Apt. 12 Walls Large Room North - Item on North Table 2", LocationCat.OVERWORLD_ITEM, 3226)
+}
+
+APT_12_PLANETARIUM_SOUTH_LOCATIONS = {
+    "APT_12_PLANETARIUM_BROKEN_TELESCOPE": LocationData("Apt. 12 Planetarium - Item Beyond Door", LocationCat.OVERWORLD_ITEM, 3215),
+}
+
+APT_12_KITCHEN_CLOSET_LOCATIONS = {
+    "APT_12_KITCHEN_CLOSET_IRIS_KEY": LocationData("Apt. 12 Kitchen Closet - Item on Table", LocationCat.OVERWORLD_ITEM, 3211),
+}
+
+APT_12_SIBYL_LOCATIONS = {
+    **APT_12_ENTRYWAY_LOCATIONS,
+    **APT_12_TRUE_LOCATIONS,
+    **APT_12_WALLS_LOCATIONS,
+    **APT_12_PLANETARIUM_SOUTH_LOCATIONS,
+    #**APT_12_KITCHEN_CLOSET_LOCATIONS LEAVING THIS OUT FOR NOW SINCE THIS IS PART OF MEAT WORLD
+}
+
+APT_18_HELLEN_LOCATIONS = {
+    "APT_18_SKULL_FLOWER_COMBAT_VICTORY": LocationData("Apt. 18 Entryway - Slay Skull Flower", LocationCat.COMBAT_VICTORY, 3301),
+    "APT_18_RIBCAGE_BLOOM_COMBAT_VICTORY": LocationData("Apt. 18 Entryway - Slay Ribcage Bloom", LocationCat.COMBAT_VICTORY, 3302),
+    "APT_18_SKITTERBUSH_COMBAT_VICTORY": LocationData("Apt. 18 Entryway - Slay Skitterbush", LocationCat.COMBAT_VICTORY, 3303, difficulty_lock= {DL.CURSED}),
+    "APT_18_S_MARVIN_COMBAT_VICTORY": LocationData("Apt. 18 Kitchen - Slay Marvin", LocationCat.COMBAT_VICTORY, 3304),
+    "APT_18_S_FRIDGE": LocationData("Apt. 18 Kitchen - Fridge Loot", LocationCat.LOOT, 3305),
+    "APT_18_S_BEEF": LocationData("Apt. 18 Kitchen - Item on Counter", LocationCat.OVERWORLD_ITEM, 3306),
+    "APT_18_S_CHOCKY_BAR": LocationData("Apt. 18 Kitchen - Item on Table", LocationCat.OVERWORLD_ITEM, 3307),
+    "APT_18_S_ROOT_FREAK_COMBAT_VICTORY": LocationData("Apt. 18 South - Slay Root Freak", LocationCat.COMBAT_VICTORY, 3308),
+    "APT_18_N_DRAWER": LocationData("Apt. 18 Bedroom - Drawer Loot", LocationCat.LOOT, 3309),
+    "APT_18_N_GREAT_FLOWER_COMBAT_VICTORY": LocationData("Apt. 18 Bedroom - Slay Great Flower", LocationCat.COMBAT_VICTORY, 3310),
+    "APT_18_N_CASH": LocationData("Apt. 18 Bedroom - Item on Table", LocationCat.OVERWORLD_ITEM, 3311),
+    "APT_18_E_SEED_FREAK_COMBAT_VICTORY": LocationData("Apt. 18 East - Slay Seed Freak", LocationCat.COMBAT_VICTORY, 3312),
+    "APT_18_E_SAFE_ITEM": LocationData("Apt. 18 East - Item in Safe", LocationCat.LOOT, 3313),
+    "APT_18_E_MOSS_FREAK_COMBAT_VICTORY": LocationData("Apt. 18 East - Slay Moss Freak", LocationCat.COMBAT_VICTORY, 3314),
+    "APT_18_E_OLD_CDS": LocationData("Apt. 18 East - Item on South Table", LocationCat.OVERWORLD_ITEM, 3315),
+    "APT_18_E_HEADPHONES": LocationData("Apt. 18 East - Item on Southeast Table", LocationCat.OVERWORLD_ITEM, 3316),
+    "APT_18_SE_DRAWER": LocationData("Apt. 18 Southeast - Drawer Loot", LocationCat.LOOT, 3317),
+    "APT_18_SE_GRASS_FREAK_COMBAT_VICTORY": LocationData("Apt. 18 Southeast - Slay Grass Freak", LocationCat.COMBAT_VICTORY, 3318),
+    "APT_18_SE_SKULL_FLOWER_COMBAT_VICTORY": LocationData("Apt. 18 Southeast - Slay Skull Flower and Ribcage Bloom", LocationCat.COMBAT_VICTORY, 3319),
+    "APT_18_SE_SKITTERBUSH_COMBAT_VICTORY": LocationData("Apt. 18 Southeast - Slay Skitterbush", LocationCat.COMBAT_VICTORY, 3320, difficulty_lock= {DL.CURSED}),
+    "APT_18_SE_POTTING_SOIL": LocationData("Apt. 18 Southeast - Item on South Table", LocationCat.OVERWORLD_ITEM, 3321),
+    "APT_18_SE_OLD_AXE": LocationData("Apt. 18 Southeast - Item on North Table", LocationCat.OVERWORLD_ITEM, 3322),
+    "APT_18_SE_CAR_KEY": LocationData("Apt. 18 Southeast - Item on East Table", LocationCat.OVERWORLD_ITEM, 3323),
+    "APT_18_BATHROOM_FROGIT_ABOUT_IT": LocationData("Apt. 18 Bathroom - Item Near Shower", LocationCat.OVERWORLD_ITEM, 3324),
+    "APT_18_BATHROOM_FIRST_AID_KIT": LocationData("Apt. 18 Bathroom - Item Near Door 1", LocationCat.OVERWORLD_ITEM, 3325),
+    "APT_18_BATHROOM_EYE_DROPS": LocationData("Apt. 18 Bathroom - Item Near Door 2", LocationCat.OVERWORLD_ITEM, 3326),
+    "APT_18_CRIMSON_BLOOM_COMBAT_VICTORY": LocationData("Apt. 18 Bathroom - Slay Crimson Bloom", LocationCat.COMBAT_VICTORY, 3327),
+  }
+
+APT_18_HELLEN_QUEST_LOCATIONS = {
+    "APT_18_HELLEN_QUEST_FRUIT": LocationData("Apt. 18 Secret Garden - Slay Fruit", LocationCat.COMBAT_VICTORY, 3328),
+    "APT_18_HELLEN_QUEST_SHEARS": LocationData("Apt. 18 Secret Garden - Gift From Hellen", LocationCat.EVENT_ITEM, 3329)
+}
+
 location_table: dict[str, LocationData] = {
     **VIDEO_GAME_LOCATIONS,
     **F3_HALL_LOCATIONS,
@@ -862,6 +1122,18 @@ location_table: dict[str, LocationData] = {
     **APT_25_DAN_LOCATIONS,
     **APT_27_TYPEWRITHER_LOCATIONS,
     **APT_28_FLOODED_LOCATIONS,
+    **F1_RUINED_APARTMENT_LOCATIONS,
+    **F1_MAZE_LOCATIONS,
+    **F1_RAT_APARTMENT_LOCATIONS,
+    **F1_RAT_LAIR_LOCATIONS,
+    **AURELIUS_CLOSET_LOCATIONS,
+    **ERNEST_HIDEOUT_LOCATIONS,
+    **RAT_HELL_LOCATIONS,
+    **APT_11_ABYSS_LOCATIONS,
+    **FRED_APT_LOCATIONS,
+    **APT_12_SIBYL_LOCATIONS,
+    **APT_18_HELLEN_LOCATIONS,
+    **APT_18_HELLEN_QUEST_LOCATIONS
 }
 
 region_locs: dict[str, set[str]] = {
@@ -940,6 +1212,25 @@ region_locs: dict[str, set[str]] = {
     "APT_28_FLOODED_MIDNIGHT": APT_28_MIDNIGHT_LOCATIONS.keys(),
     "APT_28_FLOODED_ABYSSAL": APT_28_ABYSSAL_LOCATIONS.keys(),
     "APT_28_FLOODED_HADAL": APT_28_HADAL_LOCATIONS.keys(),
+    "FLOOR_1_MAZE": F1_MAZE_LOCATIONS.keys(),
+    "F1_RUINED_APARTMENT": F1_RUINED_APARTMENT_LOCATIONS.keys(),
+    "RAT_INFESTED_APARTMENT": RAT_APARTMENT_MAIN_LOCATIONS.keys(),
+    "RAT_INFESTED_APARTMENT_NURSERY": RAT_APARTMENT_NURSERY_LOCATIONS.keys(),
+    "RAT_LAIR": F1_RAT_LAIR_LOCATIONS.keys(),
+    "AURELIUS_CLOSET": AURELIUS_CLOSET_LOCATIONS.keys(),
+    "ERNESTS_HIDEOUT": ERNEST_HIDEOUT_LOCATIONS.keys(),
+    "RAT_HELL": RAT_HELL_LOCATIONS.keys(),
+    "APT_11_ABYSS": APT_11_ABYSS_LOCATIONS.keys(),
+    "FRED_APARTMENT_ENTRANCE": FRED_APT_ENTRYWAY_LOCATIONS.keys(),
+    "FRED_APARTMENT_MAIN": FRED_APT_MAIN_LOCATIONS.keys(),
+    "TRUE_FRED_CLOSET": TRUE_FRED_CLOSET_LOCATIONS.keys(),
+    "APT_12_ENTRYWAY": APT_12_ENTRYWAY_LOCATIONS.keys(),
+    "APT_12_MAIN": APT_12_TRUE_LOCATIONS.keys(),
+    "APT_12_WALLS": APT_12_WALLS_LOCATIONS.keys(),
+    "APT_12_PLANETARIUM_SOUTH": APT_12_PLANETARIUM_SOUTH_LOCATIONS.keys(),
+    "APT_12_UNITY_ROOM": {},
+    "APT_18_OVERGROWN": APT_18_HELLEN_LOCATIONS.keys(),
+    "APT_18_HELLEN_QUEST": APT_18_HELLEN_QUEST_LOCATIONS.keys()
 }
 
 def get_region_to_location():

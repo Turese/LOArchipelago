@@ -72,6 +72,9 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
 
     world.set_rule(world.get_location(get_location_name("APT_27_COMPLETE_MANUSCRIPT", world)), Has("Progressive Loose Manuscript"))
 
+    #f1 rules
+
+
     # one more piranhas fight, dragonfish + 2x piranhas, is defeatable before piranhas activated. 
     # player will fight only the dragonfish, but the victory will still count.
     world.set_rule(world.get_location(get_location_name("APT_28_PIRANHAS_COMBAT_VICTORY", world)), Has("ACTIVATED_PIRANHAS"))
@@ -84,6 +87,8 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     world.set_rule(world.get_location(get_location_name("APT_36_BEDROOM_SAFE_ITEM", world)), can_open_any_simple_lock)
     world.set_rule(world.get_location(get_location_name("APT_21_CLOSET_SAFE", world)), can_open_any_simple_lock)
     world.set_rule(world.get_location(get_location_name("APT_24_SAFE_ITEM", world)), can_open_any_simple_lock)
+    world.set_rule(world.get_location(get_location_name("FRED_TOXIC_ROOM_SAFE", world)), can_open_any_simple_lock)
+    world.set_rule(world.get_location(get_location_name("APT_18_E_SAFE_ITEM", world)), can_open_any_simple_lock)
 
     #nestor quest rules
     world.set_rule(world.get_location(get_location_name("F3_HAND_WORMS_COMBAT_VICTORY", world)), can_nestor_rafta)
@@ -91,6 +96,13 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     world.set_rule(world.get_location(get_location_name("APT_27_BATHROOM_LEG_WORMS", world)), can_nestor_rafta)
     world.set_rule(world.get_location(get_location_name("APT_24_LIVINGROOM_FACE_WORMS_COMBAT_VICTORY", world)), can_nestor_rafta)
     world.set_rule(world.get_location(get_location_name("APT_24_BEDROOM_FACE_WORMS_COMBAT_VICTORY", world)), can_nestor_rafta)
+    world.set_rule(world.get_location(get_location_name("F2_NESTOR_HAND_WORMS_COMBAT_VICTORY", world)), can_nestor_rafta)
+    world.set_rule(world.get_location(get_location_name("F1_HAND_WORMS", world)), can_nestor_rafta)
+    world.set_rule(world.get_location(get_location_name("F1_NESTOR_COMBAT_VICTORY", world)), can_nestor_rafta)
+    world.set_rule(world.get_location(get_location_name("F1_NESTOR_HEAD_COMBAT_VICTORY", world)), can_nestor_rafta)
+    world.set_rule(world.get_location(get_location_name("F1_NESTOR_FOOT_COMBAT_VICTORY", world)), can_nestor_rafta)
+    world.set_rule(world.get_location(get_location_name("F1_NESTOR_HAND_COMBAT_VICTORY", world)), can_nestor_rafta)
+    world.set_rule(world.get_location(get_location_name("RAT_APT_BATHROOM_LEG_WORMS_COMBAT_VICTORY", world)), can_nestor_rafta)
 
     #audrey rules
     world.set_rule(world.get_location(get_location_name("APT_30_TAXIDERMY_AUDREY_LOOT", world)), Has("Audrey"))
