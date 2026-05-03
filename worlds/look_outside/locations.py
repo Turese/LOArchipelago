@@ -37,20 +37,34 @@ def create_regular_locations(world: LookOutsideWorld) -> None:
         parent_region.locations.append(location)
 
 def create_events(world: LookOutsideWorld) -> None:
-    stairwell = world.get_region("STAIRWELL")
-    stairwell.add_event(
+    world.get_region("STAIRWELL").add_event(
         "GROUND_FLOOR_STAIRWELL_DOOR", "OPENED_GROUND_FLOOR_FROM_STAIRWELL", rule=stairwell_planet_lock, location_type=LOLocation, item_type=LOItem
     )
 
-    f2_hall = world.get_region("FLOOR_2_EAST")
-    f2_hall.add_event("F2_ASTER", "F2_MET_ASTER", location_type=LOLocation, item_type=LOItem);
+    world.get_region("FLOOR_2_EAST").add_event("F2_ASTER", "MET_ASTER", location_type=LOLocation, item_type=LOItem)
 
-    f1_aurelius_closet = world.get_region("AURELIUS_CLOSET")
-    f1_aurelius_closet.add_event("AURELIUS_CLOSET_AURELIUS", "MET_AURELIUS", location_type=LOLocation, item_type=LOItem)
+    world.get_region("AURELIUS_CLOSET").add_event("F1_AURELIUS", "MET_AURELIUS", location_type=LOLocation, item_type=LOItem)
 
-    twilight_room = world.get_region("APT_28_FLOODED_TWILIGHT")
-    twilight_room.add_event(
+    world.get_region("GROUND_FLOOR_HALL_EAST").add_event("GF_JASPER", "MET_JASPER", location_type=LOLocation, item_type=LOItem)
+
+    world.get_region("GROUND_FLOOR_HALL_EAST").add_event(
+        "GF_MENS_BATHROOM_NESTOR", "MET_NESTOR", location_type=LOLocation, item_type=LOItem
+    )
+    world.get_region("F1_RUINED_APARTMENT").add_event(
+        "RUINED_APT_PIPE", "MET_RAFTA", location_type=LOLocation, item_type=LOItem
+    )
+
+    world.get_region("APT_28_FLOODED_TWILIGHT").add_event(
         "TWILIGHT_CLOSET", "ACTIVATED_PIRANHAS", location_type=LOLocation, item_type=LOItem
+    )
+
+    world.get_region("APT_12_MAIN").add_event(
+        "APT_12_BATHROOM", "MET_SPIDER_HUSK", location_type=LOLocation, item_type=LOItem
+    )
+
+    # todo: mutt is only killable when allowing fire on shopkeepers
+    world.get_region("MUTTS_BACK_ROOM").add_event(
+        "MUTT_BACK_DOOR", "KILLED_MUTT", location_type=LOLocation, item_type=LOItem
     )
 
     # ENDINGS

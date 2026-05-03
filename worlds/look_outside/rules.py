@@ -7,9 +7,8 @@ from worlds.look_outside.locations import get_location_name
 
 from .options import PlayerGoal
 from worlds.look_outside.regions_consts import all_regions_table,\
-    can_nestor_rafta, can_open_any_simple_lock, can_access_floor_1,\
-    can_access_ground_floor, can_access_basement, can_leigh_quest
-from rule_builder.rules import Has, And
+    can_nestor_rafta, can_open_any_simple_lock, can_access_basement, can_leigh_quest
+from rule_builder.rules import Has, And, HasAll
 
 if TYPE_CHECKING:
     from .__init__ import LookOutsideWorld
@@ -62,7 +61,7 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     world.set_rule(world.get_location(get_location_name("APT_37_PROJECTOR_ROOM_PHOTO", world)), And(Has("Negative Disc"), Has("Photo Paper")))
 
     #f2 rules
-    world.set_rule(world.get_location(get_location_name("F2_RECRUIT_ASTER", world)), And(can_access_floor_1, can_access_ground_floor, can_access_basement)) # todo: event for meeting astronomers instead?
+    world.set_rule(world.get_location(get_location_name("F2_RECRUIT_ASTER", world)), And(Has("MET_AURELIUS"), Has("MET_JASPER"), can_access_basement)) # todo: event for meeting astronomers instead?
     world.set_rule(world.get_location(get_location_name("F2_GRASSHOPPER_COMBAT_VICTORY", world)), can_leigh_quest)
 
     world.set_rule(world.get_location(get_location_name("APT_20_HYDRA_LAUNDRY", world)), Has("Laundry"))
@@ -74,6 +73,11 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
 
     #f1 rules
 
+    world.set_rule(world.get_location(get_location_name("F1_AUDREY_RECRUIT", world)), Has("Vending Machine Key")) 
+
+    #gf rules
+
+    world.set_rule(world.get_location(get_location_name("MUTT_SPIDER_HUSK_HEART", world)), Has("MET_SPIDER_HUSK"))
 
     # one more piranhas fight, dragonfish + 2x piranhas, is defeatable before piranhas activated. 
     # player will fight only the dragonfish, but the victory will still count.
@@ -89,8 +93,12 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     world.set_rule(world.get_location(get_location_name("APT_24_SAFE_ITEM", world)), can_open_any_simple_lock)
     world.set_rule(world.get_location(get_location_name("FRED_TOXIC_ROOM_SAFE", world)), can_open_any_simple_lock)
     world.set_rule(world.get_location(get_location_name("APT_18_E_SAFE_ITEM", world)), can_open_any_simple_lock)
+    world.set_rule(world.get_location(get_location_name("CORNER_STORE_STORAGE_SAFE", world)), can_open_any_simple_lock)
+    world.set_rule(world.get_location(get_location_name("MAILROOM_N_SAFE", world)), can_open_any_simple_lock)
+    world.set_rule(world.get_location(get_location_name("LL_BEDROOM_SAFE", world)), can_open_any_simple_lock)
 
     #nestor quest rules
+    world.set_rule(world.get_location(get_location_name("F1_LETTER_FROM_RAFTA", world)), HasAll("Fountain Pen", "Stationery"))
     world.set_rule(world.get_location(get_location_name("F3_HAND_WORMS_COMBAT_VICTORY", world)), can_nestor_rafta)
     world.set_rule(world.get_location(get_location_name("F2_NESTOR_HAND_WORMS_COMBAT_VICTORY", world)), can_nestor_rafta)
     world.set_rule(world.get_location(get_location_name("APT_27_BATHROOM_LEG_WORMS", world)), can_nestor_rafta)
@@ -103,14 +111,13 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     world.set_rule(world.get_location(get_location_name("F1_NESTOR_FOOT_COMBAT_VICTORY", world)), can_nestor_rafta)
     world.set_rule(world.get_location(get_location_name("F1_NESTOR_HAND_COMBAT_VICTORY", world)), can_nestor_rafta)
     world.set_rule(world.get_location(get_location_name("RAT_APT_BATHROOM_LEG_WORMS_COMBAT_VICTORY", world)), can_nestor_rafta)
+    world.set_rule(world.get_location(get_location_name("GF_LEG_FOOT_WORM_COMBAT_VICTORY", world)), can_nestor_rafta)
+    world.set_rule(world.get_location(get_location_name("GF_MENS_BATHROOM_MARSHALL_COMBAT_VICTORY", world)), can_nestor_rafta)
+    world.set_rule(world.get_location(get_location_name("GF_WEST_HAND_WORMS_COMBAT_VICTORY", world)), can_nestor_rafta)
 
     #audrey rules
     world.set_rule(world.get_location(get_location_name("APT_30_TAXIDERMY_AUDREY_LOOT", world)), Has("Audrey"))
     world.set_rule(world.get_location(get_location_name("APT_28_SHRIMP_KNIGHT_AUDREY_LOOT", world)), Has("Audrey"))
-
-
-
-
 
 
 def set_completion_condition(world: LookOutsideWorld) -> None:

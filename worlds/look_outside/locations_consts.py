@@ -851,7 +851,8 @@ F1_RUINED_APARTMENT_LOCATIONS = {
     "F1_NESTOR_COMBAT_VICTORY": LocationData("Slay Nestor's Body", LocationCat.COMBAT_VICTORY, 2405),
     "F1_NESTOR_HEAD_COMBAT_VICTORY": LocationData("Slay Nestor's Head", LocationCat.COMBAT_VICTORY, 2406),
     "F1_NESTOR_FOOT_COMBAT_VICTORY": LocationData("Slay Nestor's Foot", LocationCat.COMBAT_VICTORY, 2407),
-    "F1_NESTOR_HAND_COMBAT_VICTORY": LocationData("Slay Nestor's Hand", LocationCat.COMBAT_VICTORY, 2408)
+    "F1_NESTOR_HAND_COMBAT_VICTORY": LocationData("Slay Nestor's Hand", LocationCat.COMBAT_VICTORY, 2408),
+    "F1_LETTER_FROM_RAFTA": LocationData("Floor 1 Pipe Room - Help Rafta Write a Letter", LocationCat.EVENT_ITEM, 2409)
 }
 
 F1_MAZE_LOCATIONS = {
@@ -1097,6 +1098,285 @@ APT_18_HELLEN_QUEST_LOCATIONS = {
     "APT_18_HELLEN_QUEST_SHEARS": LocationData("Apt. 18 Secret Garden - Gift From Hellen", LocationCat.EVENT_ITEM, 3329)
 }
 
+"""
+--- GROUND FLOOR LOCATIONS --- 
+"""
+
+GF_HALL_MAIN_LOCATIONS = {
+    "GF_LARGE_SHADE_COMBAT_VICTORY": LocationData("Ground Floor - Slay Large Shade '??? ?? ?? ???'", LocationCat.COMBAT_VICTORY, 3401),
+    "GF_CANDY_MACHINE_MERCHANT": LocationData("Ground Floor - Candy Machine Item", LocationCat.MERCHANT, 3402),
+    "GF_COFFEE_MACHINE_MERCHANT": LocationData("Ground Floor - Coffee Machine Item", LocationCat.MERCHANT, 3403),
+    "GF_HERBICIDE": LocationData("Ground Floor - Item Near Bathrooms", LocationCat.OVERWORLD_ITEM, 3404),
+    "GF_LEG_FOOT_WORM_COMBAT_VICTORY": LocationData("Ground Floor - Slay Leg Worms", LocationCat.COMBAT_VICTORY, 3405),
+    "GF_OFFICE_JASPER_COMBAT_VICTORY": LocationData("F1 Office - Slay Jasper", LocationCat.FRIENDLY_FIRE, 3406),
+    "GF_OFFICE_JASPER_GIFT_OFFERING": LocationData("F1 Office - Pre-Ritual Gift From Jasper", LocationCat.EVENT_ITEM, 3407),
+    "GF_OFFICE_JASPER_FIX_TELESCOPE": LocationData("F1 Office - Have Jasper Fix Telescope", LocationCat.EVENT_ITEM, 3408),
+    "GF OFFICE_BATHROOM_WORM_COMBAT_VICTORY": LocationData("F1 Office Bathroom - Slay Leg and Foot Worms", LocationCat.COMBAT_VICTORY, 3409),
+    "MAILROOM_OFFICE_CELL_PHONE": LocationData("Mailroom Office - Item in Southeast Corner", LocationCat.OVERWORLD_ITEM, 3903),
+    "MAILROOM_OFFICE_SUN_DISC": LocationData("Mailroom Office - Item on Counter", LocationCat.OVERWORLD_ITEM, 3904),
+}
+
+GF_OFFICE_BATHROOM_LOCATIONS = {
+    "GF_OFFICE_BATHROOM_ELIXIR": LocationData("F1 Office Bathroom - Item on Counter", LocationCat.OVERWORLD_ITEM, 3410),
+}
+
+GF_OFFICE_LOCKED_ROOM_LOCATIONS = {
+    "GF_OFFICE_WHISKEY": LocationData("F1 Office Locked Room - Item on Counter", LocationCat.OVERWORLD_ITEM, 3411),
+    "GF_OFFICE_CLAYMORE": LocationData("F1 Office Locked Room - Item on Table", LocationCat.OVERWORLD_ITEM, 3412),
+}
+
+GF_OFFICE_UNLABELED_CARTRIDGE_LOCATIONS = {
+    "GF_OFFICE_UNLABELED_CARTRIDGE": LocationData("F1 Office Unlabeled Cartridge Room - Item", LocationCat.OVERWORLD_ITEM, 3413)
+}
+
+GF_MENS_BATHROOM_LAUNDRY_LOCATIONS = {
+    "GF_MENS_BATHROOM_MARSHALL_COMBAT_VICTORY": LocationData("Men's Bathroom - Slay Marshall", LocationCat.COMBAT_VICTORY, 3501),
+    "GF_MENS_BATHROOM_FIRST_AID_BOX": LocationData("Men's Bathroom - First Aid Box Loot", LocationCat.LOOT, 3502),
+    "GF_MENS_BATHROOM_SIMPLE_KEY": LocationData("Men's Bathroom - Item in Stall", LocationCat.OVERWORLD_ITEM, 3503),
+    "LAUNDRY_CLOTH_1": LocationData("Laundromat - Item on North Counter", LocationCat.OVERWORLD_ITEM, 3507),
+    "LAUNDRY_KLYSOX_1": LocationData("Laundromat - Item on Middle Counter", LocationCat.OVERWORLD_ITEM, 3508),
+    "LAUNDRY_WORM_COMBAT_VICTORY": LocationData("Laundromat - Slay Worm", LocationCat.COMBAT_VICTORY, 3509),
+    "LAUNDRY_JEANNES_LAUNDRY": LocationData("Laundromat - Jeanne's Laundry", LocationCat.EVENT_ITEM, 3510),
+    "LAUNDRY_TRASH": LocationData("Laundromat - Trash Can", LocationCat.LOOT, 3511),
+    "LAUNDRY_T_SHIRT": LocationData("Laundromat - Item Near Washers 1", LocationCat.OVERWORLD_ITEM, 3512),
+    "LAUNDRY_CLOTH_2": LocationData("Laundromat - Item Near Washers 2", LocationCat.OVERWORLD_ITEM, 3513),
+    "LAUNDRY_DENIM_VEST": LocationData("Laundromat - Item Near Washers 3", LocationCat.OVERWORLD_ITEM, 3514),
+    "LAUNDRY_CERULEAN_FIGURE": LocationData("Laundromat - Item on Southwest Counter", LocationCat.OVERWORLD_ITEM, 3515),
+    "LAUNDRY_KLYSOX_2": LocationData("Laundromat - Item on Southeast Counter", LocationCat.OVERWORLD_ITEM, 3516),
+    "LAUNDRY_KLYSOX_3": LocationData("Laundromat - Item in Southeast Corner", LocationCat.OVERWORLD_ITEM, 3517),
+}
+
+GF_WOMENS_BATHROOM_LOCATIONS = {
+    "GF_WOMENS_BATHROOM_FIRST_AID_KIT": LocationData("Women's Bathroom - Item on Counter 1", LocationCat.OVERWORLD_ITEM, 3504),
+    "GF_WOMENS_BATHROOM_VENUS_DISC": LocationData("Women's Bathroom - Item on Counter 2", LocationCat.OVERWORLD_ITEM, 3505),
+    "GF_WOMENS_BATHROOM_FAMINE_COMBAT_VICTORY": LocationData("Women's Bathroom - Slay Famine", LocationCat.COMBAT_VICTORY, 3506),
+}
+
+BUS_CRASH_LOCATIONS = {
+    "BUS_TOUCHY_COMBAT_VICTORY": LocationData("Bus Crash - Slay Touchy", LocationCat.COMBAT_VICTORY, 3601),
+    "BUS_FEELY_COMBAT_VICTORY": LocationData("Bus Crash - Slay Feely", LocationCat.COMBAT_VICTORY, 3602),
+    "BUS_ARMKNOT_COMBAT_VICTORY": LocationData("Bus Crash - Slay Armknot", LocationCat.COMBAT_VICTORY, 3603),
+    "BUS_GRASPER_1_COMBAT_VICTORY": LocationData("Bus Crash - Slay First Grasper", LocationCat.COMBAT_VICTORY, 3604),
+    "BUS_GRASPER_2_COMBAT_VICTORY": LocationData("Bus Crash - Slay Second Grasper", LocationCat.COMBAT_VICTORY, 3605),
+    "BUS_GRASPER_3_COMBAT_VICTORY": LocationData("Bus Crash - Slay Third Grasper", LocationCat.COMBAT_VICTORY, 3606),
+    "BUS_GRASPER_4_COMBAT_VICTORY": LocationData("Bus Crash - Slay Fourth Grasper", LocationCat.COMBAT_VICTORY, 3607),
+    "BUS_ELBOWS_COMBAT_VICTORY": LocationData("Bus Crash - Slay Elbows", LocationCat.COMBAT_VICTORY, 3608),
+    "BUS_MILLEDOIGTS_COMBAT_VICTORY": LocationData("Bus Crash - Slay Milledoigts", LocationCat.COMBAT_VICTORY, 3609),
+    "BUS_MAIN_GAUCHE_COMBAT_VICTORY": LocationData("Bus Crash - Slay Main Gauche", LocationCat.COMBAT_VICTORY, 3610),
+    "BUS_HIGH_FIVE_COMBAT_VICTORY": LocationData("Bus Crash - Slay High Five", LocationCat.COMBAT_VICTORY, 3611),
+    "BUS_CRAWLING_HAND_COMBAT_VICTORY": LocationData("Bus Crash - Slay Crawling Hand", LocationCat.COMBAT_VICTORY, 3612)
+}
+
+GF_HALL_LOCATIONS = {
+    **GF_HALL_MAIN_LOCATIONS,
+    **GF_MENS_BATHROOM_LAUNDRY_LOCATIONS,
+    **BUS_CRASH_LOCATIONS
+}
+
+MUTT_STOCK_LOCATIONS = {
+    "MUTT_CHAMPIONS_BELT": LocationData("Mutt's Shop - Item 1", LocationCat.MERCHANT, 3701),
+    "MUTT_CHAINSAW": LocationData("Mutt's Shop - Item 2", LocationCat.MERCHANT, 3702),
+    "MUTT_CATTLE_PROD": LocationData("Mutt's Shop - Item 3", LocationCat.MERCHANT, 3703),
+    "MUTT_LOCKPICKS": LocationData("Mutt's Shop - Item 4", LocationCat.MERCHANT, 3704),
+    "MUTT_TRAINING_BELT": LocationData("Mutt's Shop - Item 5", LocationCat.MERCHANT, 3705),
+    "MUTT_PICKELHAUBE": LocationData("Mutt's Shop - Item 6", LocationCat.MERCHANT, 3706),
+    "MUTT_STUN_BATON": LocationData("Mutt's Shop - Item 7", LocationCat.MERCHANT, 3707),
+    "MUTT_TRAUMA_KIT": LocationData("Mutt's Shop - Item 8", LocationCat.MERCHANT, 3708),
+    "MUTT_DAGGER": LocationData("Mutt's Shop - Item 9", LocationCat.MERCHANT, 3709),
+    "MUTT_CROSSBOW": LocationData("Mutt's Shop - Item 10", LocationCat.MERCHANT, 3710),
+    "MUTT_COFFEE_MACHINE": LocationData("Mutt's Shop - Item 11", LocationCat.MERCHANT, 3711),
+    "MUTT_COMFORT_BELT": LocationData("Mutt's Shop - Item 12", LocationCat.MERCHANT, 3712),
+    "MUTT_BREASTPLATE": LocationData("Mutt's Shop - Item 13", LocationCat.MERCHANT, 3713),
+    "MUTT_CROSSWORD_CHALLENGE": LocationData("Mutt's Shop - Item 14", LocationCat.MERCHANT, 3714),
+    "MUTT_TROPHY": LocationData("Mutt's Shop - Item 15", LocationCat.MERCHANT, 3715),
+}
+
+MUTT_MAIN_LOCATIONS = {
+    "MUTT_WALLET": LocationData("Mutt's Shop - Item on South Table", LocationCat.OVERWORLD_ITEM, 3716),
+    "MUTT_EMMANUEL_MERCHANT": LocationData("Mutt's Shop - Emmanuel Item", LocationCat.MERCHANT, 3717),
+    "MUTT_EMMANUEL_COMBAT_VICTORY": LocationData("Mutt's Shop - Slay Emmanuel", LocationCat.FRIENDLY_FIRE, 3718),
+    "MUTT_SPIDER_HUSK_HEART": LocationData("Mutt's Shop - Gift from Spider Husk", LocationCat.EVENT_ITEM, 3719),
+    "MUTT_BEER": LocationData("Mutt's Shop - Item on North Table", LocationCat.OVERWORLD_ITEM, 3720),
+    "MUTT_BATHROOM_WRAPPED_GIFT": LocationData("Mutt's Shop Bathroom - Item in Corner", LocationCat.OVERWORLD_ITEM, 3721),
+    "MUTT_BATHROOM_URANUS_DISC": LocationData("Mutt's Shop Bathroom - Item on Counter", LocationCat.OVERWORLD_ITEM, 3722, difficulty_lock= {DL.SURVIVOR, DL.EXPLORER}),
+}
+
+MUTT_BACKROOM_LOCATIONS = {
+    "MUTT_STORAGE_ROACH_1": LocationData("Mutt's Storage Room - Roach 1", LocationCat.OVERWORLD_ITEM, 3723),
+    "MUTT_STORAGE_ROACH_2": LocationData("Mutt's Storage Room - Roach 2", LocationCat.OVERWORLD_ITEM, 3724),
+    "MUTT_FRIDGE_1": LocationData("Mutt's Kitchen - Fridge 1", LocationCat.LOOT, 3725),
+    "MUTT_FRIDGE_2": LocationData("Mutt's Kitchen - Fridge 2", LocationCat.LOOT, 3726),
+    "MUTT_FRIDGE_3": LocationData("Mutt's Kitchen - Fridge 3", LocationCat.LOOT, 3727),
+    "MUTT_COMBAT_VICTORY": LocationData("Mutt's Shop - Slay Mutt", LocationCat.FRIENDLY_FIRE, 3728),
+}
+
+MUTT_LOCATIONS = {
+    **MUTT_STOCK_LOCATIONS,
+    **MUTT_MAIN_LOCATIONS,
+    **MUTT_BACKROOM_LOCATIONS
+}
+
+GF_CORNER_STORE_LOCATIONS = {
+    "CORNER_STORE_CENTIFINGERS_COMBAT_VICTORY": LocationData("Corner Store - Slay Centifingers", LocationCat.COMBAT_VICTORY, 3801),
+    "CORNER_STORE_FIRST_AID_KIT": LocationData("Corner Store - Item on Long Counter", LocationCat.OVERWORLD_ITEM, 3802),
+    "CORNER_STORE_MYRMIDON_XII": LocationData("Corner Store - Item on Small Counter", LocationCat.OVERWORLD_ITEM, 3803),
+    "CORNER_STORE_STORAGE_FIRST_AID_BOX": LocationData("Corner Store Back - First Aid Box Loot", LocationCat.LOOT, 3804),
+    "CORNER_STORE_STORAGE_SAFE": LocationData("Corner Store Back - Item in Safe", LocationCat.LOOT, 3805),
+    "CORNER_STORE_STORAGE_VHS": LocationData("Corner Store Back - Item on Southwest Counter", LocationCat.OVERWORLD_ITEM, 3806),
+    "CORNER_STORE_STORAGE_DUCT_TAPE": LocationData("Corner Store Back - Item on South Counter 1", LocationCat.OVERWORLD_ITEM, 3807),
+    "CORNER_STORE_STORAGE_HERBICIDE": LocationData("Corner Store Back - Item on South Counter 2", LocationCat.OVERWORLD_ITEM, 3808)
+}
+
+MAILROOM_SHIPPING_WEST_HALL_LOCATIONS = {
+    "MAILROOM_N_GARBAGE_WORM_COMBAT_VICTORY": LocationData("Mailroom North - Slay Garbage Worm", LocationCat.COMBAT_VICTORY, 3901),
+    "MAILROOM_N_SAFE": LocationData("Mailroom North - Item in Safe", LocationCat.LOOT, 3902),
+    "GF_WEST_HAND_WORMS_COMBAT_VICTORY": LocationData("Ground Floor West - Slay Hand Worms", LocationCat.COMBAT_VICTORY, 3909),
+}
+
+MAILROOM_STORAGE_LOCATIONS = {
+    "MAILROOM_STORAGE_SATURN_DISC": LocationData("Mailroom Storage - Item on Counter 1", LocationCat.OVERWORLD_ITEM, 3905),
+    "MAILROOM_STORAGE_DUCT_TAPE": LocationData("Mailroom Storage - Item on Counter 2", LocationCat.OVERWORLD_ITEM, 3906),
+    "MAILROOM_STORAGE_MAGNUM_BULLETS": LocationData("Mailroom Storage - Item on Table 1", LocationCat.OVERWORLD_ITEM, 3907),
+    "MAILROOM_STORAGE_SILVER_MAGNUM": LocationData("Mailroom Storage - Item on Table 2", LocationCat.OVERWORLD_ITEM, 3908)
+}
+
+LANDLORDS_APT_PHASE_1_LOCATIONS = {
+    "LL_RENT_1": LocationData("Landlord Apt. - First Rent Payment", LocationCat.EVENT_ITEM, 4001),
+    "LL_INTRO_COMBAT_VICTORY": LocationData("Landlord Entryway - Slay Hand Monsters", LocationCat.COMBAT_VICTORY, 4005),
+    "LL_FRIDGE": LocationData("Landlord Apt. - Fridge Loot", LocationCat.LOOT, 4014),
+    "LL_SIDETABLE_N": LocationData("Landlord Livingroom - Drawer Loot", LocationCat.LOOT, 4015),
+    "LL_COUCH_LOOT": LocationData("Landlord Livingroom - Couch Cushion Loot", LocationCat.LOOT, 4016),
+    "LL_BATHROOM_OLD_PICTURE": LocationData("Landlord Bathroom - Item 1", LocationCat.OVERWORLD_ITEM, 4017),
+    "LL_BATHROOM_FIRST_AID_KIT": LocationData("Landlord Bathroom - Item 2", LocationCat.OVERWORLD_ITEM, 4018),
+    "LL_BATHROOM_ANXIETY_MEDS": LocationData("Landlord Bathroom - Item 3", LocationCat.OVERWORLD_ITEM, 4019),
+    "LL_BATHROOM_SOAP": LocationData("Landlord Bathroom - Item on Floor", LocationCat.OVERWORLD_ITEM, 4020),
+    "LL_SIDETABLE_W": LocationData("Landlord Hall - Drawer Loot", LocationCat.LOOT, 4021),
+    "LL_SIDETABLE_S": LocationData("Landlord Livingroom - South Drawer Loot", LocationCat.LOOT, 4022),
+    "LL_BEDROOM_COIN_COLLECTION": LocationData("Landlord Bedroom - Item on Table 1", LocationCat.OVERWORLD_ITEM, 4023),
+    "LL_BEDROOM_MILITARY_UNIFORM": LocationData("Landlord Bedroom - Item on Table 2", LocationCat.OVERWORLD_ITEM, 4024),
+    "LL_BEDROOM_SIDE_TABLE_W": LocationData("Landlord Bedroom - Drawer Loot", LocationCat.LOOT, 4025),
+    "LL_BEDROOM_SAFE": LocationData("Landlord Bedroom - Item in Safe", LocationCat.LOOT, 4026),
+    "LL_BEDROOM_WIDE_TABLE_E": LocationData("Landlord Bedroom - Side Table Loot", LocationCat.LOOT, 4082),
+}
+
+LANDLORDS_APT_PHASE_2_LOCATIONS = {
+    "LL_RENT_2": LocationData("Landlord Apt. - Second Rent Payment", LocationCat.EVENT_ITEM, 4002),
+    "LL_SOLDIER_GRP1_COMBAT_VICTORY": LocationData("Landlord Entryway - Slay Soldiers (Phase 2+)", LocationCat.COMBAT_VICTORY, 4007),
+    "LL_BEDROOM_GATLING_COMBAT_VICTORY": LocationData("Landlord Bedroom - Slay Gatling (Phase 2+)", LocationCat.COMBAT_VICTORY, 4027),
+    "LL_DINING_RADIO": LocationData("Landlord Dining Room - Gift from Scout", LocationCat.EVENT_ITEM, 4028),
+    "LL_DINING_WIDE_TABLE_E": LocationData("Landlord Dining Room - West Side Table Loot", LocationCat.LOOT, 4029),
+    "LL_DINING_SIDE_TABLE": LocationData("Landlord Dining Room - East Side Table Loot", LocationCat.LOOT, 4030),
+    "LL_DINING_DRAWER": LocationData("Landlord Dining Room - Drawer Loot", LocationCat.LOOT, 4031),
+    "LL_DINING_BAYONET_COMBAT_VICTORY": LocationData("Landlord Dining Room - Slay Bayonet Duo", LocationCat.COMBAT_VICTORY, 4032),
+    "LL_DINING_TABLE_CASH": LocationData("Landlord Dining Room - West Item on Table", LocationCat.OVERWORLD_ITEM, 4033),
+    "LL_DINING_TABLE_TONIC": LocationData("Landlord Dining Room - East Item on Table", LocationCat.OVERWORLD_ITEM, 4034),
+    "LL_DINING_TABLE_CHESSBOARD": LocationData("Landlord Dining Room - Item on North Table", LocationCat.OVERWORLD_ITEM, 4035),
+    "LL_DINING_SECRET_CACHE": LocationData("Landlord Dining Room - Secret Cache", LocationCat.EVENT_ITEM, 4083),
+    "LL_OFFICE_WAR_MEDAL": LocationData("Landlord Office - Item on Southwest Table 1", LocationCat.OVERWORLD_ITEM, 4036),
+    "LL_OFFICE_WHISKEY": LocationData("Landlord Office - Item on Southwest Table 2", LocationCat.OVERWORLD_ITEM, 4037),
+    "LL_OFFICE_CARVED_BEAVER": LocationData("Landlord Office - Item on Southeast Table", LocationCat.OVERWORLD_ITEM, 4038),
+    "LL_OFFICE_DETONATOR": LocationData("Landlord Office - Item on North Table", LocationCat.OVERWORLD_ITEM, 4039),
+    "LL_OFFICE_MANATARMS_COMBAT_VICTORY": LocationData("Landlord Office - Slay Man at Arms", LocationCat.COMBAT_VICTORY, 4040),
+    "LL_EAST_SOLDIER_COMBAT_VICTORY": LocationData("Landlord Hell East - Slay Soldier", LocationCat.COMBAT_VICTORY, 4041),
+    "LL_EAST_SIDE_TABLE": LocationData("Landlord Hell East - Side Table Loot", LocationCat.LOOT, 4042),
+    "LL_EAST_GATLING_COMBAT_VICTORY": LocationData("Landlord Hell East - Slay Gatling", LocationCat.COMBAT_VICTORY, 4043),
+    "LL_EAST_DRAWER_E": LocationData("Landlord Hell East - East Drawer Loot", LocationCat.LOOT, 4044),
+    "LL_EAST_DRAWER_W": LocationData("Landlord Hell East - West Drawer Loot", LocationCat.LOOT, 4045),
+    "LL_EAST_SHOTGUN_SHELLS": LocationData("Landlord Hell East - Item on West Table 1", LocationCat.OVERWORLD_ITEM, 4046),
+    "LL_EAST_CASH": LocationData("Landlord Hell East - Item on West Table 2", LocationCat.OVERWORLD_ITEM, 4047),
+    "LL_EAST_BASEBALL_BAT": LocationData("Landlord Hell East - Item on East Table 1", LocationCat.OVERWORLD_ITEM, 4048),
+    "LL_EAST_OLD_RECORDS": LocationData("Landlord Hell East - Item on East Table 2", LocationCat.OVERWORLD_ITEM, 4049),
+    "LL_EAST_SPEAKERS": LocationData("Landlord Hell East - Item in Northeast Corner", LocationCat.OVERWORLD_ITEM, 4050),
+    "LL_WIDE_TABLE_S": LocationData("Landlord Livingroom - Side Table Loot (Phase 2+)", LocationCat.LOOT, 4084),
+}
+
+LANDLORDS_APT_PHASE_3_LOCATIONS = {
+    "LL_RENT_3": LocationData("Landlord Apt. - Third Rent Payment", LocationCat.EVENT_ITEM, 4003),
+    "LL_GATLING_COMBAT_VICTORY": LocationData("Landlord Entryway - Slay Gatling (Phase 3+)", LocationCat.COMBAT_VICTORY, 4008),
+    "LL_WIDE_TABLE_E": LocationData("Landlord Entryway - Wide Drawer Loot (Phase 3+)", LocationCat.OVERWORLD_ITEM, 4012),
+    "LL_NORTH_SIDE_TABLE": LocationData("Landlord Hell North - Side Table Loot", LocationCat.LOOT, 4051),
+    "LL_NORTH_SOLDIER_COMBAT_VICTORY": LocationData("Landlord Hell North - Slay Soldier", LocationCat.COMBAT_VICTORY, 4052),
+    "LL_NORTH_GATLING_COMBAT_VICTORY": LocationData("Landlord Hell North - Slay Gatling", LocationCat.COMBAT_VICTORY, 4053),
+    "LL_NORTH_TONIC": LocationData("Landlord Hell North - Item on Table 1", LocationCat.OVERWORLD_ITEM, 4054),
+    "LL_NORTH_FIRST_AID_KIT": LocationData("Landlord Hell North - Item on Table 2", LocationCat.OVERWORLD_ITEM, 4055),
+    "LL_NORTH_PISTOL_BULLETS": LocationData("Landlord Hell North - Item on Table 3", LocationCat.OVERWORLD_ITEM, 4056),
+    "LL_NORTH_SIDE_TABLE_W": LocationData("Landlord Hell North - Drawer Loot", LocationCat.LOOT, 4057),
+}
+
+LL_BEDROOM_HALL_CACHE_LOCATIONS = {
+    "LL_BEDROOM_HALL_BULLET_1": LocationData("Bedroom Hall Cache - Item 1", LocationCat.OVERWORLD_ITEM, 4058),
+    "LL_BEDROOM_HALL_RIFLE": LocationData("Bedroom Hall Cache - Item 2", LocationCat.OVERWORLD_ITEM, 4059),
+    "LL_BEDROOM_HALL_BULLET_2": LocationData("Bedroom Hall Cache - Item 3", LocationCat.OVERWORLD_ITEM, 4060),
+}
+
+LL_MEMORIAL_CACHE_LOCATIONS = {
+    "LL_MEMORIAL_TANK_COMBAT_VICTORY": LocationData("LL Memorial Room Cache - Slay Tank", LocationCat.COMBAT_VICTORY, 4064),
+    "LL_MEMORIAL_TANK_AUDREY_LOOT": LocationData("LL  Memorial Room Cache - Tank Audrey Loot", LocationCat.EVENT_ITEM, 4065),
+    "LL_MEMORIAL_MAGNUM_BULLETS": LocationData("LL Memorial Room Cache - North Table Item 1", LocationCat.OVERWORLD_ITEM, 4066),
+    "LL_MEMORIAL_PISTOL_BULLETS": LocationData("LL Memorial Room Cache - North Table Item 2", LocationCat.OVERWORLD_ITEM, 4067),
+    "LL_MEMORIAL_SMG_BULLETS": LocationData("LL Memorial Room Cache - North Table Item 3", LocationCat.OVERWORLD_ITEM, 4068),
+    "LL_MEMORIAL_AMMO_BELT": LocationData("LL Memorial Room Cache - West Table Item 1", LocationCat.OVERWORLD_ITEM, 4069),
+    "LL_MEMORIAL_GRENADE": LocationData("LL Memorial Room Cache - West Table Item 2", LocationCat.OVERWORLD_ITEM, 4070),
+    "LL_MEMORIAL_SHOTGUN_SHELL": LocationData("LL Memorial Room Cache - Center Table Item 1", LocationCat.OVERWORLD_ITEM, 4071),
+    "LL_MEMORIAL_RIFLE_BULLETS": LocationData("LL Memorial Room Cache - Center Table Item 2", LocationCat.OVERWORLD_ITEM, 4072),
+    "LL_MEMORIAL_AMMO_CRATE_1": LocationData("LL Memorial Room Cache - South Corner Item 1", LocationCat.OVERWORLD_ITEM, 4073),
+    "LL_MEMORIAL_AMMO_CRATE_2": LocationData("LL Memorial Room Cache - South Corner Item 2", LocationCat.OVERWORLD_ITEM, 4074),
+}
+
+LL_SHADE_CACHE_LOCATIONS = {
+    "LL_HELL_MASK_WRITHING_SHADE_COMBAT_VICTORY": LocationData("Landlord Hell Shade Cache - Slay Writhing Shade", LocationCat.COMBAT_VICTORY, 4078),
+    "LL_HELL_MASK_OLD_PHOTOGRAPH": LocationData("Landlord Hell Shade Cache - Item", LocationCat.OVERWORLD_ITEM, 4079),
+}
+
+LANDLORDS_APT_PHASE_4_LOCATIONS = {
+    "LL_RENT_4": LocationData("Landlord Apt. - Final Rent Payment", LocationCat.EVENT_ITEM, 4004),
+    "LL_BASEMENT_KEY": LocationData("Landlord Entryway - Northwest Corner Item", LocationCat.OVERWORLD_ITEM, 4006),
+    "LL_MANATARMS_COMBAT_VICTORY": LocationData("Landlord Entryway - Slay Man at Arms (Phase 4)", LocationCat.COMBAT_VICTORY, 4013),
+    "LL_HELL_S_HALL_GATLING": LocationData("Landlord Hell South Hall - Slay Gatling", LocationCat.COMBAT_VICTORY, 4080),
+    "LL_MEMORIAL_MEMORIAL_COMBAT_VICTORY": LocationData("Landlord Memorial Room - Slay Memorial", LocationCat.FRIENDLY_FIRE, 4061),
+    "LL_MEMORIAL_GRENADE": LocationData("Landlord Memorial Room - Item 1", LocationCat.OVERWORLD_ITEM, 4062),
+    "LL_MEMORIAL_DETONATOR": LocationData("Landlord Memorial Room - Item 2", LocationCat.OVERWORLD_ITEM, 4063),
+    "LL_NE_BAYONET_COMBAT_VICTORY": LocationData("Landlord Northeast Hall - Slay Bayonet Trio", LocationCat.COMBAT_VICTORY, 4081),
+    "LL_HELL_WRAITHSCOURGE": LocationData("Landlord Hell Wraithscourge Room - Item", LocationCat.OVERWORLD_ITEM, 4077),
+}
+
+LANDLORDS_APT_PHASE_5_LOCATIONS = {
+    "LL_ROCKET_LAUNCHER_COMBAT_VICTORY": LocationData("Landlord Entryway - Slay Rocket Launcher (Phase 5)", LocationCat.COMBAT_VICTORY, 4009, difficulty_lock= {DL.CURSED}),
+    "LL_TRENCH_DIGGER_COMBAT_VICTORY": LocationData("Landlord Hell - Slay Trench Digger", LocationCat.COMBAT_VICTORY, 4010),
+    "LL_TRENCH_DIGGER_AUDREY_LOOT": LocationData("Landlord Hell - Trench Digger Audrey Loot", LocationCat.EVENT_ITEM, 4011),
+    "LL_END_ELIXIR": LocationData("Landlord Hell End - Item on Table", LocationCat.OVERWORLD_ITEM, 4076),
+    "LL_JUPITER_DISC": LocationData("Landlord Hell Jupiter Room - Item", LocationCat.OVERWORLD_ITEM, 4075),
+}
+
+LANDLORDS_WARZONE_LOCATIONS = {
+    "LL_BATTLEFIELD_SOLDIER_COMBAT_VICTORY": LocationData("LL Battlefield - Slay Gatling and Soldiers", LocationCat.COMBAT_VICTORY, 4101),
+    "LL_BATTLEFIELD_MANATARMS_COMBAT_VICTORY": LocationData("LL Battlefield - Slay Man at Arms and Soldiers", LocationCat.COMBAT_VICTORY, 4102),
+    "LL_BATTLEFIELD_RIDER_1_COMBAT_VICTORY": LocationData("LL Battlefield - Slay First Rider", LocationCat.COMBAT_VICTORY, 4103, difficulty_lock= {DL.CURSED}),
+    "LL_BATTLEFIELD_RIDER_2_COMBAT_VICTORY": LocationData("LL Battlefield - Slay Second Rider", LocationCat.COMBAT_VICTORY, 4104, difficulty_lock= {DL.CURSED}),
+    "LL_BATTLEFIELD_DIG_SPOT": LocationData("LL Battlefield - Dig Spot", LocationCat.LOOT, 4105),
+    "LL_BATTLEFIELD_GATLING_COMBAT_VICTORY": LocationData("LL Battlefield - Slay Solo Gatling", LocationCat.COMBAT_VICTORY, 4106),
+    "LL_BATTLEFIELD_APC_COMBAT_VICTORY": LocationData("LL Battlefield - Slay APC", LocationCat.COMBAT_VICTORY, 4107),
+    "LL_BATTLEFIELD_APC_AUDREY_LOOT": LocationData("LL Battlefield - APC Audrey Loot", LocationCat.EVENT_ITEM, 4108),
+    "LL_SAPPER_COMBAT_VICTORY": LocationData("LL Sapper Tent - Sapper Combat Victory", LocationCat.FRIENDLY_FIRE, 4109),
+    "LL_SAPPER_GIFT_FROM_SAPPER": LocationData("LL Sapper Tent - Gift From Sapper", LocationCat.EVENT_ITEM, 4110),
+    "LL_SAPPER_MANATARMS_COMBAT_VICTORY": LocationData("LL Sapper Tent - Slay Man at Arms", LocationCat.COMBAT_VICTORY, 4111),
+    "LL_SAPPER_PISTOL_BULLETS": LocationData("LL Sapper Tent - Item on Southeast Table", LocationCat.OVERWORLD_ITEM, 4112),
+    "LL_SAPPER_GATLING_COMBAT_VICTORY": LocationData("LL Sapper Tent - Slay Gatling", LocationCat.COMBAT_VICTORY, 4113),
+    "LL_SAPPER_EXPLOSIVE": LocationData("LL Sapper Tent - Item on Northeast Table", LocationCat.OVERWORLD_ITEM, 4114),
+    "LL_SAPPER_DETONATOR": LocationData("LL Sapper Tent - Item on Northwest Table", LocationCat.OVERWORLD_ITEM, 4115),
+    "LL_MEDICAL_SURGEON_COMBAT_VICTORY": LocationData("LL Medic Tent - Slay Surgeon and Wounded", LocationCat.COMBAT_VICTORY, 4116),
+    "LL_MEDICAL_VODKA": LocationData("LL Medic Tent - Item on Southeast Table", LocationCat.OVERWORLD_ITEM, 4117),
+    "LL_MEDICAL_FIRST_AID_KIT": LocationData("LL Medic Tent - Item on North Table 1", LocationCat.OVERWORLD_ITEM, 4118),
+    "LL_MEDICAL_TONIC": LocationData("LL Medic Tent - Item on North Table 2", LocationCat.OVERWORLD_ITEM, 4119),
+    "LL_MEDICAL_BANDAGES": LocationData("LL Medic Tent - Item on North Table 3", LocationCat.OVERWORLD_ITEM, 4120),
+    "LL_MEDICAL_HEALING_SPRAY": LocationData("LL Medic Tent - Item in Northwest Corner", LocationCat.OVERWORLD_ITEM, 4121),
+    "LL_MINESWEEPER_SPADE": LocationData("LL Minesweeper Tent - Item in Corner", LocationCat.OVERWORLD_ITEM, 4122),
+    "LL_MINESWEEPER_VODKA": LocationData("LL Minesweeper Tent - Item on Table", LocationCat.OVERWORLD_ITEM, 4123),
+    "LL_MINESWEEPER_COMBAT_VICTORY": LocationData("LL Minesweeper Tent - Slay Minesweeper", LocationCat.FRIENDLY_FIRE, 4124),
+    "LL_MINESWEEPER_GIFT": LocationData("LL Minesweeper Tent - Gift From Minesweeper", LocationCat.EVENT_ITEM, 4125),
+    "LL_MINESWEEPER_12_MINE_PRIZE": LocationData("LL Minesweeper Tent - Prize for 12 Mines", LocationCat.EVENT_ITEM, 4126)
+}
+
 location_table: dict[str, LocationData] = {
     **VIDEO_GAME_LOCATIONS,
     **F3_HALL_LOCATIONS,
@@ -1118,7 +1398,7 @@ location_table: dict[str, LocationData] = {
     **APT_21_LYLE_LOCATIONS,
     **APT_22_HARRIET_LOCATIONS,
     **APT_23_LEIGH_LOCATIONS,
-    **APT_24_EUGENE_LOCATIONS, # todo: fill in
+    **APT_24_EUGENE_LOCATIONS,
     **APT_25_DAN_LOCATIONS,
     **APT_27_TYPEWRITHER_LOCATIONS,
     **APT_28_FLOODED_LOCATIONS,
@@ -1133,7 +1413,25 @@ location_table: dict[str, LocationData] = {
     **FRED_APT_LOCATIONS,
     **APT_12_SIBYL_LOCATIONS,
     **APT_18_HELLEN_LOCATIONS,
-    **APT_18_HELLEN_QUEST_LOCATIONS
+    **APT_18_HELLEN_QUEST_LOCATIONS,
+    **GF_HALL_LOCATIONS,
+    **GF_WOMENS_BATHROOM_LOCATIONS,
+    **GF_OFFICE_BATHROOM_LOCATIONS,
+    **GF_OFFICE_LOCKED_ROOM_LOCATIONS,
+    **GF_OFFICE_UNLABELED_CARTRIDGE_LOCATIONS,
+    **MUTT_LOCATIONS,
+    **GF_CORNER_STORE_LOCATIONS,
+    **MAILROOM_SHIPPING_WEST_HALL_LOCATIONS,
+    **MAILROOM_STORAGE_LOCATIONS,
+    **LANDLORDS_APT_PHASE_1_LOCATIONS,
+    **LANDLORDS_APT_PHASE_2_LOCATIONS,
+    **LANDLORDS_APT_PHASE_3_LOCATIONS,
+    **LANDLORDS_APT_PHASE_4_LOCATIONS,
+    **LANDLORDS_APT_PHASE_5_LOCATIONS,
+    **LANDLORDS_WARZONE_LOCATIONS,
+    **LL_SHADE_CACHE_LOCATIONS,
+    **LL_MEMORIAL_CACHE_LOCATIONS,
+    **LL_BEDROOM_HALL_CACHE_LOCATIONS,
 }
 
 region_locs: dict[str, set[str]] = {
@@ -1212,6 +1510,7 @@ region_locs: dict[str, set[str]] = {
     "APT_28_FLOODED_MIDNIGHT": APT_28_MIDNIGHT_LOCATIONS.keys(),
     "APT_28_FLOODED_ABYSSAL": APT_28_ABYSSAL_LOCATIONS.keys(),
     "APT_28_FLOODED_HADAL": APT_28_HADAL_LOCATIONS.keys(),
+    # FLOOR 1
     "FLOOR_1_MAZE": F1_MAZE_LOCATIONS.keys(),
     "F1_RUINED_APARTMENT": F1_RUINED_APARTMENT_LOCATIONS.keys(),
     "RAT_INFESTED_APARTMENT": RAT_APARTMENT_MAIN_LOCATIONS.keys(),
@@ -1230,7 +1529,28 @@ region_locs: dict[str, set[str]] = {
     "APT_12_PLANETARIUM_SOUTH": APT_12_PLANETARIUM_SOUTH_LOCATIONS.keys(),
     "APT_12_UNITY_ROOM": {},
     "APT_18_OVERGROWN": APT_18_HELLEN_LOCATIONS.keys(),
-    "APT_18_HELLEN_QUEST": APT_18_HELLEN_QUEST_LOCATIONS.keys()
+    "APT_18_HELLEN_QUEST": APT_18_HELLEN_QUEST_LOCATIONS.keys(),
+    # GROUND FLOOR
+    "GROUND_FLOOR_HALL_EAST": GF_HALL_LOCATIONS.keys(),
+    "OFFICE_BATHROOM": GF_OFFICE_BATHROOM_LOCATIONS.keys(),
+    "OFFICE_LOCKED_ROOM": GF_OFFICE_LOCKED_ROOM_LOCATIONS.keys(),
+    "OFFICE_UNLABELED_CARTRIDGE_ROOM": GF_OFFICE_UNLABELED_CARTRIDGE_LOCATIONS.keys(),
+    "WOMENS_BATHROOM": GF_WOMENS_BATHROOM_LOCATIONS.keys(),
+    "MUTTS_BACK_ROOM": MUTT_BACKROOM_LOCATIONS.keys(),
+    "MUTTS_STOCK": MUTT_STOCK_LOCATIONS.keys(),
+    "MUTTS_SHOP": MUTT_MAIN_LOCATIONS.keys(),
+    "CORNER_STORE": GF_CORNER_STORE_LOCATIONS.keys(),
+    "MAILROOM_SHIPPING_WEST_HALL": MAILROOM_SHIPPING_WEST_HALL_LOCATIONS.keys(),
+    "MAILROOM_STORAGE": MAILROOM_STORAGE_LOCATIONS.keys(),
+    "LANDLORDS_APARTMENT_PHASE_1": LANDLORDS_APT_PHASE_1_LOCATIONS.keys(),
+    "LANDLORDS_APARTMENT_PHASE_2": LANDLORDS_APT_PHASE_2_LOCATIONS.keys(),
+    "LANDLORDS_APARTMENT_PHASE_3": LANDLORDS_APT_PHASE_3_LOCATIONS.keys(),
+    "LANDLORDS_APARTMENT_PHASE_4": LANDLORDS_APT_PHASE_4_LOCATIONS.keys(),
+    "LANDLORDS_APARTMENT_PHASE_5": LANDLORDS_APT_PHASE_5_LOCATIONS.keys(),
+    "LANDLORDS_BEDROOM_HALL_CACHE": LL_BEDROOM_HALL_CACHE_LOCATIONS.keys(),
+    "SHADE_CACHE": LL_SHADE_CACHE_LOCATIONS.keys(),
+    "LANDLORDS_WARZONE": LANDLORDS_WARZONE_LOCATIONS.keys(),
+    "MEMORIAL_CACHE": LL_MEMORIAL_CACHE_LOCATIONS.keys(),
 }
 
 def get_region_to_location():
