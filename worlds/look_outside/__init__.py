@@ -83,7 +83,6 @@ class LookOutsideWorld(CachedRuleBuilderWorld):
             tags = item_info.tags
             if ItemTag.PROGRESSIVE in tags or ItemTag.BREAKABLE_KEY in tags:
                 mandatory_items += [item_name] * num_multiple_items[item_name]
-                
             elif category == ItemCat.SKILL or category == ItemCat.RECRUIT or category == ItemCat.MISC:
                 mandatory_items += [item_name]
             elif ItemTag.UNIQUE in tags or ItemTag.CHECK_GATE in tags:
@@ -94,7 +93,6 @@ class LookOutsideWorld(CachedRuleBuilderWorld):
         for item in mandatory_items:
             self.multiworld.itempool += [self.create_item(item)]
 
-
         for item in unique_items:
             self.multiworld.itempool += [self.create_item(item)]
 
@@ -103,7 +101,7 @@ class LookOutsideWorld(CachedRuleBuilderWorld):
     
         slots_to_fill = num_locations - num_itempool
 
-        self.random.shuffle(remaining_items)
+        
 
         for i in range(slots_to_fill):
             filler_item = remaining_items[i % len(remaining_items)]
