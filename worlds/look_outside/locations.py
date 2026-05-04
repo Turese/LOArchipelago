@@ -3,10 +3,14 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from BaseClasses import Location
-from worlds.look_outside.locations_consts import APT_33_LOCATIONS, LocationData, location_table, location_to_region
+from worlds.look_outside.locations_consts import LocationData, location_table, location_to_region
 from worlds.look_outside.items import LOItem
 from worlds.look_outside.regions_consts import stairwell_planet_lock
+from worlds.look_outside.rules_consts import can_perform_flawed_ritual,\
+    can_perform_perfect_ritual, can_perform_mask_ritual, can_perform_eternal_fate_ritual,\
+    can_perform_xin_amon_ritual, can_true_final
 from rule_builder.rules import Has
+from worlds.look_outside.rules_consts import can_keep_promise
 
 
 if TYPE_CHECKING:
@@ -47,6 +51,10 @@ def create_events(world: LookOutsideWorld) -> None:
 
     world.get_region("GROUND_FLOOR_HALL_EAST").add_event("GF_JASPER", "MET_JASPER", location_type=LOLocation, item_type=LOItem)
 
+    world.get_region("BASEMENT_WEST_PARKING_GARAGE").add_event(
+        "B_BERYL", "MET_BERYL", location_type=LOLocation, item_type=LOItem
+    )
+
     world.get_region("GROUND_FLOOR_HALL_EAST").add_event(
         "GF_MENS_BATHROOM_NESTOR", "MET_NESTOR", location_type=LOLocation, item_type=LOItem
     )
@@ -70,9 +78,46 @@ def create_events(world: LookOutsideWorld) -> None:
     # ENDINGS
 
     world.get_region("APT_35_SIBYL").add_event(
-        "SIBYL", "AWAKEN_SIBYL", rule=Has("Telescope"), location_type=LOLocation, item_type=LOItem
+        "SIBYL", "AWAKENED_SIBYL", rule=Has("Telescope"), location_type=LOLocation, item_type=LOItem
     )
 
     world.get_region("APT_12_UNITY_ROOM").add_event(
         "UNITY_ENDING_NOTE", "UNITY_ENDING", location_type=LOLocation, item_type=LOItem
+    )
+
+    roof = world.get_region("ROOF")
+
+    roof.add_event(
+        "RITUAL_CIRCLE_NO_ASTRONOMERS", "FAILED_RITUAL_ENDING", location_type=LOLocation, item_type=LOItem
+    )
+    roof.add_event(
+        "RITUAL_CIRCLE_SOME_OFFERINGS", "FLAWED_RITUAL_ENDING", rule=can_perform_flawed_ritual, location_type=LOLocation, item_type=LOItem
+    )
+
+    roof.add_event(
+        "RITUAL_CIRCLE_PERFECT", "PERFECT_RITUAL_ENDING", rule=can_perform_perfect_ritual, location_type=LOLocation, item_type=LOItem
+    ) # no distinction between truth and denial here. this should fire off upon killing the E4
+
+    roof.add_event(
+        "RITUAL_CIRCLE_PERFECT_PROMISE", "PROMISE_ENDING", rule=can_keep_promise, location_type=LOLocation, item_type=LOItem
+    )
+
+    roof.add_event(
+        "RITUAL_CIRCLE_WEIRD_OFFERINGS", "MASK_ENDING", rule=can_perform_mask_ritual, location_type=LOLocation, item_type=LOItem
+    )
+
+    roof.add_event(
+        "RITUAL_CIRCLE_GUINEA_PIG", "ETERNAL_FATE_ENDING", rule=can_perform_eternal_fate_ritual, location_type=LOLocation, item_type=LOItem
+    )
+
+    roof.add_event(
+        "RITUAL_CIRCLE_GUINEA_PIG_PERFECT", "XIN_AMON_ENDING", rule=can_perform_xin_amon_ritual, location_type=LOLocation, item_type=LOItem
+    )
+
+    roof.add_event(
+        "RITUAL_CIRCLE_METEOR_STRIKE", "TRUE_FINAL_ENDING", rule=can_true_final, location_type=LOLocation, item_type=LOItem
+    )
+
+    roof.add_event(
+        "RITUAL_CIRCLE_PERFECT_FLEE", "SCREAMING_SKIES_ENDING", rule=can_perform_perfect_ritual, location_type=LOLocation, item_type=LOItem
     )

@@ -6,9 +6,10 @@ from rule_builder.options import OptionFilter
 from worlds.look_outside.locations import get_location_name
 
 from .options import PlayerGoal
-from worlds.look_outside.regions_consts import all_regions_table,\
-    can_nestor_rafta, can_open_any_simple_lock, can_access_basement, can_leigh_quest
-from rule_builder.rules import Has, And, HasAll
+
+from worlds.look_outside.regions_consts import all_regions_table
+from worlds.look_outside.rules_consts import can_nestor_rafta, can_open_any_simple_lock, can_access_basement, can_leigh_quest
+from rule_builder.rules import Has, And, HasAll, HasAny
 
 if TYPE_CHECKING:
     from .__init__ import LookOutsideWorld
@@ -120,5 +121,33 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     world.set_rule(world.get_location(get_location_name("APT_28_SHRIMP_KNIGHT_AUDREY_LOOT", world)), Has("Audrey"))
 
 
+flawed_ritual_endings = {"FLAWED_RITUAL_ENDING", "SCREAMING_SKIES_ENDING", "ETERNAL_FATE_ENDING", "XIN_AMON_ENDING", "MASK_ENDING"}
+
+perfect_rituals = {"PERFECT_RITUAL_ENDING", "PROMISE_ENDING", "TRUE_FINAL_ENDING"}
+
+all_rituals = {*flawed_ritual_endings, *perfect_rituals, }
+
+all_roof_endings = {*all_rituals, "FAILED_RITUAL_ENDING"}
+
+all_endings = {*all_roof_endings, "UNITY_ENDING"} # todo: add crossword ending
+
 def set_completion_condition(world: LookOutsideWorld) -> None:
-    world.set_completion_rule(Has("Roof Access Key"))
+    player_goal = world.options.goal
+    if player_goal == PlayerGoal.option_all_endings:
+        world.set_completion_rule(HasAll(*all_endings))
+    elif player_goal == PlayerGoal.option_all_roof_endings:
+        world.set_completion_rule(HasAll(*all_roof_endings))
+    elif player_goal == PlayerGoal.option_any_partial_ritual_ending:
+        world.set_completion_rule(HasAny(*all_rituals))
+    elif player_goal == PlayerGoal.option_any_perfect_ritual_ending:
+        world.set_completion_rule(HasAny(*perfect_rituals))
+    elif player_goal == PlayerGoal.option_screaming_skies:
+        world.set_completion_rule(Has("SCREAMING_SKIES_ENDING"))
+    elif player_goal == PlayerGoal.option_promise:
+        world.set_completion_rule(Has("PROMISE_ENDING"))
+    elif player_goal == PlayerGoal.option_mask:
+        world.set_completion_rule(Has("MASK_ENDING"))
+    elif player_goal == PlayerGoal.option_xin_amon:
+        world.set_completion_rule(Has("XIN_AMON_ENDING"))
+    elif player_goal == PlayerGoal.option_unity:
+        world.set_completion_rule(Has("UNITY_ENDING"))

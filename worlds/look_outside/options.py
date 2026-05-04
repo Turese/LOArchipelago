@@ -4,14 +4,15 @@ from dataclasses import dataclass
 class PlayerGoal(Choice):
     """Ending of the game required to win."""
     display_name = "Ending Goal"
-    option_any_ritual_ending = 0
+    option_any_partial_ritual_ending = 0
+    option_any_perfect_ritual_ending = 1
     option_screaming_skies = 2
-    option_any_perfect_ritual_ending = 3
-    option_promise = 4
-    option_mask = 5
-    option_xin_amon = 6
+    option_promise = 3
+    option_mask = 4
+    option_xin_amon = 5
+    option_unity = 6
     option_all_roof_endings = 7
-    option_all_endings = 8
+    option_all_endings = 9
     default = 3
 
 class IncludeArms(Choice):

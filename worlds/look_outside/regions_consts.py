@@ -1,61 +1,14 @@
-from rule_builder.rules import Has, HasAll, Rule, Or, And
+from rule_builder.rules import Has, HasAll, Rule, And, Or
 
-from worlds.look_outside.items import item_name_groups, num_multiple_items
+from worlds.look_outside.items import num_multiple_items
 
-from .options import PlayerGoal
 from typing_extensions import NamedTuple
-from worlds.look_outside.locations_consts import APT_33_LOCATIONS
+from worlds.look_outside.rules_consts import can_clear_with_herbicide, can_leigh_quest, can_nestor_rafta,\
+can_open_any_simple_lock, can_access_stairwell, can_clear_with_herbicide,\
+can_clear_with_sapper_charge, can_access_elevator
 
-can_access_roof = Has("Roof Access Key")
 
-# Perfect offering requirements
-has_complete_manuscript = Has("Progressive Loose Manuscript", count=2)
-has_painting = Has("Correct Painting")
-has_photo = Has("Correct Photograph")
-has_cctv = Has("Correct CCTV Recording")
-
-# Any perfect offering (at least one of the four, with correct counts)
-has_any_perfect_offering = Or(
-    has_complete_manuscript, has_painting, has_photo, has_cctv)
-# All perfect offerings (all four, with correct counts)
-has_all_perfect_offerings = And(
-    has_complete_manuscript, has_painting, has_photo, has_cctv)
-
-can_open_any_simple_lock = Has("Lockpicks")  # todo: count keys
-can_access_stairwell = Has("Padlock Key")
-
-can_clear_with_herbicide = Has("Herbicide", count=num_multiple_items["Herbicide"])
-can_clear_with_sapper_charge = Has("Sapper Charge", count=num_multiple_items["Sapper Charge"])
-
-can_access_elevator = Has("Elevator Activation")
-can_access_floor_2_east = can_access_stairwell
-can_access_floor_2_west = can_access_elevator
-can_awaken_sibyl = HasAll("Telescope", "Apt. 35 Key")
-can_access_basement = Or(can_access_elevator, And(
-    can_access_stairwell, Has("Basement Key")))
-can_access_floor_4 = can_access_elevator
-can_access_metro = And(can_access_floor_4, Has("Metro Ticket"))
-can_nestor_rafta = And(HasAll(*item_name_groups["NESTOR_QUEST_INTRO"]), Has("MET_RAFTA"), Has("MET_NESTOR"))
-can_leigh_quest = And(Has("Leigh"), Has("Phone"))
-
-can_perform_flawed_ritual = And(can_access_roof, has_any_perfect_offering)
-can_perform_perfect_ritual = And(can_access_roof, has_all_perfect_offerings)
-can_true_final = And(can_perform_perfect_ritual, Has("Meteor Strike"))
-can_keep_promise = And(can_perform_perfect_ritual, can_awaken_sibyl)
-can_perform_mask_ritual = And(
-    can_access_roof, HasAll(*item_name_groups["MASK_OFFERING"]))
-
-# Eternal fate = all guinea pig rituals shy of xin-amon
-can_perform_eternal_fate_ritual = And(
-    Has("Guinea Pig"), can_perform_flawed_ritual)
-# Xin Amon ritual: all perfect offerings except CCTV, and Guinea Pig
-can_perform_xin_amon_ritual = And(
-    can_perform_eternal_fate_ritual, has_complete_manuscript, has_painting, has_photo)
-
-can_words_of_power = And(
-    HasAll("Book of Crossword Puzzles", "Pluto Disc"), can_access_basement)
-
-# planet rules
+# planet rules go here because i use them here
 
 stairwell_planet_lock = Or(
     HasAll("Mars Disc", "Earth Disc"), HasAll("Sun Disc", "Negative Disc"))
@@ -93,6 +46,31 @@ unlabeled_planet_lock = And(
 
 mailroom_planet_lock = HasAll("Mars Disc", "Jupiter Disc", "Uranus Disc", "Neptune Disc", "Pluto Disc")
 
+security_room_solution_1 = HasAll("Sun Disc", "Pluto Disc", "Mars Disc", "Neptune Disc")
+
+security_room_solution_2 = HasAll("Sun Disc", "Pluto Disc", "Negative Disc", "Uranus Disc")
+
+security_room_solution_3 = HasAll("Mars Disc", "Neptune Disc", "Negative Disc", "Uranus Disc")
+
+security_room_solution_4 = HasAll("Earth Disc", "Uranus Disc", "Sun Disc", "Neptune Disc")
+
+security_room_solution_5 = HasAll("Earth Disc", "Pluto Disc", "Neptune Disc", "Negative Disc")
+
+security_room_planet_lock = Or(
+    security_room_solution_1, 
+    security_room_solution_2,
+    security_room_solution_3,
+    security_room_solution_4,
+    security_room_solution_5,
+)
+
+security_closet_planet_lock = Or(
+    And(security_room_solution_3, HasAll("Sun Disc", "Pluto Disc")),
+    And(security_room_solution_2, HasAll("Mars Disc", "Neptune Disc")),
+    And(security_room_solution_1, HasAll("Negative Disc", "Uranus Disc")),
+)
+
+ 
 
 class ExitData(NamedTuple):
     """
@@ -439,7 +417,9 @@ ground_regions_table: dict[str, RegionData] = {
             "OFFICE_PLANET_LOCK": ExitData("OFFICE_LOCKED_ROOM", jaspers_room_planet_lock),
             "OFFICE_BATHROOM_DOOR": ExitData("OFFICE_BATHROOM", can_clear_with_herbicide),
             "CORNER_STORE_DOOR": ExitData("CORNER_STORE", Has("Store Key")),
-            "MAILROOM_SATURN_DOOR": ExitData("MAILROOM_STORAGE", mailroom_planet_lock)
+            "MAILROOM_SATURN_DOOR": ExitData("MAILROOM_STORAGE", mailroom_planet_lock),
+            "SOUTH_JANITOR_CLOSET_DOOR": ExitData("GF_JANITOR_CLOSET_SOUTH", Has("Janitor Key Ring")),
+            "NORTH_JANITOR_CLOSET_DOOR": ExitData("GF_JANITOR_CLOSET_NORTH", Has("Janitor Key Ring"))
         }),
     "MAILROOM_STORAGE": RegionData(),
     "OFFICE_BATHROOM": RegionData(),
@@ -482,32 +462,56 @@ ground_regions_table: dict[str, RegionData] = {
     "SHADE_CACHE": RegionData(),
     "MEMORIAL_CACHE": RegionData(),
     "LANDLORDS_APARTMENT_PHASE_5": RegionData(),
-    "LANDLORDS_BEDROOM_HALL_CACHE": RegionData()
+    "LANDLORDS_BEDROOM_HALL_CACHE": RegionData(),
+    "GF_JANITOR_CLOSET_SOUTH": RegionData(),
+    "GF_JANITOR_CLOSET_NORTH": RegionData()
 }
 
 basement_regions_table: dict[str, RegionData] = {
-    "BASEMENT_EAST": RegionData()
+    "BASEMENT_EAST": RegionData(exits={
+        "SECURITY_ROOM_PLANET_DOOR": ExitData("SECURITY_ROOM", security_room_planet_lock),
+        "STEVE_APARTMENT": ExitData("STEVE_APARTMENT", Has("Antoine's Key")), # todo: hardmode lock
+        "APT_B1_ARTHROPOD_DOOR": ExitData("APT_B1_ARTHROPOD")
+    }),
+    "APT_B1_ARTHROPOD": RegionData(
+        exits={
+            "ARTHROPOD_BATHROOM_DOOR": ExitData("APT_B1_ARTHROPOD_BATHROOM", HasAll("Clyde's Key", "Jennifer's Key", "Auguste's Key")) # todo: hardmode lock
+        }
+    ),
+    "APT_B1_ARTHROPOD_BATHROOM": RegionData(),
+    "STEVE_APARTMENT": RegionData(),
+    "SECURITY_ROOM": RegionData(exits={
+        "SECURITY_STORAGE_PLANET_DOOR": ExitData("SECURITY_STORAGE", security_closet_planet_lock),
+    }),
+    "SECURITY_STORAGE": RegionData(),
+    "BASEMENT_WEST_PARKING_GARAGE": RegionData(exits={
+        "BASEMENT_WEST_EAST_DOOR": ExitData("BASEMENT_EAST"),
+        "GARBAGE_ROOM_ENTRANCE": ExitData("GARBAGE_ROOM")
+    }),
+    "GARBAGE_ROOM": RegionData(exits={
+        "PARKING_GARAGE_EXIT": ExitData("BASEMENT_WEST_PARKING_GARAGE"),
+        "B_ELEVATOR_EXIT:": ExitData("ELEVATOR")
+    })
 }
 
 misc_regions_table: dict[str, RegionData] = {
     "STAIRWELL": RegionData(
         exits={
-            "ROOF_DOOR": ExitData("ROOF", can_access_roof),
+            "ROOF_DOOR": ExitData("ROOF", Has("Roof Access Key")),
             "FLOOR_2_STAIRWELL_DOOR": ExitData("FLOOR_2_EAST"),
             # floor 1 is skipped here since it unlocks from the other side
             "GROUND_FLOOR_STAIRWELL_DOOR": ExitData("GROUND_FLOOR_HALL_EAST", stairwell_planet_lock),
             "BASEMENT_STAIRWELL_DOOR": ExitData("BASEMENT_EAST", Has("Basement Key")),
         }
     ),
-    "ROOF": RegionData(
-        exits={}
-    ),
+    "ROOF": RegionData(),
     "ELEVATOR": RegionData(
         exits={
             "ELEVATOR_FLOOR_3_EXIT": ExitData("FLOOR_3_HALL", can_access_elevator),
             "ELEVATOR_FLOOR_2_EXIT": ExitData("FLOOR_2_WEST", can_access_elevator),
             "ELEVATOR_FLOOR_1_EXIT": ExitData("FLOOR_1_MAZE", can_access_elevator),
             "ELEVATOR_GROUND_FLOOR_EXIT": ExitData("MAILROOM_SHIPPING_WEST_HALL", can_access_elevator),
+            "ELEVATOR_BASEMENT_EXIT": ExitData("GARBAGE_ROOM", can_access_elevator)
         }
     )
 
@@ -524,5 +528,4 @@ all_regions_table = {
     **f1_regions_table,
     **ground_regions_table,
     **basement_regions_table
-
 }
