@@ -123,3 +123,25 @@ def create_events(world: LookOutsideWorld) -> None:
     roof.add_event(
         "RITUAL_CIRCLE_PERFECT_FLEE", "SCREAMING_SKIES_ENDING", rule=can_perform_perfect_ritual, location_type=LOLocation, item_type=LOItem
     )
+
+    # large shades
+
+    world.get_region("FLOOR_3_HALL").add_event(
+        "FLOOR_3_SHADE", "DEFEATED_FLOOR_3_SHADE", location_type=LOLocation, item_type=LOItem)
+
+    # F2 east and west arent connected so they get separate shade entries
+    world.get_region("FLOOR_2_EAST").add_event(
+        "FLOOR_2_SHADE_EASTSIDE", "DEFEATED_FLOOR_2_SHADE_ON_EAST_SIDE", location_type=LOLocation, item_type=LOItem)
+    
+    world.get_region("FLOOR_2_WEST").add_event(
+        "FLOOR_2_SHADE_WESTSIDE", "DEFEATED_FLOOR_2_SHADE_ON_WEST_SIDE", location_type=LOLocation, item_type=LOItem)
+    
+    world.get_region("FLOOR_1_MAZE").add_event(
+        "FLOOR_1_SHADE", "DEFEATED_FLOOR_1_SHADE", location_type=LOLocation, item_type=LOItem)
+    
+    world.get_region("GROUND_FLOOR_HALL_EAST").add_event(
+        "GF_SHADE", "DEFEATED_GF_SHADE", location_type=LOLocation, item_type=LOItem)
+
+    world.get_region("BASEMENT_EAST").add_event(
+        "BASEMENT_EAST_SHADE", "DEFEATED_BASEMENT_SHADE", location_type=LOLocation, item_type=LOItem)
+    

@@ -8,8 +8,16 @@ can_open_any_simple_lock, can_access_stairwell, can_clear_with_herbicide,\
 can_clear_with_sapper_charge, can_access_elevator
 
 
-# planet rules go here because i use them here
+# shade rules go here because i use them here
+can_access_all_large_shades = And(
+    HasAll("DEFEATED_FLOOR_3_SHADE", "DEFEATED_FLOOR_1_SHADE", "DEFEATED_GF_SHADE", "DEFEATED_BASEMENT_SHADE"),
+    Or(
+        Has("DEFEATED_FLOOR_2_SHADE_ON_EAST_SIDE"), 
+        Has("DEFEATED_FLOOR_2_SHADE_ON_WEST_SIDE")
+    )
+)
 
+# planet rules go here because i use them here
 stairwell_planet_lock = Or(
     HasAll("Mars Disc", "Earth Disc"), HasAll("Sun Disc", "Negative Disc"))
 planetarium_lock = HasAll(
@@ -540,8 +548,10 @@ misc_regions_table: dict[str, RegionData] = {
             # floor 1 is skipped here since it unlocks from the other side
             "GROUND_FLOOR_STAIRWELL_DOOR": ExitData("GROUND_FLOOR_HALL_EAST", stairwell_planet_lock),
             "BASEMENT_STAIRWELL_DOOR": ExitData("BASEMENT_EAST", Has("Basement Key")),
+            "STAIRWELL_SECRET_DOOR": ExitData("UNDER_THE_STAIRS", can_access_all_large_shades)
         }
     ),
+    "UNDER_THE_STAIRS": RegionData(),
     "ROOF": RegionData(),
     "ELEVATOR": RegionData(
         exits={

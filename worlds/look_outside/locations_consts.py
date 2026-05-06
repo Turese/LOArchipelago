@@ -1754,6 +1754,19 @@ FLOOR_4_STATION_LOCATIONS = {
     "F4_OLD_TAPE": LocationData("F4 Station Lower Closet - Item 2", LocationCat.OVERWORLD_ITEM, 5620)
 }
 
+"""
+--- STAIRWELL LOCATIONS --- 
+"""
+
+STAIRWELL_LOCATIONS = {
+    "STAIRWELL_POOL_CUE": LocationData("Stairwell - Item At Bottom Level", LocationCat.OVERWORLD_ITEM, 5701, difficulty_lock= {DL.EXPLORER}),
+}
+
+UNDER_THE_STAIRS_LOCATIONS = {
+    "STAIRS_SPIDER_RECRUIT": LocationData("Under the Stairs - Recruit Spider", LocationCat.RECRUIT, 5702),
+    "STAIRS_CRAWLING_SHADE_COMBAT_VICTORY": LocationData("Under the Stairs - Slay Crawling Shade", LocationCat.COMBAT_VICTORY, 5703)
+}
+
 location_table: dict[str, LocationData] = {
     **VIDEO_GAME_LOCATIONS,
     **F3_HALL_LOCATIONS,
@@ -1827,7 +1840,9 @@ location_table: dict[str, LocationData] = {
     **SECURITY_LOCATIONS,
     **SECURITY_STORAGE_LOCATIONS,
     **FLOOR_4_LOCATIONS,
-    **FLOOR_4_STATION_LOCATIONS
+    **FLOOR_4_STATION_LOCATIONS,
+    **STAIRWELL_LOCATIONS,
+    **UNDER_THE_STAIRS_LOCATIONS
 }
 
 region_locs: dict[str, set[str]] = {
@@ -1969,8 +1984,12 @@ region_locs: dict[str, set[str]] = {
     "GARAGE_UTILITY_ROOM_BLACKOUT": BLACKOUT_LOCATIONS.keys(),
     "SECURITY_ROOM": SECURITY_LOCATIONS.keys(),
     "SECURITY_STORAGE": SECURITY_STORAGE_LOCATIONS.keys(),
+    # FLOOR 4
     "FLOOR_4": FLOOR_4_LOCATIONS.keys(),
-    "FLOOR_4_STATION": FLOOR_4_STATION_LOCATIONS.keys()
+    "FLOOR_4_STATION": FLOOR_4_STATION_LOCATIONS.keys(),
+    # STAIRWELL
+    "STAIRWELL": STAIRWELL_LOCATIONS.keys(),
+    "UNDER_THE_STAIRS": UNDER_THE_STAIRS_LOCATIONS.keys()
 }
 
 def get_region_to_location():
