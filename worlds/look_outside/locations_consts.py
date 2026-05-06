@@ -66,13 +66,14 @@ F3_HALL_LOCATIONS: dict[str, LocationData] = {
     "F3_ONLOOKER_STAIRWELL_COMBAT_VICTORY": LocationData("Floor 3 Hall - Slay Onlookers by Stairwell Door", LocationCat.COMBAT_VICTORY, 105),
     "F3_CLINT_COMBAT_VICTORY": LocationData("Floor 3 Hall - Slay Clint (Day 2-4)", LocationCat.COMBAT_VICTORY, 106),
     "F3_LOUIS_LOWER_HALF_COMBAT_VICTORY": LocationData("Floor 3 Hall - Slay Louis' Lower Half", LocationCat.COMBAT_VICTORY, 107),
-    "F3_MASKED_SHADOW_GIFT": LocationData("Floor 3 Hall - Gift from Masked Shadow", LocationCat.EVENT_ITEM, 108),
+    "F3_MASKED_SHADOW_GIFT": LocationData("Masked Shadow - Second Gift", LocationCat.EVENT_ITEM, 108),
     "F3_HAND_WORMS_COMBAT_VICTORY": LocationData("Floor 3 Hall - Slay Hand Worms", LocationCat.COMBAT_VICTORY, 109),
     "F3_VENDING_MACHINE_CHIPS": LocationData("Floor 3 Hall - Vending Machine Item 1", LocationCat.MERCHANT, 110),
     "F3_VENDING_MACHINE_SPICY": LocationData("Floor 3 Hall - Vending Machine Item 2", LocationCat.MERCHANT, 111),
     "F3_VENDING_MACHINE_GUMMI_BEARS": LocationData("Floor 3 Hall - Vending Machine Item 3", LocationCat.MERCHANT, 112),
     "F3_VENDING_MACHINE_CHEESE": LocationData("Floor 3 Hall - Vending Machine Item 4", LocationCat.MERCHANT, 113),
-    "F3_VENDING_MACHINE_ONIONOS": LocationData("Floor 3 Hall - Vending Machine Item 5", LocationCat.MERCHANT, 114)
+    "F3_VENDING_MACHINE_ONIONOS": LocationData("Floor 3 Hall - Vending Machine Item 5", LocationCat.MERCHANT, 114),
+    "MASKED_SHADOW_TONGUE": LocationData("Masked Shadow - First Gift", LocationCat.EVENT_ITEM, 115)
 }
 
 APT_30_MAIN_LOCATIONS: dict[str, LocationData] = {
@@ -1723,6 +1724,35 @@ SECURITY_STORAGE_LOCATIONS = {
     "SECURITY_STORAGE_COMBAT_KNIFE": LocationData("Security Storage - Item on East Counter 2", LocationCat.OVERWORLD_ITEM, 5514)
 }
 
+"""
+--- F4 LOCATIONS --- 
+"""
+
+FLOOR_4_LOCATIONS = {
+    "F4_BLOOD_LEGS_COMBAT_VICTORY": LocationData("F4 - Slay Blood Legs", LocationCat.COMBAT_VICTORY, 5601),
+    "F4_BLOOD_BODY_COMBAT_VICTORY": LocationData("F4 - Slay Blood Body", LocationCat.COMBAT_VICTORY, 5602),
+    "F4_STUMBLING_SHADE_COMBAT_VICTORY": LocationData("F4 Metro - Slay Stumbling Shade", LocationCat.COMBAT_VICTORY, 5603),
+    "F4_TRASH_CAN_1": LocationData("F4 Metro - Trash Can 1", LocationCat.LOOT, 5604),
+    "F4_TRASH_CAN_2": LocationData("F4 Metro - Trash Can 2", LocationCat.LOOT, 5605),
+    "F4_LANTERN_COMBAT_VICTORY": LocationData("F4 Metro - Slay Lantern", LocationCat.COMBAT_VICTORY, 5606),
+    "F4_DARK_GLOW_COMBAT_VICTORY": LocationData("F4 Metro - Slay Dark Glow", LocationCat.COMBAT_VICTORY, 5607),
+    "F4_TRASH_CAN_3": LocationData("F4 Metro - Trash Can 3", LocationCat.LOOT, 5608),
+    "F4_TRASH_CAN_4": LocationData("F4 Metro - Trash Can 4", LocationCat.LOOT, 5609),
+    "F4_TRASH_CAN_5": LocationData("F4 Metro - Trash Can 5", LocationCat.LOOT, 5610),
+    "F4_TRASH_CAN_6": LocationData("F4 Metro - Trash Can 6", LocationCat.LOOT, 5611),
+}
+
+FLOOR_4_STATION_LOCATIONS = {
+    "F4_TRASH_CAN_7": LocationData("F4 Station - Trash Can 1", LocationCat.LOOT, 5612),
+    "F4_TRASH_CAN_8": LocationData("F4 Station - Trash Can 2", LocationCat.LOOT, 5613),
+    "F4_SADIPEDE_COMBAT_VICTORY": LocationData("F4 Station Upper - Slay Sadipede", LocationCat.FRIENDLY_FIRE, 5614),
+    "F4_SADIPEDE_COMBAT_LOSS": LocationData("F4 Station Upper - Get Beat Up By Sadipede", LocationCat.EVENT_ITEM, 5615),
+    "F4_AXE": LocationData("F4 Station Upper Closet - Item 1", LocationCat.OVERWORLD_ITEM, 5616),
+    "F4_HEALING_SPRAY": LocationData("F4 Station Upper Closet - Item 2", LocationCat.OVERWORLD_ITEM, 5617),
+    "F4_THROWING_DARTS": LocationData("F4 Station Upper Closet - Item 3", LocationCat.OVERWORLD_ITEM, 5618),
+    "F4_STIMULANT": LocationData("F4 Station Lower Closet - Item 1", LocationCat.OVERWORLD_ITEM, 5619),
+    "F4_OLD_TAPE": LocationData("F4 Station Lower Closet - Item 2", LocationCat.OVERWORLD_ITEM, 5620)
+}
 
 location_table: dict[str, LocationData] = {
     **VIDEO_GAME_LOCATIONS,
@@ -1795,7 +1825,9 @@ location_table: dict[str, LocationData] = {
     **GARAGE_LOCATIONS,
     **BLACKOUT_LOCATIONS,
     **SECURITY_LOCATIONS,
-    **SECURITY_STORAGE_LOCATIONS
+    **SECURITY_STORAGE_LOCATIONS,
+    **FLOOR_4_LOCATIONS,
+    **FLOOR_4_STATION_LOCATIONS
 }
 
 region_locs: dict[str, set[str]] = {
@@ -1937,6 +1969,8 @@ region_locs: dict[str, set[str]] = {
     "GARAGE_UTILITY_ROOM_BLACKOUT": BLACKOUT_LOCATIONS.keys(),
     "SECURITY_ROOM": SECURITY_LOCATIONS.keys(),
     "SECURITY_STORAGE": SECURITY_STORAGE_LOCATIONS.keys(),
+    "FLOOR_4": FLOOR_4_LOCATIONS.keys(),
+    "FLOOR_4_STATION": FLOOR_4_STATION_LOCATIONS.keys()
 }
 
 def get_region_to_location():

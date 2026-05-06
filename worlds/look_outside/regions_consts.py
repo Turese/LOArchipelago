@@ -549,9 +549,13 @@ misc_regions_table: dict[str, RegionData] = {
             "ELEVATOR_FLOOR_2_EXIT": ExitData("FLOOR_2_WEST", can_access_elevator),
             "ELEVATOR_FLOOR_1_EXIT": ExitData("FLOOR_1_MAZE", can_access_elevator),
             "ELEVATOR_GROUND_FLOOR_EXIT": ExitData("MAILROOM_SHIPPING_WEST_HALL", can_access_elevator),
-            "ELEVATOR_BASEMENT_EXIT": ExitData("GARBAGE_ROOM", can_access_elevator)
-        }
-    )
+            "ELEVATOR_BASEMENT_EXIT": ExitData("GARBAGE_ROOM", can_access_elevator),
+            "ELEVATOR_FLOOR_4_EXIT": ExitData("FLOOR_4", can_access_elevator)
+        }),
+    "FLOOR_4": RegionData(exits={
+        "FLOOR_4_TURNSTILE": ExitData("FLOOR_4_STATION", Has("Metro Ticket")),
+    }),
+    "FLOOR_4_STATION": RegionData()
 
 }
 
