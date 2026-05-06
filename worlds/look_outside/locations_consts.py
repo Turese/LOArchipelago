@@ -27,11 +27,6 @@ class LocationData(NamedTuple):
     difficulty_lock: set[DL] = set()
     cursed_name: str | None = None
 
-location_name_groups: dict[str, set[str]] = {
-    "SAFE": {},
-    "RUSTY_CROWN": {},
-}
-
 """
 --- F1 LOCATIONS --- 
 """
@@ -1767,6 +1762,13 @@ UNDER_THE_STAIRS_LOCATIONS = {
     "STAIRS_CRAWLING_SHADE_COMBAT_VICTORY": LocationData("Under the Stairs - Slay Crawling Shade", LocationCat.COMBAT_VICTORY, 5703)
 }
 
+ROOF_LOCATIONS = {
+    "DREAM_EATER_COMBAT_VICTORY": LocationData("Roof - Slay Dream Eater", LocationCat.COMBAT_VICTORY, 5801),
+    "SPINE_TINGLER_COMBAT_VICTORY": LocationData("Roof - Slay Spine Tingler", LocationCat.COMBAT_VICTORY, 5802),
+    "HUNDRED_MAWS_COMBAT_VICTORY": LocationData("Roof - Slay Hundred Maws", LocationCat.COMBAT_VICTORY, 5803),
+    "CRIMSON_SCOURGE_COMBAT_VICTORY": LocationData("Roof - Slay Crimson Scourge", LocationCat.COMBAT_VICTORY, 5804)
+}
+
 location_table: dict[str, LocationData] = {
     **VIDEO_GAME_LOCATIONS,
     **F3_HALL_LOCATIONS,
@@ -1842,7 +1844,8 @@ location_table: dict[str, LocationData] = {
     **FLOOR_4_LOCATIONS,
     **FLOOR_4_STATION_LOCATIONS,
     **STAIRWELL_LOCATIONS,
-    **UNDER_THE_STAIRS_LOCATIONS
+    **UNDER_THE_STAIRS_LOCATIONS,
+    **ROOF_LOCATIONS
 }
 
 region_locs: dict[str, set[str]] = {
@@ -1989,7 +1992,8 @@ region_locs: dict[str, set[str]] = {
     "FLOOR_4_STATION": FLOOR_4_STATION_LOCATIONS.keys(),
     # STAIRWELL
     "STAIRWELL": STAIRWELL_LOCATIONS.keys(),
-    "UNDER_THE_STAIRS": UNDER_THE_STAIRS_LOCATIONS.keys()
+    "UNDER_THE_STAIRS": UNDER_THE_STAIRS_LOCATIONS.keys(),
+    "ROOF": ROOF_LOCATIONS.keys()
 }
 
 def get_region_to_location():
@@ -2004,3 +2008,8 @@ def get_region_to_location():
     return mapping
 
 location_to_region: dict[str, str] = get_region_to_location()
+
+location_name_groups: dict[str, set[str]] = {
+    "SAFE": {},
+    "RUSTY_CROWN": {},
+}
