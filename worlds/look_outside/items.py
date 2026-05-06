@@ -381,12 +381,12 @@ main_item_table: dict[str, ItemData] = {
     "Reptile Football": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 428),
     "Auntie Wilma's Crossword Challenge": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 429),
     "Unlabeled Cartridge": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 430),
-    "Dustin Figure": ItemData(ItemCat.ITEM, {ItemTag.UNIQUE}, 433),
-    "Ratavia Figure": ItemData(ItemCat.ITEM, {ItemTag.UNIQUE}, 434),
-    "Musk Figure": ItemData(ItemCat.ITEM, {ItemTag.UNIQUE}, 435),
-    "Jacket Figure": ItemData(ItemCat.ITEM, {ItemTag.UNIQUE}, 436),
-    "Lute Figure": ItemData(ItemCat.ITEM, {ItemTag.UNIQUE}, 437),
-    "Cerulean Figure": ItemData(ItemCat.ITEM, {ItemTag.UNIQUE}, 438),
+    "Dustin Figure": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 433),
+    "Ratavia Figure": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 434),
+    "Musk Figure": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 435),
+    "Jacket Figure": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 436),
+    "Lute Figure": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 437),
+    "Cerulean Figure": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 438),
     "green key": ItemData(ItemCat.ITEM, {ItemTag.BREAKABLE_KEY}, 651),
     "red key": ItemData(ItemCat.ITEM, {ItemTag.BREAKABLE_KEY}, 652),
     "yellow key": ItemData(ItemCat.ITEM, {ItemTag.BREAKABLE_KEY}, 653),
@@ -759,7 +759,8 @@ misc_table: dict[str, ItemData] = {
     "Player's Right Arm": ItemData(ItemCat.MISC, {ItemTag.USEFUL}, 20),
     "Crafting Kit": ItemData(ItemCat.MISC, {ItemTag.USEFUL}, 21),
     "Book of Crossword Puzzles": ItemData(ItemCat.MISC, {ItemTag.CHECK_GATE}, 22),
-    "Elevator Activation": ItemData(ItemCat.MISC, {ItemTag.CHECK_GATE}, 23)
+    "Elevator Activation": ItemData(ItemCat.MISC, {ItemTag.CHECK_GATE}, 23),
+    "Sewer Grates Lowered": ItemData(ItemCat.MISC, {ItemTag.CHECK_GATE}, 24),
 }
 
 resource_pack_table: dict[str, ItemData] = {}
@@ -788,7 +789,13 @@ item_name_groups: dict[str, set[str]] = {
                          "Testarmor mk2",
                          "Testsword",
                          "Testsword mk2"},
-     "ARM": {"Player's Left Arm", "Player's Right Arm"},
+    "KOTD_FIGURE": {"Dustin Figure",
+                    "Ratavia Figure",
+                    "Musk Figure",
+                    "Jacket Figure",
+                    "Lute Figure",
+                    "Cerulean Figure"},
+    "ARM": {"Player's Left Arm", "Player's Right Arm"},
     "NESTOR_QUEST_INTRO": {"Fountain Pen",
                            "Stationery",
                            "Love Letter"},  # should raftas part have to be done before nestors can?

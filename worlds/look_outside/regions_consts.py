@@ -329,7 +329,8 @@ f2_east_regions_table = {
         "APT_22_DOOR": ExitData("APT_22_HARRIET"),
         "LEIGHS_APARTMENT_DOOR": ExitData("LEIGHS_APARTMENT"),
         "LEIGHS_APARTMENT_QUEST_DOOR": ExitData("LEIGHS_APARTMENT_QUEST", can_leigh_quest),
-        "APT_24_DOOR": ExitData("APT_24_EUGENE_SHOP")
+        "APT_24_DOOR": ExitData("APT_24_EUGENE_SHOP"),
+        "F2_STAIRWELL_EXIT": ExitData("STAIRWELL")
     }),
     "APT_20_JEANNE": RegionData(),
     "APT_20_JEANNE_HYDRA": RegionData(),
@@ -471,23 +472,60 @@ basement_regions_table: dict[str, RegionData] = {
     "BASEMENT_EAST": RegionData(exits={
         "SECURITY_ROOM_PLANET_DOOR": ExitData("SECURITY_ROOM", security_room_planet_lock),
         "STEVE_APARTMENT": ExitData("STEVE_APARTMENT", Has("Antoine's Key")), # todo: hardmode lock
-        "APT_B1_ARTHROPOD_DOOR": ExitData("APT_B1_ARTHROPOD")
+        "APT_B1_ARTHROPOD_DOOR": ExitData("APT_B1_ARTHROPOD"),
+        "APT_B2_ANTOINE_DOOR": ExitData("APT_B2_ANTOINE"),
+        "B_STAIRWELL_EXIT": ExitData("STAIRWELL")
     }),
     "APT_B1_ARTHROPOD": RegionData(
         exits={
             "ARTHROPOD_BATHROOM_DOOR": ExitData("APT_B1_ARTHROPOD_BATHROOM", HasAll("Clyde's Key", "Jennifer's Key", "Auguste's Key")) # todo: hardmode lock
         }
     ),
+    "APT_B2_ANTOINE": RegionData(),
     "APT_B1_ARTHROPOD_BATHROOM": RegionData(),
-    "STEVE_APARTMENT": RegionData(),
+    "STEVE_APARTMENT": RegionData(
+        exits={
+            "STEVE_PLUTO_DOOR": ExitData("BASEMENT_STORAGE_PLUTO_ROOM", Has("Pluto Disc")),
+            "STEVE_LOCKED_DOOR": ExitData("BASEMENT_STORAGE_LOCKED_ROOM", can_open_any_simple_lock),
+            "STEVE_NEPTUNE_DOOR": ExitData("BASEMENT_STORAGE_NEPTUNE_ROOM", Has("Neptune Disc")),
+            "SEWER_ENTRANCE": ExitData("SEWER")
+        }
+    ),
+    "SEWER": RegionData(exits={
+        "SEWER_GRATES_WEST": ExitData("SEWER_WEST", Has("Sewer Grates Lowered")),
+    }),
+    "SEWER_WEST": RegionData(exits={"SEWER_GRATES_WEST_E_SIDE": ExitData("SEWER", Has("Sewer Grates Lowered"))}),
+    "BASEMENT_STORAGE_PLUTO_ROOM": RegionData(exits={
+        "CROSSWORD_SAFE": ExitData("CROSSWORD_DUNGEON", Has("Book of Crossword Puzzles"))
+    }),
+    "CROSSWORD_DUNGEON": RegionData(),
+    "BASEMENT_STORAGE_LOCKED_ROOM": RegionData(),
+    "BASEMENT_STORAGE_NEPTUNE_ROOM": RegionData(exits={
+        "NEPTUNE_ICE_BLOCK": ExitData("NEPTUNE_ROOM_ICE", Has("Ice Melt Salt", count=num_multiple_items["Ice Melt Salt"]))
+    }),
+    "NEPTUNE_ROOM_ICE": RegionData(),
     "SECURITY_ROOM": RegionData(exits={
         "SECURITY_STORAGE_PLANET_DOOR": ExitData("SECURITY_STORAGE", security_closet_planet_lock),
     }),
+    "BASEMENT_PIT_CHARAN": RegionData(exits={
+        "PIT_CHARAN_ROSE": ExitData("BASEMENT_PIT_CLEAR", Has("Rose"))
+    }),
+    "BASEMENT_PIT_CLEAR": RegionData(),
     "SECURITY_STORAGE": RegionData(),
     "BASEMENT_WEST_PARKING_GARAGE": RegionData(exits={
+        "JUMP_IN_PIT": ExitData("BASEMENT_PIT_CHARAN"),
         "BASEMENT_WEST_EAST_DOOR": ExitData("BASEMENT_EAST"),
-        "GARBAGE_ROOM_ENTRANCE": ExitData("GARBAGE_ROOM")
+        "GARBAGE_ROOM_ENTRANCE": ExitData("GARBAGE_ROOM"),
+        "BLACKOUT_MODE": ExitData("GARAGE_UTILITY_ROOM_BLACKOUT", can_access_elevator),
+        "BOILER_ROOM_FUNGAL_MAZE_DOOR": ExitData("BOILER_ROOM_FUNGAL_MAZE")
     }),
+    "BOILER_ROOM_FUNGAL_MAZE": RegionData(exits={
+        "BOILER_ROOM_NORTH_EXIT": ExitData("BASEMENT_WEST_PARKING_GARAGE"),
+        "BOILER_SEWER_CONNECTION": ExitData("SEWER_WEST"),
+        "BOILER_ROOM_STORAGE_DOOR": ExitData("BOILER_ROOM_STORAGE", can_clear_with_herbicide)
+    }),
+    "BOILER_ROOM_STORAGE": RegionData(),
+    "GARAGE_UTILITY_ROOM_BLACKOUT": RegionData(),
     "GARBAGE_ROOM": RegionData(exits={
         "PARKING_GARAGE_EXIT": ExitData("BASEMENT_WEST_PARKING_GARAGE"),
         "B_ELEVATOR_EXIT:": ExitData("ELEVATOR")

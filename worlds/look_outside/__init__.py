@@ -107,6 +107,8 @@ class LookOutsideWorld(CachedRuleBuilderWorld):
             filler_item = remaining_items[i % len(remaining_items)]
             self.multiworld.itempool += [self.create_item(filler_item)]
 
+        print(f"Added {len(self.multiworld.itempool)} items to the pool, filling {slots_to_fill} slots with filler items.")
+
         # todo: bring in filler items; floor 3 doesnt have enough locations for everything   
 
     def set_rules(self) -> None:

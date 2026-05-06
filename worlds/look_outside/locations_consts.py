@@ -32,11 +32,6 @@ location_name_groups: dict[str, set[str]] = {
     "RUSTY_CROWN": {},
 }
 
-# map game locations to their corresponding games
-video_game_requirements: dict[str, set[str]] = {
-    # "VIDEO_GAME_LOCATION_NAME": {"REQUIRED_ITEM_NAME"},
-}
-
 """
 --- F1 LOCATIONS --- 
 """
@@ -201,7 +196,7 @@ APT_32_TEETH_BEHIND_DOOR_KNOB: dict[str, LocationData] = {
     "APT_32_TRASH": LocationData("Apt. 32 Kitchen - Trash Can (Day 2-5)", LocationCat.OVERWORLD_ITEM, 336),
     "APT_32_KITCHEN_VINEGAR_1": LocationData("Apt. 32 Kitchen - Item on Floor by Trash 1 (Day 2-5)", LocationCat.OVERWORLD_ITEM, 337),
     "APT_32_KITCHEN_VINEGAR_2": LocationData("Apt. 32 Kitchen - Item on Floor by Trash 2 (Day 2-5)", LocationCat.OVERWORLD_ITEM, 338, difficulty_lock={DL.EXPLORER}),
-    }
+}
 
 APT_32_TEETH_LOCATIONS = {
     **APT_32_TEETH_LOCATIONS_MAIN,
@@ -1377,6 +1372,358 @@ LANDLORDS_WARZONE_LOCATIONS = {
     "LL_MINESWEEPER_12_MINE_PRIZE": LocationData("LL Minesweeper Tent - Prize for 12 Mines", LocationCat.EVENT_ITEM, 4126)
 }
 
+GF_NORTH_JANITORS_CLOSET_LOCATIONS = {
+    "GF_JANITOR_NORTH_COINS": LocationData("GF Janitor's Closet North - Item on Center Table 1", LocationCat.OVERWORLD_ITEM, 4201),
+    "GF_JANITOR_NORTH_COFFEE": LocationData("GF Janitor's Closet North - Item on Center Table 2", LocationCat.OVERWORLD_ITEM, 4202),
+    "GF_JANITOR_NORTH_CARDS": LocationData("GF Janitor's Closet North - Item on Center Table 3", LocationCat.OVERWORLD_ITEM, 4203),
+    "GF_JANITOR_NORTH_BEER": LocationData("GF Janitor's Closet North - Item on Center Table 4", LocationCat.OVERWORLD_ITEM, 4204),
+    "GF_ARROWED_SASH": LocationData("GF Janitor's Closet North - Item on West Table 1", LocationCat.OVERWORLD_ITEM, 4205, difficulty_lock= {DL.CURSED}),
+    "GF_MACKINAW_JACKET": LocationData("GF Janitor's Closet North - Item on West Table 2", LocationCat.OVERWORLD_ITEM, 4206, difficulty_lock= {DL.CURSED}),
+    "GF_JANITORS_TRASH": LocationData("GF Janitor's Closet North - Trash", LocationCat.LOOT, 4207),
+    "GF_JANITORS_RECRUIT_PAPINEAU": LocationData("GF Janitor's Closet North - Recruit Papineau", LocationCat.RECRUIT, 4208),
+    "GF_JANITORS_PAPINEAU_COMBAT_VICTORY": LocationData("GF Janitor's Closet North - Slay Papineau", LocationCat.FRIENDLY_FIRE, 4209),
+    "GF_JANITORS_FIRST_AID_KIT": LocationData("GF Janitor's Closet North - Item on Northwest Table 1", LocationCat.OVERWORLD_ITEM, 4210),
+    "GF_JANITORS_DUCT_TAPE": LocationData("GF Janitor's Closet North - Item on Northwest Table 2", LocationCat.OVERWORLD_ITEM, 4211),
+    "GF_JANITORS_HERBICIDE_1": LocationData("GF Janitor's Closet North - Item on Northeast Table 1", LocationCat.OVERWORLD_ITEM, 4212),
+    "GF_JANITORS_ACID_SPRAYER": LocationData("GF Janitor's Closet North - Item on Northeast Table 2", LocationCat.OVERWORLD_ITEM, 4213),
+    "GF_JANITORS_HERBICIDE_2": LocationData("GF Janitor's Closet North - Item on Northeast Table 3", LocationCat.OVERWORLD_ITEM, 4214),
+    "GF_KOTD_MOP_BUCKET_COMBAT_VICTORY": LocationData("GF Janitor's Closet North - Slay Mop and Bucket", LocationCat.COMBAT_VICTORY, 4215),
+    "GF_KOTD_JANITOR_COMBAT_VICTORY": LocationData("GF Janitor's Closet North - Slay Janitor", LocationCat.COMBAT_VICTORY, 4216),
+    "GF_KOTD_VACUUM_COMBAT_VICTORY": LocationData("GF Janitor's Closet North - Slay Vacuum", LocationCat.COMBAT_VICTORY, 4217),
+    "GF_KOTD_COMBAT_VICTORY": LocationData("GF Janitor's Closet North - Slay KOTD Characters", LocationCat.COMBAT_VICTORY, 4218),
+}
+
+GF_SOUTH_JANITORS_CLOSET_LOCATIONS = {
+    "GF_JANITOR_S_RATAVIA": LocationData("GF Janitor's Closet South - Item on Southeast Table", LocationCat.OVERWORLD_ITEM, 4219),
+    "GF_JANITOR_S_ICE_MELT_SALT": LocationData("GF Janitor's Closet South - Item on Northeast Table 1", LocationCat.OVERWORLD_ITEM, 4220),
+    "GF_JANITOR_S_SIMPLE_KEY": LocationData("GF Janitor's Closet South - Item on Northeast Table 2", LocationCat.OVERWORLD_ITEM, 4221)
+}
+"""
+--- BASEMENT FLOOR LOCATIONS --- 
+"""
+
+BASEMENT_EAST_LOCATIONS = {
+    "B_LARGE_SHADE_COMBAT_VICTORY": LocationData("Basement - Slay Large Shade '? ? ? ?? ? ?? ??'", LocationCat.COMBAT_VICTORY, 4301),
+    "B_MAURICE_COMBAT_VICTORY": LocationData("Basement - Slay (Some of) Maurice", LocationCat.COMBAT_VICTORY, 4302)
+}
+
+APT_B1_ARTHROPOD_MAIN_LOCATIONS = {
+    "B1_CLYDE_COMBAT_VICTORY": LocationData("Apt. B1 - Slay Clyde", LocationCat.COMBAT_VICTORY, 4401),
+    "B1_FRIDGE": LocationData("Apt. B1 - Fridge", LocationCat.LOOT, 4402),
+    "B1_FRYING_PAN": LocationData("Apt. B1 - Item on Dining Table", LocationCat.OVERWORLD_ITEM, 4403),
+    "B1_BEDROOM_JENNIFER_COMBAT_VICTORY": LocationData("Apt. B1 East Bedroom - Slay Jennifer", LocationCat.COMBAT_VICTORY, 4404),
+    "B1_BEDROOM_FUR_COAT": LocationData("Apt. B1 East Bedroom - Item on North Table", LocationCat.OVERWORLD_ITEM, 4405),
+    "B1_BEDROOM_SIDE_TABLE_W": LocationData("Apt. B1 East Bedroom - Drawer Loot", LocationCat.LOOT, 4406),
+    "B1_BEDROOM_ALBUM": LocationData("Apt. B1 East Bedroom - Item on South Table", LocationCat.OVERWORLD_ITEM, 4407),
+    "B1_BEDROOM_AUGUSTE_COMBAT_VICTORY": LocationData("Apt. B1 North Bedroom - Slay Auguste", LocationCat.COMBAT_VICTORY, 4408),
+}
+
+APT_B1_ARTHROPOD_BATHROOM_LOCATIONS = {
+    "B1_BEDROOM_FIRST_AID_KIT": LocationData("Apt. B1 North Bedroom - Item on Table", LocationCat.OVERWORLD_ITEM, 4409),
+    "B1_BATHROOM_FOOT_WORM_COMBAT_VICTORY": LocationData("Apt. B1 Bathroom - Slay Leg Mutant", LocationCat.COMBAT_VICTORY, 4410),
+    "B1_BATHROOM_KLYSOX": LocationData("Apt. B1 Bathroom - Item in Southeast Corner", LocationCat.OVERWORLD_ITEM, 4411),
+    "B1_BATHROOM_ANXIETY_MEDS": LocationData("Apt. B1 Bathroom - Item on Southwest Counter 1", LocationCat.OVERWORLD_ITEM, 4412),
+    "B1_BATHROOM_STIMULANT": LocationData("Apt. B1 Bathroom - Item on Southwest Counter 2", LocationCat.OVERWORLD_ITEM, 4413),
+    "B1_BATHROOM_URANUS_DISC": LocationData("Apt. B1 Bathroom - Item Near Toilet", LocationCat.OVERWORLD_ITEM, 4414, difficulty_lock= {DL.CURSED}),
+    "B1_BATHROOM_MEDICINE_CABINET": LocationData("Apt. B1 Bathroom - Medicine Cabinet Loot", LocationCat.LOOT, 4415)
+ }
+
+APT_B1_ARTHROPOD_LOCATIONS = {
+    **APT_B1_ARTHROPOD_MAIN_LOCATIONS,
+    **APT_B1_ARTHROPOD_BATHROOM_LOCATIONS
+ }
+
+
+
+APT_B2_ANTOINE_LOCATIONS = {
+    "B2_ANTOINE_COMBAT_VICTORY": LocationData("Apt. B2 - Slay Antoine", LocationCat.COMBAT_VICTORY, 4501),
+    "B2_MANGA_PILE_1": LocationData("Apt. B2 - Item on Floor North", LocationCat.OVERWORLD_ITEM, 4502),
+    "B2_DRAWINGS": LocationData("Apt. B2 - Item on North Table 1", LocationCat.OVERWORLD_ITEM, 4503),
+    "B2_TRILBY": LocationData("Apt. B2 - Item on North Table 2", LocationCat.OVERWORLD_ITEM, 4504),
+    "B2_FRIDGE": LocationData("Apt. B2 - Fridge", LocationCat.LOOT, 4505),
+    "B2_MANGA_PILE_2": LocationData("Apt. B2 - Item on Floor Near Bed", LocationCat.OVERWORLD_ITEM, 4506),
+    "B2_VINTAGE_GAME_CONSOLE": LocationData("Apt. B2 - Item on TV Table 1", LocationCat.OVERWORLD_ITEM, 4507),
+    "B2_ENERGY_DRINK": LocationData("Apt. B2 - Item on TV Table 2", LocationCat.OVERWORLD_ITEM, 4508),
+    "B2_BOCKY": LocationData("Apt. B2 - Item Near TV", LocationCat.OVERWORLD_ITEM, 4509),
+    "B2_MANGA_PILE_3": LocationData("Apt. B2 - Item on Floor South", LocationCat.OVERWORLD_ITEM, 4510),
+    "B2_SHURIKEN": LocationData("Apt. B2 - Item on Table 1", LocationCat.OVERWORLD_ITEM, 4511),
+    "B2_FIGURINE": LocationData("Apt. B2 - Item on Table 2", LocationCat.OVERWORLD_ITEM, 4512)
+}
+
+STEVE_APARTMENT_LOCATIONS_MAIN = {
+    "B_STEVE_BANDAGE_GIFT": LocationData("Basement Storage - Give Bandages to Steve", LocationCat.EVENT_ITEM, 4601),
+    "B_STEVE_COMBAT_VICTORY": LocationData("Basement Storage - Slay Steve", LocationCat.FRIENDLY_FIRE, 4602),
+    "B_STEVE_ROACH_1": LocationData("Basement Sewer Entrance - First Roach", LocationCat.OVERWORLD_ITEM, 4603),
+    "B_STEVE_ROACH_2": LocationData("Basement Sewer Entrance - Second Roach", LocationCat.OVERWORLD_ITEM, 4604),
+    "B_STEVE_DUCT_TAPE": LocationData("Basement Storage - Item on Table 1", LocationCat.OVERWORLD_ITEM, 4605),
+    "B_STEVE_JUNK_1": LocationData("Basement Storage - Item on Table 2", LocationCat.OVERWORLD_ITEM, 4606),
+    "B_STEVE_JUNK_2": LocationData("Basement Storage - Item on South Table", LocationCat.OVERWORLD_ITEM, 4607),
+    "B_STEVE_JUNK_3": LocationData("Basement Storage - Item on Counter 1", LocationCat.OVERWORLD_ITEM, 4608),
+    "B_STEVE_JUNK_4": LocationData("Basement Storage - Item on Counter 2", LocationCat.OVERWORLD_ITEM, 4609),
+}
+
+BASEMENT_STORAGE_PLUTO_ROOM_LOCATIONS = {
+    "B_PLUTO_ROOM_CLAYMORE": LocationData("Basement Pluto Room - Item", LocationCat.OVERWORLD_ITEM, 4610),
+}
+
+BASEMENT_STORAGE_NEPTUNE_ROOM_LOCATIONS = {
+    "B_NEPTUNE_ROOM_ARGOT_COMBAT_VICTORY": LocationData("Basement Neptune Room - Slay Argot", LocationCat.COMBAT_VICTORY, 4611),
+    "B_NEPTUNE_ROOM_FIRST_AID_KIT": LocationData("Basement Neptune Room - Item on East Table 1", LocationCat.OVERWORLD_ITEM, 4612),
+    "B_NEPTUNE_ROOM_TONIC": LocationData("Basement Neptune Room - Item on East Table 2", LocationCat.OVERWORLD_ITEM, 4613),
+    "B_NEPTUNE_ROOM_BANDAGES": LocationData("Basement Neptune Room - Item on West Table", LocationCat.OVERWORLD_ITEM, 4615),
+}
+
+BASEMENT_STORAGE_NEPTUNE_ROOM_ICE_LOCATIONS = {
+    "B_NEPTUNE_ROOM_ELIXIR": LocationData("Basement Neptune Room - Item Behind Ice", LocationCat.OVERWORLD_ITEM, 4614),
+}
+
+BASEMENT_STORAGE_LOCKED_ROOM_LOCATIONS = {
+    "B_STORAGE_LOCKED_MEDICATION": LocationData("Basement Storage Locked Room - Item on Southeast Table", LocationCat.OVERWORLD_ITEM, 4616),
+    "B_STORAGE_LOCKED_ANTIDOTE": LocationData("Basement Storage Locked Room - Item on Center Table 1", LocationCat.OVERWORLD_ITEM, 4617),
+    "B_STORAGE_LOCKED_EYE_DROPS": LocationData("Basement Storage Locked Room - Item on Center Table 2", LocationCat.OVERWORLD_ITEM, 4618),
+    "B_STORAGE_LOCKED_SMELLING_SALTS": LocationData("Basement Storage Locked Room - Item on Center Table 3", LocationCat.OVERWORLD_ITEM, 4619),
+    "B_STORAGE_LOCKED_BALM": LocationData("Basement Storage Locked Room - Item on Center Table 4", LocationCat.OVERWORLD_ITEM, 4620),
+    "B_STORAGE_LOCKED_LAPIS_BAND": LocationData("Basement Storage Locked Room - Item on West Table", LocationCat.OVERWORLD_ITEM, 4621),
+    "B_STORAGE_LOCKED_ANXIETY_MEDS": LocationData("Basement Storage Locked Room - Item on North Table 1", LocationCat.OVERWORLD_ITEM, 4622),
+    "B_STORAGE_LOCKED_DISINFECTANT": LocationData("Basement Storage Locked Room - Item on North Table 2", LocationCat.OVERWORLD_ITEM, 4623)
+}
+
+STEVE_APARTMENT_LOCATIONS = {
+    **STEVE_APARTMENT_LOCATIONS_MAIN,
+    **BASEMENT_STORAGE_PLUTO_ROOM_LOCATIONS,
+    **BASEMENT_STORAGE_NEPTUNE_ROOM_LOCATIONS,
+    **BASEMENT_STORAGE_NEPTUNE_ROOM_ICE_LOCATIONS,
+    **BASEMENT_STORAGE_LOCKED_ROOM_LOCATIONS
+}
+
+CROSSWORD_DUNGEON_LOCATIONS = {
+    "CW_SCRIVENERS_CORPSE_1_COMBAT_VICTORY": LocationData("Tomb of Crosswords - Slay Scrivener's Corpse 1", LocationCat.COMBAT_VICTORY, 4701),
+    "CW_SCRIVENERS_CORPSE_2_COMBAT_VICTORY": LocationData("Tomb of Crosswords - Slay Scrivener's Corpse 2", LocationCat.COMBAT_VICTORY, 4702),
+    "CW_SCRIVENERS_CORPSE_3_COMBAT_VICTORY": LocationData("Tomb of Crosswords - Slay Scrivener's Corpse 3", LocationCat.COMBAT_VICTORY, 4703),
+    "CW_SCRIVENERS_CORPSE_4_COMBAT_VICTORY": LocationData("Tomb of Crosswords - Slay Scrivener's Corpse 4", LocationCat.COMBAT_VICTORY, 4704),
+    "CW_CO_AUTHORS_COMBAT_VICTORY": LocationData("Tomb of Crosswords - Slay Co-Authors", LocationCat.COMBAT_VICTORY, 4705),
+    "CW_DESSICATED_AUTHOR_COMBAT_VICTORY": LocationData("Tomb of Crosswords - Slay Dessicated Author", LocationCat.COMBAT_VICTORY, 4706),
+    "CW_WAILING_POET_COMBAT_VICTORY": LocationData("Tomb of Crosswords - Slay Wailing Poet", LocationCat.COMBAT_VICTORY, 4707),
+    "CW_WILHEMINA_VICTORY": LocationData("Tomb of Crosswords - Slay Wilhelmina", LocationCat.COMBAT_VICTORY, 4708)
+}
+
+SEWER_LOCATIONS = {
+    "SEWER_BOILER_BEAST_COMBAT_VICTORY": LocationData("Sewer - Slay the Boiler Beast", LocationCat.COMBAT_VICTORY, 4801),
+    "SEWER_N_TICKLE_COMBAT_VICTORY": LocationData("Sewer North - Slay Tickle", LocationCat.FRIENDLY_FIRE, 4802),
+    "SEWER_N_TICKLE_SHOP_ITEM": LocationData("Sewer North - Tickle Shop Item", LocationCat.MERCHANT, 4803),
+    "SEWER_N_TICKLES_GIFT": LocationData("Sewer North - Gift From Tickle", LocationCat.EVENT_ITEM, 4804),
+    "SEWER_N_PIPE_MAN_COMBAT_VICTORY": LocationData("Sewer North - Slay Pipe Men", LocationCat.COMBAT_VICTORY, 4805),
+    "SEWER_N_FLOATING_CORPSE_COMBAT_VICTORY": LocationData("Sewer North - Slay Floating Corpse", LocationCat.COMBAT_VICTORY, 4806),
+    "SEWER_N_TOP_LOCKED_ROOM_CORALIE_THOMAS": LocationData("Sewer North Past Upper Gate - Rescue Coralie and Thomas", LocationCat.EVENT_ITEM, 4807),
+    "SEWER_N_TOP_LOCKED_ROOM_VINTAGE_SNEAKERS": LocationData("Sewer North Past Upper Gate - Item", LocationCat.OVERWORLD_ITEM, 4808),
+    "SEWER_N_LOWER_LOCKED_ROOM_": LocationData("Sewer North Past Lower Gate - Slay Caterpillar", LocationCat.COMBAT_VICTORY, 4809),
+    "SEWER_N_LOWER_LOCKED_ROOM_CATAFALQUE": LocationData("Sewer North Past Lower Gate - Item", LocationCat.OVERWORLD_ITEM, 4810),
+    "SEWER_N_PIPE_MAN_SNAKE_COMBAT_VICTORY": LocationData("Sewer North - Slay Pipe Men Snakes", LocationCat.COMBAT_VICTORY, 4811),
+    "SEWER_E_TICK_COMBAT_VICTORY": LocationData("Sewer East - Slay Tick", LocationCat.COMBAT_VICTORY, 4812),
+    "SEWER_E_PULL_LEVER": LocationData("Sewer East - Unleash the Boiler Beast", LocationCat.EVENT_ITEM, 4813),
+    "SEWER_E_INDIGO_MASK": LocationData("Sewer East - Item Behind Boiler Beast", LocationCat.OVERWORLD_ITEM, 4814),
+    "SEWER_E_ALICE": LocationData("Sewer East - Rescue Alice", LocationCat.EVENT_ITEM, 4815),
+    "SEWER_E_TALL_PIPE_MAN_COMBAT_VICTORY": LocationData("Sewer East - Slay Tall Pipe Man", LocationCat.COMBAT_VICTORY, 4816),
+    "SEWER_NE_ZACHARY": LocationData("Sewer NE - Rescue Zachary", LocationCat.EVENT_ITEM, 4817),
+    "SEWER_NE_CHEW_TOY": LocationData("Sewer NE - Item From Zachary", LocationCat.EVENT_ITEM, 4818),
+    "SEWER_NE_BANDAGES": LocationData("Sewer NE - Item Near Zachary 1", LocationCat.OVERWORLD_ITEM, 4819),
+    "SEWER_NE_FIRST_AID_KIT": LocationData("Sewer NE - Item Near Zachary 2", LocationCat.OVERWORLD_ITEM, 4820),
+    "SEWER_NE_PIPE_MAN_BACK_COMBAT_VICTORY": LocationData("Sewer NE - Slay Pipe Man Back", LocationCat.COMBAT_VICTORY, 4821),
+    "SEWER_NE_TICK_COMBAT_VICTORY": LocationData("Sewer NE - Slay Tick", LocationCat.COMBAT_VICTORY, 4822),
+    "SEWER_DAVID_HARD_HAT": LocationData("David's Lair - Item on West Table 1", LocationCat.OVERWORLD_ITEM, 4823),
+    "SEWER_DAVID_PLASTIC_GLOVES": LocationData("David's Lair - Item on West Table 2", LocationCat.OVERWORLD_ITEM, 4824),
+    "SEWER_DAVID_KLYSOX": LocationData("David's Lair - Item on North Table", LocationCat.OVERWORLD_ITEM, 4825),
+    "SEWER_DAVID_MOP": LocationData("David's Lair - East Item 1", LocationCat.OVERWORLD_ITEM, 4826),
+    "SEWER_DAVID_RUBBER_BOOTS": LocationData("David's Lair - East Item 2", LocationCat.OVERWORLD_ITEM, 4827),
+    "SEWER_DAVID_GIFT": LocationData("David's Lair - Prize for Rescuing Kids", LocationCat.EVENT_ITEM, 4828),
+    "SEWER_SE_TICK_COMBAT_VICTORY": LocationData("Sewer SE - Slay Tick", LocationCat.COMBAT_VICTORY, 4829),
+    "SEWER_SE_ROXIE": LocationData("Sewer SE - Rescue Roxie", LocationCat.EVENT_ITEM, 4830),
+    "SEWER_SE_BEAST_COMBAT_VICTORY": LocationData("Sewer SE - Slay Sewer Beast", LocationCat.COMBAT_VICTORY, 4831),
+    "SEWER_SE_HEALING_SPRAY": LocationData("Sewer SE - Item Near Roxie 1", LocationCat.OVERWORLD_ITEM, 4832),
+    "SEWER_SE_SUPER_EXPLOSIVE": LocationData("Sewer SE - Item Near Roxie 2", LocationCat.OVERWORLD_ITEM, 4833),
+    "SEWER_SE_STIMULANT": LocationData("Sewer SE - Item Near Roxie 3", LocationCat.OVERWORLD_ITEM, 4834),
+    "SEWER_SE_FIREBOMB": LocationData("Sewer SE - Item Near Roxie 4", LocationCat.OVERWORLD_ITEM, 4835),
+    "SEWER_FURNACE_COMBAT_VICTORY": LocationData("Sewer Center - Slay the Furnace", LocationCat.COMBAT_VICTORY, 4836),
+    "SEWER_FURNACE_IRIS_KEY": LocationData("Sewer Center - Item Dropped by Furnace", LocationCat.OVERWORLD_ITEM, 4837),
+    "SEWER_W_ENFORCER_COMBAT_VICTORY": LocationData("Sewer West - Slay Enforcer", LocationCat.COMBAT_VICTORY, 4838),
+    "SEWER_W_OLIVER": LocationData("Sewer West - Rescue Oliver", LocationCat.EVENT_ITEM, 4839),
+    "SEWER_W_SLUGMAN_COMBAT_VICTORY": LocationData("Sewer West Grate Path - Slay Slug Man", LocationCat.COMBAT_VICTORY, 4840),
+    "SEWER_W_AXE": LocationData("Sewer West Grate Path - Item Near Slug Man", LocationCat.OVERWORLD_ITEM, 4841),
+    "SEWER_W_HARVESTMAN_COMBAT_VICTORY": LocationData("Sewer West - Slay Harvestman", LocationCat.COMBAT_VICTORY, 4842),
+    "SEWER_SW_TICK_COMBAT_VICTORY": LocationData("Sewer SW - Slay Tick Near Victor and Florence", LocationCat.COMBAT_VICTORY, 4843),
+    "SEWER_SW_VICTOR_FLORENCE": LocationData("Sewer SW - Rescue Victor and Florence", LocationCat.EVENT_ITEM, 4844),
+    "SEWER_SW_SAFE_ITEM": LocationData("Sewer SW - Safe Item", LocationCat.LOOT, 4845),
+    "SEWER_SW_FRIDGE": LocationData("Sewer SW - Fridge Loot", LocationCat.LOOT, 4846),
+    "SEWER_SW_CHOCKY_BAR": LocationData("Sewer SW - Item Near Victor and Florence 1", LocationCat.OVERWORLD_ITEM, 4847),
+    "SEWER_SW_COLA": LocationData("Sewer SW - Item Near Victor and Florence 2", LocationCat.OVERWORLD_ITEM, 4848),
+    "SEWER_SW_MOLOTOV_1": LocationData("Sewer SW - Item Near Tick 1", LocationCat.OVERWORLD_ITEM, 4849),
+    "SEWER_SW_MOLOTOV_2": LocationData("Sewer SW - Item Near Tick 2", LocationCat.OVERWORLD_ITEM, 4850),
+    "SEWER_SW_DRAIN_FLIES_COMBAT_VICTORY": LocationData("Sewer SW - Slay Drain Flies", LocationCat.COMBAT_VICTORY, 4851),
+    "SEWER_SW_TRISTAN_CHARLIE": LocationData("Sewer SW - Rescue Tristan and Charlie", LocationCat.EVENT_ITEM, 4852),
+    "SEWER_SW_FIRST_AID_BOX_LOOT": LocationData("Sewer SW - First Aid Box Loot", LocationCat.LOOT, 4853),
+    "SEWER_SW_FAR_TICK_COMBAT_VICTORY": LocationData("Sewer SW - Slay Tick Near Tristan and Charlie", LocationCat.COMBAT_VICTORY, 4854),
+    "SEWER_SW_PADDED_JACKET": LocationData("Sewer SW - Item Near Tristan and Charlie", LocationCat.OVERWORLD_ITEM, 4855),
+    "SEWER_NW_SCUTTLE_COMBAT_VICTORY": LocationData("Sewer NW - Slay Pipe Men Scuttle", LocationCat.COMBAT_VICTORY, 4856),
+    "SEWER_NW_TICK_COMBAT_VICTORY": LocationData("Sewer NW - Slay Tick", LocationCat.COMBAT_VICTORY, 4857),
+    "SEWER_NW_LEECH_COMBAT_VICTORY": LocationData("Sewer NW - Slay Leech", LocationCat.COMBAT_VICTORY, 4858)
+}
+
+SEWER_BOILER_ENTRANCE_LOCATIONS = {
+    "SEWER_PIPE_MAN_MISERY_COMBAT_VICTORY": LocationData("Sewer NW - Slay Pipe Man Misery", LocationCat.COMBAT_VICTORY, 4859),
+}
+
+BOILER_ROOM_LOCATIONS = {
+    "BOILER_NORTH_JUNK_1": LocationData("Boiler Room North - Item on Counter 1", LocationCat.OVERWORLD_ITEM, 5001),
+    "BOILER_NORTH_JUNK_2": LocationData("Boiler Room North - Item on Counter 2", LocationCat.OVERWORLD_ITEM, 5002),
+    "BOILER_NORTH_JUNK_3": LocationData("Boiler Room North - Item on Table", LocationCat.OVERWORLD_ITEM, 5003),
+    "BOILER_NORTH_VODKA": LocationData("Boiler Room North - Item on Northeast Counter", LocationCat.OVERWORLD_ITEM, 5004),
+    "BOILER_NORTH_TRASH_1": LocationData("Boiler Room North - Trash Can 1", LocationCat.LOOT, 5005),
+    "BOILER_NORTH_TRASH_2": LocationData("Boiler Room North - Trash Can 2", LocationCat.LOOT, 5006),
+    "BOILER_HENRI_COMBAT_VICTORY": LocationData("Boiler Room North - Slay Henri", LocationCat.FRIENDLY_FIRE, 5007),
+    "BOILER_CREW_CARD_COMBAT_VICTORY": LocationData("Boiler Room Crew - Slay Card Players", LocationCat.FRIENDLY_FIRE, 5008),
+    "BOILER_CREW_MUSETTE_COMBAT_VICTORY": LocationData("Boiler Room Crew - Slay Musette", LocationCat.FRIENDLY_FIRE, 5009),
+    "BOILER_CREW_MICHAEL_COMBAT_VICTORY": LocationData("Boiler Room Crew - Slay Michael", LocationCat.FRIENDLY_FIRE, 5010),
+    "BOILER_CREW_ROBERT_COMBAT_VICTORY": LocationData("Boiler Room Crew - Slay Robert", LocationCat.FRIENDLY_FIRE, 5011),
+    "BOILER_CREW_PLACIDE_COMBAT_VICTORY": LocationData("Boiler Room Crew - Slay Placide", LocationCat.FRIENDLY_FIRE, 5012),
+    "BOILER_ROOM_COMATUS_YOGA": LocationData("Boiler Room - Learn Yoga From Comatus", LocationCat.EVENT_ITEM, 5013),
+    "BOILER_ROOM_SNOWMAN_COMBAT_VICTORY": LocationData("Boiler Room - Slay Snowman Stack", LocationCat.COMBAT_VICTORY, 5014),
+    "BOILER_ROOM_SIMPLE_KEY": LocationData("Boiler Room - Item in Frozen Corner 1", LocationCat.OVERWORLD_ITEM, 5015),
+    "BOILER_ROOM_HEALING_SPRAY": LocationData("Boiler Room - Item in Frozen Corner 2", LocationCat.OVERWORLD_ITEM, 5016),
+    "BOILER_ROOM_MUSHROOM_1": LocationData("Boiler Room - Item Near South Exit 1", LocationCat.OVERWORLD_ITEM, 5017),
+    "BOILER_ROOM_MUSHROOM_2": LocationData("Boiler Room - Item Near South Exit 2", LocationCat.OVERWORLD_ITEM, 5018),
+    "BOILER_ROOM_ROACH": LocationData("Boiler Room - Roach", LocationCat.EVENT_ITEM, 5019),
+    }
+
+BOILER_STORAGE_LOCATIONS = {
+    "BOILER_STORAGE_FANGIPEDE_COMBAT_VICTORY": LocationData("Boiler Storage - Slay Fangipede", LocationCat.COMBAT_VICTORY, 5020),
+    "BOILER_STORAGE_JUNK_1": LocationData("Boiler Storage - Item on East Counter 1", LocationCat.OVERWORLD_ITEM, 5021),
+    "BOILER_STORAGE_JUNK_2": LocationData("Boiler Storage - Item on East Counter 2", LocationCat.OVERWORLD_ITEM, 5022),
+    "BOILER_STORAGE_D_CLOGGER_1": LocationData("Boiler Storage - Item on East Counter 3", LocationCat.OVERWORLD_ITEM, 5023),
+    "BOILER_STORAGE_D_CLOGGER_2": LocationData("Boiler Storage - Item on East Counter 4", LocationCat.OVERWORLD_ITEM, 5024),
+    "BOILER_STORAGE_D_CLOGGER_3": LocationData("Boiler Storage - Item on East Counter 5", LocationCat.OVERWORLD_ITEM, 5025, difficulty_lock= {DL.EXPLORER}),
+    "BOILER_STORAGE_ICE_MELT_SALT": LocationData("Boiler Storage - Item on West Counter 1", LocationCat.OVERWORLD_ITEM, 5026),
+    "BOILER_STORAGE_DUCT_TAPE_1": LocationData("Boiler Storage - Item on West Counter 2", LocationCat.OVERWORLD_ITEM, 5027),
+    "BOILER_STORAGE_DUCT_TAPE_2": LocationData("Boiler Storage - Item on West Counter 3", LocationCat.OVERWORLD_ITEM, 5028),
+    "BOILER_STORAGE_DUCT_TAPE_3": LocationData("Boiler Storage - Item on West Counter 4", LocationCat.OVERWORLD_ITEM, 5029, difficulty_lock= {DL.EXPLORER}),
+    "BOILER_STORAGE_MUSK": LocationData("Boiler Storage - Item on North Table 1", LocationCat.OVERWORLD_ITEM, 5030),
+    "BOILER_STORAGE_KLYSOX_1": LocationData("Boiler Storage - Item on North Table 2", LocationCat.OVERWORLD_ITEM, 5031),
+    "BOILER_STORAGE_KLYSOX_2": LocationData("Boiler Storage - Item on North Table 3", LocationCat.OVERWORLD_ITEM, 5032),
+    "BOILER_STORAGE_KLYSOX_3": LocationData("Boiler Storage - Item on North Table 4", LocationCat.OVERWORLD_ITEM, 5033, difficulty_lock= {DL.EXPLORER}),
+    "BOILER_STORAGE_GASOLINE_1": LocationData("Boiler Storage - Item on South Table 1", LocationCat.OVERWORLD_ITEM, 5034),
+    "BOILER_STORAGE_GASOLINE_2": LocationData("Boiler Storage - Item on South Table 2", LocationCat.OVERWORLD_ITEM, 5035),
+    "BOILER_STORAGE_VINEGAR_1": LocationData("Boiler Storage - Item on South Table 3", LocationCat.OVERWORLD_ITEM, 5036),
+    "BOILER_STORAGE_VINEGAR_2": LocationData("Boiler Storage - Item on South Table 4", LocationCat.OVERWORLD_ITEM, 5037)
+}
+
+FUNGUS_MAZE_LOCATIONS = {
+    "FUNGUS_ENTRANCE_MUSHROOM_1": LocationData("Fungus Maze Entrance - Item 1", LocationCat.OVERWORLD_ITEM, 5101),
+    "FUNGUS_ENTRANCE_MUSHROOM_2": LocationData("Fungus Maze Entrance - Item 2", LocationCat.OVERWORLD_ITEM, 5102),
+    "FUNGUS_ENTRANCE_MUSHROOM_3": LocationData("Fungus Maze Entrance - Item 3", LocationCat.OVERWORLD_ITEM, 5103),
+    "FUNGUS_ENTRANCE_MUSHROOM_4": LocationData("Fungus Maze Entrance - Item 4", LocationCat.OVERWORLD_ITEM, 5104),
+    "FUNGUS_ENTRANCE_MUSHROOM_5": LocationData("Fungus Maze Entrance - Item 5", LocationCat.OVERWORLD_ITEM, 5105),
+    "FUNGUS_ENTRANCE_MUSHROOM_6": LocationData("Fungus Maze Entrance - Item 6", LocationCat.OVERWORLD_ITEM, 5106),
+    "FUNGUS_ENTRANCE_MUSHROOM_7": LocationData("Fungus Maze Entrance - Item 7", LocationCat.OVERWORLD_ITEM, 5107),
+    "FUNGUS_ENTRANCE_MUSHROOM_8": LocationData("Fungus Maze Entrance - Item 8", LocationCat.OVERWORLD_ITEM, 5108),
+    "FUNGUS_RODERIGUE_COMBAT_VICTORY": LocationData("Fungus Maze - Rescue Roderigue", LocationCat.COMBAT_VICTORY, 5109),
+    "FUNGUS_STORE_KEY": LocationData("Fungus Maze - Item Behind Roderigue", LocationCat.OVERWORLD_ITEM, 5110),
+    "FUNGUS_INFECTED_COMBAT_VICTORY": LocationData("Fungus Maze - Slay Roaming Infected", LocationCat.COMBAT_VICTORY, 5111),
+    "FUNGUS_PHILLIPPE_RESCUE_COMBAT_VICTORY": LocationData("Fungus Maze - Rescue Phillippe", LocationCat.COMBAT_VICTORY, 5112),
+    "FUNGUS_SYLVAIN_RESCUE_COMBAT_VICTORY": LocationData("Fungus Maze - Rescue Sylvain", LocationCat.COMBAT_VICTORY, 5113),
+    "FUNGUS_DANIELLE_RESCUE_COMBAT_VICTORY": LocationData("Fungus Maze - Rescue Danielle", LocationCat.COMBAT_VICTORY, 5114),
+    "FUNGUS_JEAN_P_RESCUE_COMBAT_VICTORY": LocationData("Fungus Maze - Rescue Jean Pierre", LocationCat.COMBAT_VICTORY, 5115),
+    "FUNGUS_CLAIRE_COMBAT_VICTORY": LocationData("Fungus Maze - Rescue Claire", LocationCat.COMBAT_VICTORY, 5116),
+    "FUNGUS_LAUGHING_MOLD_ROUTINE": LocationData("Fungus Maze - Listen to Laughing Mold's Routine", LocationCat.EVENT_ITEM, 5117),
+    "FUNGUS_LAUGHING_MOLD_COMBAT_VICTORY": LocationData("Fungus Maze - Slay Laughing Mold", LocationCat.FRIENDLY_FIRE, 5118),
+    "FUNGUS_NEPTUNE_DISC": LocationData("Fungus Maze - Item in Maze", LocationCat.OVERWORLD_ITEM, 5119),
+    "FUNGUS_SPORE_SHAMBLER_COMBAT_VICTORY": LocationData("Fungus Maze - Slay Spore Shambler", LocationCat.COMBAT_VICTORY, 5120),
+    "FUNGUS_SPORE_GUARDIAN_COMBAT_VICTORY": LocationData("Fungus Maze Depths - Slay Spore Guardian", LocationCat.COMBAT_VICTORY, 5121),
+    "FUNGUS_SPORE_GUARDIAN_AUDREY_LOOT": LocationData("Fungus Maze Depths - Spore Guardian Audrey Loot", LocationCat.EVENT_ITEM, 5122),
+    "FUNGUS_SPORE_MOTHER_COMBAT_VICTORY": LocationData("Fungus Maze Depths - Slay Spore Mother", LocationCat.COMBAT_VICTORY, 5123),
+    "FUNGUS_DEPTHS_MUSHROOM_1": LocationData("Fungus Maze Depths - Item 1", LocationCat.OVERWORLD_ITEM, 5124),
+    "FUNGUS_DEPTHS_MUSHROOM_2": LocationData("Fungus Maze Depths - Item 2", LocationCat.OVERWORLD_ITEM, 5125),
+    "FUNGUS_DEPTHS_MUSHROOM_3": LocationData("Fungus Maze Depths - Item 3", LocationCat.OVERWORLD_ITEM, 5126),
+    "FUNGUS_DEPTHS_MUSHROOM_4": LocationData("Fungus Maze Depths - Item 4", LocationCat.OVERWORLD_ITEM, 5127),
+    "FUNGUS_DEPTHS_MUSHROOM_5": LocationData("Fungus Maze Depths - Item 5", LocationCat.OVERWORLD_ITEM, 5128),
+    "FUNGUS_DEPTHS_MUSHROOM_6": LocationData("Fungus Maze Depths - Item 6", LocationCat.OVERWORLD_ITEM, 5129),
+    "FUNGUS_DEPTHS_MUSHROOM_7": LocationData("Fungus Maze Depths - Item 7", LocationCat.OVERWORLD_ITEM, 5130),
+    "FUNGUS_DEPTHS_MUSHROOM_8": LocationData("Fungus Maze Depths - Item 8", LocationCat.OVERWORLD_ITEM, 5131),
+    "FUNGUS_DEPTHS_MUSHROOM_9": LocationData("Fungus Maze Depths - Item 9", LocationCat.OVERWORLD_ITEM, 5132),
+    "FUNGUS_DEPTHS_MUSHROOM_10": LocationData("Fungus Maze Depths - Item 10", LocationCat.OVERWORLD_ITEM, 5133),
+    "FUNGUS_DEPTHS_MUSHROOM_11": LocationData("Fungus Maze Depths - Item 11", LocationCat.OVERWORLD_ITEM, 5134),
+    "FUNGUS_DEPTHS_MUSHROOM_12": LocationData("Fungus Maze Depths - Item 12", LocationCat.OVERWORLD_ITEM, 5135),
+    "FUNGUS_DEPTHS_MUSHROOM_13": LocationData("Fungus Maze Depths - Item on Comatus Path", LocationCat.OVERWORLD_ITEM, 5136),
+    "FUNGUS_COMATUS_COMBAT_VICTORY": LocationData("Fungus Maze Depths - Defeat Swordmaster Comatus", LocationCat.COMBAT_VICTORY, 5137)
+}
+
+CHARAN_PIT_CLEAR_LOCATIONS = {
+    "B_PIT_ROOM_AZURE_GREATSWORD": LocationData("Basement Pit - Gift from Charan", LocationCat.OVERWORLD_ITEM, 5201),
+    "B_PIT_ANGLER_COMBAT_VICTORY": LocationData("Basement Pit - Slay Angler", LocationCat.COMBAT_VICTORY, 5202),
+    "B_PIT_MOANING_SHADE_COMBAT_VICTORY": LocationData("Basement Pit - Slay Moaning Shade", LocationCat.COMBAT_VICTORY, 5203),
+    "B_PIT_WRAPPED_PAINTING": LocationData("Basement Pit - Item Behind Moaning Shade", LocationCat.OVERWORLD_ITEM, 5204),
+    "B_PIT_SALAMANDER_COMBAT_VICTORY": LocationData("Basement Pit - Slay Salamander", LocationCat.COMBAT_VICTORY, 5205),
+    "B_PIT_BAT_FREAK_COMBAT_VICTORY": LocationData("Basement Pit - Slay Bat Freak", LocationCat.COMBAT_VICTORY, 5206)
+}
+
+GARAGE_LOCATIONS = {
+    "B_CAR_SLAY_BERYL": LocationData("Basement Garage - Slay Beryl", LocationCat.FRIENDLY_FIRE, 5301),
+    "B_CAR_LUMPY_ITEM": LocationData("Lumpytouch Room - Item", LocationCat.OVERWORLD_ITEM, 5302),
+    "B_CAR_TIRESTACK_COMBAT_VICTORY": LocationData("Basement Garage - Slay Tire Stack", LocationCat.COMBAT_VICTORY, 5303),
+    "B_CAR_TRAFFIC_CONE_COMBAT_VICTORY": LocationData("Basement Garage - Slay Traffic Cone", LocationCat.COMBAT_VICTORY, 5304),
+    "B_CAR_TRUNK": LocationData("Basement Garage - Item in Car Trunk", LocationCat.EVENT_ITEM, 5305),
+    "B_CAR_UNDERBODY_COMBAT_VICTORY": LocationData("Basement Garage - Slay Underbody", LocationCat.COMBAT_VICTORY, 5306),
+    "B_CAR_ROADKILL_COMBAT_VICTORY": LocationData("Basement Garage - Slay Roadkill", LocationCat.COMBAT_VICTORY, 5307),
+    "B_CAR_COP_CAR_COMBAT_VICTORY": LocationData("Basement Garage - Slay Cop Car", LocationCat.COMBAT_VICTORY, 5308),
+    "B_CAR_COP_CAR_AUDREY_LOOT": LocationData("Basement Garage - Cop Car Audrey Loot", LocationCat.EVENT_ITEM, 5309),
+    "B_CAR_SWAT_VAN_COMBAT_VICTORY": LocationData("Basement Garage - Slay Swat Van", LocationCat.COMBAT_VICTORY, 5310),
+    "B_CAR_ROWDY_BIKER_COMBAT_VICTORY": LocationData("Basement Garage - Slay Rowdy Biker", LocationCat.COMBAT_VICTORY, 5311),
+    "B_CAR_JUNK_1": LocationData("Basement Garage - Item Near Dumpsters 1", LocationCat.OVERWORLD_ITEM, 5312),
+    "B_CAR_JUNK_2": LocationData("Basement Garage - Item Near Dumpsters 2", LocationCat.OVERWORLD_ITEM, 5313),
+    "B_CAR_JUNK_3": LocationData("Basement Garage - Item Near Dumpsters 3", LocationCat.OVERWORLD_ITEM, 5314),
+    "B_CAR_GASOLINE": LocationData("Basement Garage - Item Near Hellride 1", LocationCat.OVERWORLD_ITEM, 5315),
+    "B_CAR_FLAMETHROWER": LocationData("Basement Garage - Item Near Hellride 2", LocationCat.OVERWORLD_ITEM, 5316),
+    "B_CAR_HELLRIDE_COMBAT_VICTORY": LocationData("Basement Garage - Slay Hellride", LocationCat.COMBAT_VICTORY, 5317),
+    "B_CAR_HELLRIDE_AUDREY_LOOT": LocationData("Basement Garage - Hellride Audrey Loot", LocationCat.EVENT_ITEM, 5318),
+    "HELL_CAR_LAIR_SWORD": LocationData("Hellride Lair - Item", LocationCat.OVERWORLD_ITEM, 5319),
+    "B_STUART_COMBAT_VICTORY": LocationData("Stuart's Hideout - Slay Stuart", LocationCat.FRIENDLY_FIRE, 5320),
+    "B_STUART_MERCHANT": LocationData("Stuart's Hideout - Stuart Shop Item", LocationCat.MERCHANT, 5321),
+    "B_STUART_FIRST_AID_KIT": LocationData("Stuart's Hideout - Item on Table", LocationCat.OVERWORLD_ITEM, 5322),
+    "B_STUART_SIMPLE_KEY": LocationData("Stuart's Hideout - Item on South Table", LocationCat.OVERWORLD_ITEM, 5323)
+}
+
+BLACKOUT_LOCATIONS = {
+    "B_OLM_COMBAT_VICTORY": LocationData("Blackout Garage - Slay Olm", LocationCat.COMBAT_VICTORY, 5401),
+    "B_CAR_CABLEJUMPER_COMBAT_VICTORY": LocationData("Blackout Garage - Slay Cablejumper and Shockheads", LocationCat.COMBAT_VICTORY, 5402),
+    "B_CAR_DARRYL_COMBAT_VICTORY": LocationData("Blackout Garage - Slay Darryl", LocationCat.COMBAT_VICTORY, 5403),
+    "B_CAR_HOLE_IRIS_KEY": LocationData("Blackout Garage - Item in Wall Hole", LocationCat.EVENT_ITEM, 5404),
+    "B_CAR_WIGGLES_COMBAT_VICTORY": LocationData("Blackout Garage - Slay Wiggles", LocationCat.COMBAT_VICTORY, 5405),
+    "B_CAR_SHOCKIPEDE_COMBAT_VICTORY": LocationData("Blackout Garage - Slay Shockipede", LocationCat.COMBAT_VICTORY, 5406),
+    "B_CAR_SHRIMP_COMBAT_VICTORY": LocationData("Blackout Garage - Slay Shrimp", LocationCat.COMBAT_VICTORY, 5407),
+    "B_ELECTRIC_HUSK_COMBAT_VICTORY": LocationData("Electrical Room - Slay Husk", LocationCat.COMBAT_VICTORY, 5408),
+    "B_ELECTRIC_GHOUL_COMBAT_VICTORY": LocationData("Electrical Room - Slay Ghoul", LocationCat.COMBAT_VICTORY, 5409),
+    "B_ELECTROPHAGE_COMBAT_VICTORY": LocationData("Electrical Room - Slay Electrophage", LocationCat.COMBAT_VICTORY, 5410)
+}
+
+SECURITY_LOCATIONS = {
+    "SECURITY_PANOPTICON_COMBAT_VICTORY": LocationData("Security Room - Slay Panopticon", LocationCat.COMBAT_VICTORY, 5501),
+    "SECURITY_CINNAMON_COMBAT_VICTORY": LocationData("Security Room - Slay Cinnamon", LocationCat.COMBAT_VICTORY, 5502),
+    "SECURITY_CORRECT_RECORDING": LocationData("Security Room - Make the Correct Recording", LocationCat.EVENT_ITEM, 5503),
+    "SECURITY_CASH": LocationData("Security Room - Item on Table", LocationCat.OVERWORLD_ITEM, 5504),
+    "SECURITY_TRASH": LocationData("Security Room - Trash Can", LocationCat.LOOT, 5505),
+}
+
+SECURITY_STORAGE_LOCATIONS = {
+    "SECURITY_STORAGE_GRENADE_1": LocationData("Security Storage - Item on North Counter 1", LocationCat.OVERWORLD_ITEM, 5506),
+    "SECURITY_STORAGE_GRENADE_2": LocationData("Security Storage - Item on North Counter 2", LocationCat.OVERWORLD_ITEM, 5507),
+    "SECURITY_STORAGE_DUCT_TAPE_1": LocationData("Security Storage - Item on Center Counter 1", LocationCat.OVERWORLD_ITEM, 5508),
+    "SECURITY_STORAGE_DUCT_TAPE_2": LocationData("Security Storage - Item on Center Counter 2", LocationCat.OVERWORLD_ITEM, 5509),
+    "SECURITY_STORAGE_SMG": LocationData("Security Storage - Item on South Counter 1", LocationCat.OVERWORLD_ITEM, 5510),
+    "SMG_AMMO_1": LocationData("Security Storage - Item on South Counter 2", LocationCat.OVERWORLD_ITEM, 5511),
+    "SMG_AMMO_2": LocationData("Security Storage - Item on South Counter 3", LocationCat.OVERWORLD_ITEM, 5512),
+    "SECURITY_STORAGE_FLACK_JACKET": LocationData("Security Storage - Item on East Counter 1", LocationCat.OVERWORLD_ITEM, 5513),
+    "SECURITY_STORAGE_COMBAT_KNIFE": LocationData("Security Storage - Item on East Counter 2", LocationCat.OVERWORLD_ITEM, 5514)
+}
+
+
 location_table: dict[str, LocationData] = {
     **VIDEO_GAME_LOCATIONS,
     **F3_HALL_LOCATIONS,
@@ -1432,6 +1779,23 @@ location_table: dict[str, LocationData] = {
     **LL_SHADE_CACHE_LOCATIONS,
     **LL_MEMORIAL_CACHE_LOCATIONS,
     **LL_BEDROOM_HALL_CACHE_LOCATIONS,
+    **GF_NORTH_JANITORS_CLOSET_LOCATIONS,
+    **GF_SOUTH_JANITORS_CLOSET_LOCATIONS,
+    **BASEMENT_EAST_LOCATIONS,
+    **APT_B1_ARTHROPOD_LOCATIONS,
+    **APT_B2_ANTOINE_LOCATIONS,
+    **STEVE_APARTMENT_LOCATIONS,
+    **CROSSWORD_DUNGEON_LOCATIONS,
+    **SEWER_LOCATIONS,
+    **SEWER_BOILER_ENTRANCE_LOCATIONS,
+    **BOILER_ROOM_LOCATIONS,
+    **BOILER_STORAGE_LOCATIONS,
+    **FUNGUS_MAZE_LOCATIONS,
+    **CHARAN_PIT_CLEAR_LOCATIONS,
+    **GARAGE_LOCATIONS,
+    **BLACKOUT_LOCATIONS,
+    **SECURITY_LOCATIONS,
+    **SECURITY_STORAGE_LOCATIONS
 }
 
 region_locs: dict[str, set[str]] = {
@@ -1551,6 +1915,28 @@ region_locs: dict[str, set[str]] = {
     "SHADE_CACHE": LL_SHADE_CACHE_LOCATIONS.keys(),
     "LANDLORDS_WARZONE": LANDLORDS_WARZONE_LOCATIONS.keys(),
     "MEMORIAL_CACHE": LL_MEMORIAL_CACHE_LOCATIONS.keys(),
+    "GF_JANITOR_CLOSET_SOUTH": GF_SOUTH_JANITORS_CLOSET_LOCATIONS.keys(),
+    "GF_JANITOR_CLOSET_NORTH": GF_NORTH_JANITORS_CLOSET_LOCATIONS.keys(),
+    # BASEMENT
+    "BASEMENT_EAST": BASEMENT_EAST_LOCATIONS.keys(),
+    "APT_B1_ARTHROPOD": APT_B1_ARTHROPOD_MAIN_LOCATIONS.keys(),
+    "APT_B1_ARTHROPOD_BATHROOM": APT_B1_ARTHROPOD_BATHROOM_LOCATIONS.keys(),
+    "APT_B2_ANTOINE": APT_B2_ANTOINE_LOCATIONS.keys(),
+    "STEVE_APARTMENT": STEVE_APARTMENT_LOCATIONS_MAIN.keys(),
+    "BASEMENT_STORAGE_PLUTO_ROOM": BASEMENT_STORAGE_PLUTO_ROOM_LOCATIONS.keys(),
+    "BASEMENT_STORAGE_NEPTUNE_ROOM": BASEMENT_STORAGE_NEPTUNE_ROOM_LOCATIONS.keys(),
+    "BASEMENT_STORAGE_LOCKED_ROOM": BASEMENT_STORAGE_LOCKED_ROOM_LOCATIONS.keys(),
+    "NEPTUNE_ROOM_ICE": BASEMENT_STORAGE_NEPTUNE_ROOM_ICE_LOCATIONS.keys(),
+    "CROSSWORD_DUNGEON": CROSSWORD_DUNGEON_LOCATIONS.keys(),
+    "SEWER": SEWER_LOCATIONS.keys(),
+    "SEWER_WEST": SEWER_BOILER_ENTRANCE_LOCATIONS.keys(),
+    "BOILER_ROOM_STORAGE": BOILER_STORAGE_LOCATIONS.keys(),
+    "BOILER_ROOM_FUNGAL_MAZE": [*BOILER_ROOM_LOCATIONS.keys(), *FUNGUS_MAZE_LOCATIONS.keys()],
+    "BASEMENT_PIT_CLEAR": CHARAN_PIT_CLEAR_LOCATIONS.keys(),
+    "BASEMENT_WEST_PARKING_GARAGE": GARAGE_LOCATIONS.keys(),
+    "GARAGE_UTILITY_ROOM_BLACKOUT": BLACKOUT_LOCATIONS.keys(),
+    "SECURITY_ROOM": SECURITY_LOCATIONS.keys(),
+    "SECURITY_STORAGE": SECURITY_STORAGE_LOCATIONS.keys(),
 }
 
 def get_region_to_location():

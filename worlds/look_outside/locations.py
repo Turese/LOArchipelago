@@ -85,6 +85,8 @@ def create_events(world: LookOutsideWorld) -> None:
         "UNITY_ENDING_NOTE", "UNITY_ENDING", location_type=LOLocation, item_type=LOItem
     )
 
+    world.get_region("CROSSWORD_DUNGEON").add_event("FREE_WILHELMINA", "WORDS_OF_POWER_ENDING")
+
     roof = world.get_region("ROOF")
 
     roof.add_event(

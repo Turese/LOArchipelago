@@ -7,6 +7,8 @@ from worlds.look_outside.locations import get_location_name
 
 from .options import PlayerGoal
 
+from worlds.look_outside.items import item_name_groups
+
 from worlds.look_outside.regions_consts import all_regions_table
 from worlds.look_outside.rules_consts import can_nestor_rafta, can_open_any_simple_lock, can_access_basement, can_leigh_quest
 from rule_builder.rules import Has, And, HasAll, HasAny
@@ -74,11 +76,14 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
 
     #f1 rules
 
-    world.set_rule(world.get_location(get_location_name("F1_AUDREY_RECRUIT", world)), Has("Vending Machine Key")) 
+    world.set_rule(world.get_location(get_location_name("F1_AUDREY_RECRUIT", world)), Has("Vending Machine Key"))
 
     #gf rules
 
     world.set_rule(world.get_location(get_location_name("MUTT_SPIDER_HUSK_HEART", world)), Has("MET_SPIDER_HUSK"))
+    
+    world.set_rule(world.get_location(get_location_name("GF_KOTD_COMBAT_VICTORY", world)), HasAll(*item_name_groups["KOTD_FIGURE"]))
+    world.set_rule(world.get_location(get_location_name("GLITCH_SLIME_HYDRA_COMBAT_VICTORY", world)), HasAll(*item_name_groups["KOTD_FIGURE"]))
 
     # one more piranhas fight, dragonfish + 2x piranhas, is defeatable before piranhas activated. 
     # player will fight only the dragonfish, but the victory will still count.
@@ -119,17 +124,20 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     #audrey rules
     world.set_rule(world.get_location(get_location_name("APT_30_TAXIDERMY_AUDREY_LOOT", world)), Has("Audrey"))
     world.set_rule(world.get_location(get_location_name("APT_28_SHRIMP_KNIGHT_AUDREY_LOOT", world)), Has("Audrey"))
+    world.set_rule(world.get_location(get_location_name("LL_MEMORIAL_TANK_AUDREY_LOOT", world)), Has("Audrey"))
+    world.set_rule(world.get_location(get_location_name("LL_TRENCH_DIGGER_AUDREY_LOOT", world)), Has("Audrey"))
+    world.set_rule(world.get_location(get_location_name("LL_BATTLEFIELD_APC_AUDREY_LOOT", world)), Has("Audrey"))
 
 
 flawed_ritual_endings = {"FLAWED_RITUAL_ENDING", "SCREAMING_SKIES_ENDING", "ETERNAL_FATE_ENDING", "XIN_AMON_ENDING", "MASK_ENDING"}
 
 perfect_rituals = {"PERFECT_RITUAL_ENDING", "PROMISE_ENDING", "TRUE_FINAL_ENDING"}
 
-all_rituals = {*flawed_ritual_endings, *perfect_rituals, }
+all_rituals = {*flawed_ritual_endings, *perfect_rituals}
 
 all_roof_endings = {*all_rituals, "FAILED_RITUAL_ENDING"}
 
-all_endings = {*all_roof_endings, "UNITY_ENDING"} # todo: add crossword ending
+all_endings = {*all_roof_endings, "UNITY_ENDING", "WORDS_OF_POWER_ENDING"} # todo: add crossword ending
 
 def set_completion_condition(world: LookOutsideWorld) -> None:
     player_goal = world.options.goal
