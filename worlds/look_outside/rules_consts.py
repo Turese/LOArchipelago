@@ -1,6 +1,6 @@
 from rule_builder.rules import Has, HasAll, Or, And, HasAny
 
-from worlds.look_outside.items import item_name_groups, num_multiple_items
+from worlds.look_outside.items_consts import item_name_groups, num_multiple_items
 
 # Perfect offering requirements
 turned_in_complete_manuscript = And(Has("Progressive Loose Manuscript", count=2), Has("MET_JASPER"))

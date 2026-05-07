@@ -1,8 +1,8 @@
 import settings
 import typing
 
-from worlds.look_outside.items import ItemCat, ItemTag, item_table, get_item_id, item_name_groups,\
-    num_multiple_items
+from worlds.look_outside.items_consts import ItemCat, ItemTag, item_table, get_item_id, item_name_groups,\
+    num_multiple_items, LOItem
 from .locations import get_location_id, get_location_name, location_table, create_all_locations
 
 from .options import LookOutsideOptions  # the options we defined earlier
@@ -13,7 +13,7 @@ from worlds.look_outside.regions import create_and_connect_regions
 from worlds.look_outside.rules import set_all_rules
 from worlds.look_outside.web_world import LookOutsideWebworld
 
-from .items import LOItem
+from worlds.look_outside.items import create_all_items, create_lo_item
 
 class LOSettings(settings.Group):
     pass
@@ -47,69 +47,13 @@ class LookOutsideWorld(CachedRuleBuilderWorld):
         visualize_regions(self.multiworld.get_region("APT_33_HOME", self.player), "my_world.puml")
 
     def create_item(self, item: str) -> LOItem:
-        classification = ItemClassification.filler
-        item_info = item_table[item]
-        if ItemTag.CHECK_GATE in item_info.tags or ItemTag.BREAKABLE_KEY in item_info.tags or ItemTag.OFFERING in item_info.tags:
-            classification = ItemClassification.progression
-        elif item_info.category == ItemCat.SKILL:
-            classification = ItemClassification.useful
-        elif item_info.category == ItemCat.RECRUIT:
-            classification = ItemClassification.useful
-        elif ItemTag.USEFUL in item_info.tags:
-            classification = ItemClassification.useful
-        return LOItem(item, classification, self.item_name_to_id[item], self.player)
+        return create_lo_item(self, item)
 
     def create_event(self, event: str) -> LOItem:
         return LOItem(event, ItemClassification.progression, None, self.player)
     
     def create_items(self) -> None:
-        # Add items to the Multiworld.
-        # If there are two of the same item, the item has to be twice in the pool.
-        # Which items are added to the pool may depend on player options, e.g. custom win condition like triforce hunt.
-        # Having an item in the start inventory won't remove it from the pool.
-        # If you want to do that, use start_inventory_from_pool
-
-        # TODO: IMPLEMENT WITH LOGIC
-
-        mandatory_items = []
-        unique_items = []
-        remaining_items = []
-        excluded_items = {"Simple Key", "Iris Key"}
-
-        for item_name, item_info in item_table.items():
-            if item_name in excluded_items:
-                continue
-            category = item_info.category
-            tags = item_info.tags
-            if ItemTag.PROGRESSIVE in tags or ItemTag.BREAKABLE_KEY in tags:
-                mandatory_items += [item_name] * num_multiple_items[item_name]
-            elif category == ItemCat.SKILL or category == ItemCat.RECRUIT or category == ItemCat.MISC:
-                mandatory_items += [item_name]
-            elif ItemTag.UNIQUE in tags or ItemTag.CHECK_GATE in tags:
-                unique_items += [item_name]
-            else:
-                remaining_items += [item_name]
-        
-        for item in mandatory_items:
-            self.multiworld.itempool += [self.create_item(item)]
-
-        for item in unique_items:
-            self.multiworld.itempool += [self.create_item(item)]
-
-        num_locations = len(self.multiworld.get_unfilled_locations())
-        num_itempool = len(self.multiworld.itempool)
-    
-        slots_to_fill = num_locations - num_itempool
-
-        
-
-        for i in range(slots_to_fill):
-            filler_item = remaining_items[i % len(remaining_items)]
-            self.multiworld.itempool += [self.create_item(filler_item)]
-
-        print(f"Added {len(self.multiworld.itempool)} items to the pool, filling {slots_to_fill} slots with filler items.")
-
-        # todo: bring in filler items; floor 3 doesnt have enough locations for everything   
+        create_all_items(self)  
 
     def set_rules(self) -> None:
         set_all_rules(self)
@@ -118,6 +62,6 @@ class LookOutsideWorld(CachedRuleBuilderWorld):
         # If you need access to the player's chosen options on the client side, there is a helper for that.
         return self.options.as_dict(
             "goal", "include_arms", "friendly_fire", "rusty_crown", "include_test_gear", "include_nestor_quest", 
-            "include_shades", "include_mask", "include_roommate_quests", "lockpicks_in_logic", "starting_games", 
+            "include_shades", "include_mask", "include_roommate_quests", "starting_games", 
             "death_link"
         )

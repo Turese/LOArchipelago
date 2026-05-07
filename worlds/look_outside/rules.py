@@ -7,11 +7,12 @@ from worlds.look_outside.locations import get_location_name
 
 from .options import PlayerGoal
 
-from worlds.look_outside.items import item_name_groups
+from worlds.look_outside.items_consts import item_name_groups
 
 from worlds.look_outside.regions_consts import all_regions_table
 from worlds.look_outside.rules_consts import can_nestor_rafta, can_open_any_simple_lock, can_access_basement, can_leigh_quest
 from rule_builder.rules import Has, And, HasAll, HasAny
+from worlds.look_outside.locations_consts import location_name_groups
 
 if TYPE_CHECKING:
     from .__init__ import LookOutsideWorld
@@ -65,7 +66,9 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
 
     #f2 rules
     world.set_rule(world.get_location(get_location_name("F2_RECRUIT_ASTER", world)), And(Has("MET_AURELIUS"), Has("MET_JASPER"), can_access_basement)) # todo: event for meeting astronomers instead?
-    world.set_rule(world.get_location(get_location_name("F2_GRASSHOPPER_COMBAT_VICTORY", world)), can_leigh_quest)
+    
+    if world.options.include_roommate_quests != 0:
+        world.set_rule(world.get_location(get_location_name("F2_GRASSHOPPER_COMBAT_VICTORY", world)), can_leigh_quest)
 
     world.set_rule(world.get_location(get_location_name("APT_20_HYDRA_LAUNDRY", world)), Has("Laundry"))
 
@@ -83,7 +86,8 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     world.set_rule(world.get_location(get_location_name("MUTT_SPIDER_HUSK_HEART", world)), Has("MET_SPIDER_HUSK"))
     
     world.set_rule(world.get_location(get_location_name("GF_KOTD_COMBAT_VICTORY", world)), HasAll(*item_name_groups["KOTD_FIGURE"]))
-    world.set_rule(world.get_location(get_location_name("GLITCH_SLIME_HYDRA_COMBAT_VICTORY", world)), HasAll(*item_name_groups["KOTD_FIGURE"]))
+    if world.options.include_mask != 0:
+        world.set_rule(world.get_location(get_location_name("GLITCH_SLIME_HYDRA_COMBAT_VICTORY", world)), HasAll(*item_name_groups["KOTD_FIGURE"]))
 
     # one more piranhas fight, dragonfish + 2x piranhas, is defeatable before piranhas activated. 
     # player will fight only the dragonfish, but the victory will still count.
@@ -104,22 +108,9 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     world.set_rule(world.get_location(get_location_name("LL_BEDROOM_SAFE", world)), can_open_any_simple_lock)
 
     #nestor quest rules
-    world.set_rule(world.get_location(get_location_name("F1_LETTER_FROM_RAFTA", world)), HasAll("Fountain Pen", "Stationery"))
-    world.set_rule(world.get_location(get_location_name("F3_HAND_WORMS_COMBAT_VICTORY", world)), can_nestor_rafta)
-    world.set_rule(world.get_location(get_location_name("F2_NESTOR_HAND_WORMS_COMBAT_VICTORY", world)), can_nestor_rafta)
-    world.set_rule(world.get_location(get_location_name("APT_27_BATHROOM_LEG_WORMS", world)), can_nestor_rafta)
-    world.set_rule(world.get_location(get_location_name("APT_24_LIVINGROOM_FACE_WORMS_COMBAT_VICTORY", world)), can_nestor_rafta)
-    world.set_rule(world.get_location(get_location_name("APT_24_BEDROOM_FACE_WORMS_COMBAT_VICTORY", world)), can_nestor_rafta)
-    world.set_rule(world.get_location(get_location_name("F2_NESTOR_HAND_WORMS_COMBAT_VICTORY", world)), can_nestor_rafta)
-    world.set_rule(world.get_location(get_location_name("F1_HAND_WORMS", world)), can_nestor_rafta)
-    world.set_rule(world.get_location(get_location_name("F1_NESTOR_COMBAT_VICTORY", world)), can_nestor_rafta)
-    world.set_rule(world.get_location(get_location_name("F1_NESTOR_HEAD_COMBAT_VICTORY", world)), can_nestor_rafta)
-    world.set_rule(world.get_location(get_location_name("F1_NESTOR_FOOT_COMBAT_VICTORY", world)), can_nestor_rafta)
-    world.set_rule(world.get_location(get_location_name("F1_NESTOR_HAND_COMBAT_VICTORY", world)), can_nestor_rafta)
-    world.set_rule(world.get_location(get_location_name("RAT_APT_BATHROOM_LEG_WORMS_COMBAT_VICTORY", world)), can_nestor_rafta)
-    world.set_rule(world.get_location(get_location_name("GF_LEG_FOOT_WORM_COMBAT_VICTORY", world)), can_nestor_rafta)
-    world.set_rule(world.get_location(get_location_name("GF_MENS_BATHROOM_MARSHALL_COMBAT_VICTORY", world)), can_nestor_rafta)
-    world.set_rule(world.get_location(get_location_name("GF_WEST_HAND_WORMS_COMBAT_VICTORY", world)), can_nestor_rafta)
+    if world.options.include_nestor_quest != 0:
+        for location_id in location_name_groups["NESTOR_QUEST"]:
+            world.set_rule(world.get_location(get_location_name(location_id, world)), can_nestor_rafta)
 
     #audrey rules
     world.set_rule(world.get_location(get_location_name("APT_30_TAXIDERMY_AUDREY_LOOT", world)), Has("Audrey"))

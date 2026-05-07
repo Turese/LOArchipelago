@@ -2,15 +2,17 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from BaseClasses import Location
-from worlds.look_outside.locations_consts import LocationData, location_table, location_to_region
-from worlds.look_outside.items import LOItem
+from BaseClasses import Location, LocationProgressType
+from worlds.look_outside.locations_consts import location_name_groups, LocationData, location_table, location_to_region,\
+    UNDER_THE_STAIRS_LOCATIONS
+from worlds.look_outside.items_consts import LOItem
 from worlds.look_outside.regions_consts import stairwell_planet_lock
 from worlds.look_outside.rules_consts import can_perform_flawed_ritual,\
     can_perform_perfect_ritual, can_perform_mask_ritual, can_perform_eternal_fate_ritual,\
     can_perform_xin_amon_ritual, can_true_final
 from rule_builder.rules import Has
 from worlds.look_outside.rules_consts import can_keep_promise
+from worlds.look_outside.options import IncludeShades
 
 
 if TYPE_CHECKING:
@@ -25,16 +27,18 @@ def get_location_id(location_data: LocationData) -> int:
 
 def get_location_name(location_name: str, world: LookOutsideWorld) -> str:
     location_data = location_table[location_name]
-    if False: # todo: check cursed mode version modifier
-        return location_data.cursed_name
     return location_data.str_name
 
 def create_all_locations(world: LookOutsideWorld) -> None:
     create_regular_locations(world)
     create_events(world)
+    exclude_locations(world)
 
 def create_regular_locations(world: LookOutsideWorld) -> None:
+    excluded_locations = exclude_locations(world)
     for location_id, location_info in location_table.items():
+        if location_id in excluded_locations:
+            continue
         parent_region_name = location_to_region[location_info.str_name]
         parent_region = world.get_region(parent_region_name)
         location = LOLocation(world.player, location_info.str_name, location_info.id, parent_region)
@@ -145,3 +149,22 @@ def create_events(world: LookOutsideWorld) -> None:
     world.get_region("BASEMENT_EAST").add_event(
         "BASEMENT_EAST_SHADE", "DEFEATED_BASEMENT_SHADE", location_type=LOLocation, item_type=LOItem)
     
+def exclude_locations(world: LookOutsideWorld) -> None:
+    exclude_set = set()
+    if world.options.include_mask == 0:
+        exclude_set.update(location_name_groups["MASK"])
+    if world.options.include_roommate_quests == 0:
+        exclude_set.update(location_name_groups["ROOMMATE_QUEST"])
+    if world.options.friendly_fire == 0:
+        exclude_set.update(location_name_groups["FRIENDLY_FIRE"])
+    if world.options.include_nestor_quest == 0:
+        exclude_set.update(location_name_groups["NESTOR_QUEST"])
+    if world.options.include_shades == IncludeShades.option_none:
+        exclude_set.update(location_name_groups["LARGE_SHADE"])
+        exclude_set.update(UNDER_THE_STAIRS_LOCATIONS.keys())
+    elif world.options.include_shades == IncludeShades.option_large:
+        exclude_set.update(UNDER_THE_STAIRS_LOCATIONS.keys())
+    elif world.options.include_shades == IncludeShades.option_large_spider:
+        exclude_set.add("STAIRS_CRAWLING_SHADE_COMBAT_VICTORY")
+
+    return exclude_set

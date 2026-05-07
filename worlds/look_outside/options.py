@@ -26,7 +26,7 @@ class IncludeArms(Choice):
 
 class IncludeFriendlyFire(Toggle):
     """This controls whether locations specific to attacking non-hostile
-    characters and potential recruits are randomized. This includes all merchants."""
+    characters and potential recruits are included. This includes all merchants, Spine, and Marc-André."""
     display_name = "Include Friendly Fire"
     default = 0
 
@@ -40,7 +40,7 @@ class IncludeTestGear(Toggle):
     display_name = "Include Test Armor/Test Swords"
     default = 0
 
-class IncludeNestorQuest(Toggle):
+class IncludeNestorQuest(Choice):
     """This controls whether locations specific to the Nestor and Rafta quest are randomized."""
     display_name = "Include Nestor and Rafta's Quest"
     option_none = 0
@@ -48,7 +48,7 @@ class IncludeNestorQuest(Toggle):
     option_all_worms = 2
     default = 0
 
-class IncludeShades(Toggle):
+class IncludeShades(Choice):
     """This controls whether locations specific to the Spider recruitment quest are randomized."""
     display_name = "Include the Spider's Recruitment Quest"
     option_none = 0
@@ -64,20 +64,26 @@ class IncludeMaskLocations(Toggle):
     default = 0
 
 class IncludeRoommateQuests(Toggle):
-    """This controls whether locations specific to various roommate quests are
+    """This controls whether roommate quests that involve escorting them to their apartments are
     randomized: Dan, Hellen, and Leigh's quests."""
     default = 0
 
-class LockpicksInLogic(Toggle):
-    """This controls whether the lockpick items or simple key items are placed into the item pool.
+class IncludeGameSkills(Toggle):
+    """This controls whether the skills given by completing each of the video games are randomized."""
+    display_name = "Include Game Skills"
+    default = 0
+
+# todo: allow this
+"""class LockpicksInLogic(Toggle):
+    This controls whether the lockpick items or simple key items are placed into the item pool.
     If lockpicks_only is selected, then they can be used in place of keys at any locked location,
     and Kaeley will not become upset if they are used in her puzzle room.
-    Default both lockpicks and simple keys are placed in the pool."""
+    Default both lockpicks and simple keys are placed in the pool.
     display_name = "Lockpicks and keys"
     lockpicks_and_keys = 0
     lockpicks_only = 1
     keys_only = 2
-    default = 0
+    default = 0"""
 
 class StartingGames(Choice):
     """This controls which games are available at the start of the game.
@@ -133,7 +139,7 @@ class LookOutsideOptions(PerGameCommonOptions):
     include_shades: IncludeShades
     include_mask: IncludeMaskLocations
     include_roommate_quests: IncludeRoommateQuests
-    lockpicks_in_logic: LockpicksInLogic
+    #lockpicks_in_logic: LockpicksInLogic
     starting_games: StartingGames
     death_link: DeathLink
 
@@ -141,11 +147,11 @@ option_groups = [
     OptionGroup(
         "Location Options",
         [PlayerGoal, IncludeFriendlyFire, IncludeRustyCrown, IncludeNestorQuest, IncludeShades,
-         IncludeMaskLocations, IncludeRoommateQuests],
+         IncludeMaskLocations, IncludeRoommateQuests, IncludeGameSkills],
     ),
     OptionGroup(
         "Item Options",
-        [IncludeTestGear, IncludeArms, LockpicksInLogic, StartingGames],
+        [IncludeTestGear, IncludeArms, StartingGames], # LockpicksInLogic
     ),
     OptionGroup("Other Options", [DeathLink])
 ]
@@ -160,10 +166,10 @@ option_presets = {
         "include_test_gear": False,
         "include_nestor_quest": False,
         "include_shades": False,
-        "include_mask": "True",
+        "include_mask": True,
         "include_roommate_quests": True,
-        "lockpicks_in_logic": True,
-        "starting_games": 1,
+        #"lockpicks_in_logic": True,
+        "starting_games": 0,
         "death_link": False
     },
 }

@@ -1,6 +1,6 @@
 from rule_builder.rules import Has, HasAll, Rule, And, Or
 
-from worlds.look_outside.items import num_multiple_items
+from worlds.look_outside.items_consts import num_multiple_items
 
 from typing_extensions import NamedTuple
 from worlds.look_outside.rules_consts import can_clear_with_herbicide, can_leigh_quest, can_nestor_rafta,\
