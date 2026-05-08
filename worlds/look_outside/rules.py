@@ -4,6 +4,7 @@ from typing import TYPE_CHECKING
 
 from rule_builder.options import OptionFilter
 from worlds.look_outside.locations import get_location_name
+from worlds.look_outside.regions import exclude_regions
 
 from .options import PlayerGoal
 
@@ -23,9 +24,11 @@ def set_all_rules(world: LookOutsideWorld) -> None:
     set_completion_condition(world)
 
 def set_all_entrance_rules(world: LookOutsideWorld) -> None:
+    excluded_regions = exclude_regions(world)
+ 
     for region_info in all_regions_table.values():
         for exit_name, exit_info in region_info.exits.items():
-            if exit_info.rule is not None:
+            if exit_info.target_region not in excluded_regions and exit_info.rule is not None:
                 world.set_rule(world.get_entrance(exit_name), exit_info.rule)
 
 def set_all_location_rules(world: LookOutsideWorld) -> None:
@@ -61,6 +64,8 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     world.set_rule(world.get_location(get_location_name("APT_31_TELESCOPE_DISC_EXPOSURE", world)), Has("Void Disc"))
 
     world.set_rule(world.get_location(get_location_name("APT_32_CHILD_BEDROOM_BEN_PLAY", world)), Has("Army Guy Figure"))
+
+    world.set_rule(world.get_location(get_location_name("APT_32_BATHROOM_RECRUIT_JOEL", world)), HasAll("Teddy", "Door Knob"))
 
     world.set_rule(world.get_location(get_location_name("APT_37_PROJECTOR_ROOM_PHOTO", world)), And(Has("Negative Disc"), Has("Photo Paper")))
 
@@ -111,6 +116,10 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     if world.options.include_nestor_quest != 0:
         for location_id in location_name_groups["NESTOR_QUEST"]:
             world.set_rule(world.get_location(get_location_name(location_id, world)), can_nestor_rafta)
+    
+    if world.options.rusty_crown != 0:
+        for location_id in location_name_groups["RUSTY_CROWN"]:
+            world.set_rule(world.get_location(get_location_name(location_id, world)), Has("Rusty Crown"))
 
     #audrey rules
     world.set_rule(world.get_location(get_location_name("APT_30_TAXIDERMY_AUDREY_LOOT", world)), Has("Audrey"))

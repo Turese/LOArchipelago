@@ -30,9 +30,14 @@ class IncludeFriendlyFire(Toggle):
     display_name = "Include Friendly Fire"
     default = 0
 
+class IncludeRatFriendlyFire(Toggle):
+    """This controls whether locations specific to attacking rats that become non-hostile
+    when wearing the rusty crown are included."""
+    display_name = "Include Rat Friendly Fire"
+    default = 0
+
 class IncludeRustyCrown(Toggle):
-    """This controls whether locations specific to interacting with rats are randomized. If toggled, then
-    locations for killing any of the rats that become friendly to a player wearing the crown are excluded."""
+    """This controls whether locations specific to interacting with non-hostile rats are randomized."""
     default = 0
 
 class IncludeTestGear(Toggle):
@@ -133,6 +138,7 @@ class LookOutsideOptions(PerGameCommonOptions):
     goal: PlayerGoal
     include_arms: IncludeArms
     friendly_fire: IncludeFriendlyFire
+    rat_friendly_fire: IncludeRatFriendlyFire
     rusty_crown: IncludeRustyCrown
     include_test_gear: IncludeTestGear
     include_nestor_quest: IncludeNestorQuest
@@ -161,8 +167,9 @@ option_presets = {
     "default": {
         "goal": 1,
         "include_arms": 0,
-        "friendly_fire": 0,
-        "rusty_crown": False,
+        "friendly_fire": False,
+        "rat_friendly_fire": False,
+        "rusty_crown": True,
         "include_test_gear": False,
         "include_nestor_quest": False,
         "include_shades": False,

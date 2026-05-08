@@ -15,7 +15,14 @@ if TYPE_CHECKING:
 def create_lo_item(world: LookOutsideWorld, item: str) -> LOItem:
     classification = ItemClassification.filler
     item_info = item_table[item]
-    if ItemTag.CHECK_GATE in item_info.tags or ItemTag.BREAKABLE_KEY in item_info.tags or ItemTag.OFFERING in item_info.tags:
+    
+    if (item == "Rusty Crown" and world.options.rusty_crown == 0): 
+        classification = ItemClassification.useful
+    if (world.options.include_roommate_quests == 0 and item in item_name_groups["QUEST_ROOMMATES"]):
+        classification = ItemClassification.useful
+    if (world.options.include_roommate_quests == 0 and item == "Cell Phone"):
+        classification = ItemClassification.filler
+    elif ItemTag.CHECK_GATE in item_info.tags or ItemTag.BREAKABLE_KEY in item_info.tags or ItemTag.OFFERING in item_info.tags:
         classification = ItemClassification.progression
     elif item_info.category == ItemCat.SKILL:
         classification = ItemClassification.useful

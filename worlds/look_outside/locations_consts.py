@@ -865,7 +865,7 @@ RAT_APARTMENT_MAIN_LOCATIONS = {
     "RAT_APT_URN": LocationData("Rat Apt. - Item on West Table", LC.OVERWORLD_ITEM, 2601),
     "RAT_APT_ROLLING_PIN": LocationData("Rat Apt. - Item on Dining Table", LC.OVERWORLD_ITEM, 2602),
     "RAT_APT_FRIDGE": LocationData("Rat Apt. - Fridge", LC.FRIDGE_LOOT, 2603),
-    "RAT_APT_RATS_COMBAT_VOICTORY": LocationData("Rat Apt. - Slay Entryway Rats", LC.RAT_FRIENDLY_FIRE, 2604),
+    "RAT_APT_RATS_COMBAT_VICTORY": LocationData("Rat Apt. - Slay Entryway Rats", LC.RAT_FRIENDLY_FIRE, 2604),
     "RAT_APT_TRASH": LocationData("Rat Apt. - Trash Can", LC.TRASH_LOOT, 2605),
     "RAT_APT_FOUNTAIN_PEN": LocationData("Rat Apt. - Item on Coffee Table", LC.OVERWORLD_ITEM, 2606),
     "RAT_APT_CHEFS_KNIFE": LocationData("Rat Apt. - Item on Kitchen Counter", LC.OVERWORLD_ITEM, 2607),
@@ -2017,7 +2017,7 @@ location_to_region: dict[str, str] = get_region_to_location()
 
 location_name_groups: dict[str, set[str]] = {
     # locations only accessible with the rusty crown item
-    "RUSTY_CROWN": {},
+    "RUSTY_CROWN": {"RAT_LAIR_GIANT_RAT_BURRITO", "F1_PIPE_ROOM_RAT_MERCHANT", "APT_11_RAT_FREAK_GIFT"},
     # mask ending areas
     "MASK": { *CHARAN_PIT_CLEAR_LOCATIONS.keys(), *FLOOR_4_LOCATIONS.keys(), *LL_SHADE_CACHE_LOCATIONS.keys(), *GLITCH_WORLD_LOCATIONS.keys(), *ROOF_LOCATIONS.keys() },
     # roomate quest areas

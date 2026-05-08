@@ -3,9 +3,8 @@ from rule_builder.rules import Has, HasAll, Rule, And, Or
 from worlds.look_outside.items_consts import num_multiple_items
 
 from typing_extensions import NamedTuple
-from worlds.look_outside.rules_consts import can_clear_with_herbicide, can_leigh_quest, can_nestor_rafta,\
-can_open_any_simple_lock, can_access_stairwell, can_clear_with_herbicide,\
-can_clear_with_sapper_charge, can_access_elevator
+from worlds.look_outside.rules_consts import can_leigh_quest, can_open_any_simple_lock,\
+can_access_stairwell, can_clear_with_herbicide, can_clear_with_sapper_charge, can_access_elevator
 
 
 # shade rules go here because i use them here
@@ -580,4 +579,8 @@ all_regions_table = {
     **f1_regions_table,
     **ground_regions_table,
     **basement_regions_table
+}
+
+region_name_groups = {
+    "ROOMMATE_QUEST": {"APT_25_DAN", "LEIGHS_APARTMENT_QUEST", "APT_18_HELLEN_QUEST"},
 }

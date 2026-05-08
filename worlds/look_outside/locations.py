@@ -157,6 +157,10 @@ def exclude_locations(world: LookOutsideWorld) -> None:
         exclude_set.update(location_name_groups["ROOMMATE_QUEST"])
     if world.options.friendly_fire == 0:
         exclude_set.update(location_name_groups["FRIENDLY_FIRE"])
+    if world.options.rat_friendly_fire == 0:
+        exclude_set.update(location_name_groups["RAT_FRIENDLY_FIRE"])
+    if world.options.rusty_crown == 0:
+        exclude_set.update(location_name_groups["RUSTY_CROWN"])
     if world.options.include_nestor_quest == 0:
         exclude_set.update(location_name_groups["NESTOR_QUEST"])
     if world.options.include_shades == IncludeShades.option_none:

@@ -43,8 +43,8 @@ class LookOutsideWorld(CachedRuleBuilderWorld):
         create_and_connect_regions(self)
         create_all_locations(self)
         # TEST CODE FOR REGION MAPPING
-        from Utils import visualize_regions
-        visualize_regions(self.multiworld.get_region("APT_33_HOME", self.player), "my_world.puml")
+        """from Utils import visualize_regions
+        visualize_regions(self.multiworld.get_region("APT_33_HOME", self.player), "my_world.puml")"""
 
     def create_item(self, item: str) -> LOItem:
         return create_lo_item(self, item)

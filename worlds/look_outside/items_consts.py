@@ -775,6 +775,7 @@ item_table: dict[str, ItemData] = {
 }
 
 item_name_groups: dict[str, set[str]] = {
+    "QUEST_ROOMMATES": {"Dan", "Hellen", "Leigh"},
     "OFFERING": {k for k, v in item_table.items() if ItemTag.OFFERING in v.tags},
     "PERFECT_OFFERING": {"Progressive Loose Manuscript",
                          "Correct Painting",
@@ -844,9 +845,9 @@ num_multiple_items: Dict[str, int] = {
     "blue key": 3,
     "white key": 4,
     "black key": 5,
-    "Sapper Charge": 0, # todo: REAL NUMBER
+    "Sapper Charge": 5, # todo: at least 5
     "Iris Key": 0, # todo: REAL NUMBER
-    "Herbicide": 2, # todo: REAL NUMBER
+    "Herbicide": 6, # todo: this seems to be the number blocking locations. what do i do about players putting it in acid sprayer?
     "Ice Melt Salt": 19
 }
 
