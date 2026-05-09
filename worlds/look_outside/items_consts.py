@@ -11,8 +11,7 @@ class ItemCat(IntFlag):
     WEAPON = auto()
     ARMOR = auto()
     SKILL = auto()
-    RECRUIT = auto()  # also used for roommates like wiggly fred and the masked shadow
-    MISC = auto()  # used for switch defined items - crafting kit, crosswords, sams arms, elevator, etc
+    MISC = auto()  # used for switch defined items - crafting kit, crosswords, recruits, elevator, etc and arms
     RESOURCE_PACK = auto()
     TRAP = auto()
 
@@ -44,14 +43,12 @@ def get_item_id(item_data: ItemData) -> int:
             return item_data.category_id + 2000
         case ItemCat.SKILL:
             return item_data.category_id + 3000
-        case ItemCat.RECRUIT:
-            return item_data.category_id + 4000
         case ItemCat.MISC:
-            return item_data.category_id + 5000
+            return item_data.category_id + 4000
         case ItemCat.RESOURCE_PACK:
-            return item_data.category_id + 6000
+            return item_data.category_id + 5000
         case ItemCat.TRAP:
-            return item_data.category_id + 7000
+            return item_data.category_id + 6000
     return item_data.category_id
 
 
@@ -171,7 +168,7 @@ main_item_table: dict[str, ItemData] = {
     "Rare Licorice Candy": ItemData(ItemCat.ITEM, {ItemTag.USEFUL}, 138),
     "Hellfire Candy": ItemData(ItemCat.ITEM, {ItemTag.USEFUL}, 139),
     "Nectar Candy": ItemData(ItemCat.ITEM, {ItemTag.USEFUL}, 140),
-    "Cheese Man": ItemData(ItemCat.ITEM, {ItemTag.USEFUL}, 142),
+    "Cheese Man": ItemData(ItemCat.ITEM, {ItemTag.USEFUL, ItemTag.UNIQUE}, 142),
     "Pale Fluid": ItemData(ItemCat.ITEM, {ItemTag.USEFUL}, 147),
     "Black Ooze": ItemData(ItemCat.ITEM, {ItemTag.INGREDIENT, ItemTag.SPECIAL_CURRENCY}, 148),
     "Caustic Brew": ItemData(ItemCat.ITEM, {ItemTag.INGREDIENT}, 149),
@@ -298,8 +295,8 @@ main_item_table: dict[str, ItemData] = {
     "Pluto Disc": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 330),
     "Void Disc": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 331),
     "Negative Disc": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 332),
-    "Guinea Pig": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.OFFERING, ItemTag.UNIQUE}, 334),
-    "Blank VHS tape": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.OFFERING, ItemTag.UNIQUE}, 335),
+    "Guinea Pig": ItemData(ItemCat.ITEM, {ItemTag.OFFERING, ItemTag.UNIQUE}, 334),
+    "Blank VHS tape": ItemData(ItemCat.ITEM, {ItemTag.OFFERING, ItemTag.UNIQUE}, 335),
     "Incorrect CCTV Recording": ItemData(ItemCat.ITEM, {ItemTag.OFFERING, ItemTag.UNIQUE}, 336),
     "Correct CCTV Recording": ItemData(ItemCat.ITEM, {ItemTag.OFFERING, ItemTag.UNIQUE}, 337),
     "Photo Paper": ItemData(ItemCat.ITEM, {ItemTag.OFFERING, ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 338),
@@ -737,24 +734,24 @@ armor_table: dict[str, ItemData] = {
 }
 
 misc_table: dict[str, ItemData] = {
-    "Aster": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL}, 1),
-    "Audrey": ItemData(ItemCat.RECRUIT, {ItemTag.CHECK_GATE}, 2),
-    "Joel": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL}, 3),
-    "Leigh": ItemData(ItemCat.RECRUIT, {ItemTag.CHECK_GATE}, 4),
-    "Lyle": ItemData(ItemCat.RECRUIT, {ItemTag.CHECK_GATE}, 5),
-    "Xaria and Montgomery": ItemData(ItemCat.RECRUIT, {ItemTag.CHECK_GATE}, 6),
-    "Morton": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL}, 7),
-    "Progressive Rat Child": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL, ItemTag.PROGRESSIVE}, 8),
-    "Spider": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL}, 9),
-    "Hellen": ItemData(ItemCat.RECRUIT, {ItemTag.CHECK_GATE}, 10),
-    "Dan": ItemData(ItemCat.RECRUIT, {ItemTag.CHECK_GATE}, 11),
-    "Ernest": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL}, 12),
-    "Roaches": ItemData(ItemCat.RECRUIT, {ItemTag.CHECK_GATE}, 13),
-    "Sophie": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL}, 14),
-    "Phillippe": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL}, 15),
-    "Papineau": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL}, 16),
-    "Masked Shadow Roommate": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL}, 17),
-    "Wiggly Fred Roommate": ItemData(ItemCat.RECRUIT, {ItemTag.USEFUL}, 18),
+    "Aster": ItemData(ItemCat.MISC, {ItemTag.USEFUL}, 1),
+    "Audrey": ItemData(ItemCat.MISC, {ItemTag.CHECK_GATE}, 2),
+    "Joel": ItemData(ItemCat.MISC, {ItemTag.USEFUL}, 3),
+    "Leigh": ItemData(ItemCat.MISC, {ItemTag.CHECK_GATE}, 4),
+    "Lyle": ItemData(ItemCat.MISC, {ItemTag.CHECK_GATE}, 5),
+    "Xaria and Montgomery": ItemData(ItemCat.MISC, {ItemTag.CHECK_GATE}, 6),
+    "Morton": ItemData(ItemCat.MISC, {ItemTag.USEFUL}, 7),
+    "Progressive Rat Child": ItemData(ItemCat.MISC, {ItemTag.USEFUL, ItemTag.PROGRESSIVE}, 8),
+    "Spider": ItemData(ItemCat.MISC, {ItemTag.USEFUL}, 9),
+    "Hellen": ItemData(ItemCat.MISC, {ItemTag.CHECK_GATE}, 10),
+    "Dan": ItemData(ItemCat.MISC, {ItemTag.CHECK_GATE}, 11),
+    "Ernest": ItemData(ItemCat.MISC, {ItemTag.USEFUL}, 12),
+    "Roaches": ItemData(ItemCat.MISC, {ItemTag.CHECK_GATE}, 13),
+    "Sophie": ItemData(ItemCat.MISC, {ItemTag.USEFUL}, 14),
+    "Phillippe": ItemData(ItemCat.MISC, {ItemTag.USEFUL}, 15),
+    "Papineau": ItemData(ItemCat.MISC, {ItemTag.USEFUL}, 16),
+    "Masked Shadow Roommate": ItemData(ItemCat.MISC, {ItemTag.USEFUL}, 17),
+    "Wiggly Fred Roommate": ItemData(ItemCat.MISC, {ItemTag.USEFUL}, 18),
     "Player's Left Arm": ItemData(ItemCat.MISC, {ItemTag.USEFUL}, 19),
     "Player's Right Arm": ItemData(ItemCat.MISC, {ItemTag.USEFUL}, 20),
     "Crafting Kit": ItemData(ItemCat.MISC, {ItemTag.USEFUL}, 21),

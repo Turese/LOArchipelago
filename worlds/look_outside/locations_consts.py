@@ -36,7 +36,6 @@ class LocationData(NamedTuple):
 """
 
 VIDEO_GAME_LOCATIONS: dict[str, LocationData] = {
-    "GAME_SKILL_WAKE_THE_BLOOD_KNIGHT": LocationData("Complete Video Game - Wake the Blood Knight", LC.SKILL_UNLOCK, 1),
     "GAME_SKILL_WIZARDS_HELL": LocationData("Complete Video Game - Wizards Hell: Arcane Tears", LC.SKILL_UNLOCK, 2),
     "GAME_SKILL_SUPER_JUMPLAD": LocationData("Complete Video Game - Super Jumplad", LC.SKILL_UNLOCK, 3),
     "GAME_SKILL_SUPER_JUMPLAD_3": LocationData("Complete Video Game - Super Jumplad 3", LC.SKILL_UNLOCK, 4),
@@ -54,7 +53,8 @@ VIDEO_GAME_LOCATIONS: dict[str, LocationData] = {
     "GAME_SKILL_OCTOCOOK": LocationData("Complete Video Game - Octocook", LC.SKILL_UNLOCK, 16),
     "GAME_SKILL_SPACE_TRUCKERZ": LocationData("Complete Video Game - Space Truckerz", LC.SKILL_UNLOCK, 17),
     "GAME_SKILL_REPTILE_FOOTBALL": LocationData("Complete Video Game - Reptile Football", LC.SKILL_UNLOCK, 18),
-    "GAME_SKILL_CROSSWORD_CHALLENGE": LocationData("Complete Video Game - Auntie Wilma's Crossword Challenge", LC.SKILL_UNLOCK, 19)
+    "GAME_SKILL_CROSSWORD_CHALLENGE": LocationData("Complete Video Game - Auntie Wilma's Crossword Challenge", LC.SKILL_UNLOCK, 19),
+    "GAME_SKILL_WAKE_THE_BLOOD_KNIGHT": LocationData("Complete Video Game - Wake the Blood Knight", LC.SKILL_UNLOCK, 20),
 }
 
 F3_HALL_LOCATIONS: dict[str, LocationData] = {

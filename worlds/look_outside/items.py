@@ -71,7 +71,8 @@ def create_all_items(world: LookOutsideWorld):
                 mandatory_items += [item_name] * num_multiple_items[item_name]
             elif category == ItemCat.SKILL or category == ItemCat.RECRUIT or category == ItemCat.MISC:
                 mandatory_items += [item_name]
-            elif ItemTag.UNIQUE in tags or ItemTag.CHECK_GATE in tags:
+            # todo: clean up redundant tags. all offerings besides the progressive one are already both unique and check gates
+            elif ItemTag.UNIQUE in tags or ItemTag.CHECK_GATE in tags or ItemTag.OFFERING in tags:
                 unique_items += [item_name]
             else:
                 remaining_items += [item_name]
