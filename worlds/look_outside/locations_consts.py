@@ -174,7 +174,8 @@ APT_32_TEETH_LOCATIONS_MAIN: dict[str, LocationData] = {
     "APT_32_TUNNELS_TOOTH_RIFLE": LocationData("Teeth Hell - Baby Teeth Tunnel Item 1", LC.OVERWORLD_ITEM, 346),
     "APT_32_TUNNELS_TOOTH_SCIMITAR": LocationData("Teeth Hell - Baby Teeth Tunnel Item 2", LC.OVERWORLD_ITEM, 347),
     "APT_32_TUNNELS_HEALING_SPRAY": LocationData("Teeth Hell - Item in Southeast Tunnel", LC.OVERWORLD_ITEM, 348),
-    "APT_32_TUNNELS_TOOTH_GROUP_B_COMBAT_VICTORY": LocationData("Teeth Hell - Slay Tooth Group (Bottom Right Tunnel)", LC.OVERWORLD_ITEM, 349)
+    "APT_32_TUNNELS_TOOTH_GROUP_B_COMBAT_VICTORY": LocationData("Teeth Hell - Slay Tooth Group (Bottom Right Tunnel)", LC.OVERWORLD_ITEM, 349),
+    "APT_32_BATHROOM_BITING_BOOTS": LocationData("Apt. 32 Bathroom - Item West of Joel", LC.OVERWORLD_ITEM, 350)
 }
 
 APT_32_TEETH_BEHIND_DOOR_KNOB: dict[str, LocationData] = {
@@ -221,7 +222,7 @@ APT_33_MEAT_LOCATIONS: dict[str, LocationData] = {
     "APT_33_MEAT_SPINE_COMBAT_VICTORY": LocationData("Apt. 33 Meat World Living Room - Slay Spine", LC.FRIENDLY_FIRE, 601),
     "APT_33_MEAT_SPINE_SPARE": LocationData("Apt. 33 Meat World Living Room - Spare Spine", LC.EVENT_ITEM, 602),
     "APT_33_MEAT_CONFUSION_COMBAT_VICTORY": LocationData("Apt. 33 Meat World Bedroom - Slay Confusion", LC.COMBAT_VICTORY, 603),
-    "APT_33_MEAT_STRETCH_FACE_COMBAT_VICTORY": LocationData("Apt. 33 Meat World Living Room - Slay Stretch Face", LC.COMBAT_VICTORY, 604)
+    "APT_33_MEAT_STRETCH_FACE_COMBAT_VICTORY": LocationData("Apt. 33 Meat World Bathroom - Slay Stretch Face", LC.COMBAT_VICTORY, 604)
 }
 
 APT_34_FROZEN_ENTRYWAY_LOCATIONS: dict[str, LocationData] = {
@@ -341,16 +342,16 @@ APT_36_WOUNDED_LOCATIONS: dict[str, LocationData] = {
 }
 
 APT_37_VINCENT_LOCATIONS_MAIN: dict[str, LocationData] = {
-    "APT_37_LOUIS_TAIL": LocationData("Apt. 37 Living Room - Slay Louis' Tail", LC.OVERWORLD_ITEM, 1001),
+    "APT_37_LOUIS_TAIL": LocationData("Apt. 37 Living Room - Slay Louis' Tail", LC.COMBAT_VICTORY, 1001),
     "APT_37_TABLE_PLATE_1": LocationData("Apt. 37 Kitchen - Item on Table 1", LC.OVERWORLD_ITEM, 1002),
-    "APT_37_TABLE_THROWING_KNIVES": LocationData("Apt. 37 Kitchen - Second Item on Table", LC.OVERWORLD_ITEM, 1003),
-    "APT_37_TABLE_FORKS": LocationData("Apt. 37 Kitchen - Third Item on Table", LC.OVERWORLD_ITEM, 1004),
-    "APT_37_TABLE_PLATE_2": LocationData("Apt. 37 Kitchen - Fourth Item on Table", LC.OVERWORLD_ITEM, 1005, difficulty_lock={DL.EXPLORER}),
+    "APT_37_TABLE_THROWING_KNIVES": LocationData("Apt. 37 Kitchen - Item on Table 2", LC.OVERWORLD_ITEM, 1003),
+    "APT_37_TABLE_FORKS": LocationData("Apt. 37 Kitchen - Item on Table 3", LC.OVERWORLD_ITEM, 1004),
+    "APT_37_TABLE_PLATE_2": LocationData("Apt. 37 Kitchen - Item on Table 4", LC.OVERWORLD_ITEM, 1005, difficulty_lock={DL.EXPLORER}),
     "APT_37_CARVING_FORK": LocationData("Apt. 37 Kitchen - Item on Counter", LC.OVERWORLD_ITEM, 1006),
     "APT_37_FRIDGE": LocationData("Apt. 37 Kitchen - Fridge", LC.FRIDGE_LOOT, 1007),
     "APT_37_TRASH": LocationData("Apt. 37 Kitchen - Trash Can", LC.TRASH_LOOT, 1008),
     "APT_37_WHISKEY": LocationData("Apt. 37 Living Room - Item on Left Table 2", LC.OVERWORLD_ITEM, 1009),
-    "APT_37_CRAFTING_KIT": LocationData("Apt. 37 Living Room - Second Item on Left Table", LC.OVERWORLD_ITEM, 1010),
+    "APT_37_CRAFTING_KIT": LocationData("Apt. 37 Living Room - Crafting Kit Location", LC.OVERWORLD_ITEM, 1010),
     "APT_37_CHOCKY_BAR": LocationData("Apt. 37 Living Room - Item by Window", LC.OVERWORLD_ITEM, 1011),
     "APT_37_ONLOOKER_COMBAT_VICTORY": LocationData("Apt. 37 Living Room - Slay Onlooker by Entrance", LC.COMBAT_VICTORY, 1012),
     "APT_37_VINCENT_COMBAT_VICTORY": LocationData("Apt. 37 Living Room - Slay Vincent", LC.COMBAT_VICTORY, 1013),
@@ -587,8 +588,11 @@ GLITCH_WORLD_LOCATIONS: dict[str, LocationData] = {
 --- F2 LOCATIONS --- 
 """
 
-F2_HALL_EAST_LOCATIONS: dict[str, LocationData] = {
+F2_SHADE_LOCATIONS: dict[str, LocationData] =  {    
     "F2_LARGE_SHADE_COMBAT_VICTORY": LocationData("Floor 2 Hall - Slay Large Shade '????? ??? ??'", LC.COMBAT_VICTORY, 1501),
+}
+
+F2_HALL_EAST_LOCATIONS: dict[str, LocationData] = {
     "F2_NESTOR_HAND_WORMS_COMBAT_VICTORY": LocationData("Floor 2 Hall - Slay Hand Worms", LC.COMBAT_VICTORY, 1502),
     "F2_APT_21_KEY": LocationData("Floor 2 Hall - Item in Junk Pile", LC.OVERWORLD_ITEM, 1503),
     "F2_PISTOL": LocationData("Floor 2 Hall - First Item After Beast Chase", LC.OVERWORLD_ITEM, 1504, difficulty_lock={DL.SURVIVOR, DL.EXPLORER}),
@@ -1086,6 +1090,7 @@ APT_18_HELLEN_LOCATIONS = {
     "APT_18_BATHROOM_FIRST_AID_KIT": LocationData("Apt. 18 Bathroom - Item Near Door 1", LC.OVERWORLD_ITEM, 3325),
     "APT_18_BATHROOM_EYE_DROPS": LocationData("Apt. 18 Bathroom - Item Near Door 2", LC.OVERWORLD_ITEM, 3326),
     "APT_18_CRIMSON_BLOOM_COMBAT_VICTORY": LocationData("Apt. 18 Bathroom - Slay Crimson Bloom", LC.COMBAT_VICTORY, 3327),
+    "APT_18_SW_SKITTERBUSH_COMBAT_VICTORY": LocationData("Apt. 18 Southwest - Slay Skitterbush", LC.COMBAT_VICTORY, 3330, difficulty_lock= {DL.CURSED}),
   }
 
 APT_18_HELLEN_QUEST_LOCATIONS = {
@@ -1106,7 +1111,7 @@ GF_HALL_MAIN_LOCATIONS = {
     "GF_OFFICE_JASPER_COMBAT_VICTORY": LocationData("F1 Office - Slay Jasper", LC.FRIENDLY_FIRE, 3406),
     "GF_OFFICE_JASPER_GIFT_OFFERING": LocationData("F1 Office - Pre-Ritual Gift From Jasper", LC.EVENT_ITEM, 3407),
     "GF_OFFICE_JASPER_FIX_TELESCOPE": LocationData("F1 Office - Have Jasper Fix Telescope", LC.EVENT_ITEM, 3408),
-    "GF OFFICE_BATHROOM_WORM_COMBAT_VICTORY": LocationData("F1 Office Bathroom - Slay Leg and Foot Worms", LC.COMBAT_VICTORY, 3409),
+    "GF_OFFICE_BATHROOM_WORM_COMBAT_VICTORY": LocationData("F1 Office Bathroom - Slay Leg and Foot Worms", LC.COMBAT_VICTORY, 3409),
     "MAILROOM_OFFICE_CELL_PHONE": LocationData("Mailroom Office - Item in Southeast Corner", LC.OVERWORLD_ITEM, 3903),
     "MAILROOM_OFFICE_SUN_DISC": LocationData("Mailroom Office - Item on Counter", LC.OVERWORLD_ITEM, 3904),
 }
@@ -1194,6 +1199,8 @@ MUTT_MAIN_LOCATIONS = {
     "MUTT_BEER": LocationData("Mutt's Shop - Item on North Table", LC.OVERWORLD_ITEM, 3720),
     "MUTT_BATHROOM_WRAPPED_GIFT": LocationData("Mutt's Shop Bathroom - Item in Corner", LC.OVERWORLD_ITEM, 3721),
     "MUTT_BATHROOM_URANUS_DISC": LocationData("Mutt's Shop Bathroom - Item on Counter", LC.OVERWORLD_ITEM, 3722, difficulty_lock= {DL.SURVIVOR, DL.EXPLORER}),
+    "MUTT_TRASH": LocationData("Mutt's Shop - Trash Can", LC.TRASH_LOOT, 3729),
+    "MUTT_FIRST_AID_BOX": LocationData("Mutt's Shop - First Aid Box", LC.FIRST_AID_BOX_LOOT, 3730),
 }
 
 MUTT_BACKROOM_LOCATIONS = {
@@ -1402,9 +1409,13 @@ GF_SOUTH_JANITORS_CLOSET_LOCATIONS = {
 --- BASEMENT FLOOR LOCATIONS --- 
 """
 
-BASEMENT_EAST_LOCATIONS = {
+BASEMENT_SHADE_LOCATIONS = {
     "B_LARGE_SHADE_COMBAT_VICTORY": LocationData("Basement - Slay Large Shade '? ? ? ?? ? ?? ??'", LC.COMBAT_VICTORY, 4301),
-    "B_MAURICE_COMBAT_VICTORY": LocationData("Basement - Slay (Some of) Maurice", LC.COMBAT_VICTORY, 4302)
+}
+
+BASEMENT_EAST_LOCATIONS = {
+    "B_MAURICE_COMBAT_VICTORY": LocationData("Basement - Slay (Some of) Maurice", LC.COMBAT_VICTORY, 4302),
+    "B_MAURICE_FRIDGE": LocationData("Maurice's Fridge", LC.FRIDGE_LOOT, 4303),
 }
 
 APT_B1_ARTHROPOD_MAIN_LOCATIONS = {
@@ -1764,6 +1775,7 @@ FLOOR_4_LOCATIONS = {
 
 STAIRWELL_LOCATIONS = {
     "STAIRWELL_POOL_CUE": LocationData("Stairwell - Item At Bottom Level", LC.OVERWORLD_ITEM, 5701, difficulty_lock= {DL.EXPLORER}),
+    "STAIRWELL_CRAWLER_COMBAT_VICTORY": LocationData("Bus Crash - Slay Crawler (Stairwell)", LC.COMBAT_VICTORY, 3613) # this has one of the bus crash ids
 }
 
 UNDER_THE_STAIRS_LOCATIONS = {
@@ -1776,6 +1788,10 @@ ROOF_LOCATIONS = {
     "SPINE_TINGLER_COMBAT_VICTORY": LocationData("Roof - Slay Spine Tingler", LC.COMBAT_VICTORY, 5802),
     "HUNDRED_MAWS_COMBAT_VICTORY": LocationData("Roof - Slay Hundred Maws", LC.COMBAT_VICTORY, 5803),
     "CRIMSON_SCOURGE_COMBAT_VICTORY": LocationData("Roof - Slay Crimson Scourge", LC.COMBAT_VICTORY, 5804)
+}
+
+ELEVATOR_LOCATIONS = {
+    "ELEVATOR_FREAK_COMBAT_VICTORY": LocationData("Elevator - Slay Elevator Freak", LC.COMBAT_VICTORY, 5805),
 }
 
 location_table: dict[str, LocationData] = {
@@ -1794,6 +1810,7 @@ location_table: dict[str, LocationData] = {
     **APT_37_VINCENT_LOCATIONS,
     **APT_38_ROOMMATES_LOCATIONS,
     **F3_JANITOR_CLOSET_LOCATIONS,
+    **F2_SHADE_LOCATIONS,
     **F2_HALL_EAST_LOCATIONS,
     **APT_20_JEANNE_LOCATIONS,
     **APT_21_LYLE_LOCATIONS,
@@ -1835,6 +1852,7 @@ location_table: dict[str, LocationData] = {
     **LL_BEDROOM_HALL_CACHE_LOCATIONS,
     **GF_NORTH_JANITORS_CLOSET_LOCATIONS,
     **GF_SOUTH_JANITORS_CLOSET_LOCATIONS,
+    **BASEMENT_SHADE_LOCATIONS,
     **BASEMENT_EAST_LOCATIONS,
     **APT_B1_ARTHROPOD_LOCATIONS,
     **APT_B2_ANTOINE_LOCATIONS,
@@ -1853,7 +1871,8 @@ location_table: dict[str, LocationData] = {
     **FLOOR_4_LOCATIONS,
     **STAIRWELL_LOCATIONS,
     **UNDER_THE_STAIRS_LOCATIONS,
-    **ROOF_LOCATIONS
+    **ROOF_LOCATIONS,
+    **ELEVATOR_LOCATIONS
 }
 
 region_locs: dict[str, set[str]] = {
@@ -1913,6 +1932,8 @@ region_locs: dict[str, set[str]] = {
     "KAELEY_SE": KAELEY_SE_LOCATIONS.keys(),
     "F3_JANITOR_CLOSET" : F3_JANITOR_CLOSET_LOCATIONS.keys(),
     # FLOOR 2
+    "FLOOR_2_SHADE": F2_SHADE_LOCATIONS.keys(), 
+    # the floor 2 shade can be either east or west side and both sides are blocked from one another; it gets its own region
     "FLOOR_2_EAST": F2_HALL_EAST_LOCATIONS.keys(),
     "APT_20_JEANNE": APT_20_JEANNE_PHASE1_LOCATIONS.keys(),
     "APT_20_JEANNE_HYDRA": APT_20_JEANNE_PHASE2_LOCATIONS.keys(),
@@ -1977,6 +1998,8 @@ region_locs: dict[str, set[str]] = {
     "GF_JANITOR_CLOSET_NORTH": GF_NORTH_JANITORS_CLOSET_LOCATIONS.keys(),
     # BASEMENT
     "BASEMENT_EAST": BASEMENT_EAST_LOCATIONS.keys(),
+    # the basement shade can be either east or west side and both sides are blocked from one another; it gets its own region
+    "BASEMENT_SHADE": BASEMENT_SHADE_LOCATIONS.keys(),
     "APT_B1_ARTHROPOD": APT_B1_ARTHROPOD_MAIN_LOCATIONS.keys(),
     "APT_B1_ARTHROPOD_BATHROOM": APT_B1_ARTHROPOD_BATHROOM_LOCATIONS.keys(),
     "APT_B2_ANTOINE": APT_B2_ANTOINE_LOCATIONS.keys(),
@@ -2001,7 +2024,8 @@ region_locs: dict[str, set[str]] = {
     # STAIRWELL
     "STAIRWELL": STAIRWELL_LOCATIONS.keys(),
     "UNDER_THE_STAIRS": UNDER_THE_STAIRS_LOCATIONS.keys(),
-    "ROOF": ROOF_LOCATIONS.keys()
+    "ROOF": ROOF_LOCATIONS.keys(),
+    "ELEVATOR": ELEVATOR_LOCATIONS.keys()
 }
 
 def get_region_to_location():

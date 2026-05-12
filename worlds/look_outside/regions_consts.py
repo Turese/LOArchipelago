@@ -312,7 +312,9 @@ f2_west_regions_table = {
         "APT_25_DOOR": ExitData("APT_25_DAN", Has("Dan")),
         "APT_27_DOOR": ExitData("APT_27_TYPEWRITHER"),
         "APT_28_DOOR": ExitData("APT_28_FLOODED_ENTRYWAY"),
+        "FLOOR_2_SHADE_WEST": ExitData("FLOOR_2_SHADE"),
     }),
+    "FLOOR_2_SHADE": RegionData(),
     "APT_25_DAN": RegionData(),
     "APT_27_TYPEWRITHER": RegionData(),
     "APT_28_FLOODED_ENTRYWAY": RegionData(exits={
@@ -337,7 +339,8 @@ f2_east_regions_table = {
         "LEIGHS_APARTMENT_DOOR": ExitData("LEIGHS_APARTMENT"),
         "LEIGHS_APARTMENT_QUEST_DOOR": ExitData("LEIGHS_APARTMENT_QUEST", can_leigh_quest),
         "APT_24_DOOR": ExitData("APT_24_EUGENE_SHOP"),
-        "F2_STAIRWELL_EXIT": ExitData("STAIRWELL")
+        "F2_STAIRWELL_EXIT": ExitData("STAIRWELL"),
+        "FLOOR_2_SHADE_EAST": ExitData("FLOOR_2_SHADE"),
     }),
     "APT_20_JEANNE": RegionData(),
     "APT_20_JEANNE_HYDRA": RegionData(),
@@ -481,8 +484,10 @@ basement_regions_table: dict[str, RegionData] = {
         "STEVE_APARTMENT": ExitData("STEVE_APARTMENT", Has("Antoine's Key")), # todo: hardmode lock
         "APT_B1_ARTHROPOD_DOOR": ExitData("APT_B1_ARTHROPOD"),
         "APT_B2_ANTOINE_DOOR": ExitData("APT_B2_ANTOINE"),
-        "B_STAIRWELL_EXIT": ExitData("STAIRWELL")
+        "B_STAIRWELL_EXIT": ExitData("STAIRWELL"),
+        "BASEMENT_SHADE_EAST": ExitData("BASEMENT_SHADE")
     }),
+    "BASEMENT_SHADE": RegionData(),
     "APT_B1_ARTHROPOD": RegionData(
         exits={
             "ARTHROPOD_BATHROOM_DOOR": ExitData("APT_B1_ARTHROPOD_BATHROOM", HasAll("Clyde's Key", "Jennifer's Key", "Auguste's Key")) # todo: hardmode lock
@@ -524,7 +529,8 @@ basement_regions_table: dict[str, RegionData] = {
         "BASEMENT_WEST_EAST_DOOR": ExitData("BASEMENT_EAST"),
         "GARBAGE_ROOM_ENTRANCE": ExitData("GARBAGE_ROOM"),
         "BLACKOUT_MODE": ExitData("GARAGE_UTILITY_ROOM_BLACKOUT", can_access_elevator),
-        "BOILER_ROOM_FUNGAL_MAZE_DOOR": ExitData("BOILER_ROOM_FUNGAL_MAZE")
+        "BOILER_ROOM_FUNGAL_MAZE_DOOR": ExitData("BOILER_ROOM_FUNGAL_MAZE"),
+        "BASEMENT_SHADE_WEST": ExitData("BASEMENT_SHADE")
     }),
     "BOILER_ROOM_FUNGAL_MAZE": RegionData(exits={
         "BOILER_ROOM_NORTH_EXIT": ExitData("BASEMENT_WEST_PARKING_GARAGE"),

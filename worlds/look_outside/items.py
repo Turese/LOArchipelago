@@ -26,7 +26,7 @@ def create_lo_item(world: LookOutsideWorld, item: str) -> LOItem:
         classification = ItemClassification.progression
     elif item_info.category == ItemCat.SKILL:
         classification = ItemClassification.useful
-    elif item_info.category == ItemCat.RECRUIT:
+    elif item_info.category == ItemCat.MISC:
         classification = ItemClassification.useful
     elif ItemTag.USEFUL in item_info.tags:
         classification = ItemClassification.useful
@@ -69,7 +69,7 @@ def create_all_items(world: LookOutsideWorld):
             tags = item_info.tags
             if ItemTag.PROGRESSIVE in tags or ItemTag.BREAKABLE_KEY in tags:
                 mandatory_items += [item_name] * num_multiple_items[item_name]
-            elif category == ItemCat.SKILL or category == ItemCat.RECRUIT or category == ItemCat.MISC:
+            elif category == ItemCat.SKILL or category == ItemCat.MISC:
                 mandatory_items += [item_name]
             # todo: clean up redundant tags. all offerings besides the progressive one are already both unique and check gates
             elif ItemTag.UNIQUE in tags or ItemTag.CHECK_GATE in tags or ItemTag.OFFERING in tags:

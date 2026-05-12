@@ -465,7 +465,7 @@ weapon_table: dict[str, ItemData] = {
     "Scalpel": ItemData(ItemCat.WEAPON, set(), 83),
     "Kitchen Knife": ItemData(ItemCat.WEAPON, set(), 85),
     "Hellen's Cleaver": ItemData(ItemCat.WEAPON, {ItemTag.USEFUL, ItemTag.UNIQUE}, 87),
-    "Fuzzy": ItemData(ItemCat.WEAPON, set(), 91),
+    #"Fuzzy": ItemData(ItemCat.WEAPON, set(), 91), // joel starts with this
     #"Sheathed Katana": ItemData(ItemCat.WEAPON, set(), 94),
     "Greatsword?": ItemData(ItemCat.WEAPON, {ItemTag.UNIQUE}, 97),
     "Mosquito Knife": ItemData(ItemCat.WEAPON, {ItemTag.USEFUL, ItemTag.UNIQUE}, 98),
@@ -797,7 +797,6 @@ item_name_groups: dict[str, set[str]] = {
     "NESTOR_QUEST_INTRO": {"Fountain Pen",
                            "Stationery",
                            "Love Letter"},  # should raftas part have to be done before nestors can?
-    "CHARACTER_LOCKED_EQUIPMENT": {"Fuzzy"},
     "VIDEO_GAME": {"Wake the Blood Knight",
                   "Wizards Hell: Arcane Tears",
                   "Super Jumplad",

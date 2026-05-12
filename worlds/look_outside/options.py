@@ -45,12 +45,9 @@ class IncludeTestGear(Toggle):
     display_name = "Include Test Armor/Test Swords"
     default = 0
 
-class IncludeNestorQuest(Choice):
+class IncludeNestorQuest(Toggle):
     """This controls whether locations specific to the Nestor and Rafta quest are randomized."""
     display_name = "Include Nestor and Rafta's Quest"
-    option_none = 0
-    option_body_parts = 1
-    option_all_worms = 2
     default = 0
 
 class IncludeShades(Choice):
@@ -172,7 +169,7 @@ option_presets = {
         "rusty_crown": True,
         "include_test_gear": False,
         "include_nestor_quest": False,
-        "include_shades": False,
+        "include_shades": 0,
         "include_mask": True,
         "include_roommate_quests": True,
         #"lockpicks_in_logic": True,

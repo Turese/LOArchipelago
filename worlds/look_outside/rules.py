@@ -121,6 +121,10 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
         for location_id in location_name_groups["RUSTY_CROWN"]:
             world.set_rule(world.get_location(get_location_name(location_id, world)), Has("Rusty Crown"))
 
+    # bus rules? since stairwell and bus are different areas, need to make sure player has seen bus before they can fight crawCrawlDelayAndRequestRateCrawlDelayAndRequestRateTes
+    world.set_rule(world.get_location(get_location_name("STAIRWELL_CRAWLER_COMBAT_VICTORY", world)), Has("BUS_CRASH"))
+    
+
     #audrey rules
     world.set_rule(world.get_location(get_location_name("APT_30_TAXIDERMY_AUDREY_LOOT", world)), Has("Audrey"))
     world.set_rule(world.get_location(get_location_name("APT_28_SHRIMP_KNIGHT_AUDREY_LOOT", world)), Has("Audrey"))
