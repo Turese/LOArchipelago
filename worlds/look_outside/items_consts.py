@@ -782,6 +782,7 @@ item_name_groups: dict[str, set[str]] = {
                       "Old Tape",
                       "Old Photograph",
                       "Wrapped Painting"},
+    "MASK_AREA_ENTRY": {"Rose", "Unlabeled Cartridge", "Metro Ticket"},
     "XIN_AMON_OFFERING": {"Guinea Pig"},
     "BROKEN_TEST_ITEM": {"Testarmor",
                          "Testarmor mk2",

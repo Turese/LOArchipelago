@@ -589,4 +589,5 @@ all_regions_table = {
 
 region_name_groups = {
     "ROOMMATE_QUEST": {"APT_25_DAN", "LEIGHS_APARTMENT_QUEST", "APT_18_HELLEN_QUEST"},
+    "MASK": {*glitch_world_regions_table.keys(), "BASEMENT_PIT_CHARAN", "BASEMENT_PIT_CLEAR", "FLOOR_4", "FLOOR_4_STATION", "SHADE_CACHE"}
 }

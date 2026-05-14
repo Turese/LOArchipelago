@@ -59,6 +59,10 @@ def create_all_items(world: LookOutsideWorld):
             for item in item_name_groups["BROKEN_TEST_ITEM"]:
                 excluded_items.add(item)
 
+        if world.options.include_mask == 0:
+            for item in item_name_groups["MASK_AREA_ENTRY"]:
+                excluded_items.add(item)
+
         for item in world.multiworld.precollected_items[world.player]:
             excluded_items.add(item.name)
 

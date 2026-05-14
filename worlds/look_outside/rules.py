@@ -18,10 +18,12 @@ from worlds.look_outside.locations_consts import location_name_groups
 if TYPE_CHECKING:
     from .__init__ import LookOutsideWorld
 
+
 def set_all_rules(world: LookOutsideWorld) -> None:
     set_all_entrance_rules(world)
     set_all_location_rules(world)
     set_completion_condition(world)
+
 
 def set_all_entrance_rules(world: LookOutsideWorld) -> None:
     excluded_regions = exclude_regions(world)
@@ -30,6 +32,7 @@ def set_all_entrance_rules(world: LookOutsideWorld) -> None:
         for exit_name, exit_info in region_info.exits.items():
             if exit_info.target_region not in excluded_regions and exit_info.rule is not None:
                 world.set_rule(world.get_entrance(exit_name), exit_info.rule)
+
 
 def set_all_location_rules(world: LookOutsideWorld) -> None:
     # game rules
@@ -52,7 +55,7 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     world.set_rule(world.get_location(get_location_name("GAME_SKILL_REPTILE_FOOTBALL", world)), Has("Reptile Football"))
     world.set_rule(world.get_location(get_location_name("GAME_SKILL_CROSSWORD_CHALLENGE", world)), Has("Auntie Wilma's Crossword Challenge"))
 
-    #f3 rules
+    # f3 rules
     world.set_rule(world.get_location(get_location_name("APT_33_RECRUIT_PHILLIPPE", world)), Has("Phillippe's Remains"))
     world.set_rule(world.get_location(get_location_name("APT_33_RECRUIT_RAT_BABY", world)), Has("Rat Baby Thing"))
     world.set_rule(world.get_location(get_location_name("APT_33_BATHROOM_RECRUIT_ROACHES", world)), Has("Roach (Inventory Item)"))
@@ -69,8 +72,8 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
 
     world.set_rule(world.get_location(get_location_name("APT_37_PROJECTOR_ROOM_PHOTO", world)), And(Has("Negative Disc"), Has("Photo Paper")))
 
-    #f2 rules
-    world.set_rule(world.get_location(get_location_name("F2_RECRUIT_ASTER", world)), And(Has("MET_AURELIUS"), Has("MET_JASPER"), can_access_basement)) # todo: event for meeting astronomers instead?
+    # f2 rules
+    world.set_rule(world.get_location(get_location_name("F2_RECRUIT_ASTER", world)), And(Has("MET_AURELIUS"), Has("MET_JASPER"), can_access_basement))  # todo: event for meeting astronomers instead?
     
     if world.options.include_roommate_quests != 0:
         world.set_rule(world.get_location(get_location_name("F2_GRASSHOPPER_COMBAT_VICTORY", world)), can_leigh_quest)
@@ -82,11 +85,11 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
 
     world.set_rule(world.get_location(get_location_name("APT_27_COMPLETE_MANUSCRIPT", world)), Has("Progressive Loose Manuscript"))
 
-    #f1 rules
+    # f1 rules
 
     world.set_rule(world.get_location(get_location_name("F1_AUDREY_RECRUIT", world)), Has("Vending Machine Key"))
 
-    #gf rules
+    # gf rules
 
     world.set_rule(world.get_location(get_location_name("MUTT_SPIDER_HUSK_HEART", world)), Has("MET_SPIDER_HUSK"))
     
@@ -100,7 +103,7 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     world.set_rule(world.get_location(get_location_name("APT_28_GARBAGE_PIRANHAS_COMBAT_VICTORY", world)), Has("ACTIVATED_PIRANHAS"))
     world.set_rule(world.get_location(get_location_name("APT_28_TWILIGHT_PIRANHAS_COMBAT_VICTORY", world)), Has("ACTIVATED_PIRANHAS"))
 
-    #locked safes
+    # locked safes
     world.set_rule(world.get_location(get_location_name("APT_31_BEDROOM_SAFE_ITEM", world)), can_open_any_simple_lock)
     world.set_rule(world.get_location(get_location_name("APT_32_MASTER_BEDROOM_SAFE_ITEM", world)), can_open_any_simple_lock)
     world.set_rule(world.get_location(get_location_name("APT_36_BEDROOM_SAFE_ITEM", world)), can_open_any_simple_lock)
@@ -112,7 +115,7 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     world.set_rule(world.get_location(get_location_name("MAILROOM_N_SAFE", world)), can_open_any_simple_lock)
     world.set_rule(world.get_location(get_location_name("LL_BEDROOM_SAFE", world)), can_open_any_simple_lock)
 
-    #nestor quest rules
+    # nestor quest rules
     if world.options.include_nestor_quest != 0:
         for location_id in location_name_groups["NESTOR_QUEST"]:
             world.set_rule(world.get_location(get_location_name(location_id, world)), can_nestor_rafta)
@@ -124,8 +127,11 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     # bus rules? since stairwell and bus are different areas, need to make sure player has seen bus before they can fight crawCrawlDelayAndRequestRateCrawlDelayAndRequestRateTes
     world.set_rule(world.get_location(get_location_name("STAIRWELL_CRAWLER_COMBAT_VICTORY", world)), Has("BUS_CRASH"))
     
+    # basement rules
 
-    #audrey rules
+    world.set_rule(world.get_location(get_location_name("SECURITY_CORRECT_RECORDING", world)), And(Has("Guinea Pig"), HasAny("Blank VHS tape", "Incorrect CCTV Recording", "Correct CCTV Recording")))
+
+    # audrey rules
     world.set_rule(world.get_location(get_location_name("APT_30_TAXIDERMY_AUDREY_LOOT", world)), Has("Audrey"))
     world.set_rule(world.get_location(get_location_name("APT_28_SHRIMP_KNIGHT_AUDREY_LOOT", world)), Has("Audrey"))
     world.set_rule(world.get_location(get_location_name("LL_MEMORIAL_TANK_AUDREY_LOOT", world)), Has("Audrey"))
@@ -142,7 +148,7 @@ all_rituals = {*flawed_ritual_endings, *perfect_rituals}
 
 all_roof_endings = {*all_rituals, "FAILED_RITUAL_ENDING"}
 
-all_endings = {*all_roof_endings, "UNITY_ENDING", "WORDS_OF_POWER_ENDING"} # todo: add crossword ending
+all_endings = {*all_roof_endings, "UNITY_ENDING", "WORDS_OF_POWER_ENDING"}
 
 def set_completion_condition(world: LookOutsideWorld) -> None:
     player_goal = world.options.goal

@@ -46,4 +46,6 @@ def exclude_regions(world: LookOutsideWorld) -> set[str]:
     exclude_set = set()
     if world.options.include_roommate_quests == 0:
         exclude_set.update(region_name_groups["ROOMMATE_QUEST"])
+    if world.options.include_mask == 0:
+        exclude_set.update(region_name_groups["MASK"])
     return exclude_set
