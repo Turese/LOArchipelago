@@ -595,14 +595,15 @@ F2_SHADE_LOCATIONS: dict[str, LocationData] =  {
 F2_HALL_EAST_LOCATIONS: dict[str, LocationData] = {
     "F2_NESTOR_HAND_WORMS_COMBAT_VICTORY": LocationData("Floor 2 Hall - Slay Hand Worms", LC.COMBAT_VICTORY, 1502),
     "F2_APT_21_KEY": LocationData("Floor 2 Hall - Item in Junk Pile", LC.OVERWORLD_ITEM, 1503),
-    "F2_PISTOL": LocationData("Floor 2 Hall - First Item After Beast Chase", LC.OVERWORLD_ITEM, 1504, difficulty_lock={DL.SURVIVOR, DL.EXPLORER}),
-    "F2_PISTOL_BULLETS_1": LocationData("Floor 2 Hall - Second Item After Beast Chase", LC.OVERWORLD_ITEM, 1505, difficulty_lock={DL.SURVIVOR, DL.EXPLORER}),
-    "F2_PISTOL_BULLETS_2": LocationData("Floor 2 Hall - Third Item After Beast Chase", LC.OVERWORLD_ITEM, 1506, difficulty_lock={DL.EXPLORER}),
+    "F2_PISTOL": LocationData("Floor 2 Hall - Item After Beast Chase 1", LC.OVERWORLD_ITEM, 1504),
+    "F2_PISTOL_BULLETS_1": LocationData("Floor 2 Hall - Item After Beast Chase 2", LC.OVERWORLD_ITEM, 1505),
+    "F2_PISTOL_BULLETS_2": LocationData("Floor 2 Hall - Item After Beast Chase 3", LC.OVERWORLD_ITEM, 1506, difficulty_lock={DL.EXPLORER}),
     "F2_GRASSHOPPER_COMBAT_VICTORY": LocationData("Floor 2 Hall - Slay Grasshopper", LC.COMBAT_VICTORY, 1507),
     "F2_GRINNING_BEAST_CHASE_POOL_CUE": LocationData("Floor 2 Hall - Item During Beast Chase", LC.OVERWORLD_ITEM, 1508, difficulty_lock={DL.CURSED}),
     "F2_GRINNING_BEAST_COMBAT_VICTORY": LocationData("Floor 2 Hall - Defeat the Grinning Beast", LC.COMBAT_VICTORY, 1509),
     "F2_RECRUIT_ASTER": LocationData("Floor 2 Hall - Recruit Aster", LC.RECRUIT, 1510),
-    "F2_ASTER_COMBAT_VICTORY": LocationData("Floor 2 Hall - Slay Aster", LC.FRIENDLY_FIRE, 1511)
+    "F2_ASTER_COMBAT_VICTORY": LocationData("Floor 2 Hall - Slay Aster", LC.FRIENDLY_FIRE, 1511),
+    "F2_GRENADE": LocationData("Floor 2 Hall - Item After Beast Chase 4", LC.OVERWORLD_ITEM, 1512, difficulty_lock={DL.CURSED})
 }
 
 APT_20_JEANNE_PHASE1_LOCATIONS: dict[str, LocationData] = {
@@ -659,6 +660,7 @@ APT_21_LYLE_MAIN_LOCATIONS = {
     "APT_21_BATHROOM_MEDICELL": LocationData("Apt. 21 Bathroom - Item on Counter 2", LC.OVERWORLD_ITEM, 1715),
     "APT_21_BATHROOM_EYECLUSTER_COMBAT_VICTORY": LocationData("Apt. 21 Bathroom - Slay Eyecluster", LC.COMBAT_VICTORY, 1716),
     "APT_21_BATHROOM_MEDICINE_CABINET": LocationData("Apt. 21 Bathroom - Medicine Cabinet", LC.MIRROR_LOOT, 1717),
+    "APT_21_PUROCARE": LocationData("Apt. 21 - Item on Counter", LC.OVERWORLD_ITEM, 1733),
 }
 
 APT_21_LYLE_DARK_ROOM_LOCATIONS = {
@@ -679,7 +681,8 @@ APT_21_LYLE_BEDROOM_LOCATIONS = {
     "APT_21_BEDROOM_PLATE": LocationData("Apt. 21 Bedroom - Item on Northwest Table 3", LC.OVERWORLD_ITEM, 1728),
     "APT_21_BEDROOM_KNIFE": LocationData("Apt. 21 Bedroom - Item on Northwest Table 4", LC.OVERWORLD_ITEM, 1729),
     "APT_21_BEDROOM_BEEF_6": LocationData("Apt. 21 Bedroom - Item on Northwest Table 5", LC.OVERWORLD_ITEM, 1730, difficulty_lock={DL.EXPLORER}),
-    "APT_21_BEDROOM_BATTERIES": LocationData("Apt. 21 Bedroom - Item on Shelf", LC.OVERWORLD_ITEM, 1731)
+    "APT_21_BEDROOM_BATTERIES": LocationData("Apt. 21 Bedroom - Item on Shelf", LC.OVERWORLD_ITEM, 1731),
+    "APT_21_BEDROOM_TUMORHEAD_COMBAT_VICTORY": LocationData("Apt. 21 Bedroom - Slay Tumorhead", LC.COMBAT_VICTORY, 1734)
 }
 
 APT_21_LYLE_LOCATIONS = {
