@@ -45,6 +45,13 @@ class LookOutsideWorld(CachedRuleBuilderWorld):
         # TEST CODE FOR REGION MAPPING
         """from Utils import visualize_regions
         visualize_regions(self.multiworld.get_region("APT_33_HOME", self.player), "my_world.puml")"""
+        with open("lovars.txt", "w", encoding="utf-8") as f:
+            f.write("{\n")
+            f.write(",\n".join(
+                f'  "{k}": {repr(v.id)}'
+                for k, v in location_table.items()
+            ))
+            f.write("\n}")
 
     def create_item(self, item: str) -> LOItem:
         return create_lo_item(self, item)
