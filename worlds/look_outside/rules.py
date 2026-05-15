@@ -8,7 +8,8 @@ from worlds.look_outside.regions import exclude_regions
 
 from .options import PlayerGoal
 
-from worlds.look_outside.items_consts import item_name_groups
+from worlds.look_outside.items_consts import item_name_groups, \
+    num_multiple_items
 
 from worlds.look_outside.regions_consts import all_regions_table
 from worlds.look_outside.rules_consts import can_nestor_rafta, can_open_any_simple_lock, can_access_basement, can_leigh_quest
@@ -85,9 +86,12 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
 
     world.set_rule(world.get_location(get_location_name("APT_27_COMPLETE_MANUSCRIPT", world)), Has("Progressive Loose Manuscript"))
 
+    if (world.options.allow_killing_shopkeepers == 1):
+        world.set_rule(world.get_location(get_location_name("APT_24_REPTILE_FOOTBALL", world)), Has("Two Hundred Dollars")) # 75c each
+
     # f1 rules
 
-    world.set_rule(world.get_location(get_location_name("F1_AUDREY_RECRUIT", world)), Has("Vending Machine Key"))
+    world.set_rule(world.get_location(get_location_name("F1_AUDREY_RECRUIT", world)), And(Has("Vending Machine Key"), Has("Advice Can Funds", count=num_multiple_items["Advice Can Funds"])))
 
     # gf rules
 
@@ -132,12 +136,34 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     world.set_rule(world.get_location(get_location_name("SECURITY_CORRECT_RECORDING", world)), And(Has("Guinea Pig"), HasAny("Blank VHS tape", "Incorrect CCTV Recording", "Correct CCTV Recording")))
 
     # audrey rules
+    world.set_rule(world.get_location(get_location_name("MUTT_VENDING_MACHINE_KEY", world)), Has("MET_AUDREY"))
+
     world.set_rule(world.get_location(get_location_name("APT_30_TAXIDERMY_AUDREY_LOOT", world)), Has("Audrey"))
     world.set_rule(world.get_location(get_location_name("APT_28_SHRIMP_KNIGHT_AUDREY_LOOT", world)), Has("Audrey"))
     world.set_rule(world.get_location(get_location_name("LL_MEMORIAL_TANK_AUDREY_LOOT", world)), Has("Audrey"))
     world.set_rule(world.get_location(get_location_name("LL_TRENCH_DIGGER_AUDREY_LOOT", world)), Has("Audrey"))
     world.set_rule(world.get_location(get_location_name("LL_BATTLEFIELD_APC_AUDREY_LOOT", world)), Has("Audrey"))
     world.set_rule(world.get_location(get_location_name("B_CAR_HELLRIDE_AUDREY_LOOT", world)), Has("Audrey"))
+
+    # vending machine rules
+    world.set_rule(world.get_location(get_location_name("F3_VENDING_MACHINE_CHIPS", world)), Has("Vending Machine Snack Money", count=num_multiple_items["Vending Machine Snack Money"])) # 75c each
+    world.set_rule(world.get_location(get_location_name("F3_VENDING_MACHINE_SPICY", world)), Has("Vending Machine Snack Money", count=num_multiple_items["Vending Machine Snack Money"])) # 75c each
+    world.set_rule(world.get_location(get_location_name("F3_VENDING_MACHINE_GUMMI_BEARS", world)), Has("Vending Machine Snack Money", count=num_multiple_items["Vending Machine Snack Money"])) # 75c each
+    world.set_rule(world.get_location(get_location_name("F3_VENDING_MACHINE_CHEESE", world)), Has("Vending Machine Snack Money", count=num_multiple_items["Vending Machine Snack Money"])) # 75c each
+    world.set_rule(world.get_location(get_location_name("F3_VENDING_MACHINE_ONIONOS", world)), Has("Vending Machine Snack Money", count=num_multiple_items["Vending Machine Snack Money"])) # 75c each
+    world.set_rule(world.get_location(get_location_name("F3_VENDING_MACHINE_ONIONOS", world)), Has("Vending Machine Snack Money", count=num_multiple_items["Vending Machine Snack Money"])) # 75c each
+    world.set_rule(world.get_location(get_location_name("GF_COFFEE_MACHINE_MERCHANT", world)), Has("Vending Machine Snack Money", count=num_multiple_items["Vending Machine Snack Money"])) # 1.50 each
+    world.set_rule(world.get_location(get_location_name("GF_CANDY_MACHINE_MERCHANT", world)), Has("Vending Machine Snack Money", count=num_multiple_items["Vending Machine Snack Money"])) # 25c each; assuming player will have some money leftover
+
+    # special merchant rules
+    for location_id in location_name_groups["CASSETTE_TAPE"]:
+        world.set_rule(world.get_location(get_location_name(location_id, world)), Has("Cassette Tape", count=num_multiple_items["Cassette Tape"]))
+    for location_id in location_name_groups["WORM_EGG"]:
+        world.set_rule(world.get_location(get_location_name(location_id, world)), Has("Worm Egg", count=num_multiple_items["Worm Egg"]))
+    for location_id in location_name_groups["RAT_TAIL"]:
+        world.set_rule(world.get_location(get_location_name(location_id, world)), Has("Rat Tail", count=num_multiple_items["Rat Tail"]))
+    for location_id in location_name_groups["BLACK_OOZE"]:
+        world.set_rule(world.get_location(get_location_name(location_id, world)), Has("Black Ooze", count=num_multiple_items["Black Ooze"]))
 
 
 flawed_ritual_endings = {"FLAWED_RITUAL_ENDING", "SCREAMING_SKIES_ENDING", "ETERNAL_FATE_ENDING", "XIN_AMON_ENDING", "MASK_ENDING"}

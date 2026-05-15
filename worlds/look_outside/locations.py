@@ -65,6 +65,10 @@ def create_events(world: LookOutsideWorld) -> None:
     world.get_region("GROUND_FLOOR_HALL_EAST").add_event(
         "GROUND_FLOOR_LOBBY", "BUS_CRASH", location_type=LOLocation, item_type=LOItem
     )
+    world.get_region("FLOOR_1_MAZE").add_event(
+        "F1_HALL", "MET_AUDREY", rule=Has("Advice Can Funds"), location_type=LOLocation, item_type=LOItem
+    )
+
     world.get_region("F1_RUINED_APARTMENT").add_event(
         "RUINED_APT_PIPE", "MET_RAFTA", location_type=LOLocation, item_type=LOItem
     )

@@ -1,4 +1,5 @@
-from Options import Choice, Toggle, PerGameCommonOptions, OptionGroup, NamedRange, OptionSet
+from Options import Choice, Toggle, PerGameCommonOptions, OptionGroup, NamedRange, OptionSet,\
+    FreeText
 from dataclasses import dataclass
 
 class PlayerGoal(Choice):
@@ -28,27 +29,22 @@ class IncludeFriendlyFire(Toggle):
     """This controls whether locations specific to attacking non-hostile
     characters and potential recruits are included. This includes all merchants, Spine, and Marc-André."""
     display_name = "Include Friendly Fire"
-    default = 0
 
 class IncludeRatFriendlyFire(Toggle):
     """This controls whether locations specific to attacking rats that become non-hostile
     when wearing the rusty crown are included."""
     display_name = "Include Rat Friendly Fire"
-    default = 0
 
 class IncludeRustyCrown(Toggle):
     """This controls whether locations specific to interacting with non-hostile rats are randomized."""
-    default = 0
 
 class IncludeTestGear(Toggle):
     """Adds Test Armor and Test Swords to the item pool."""
     display_name = "Include Test Armor/Test Swords"
-    default = 0
 
 class IncludeNestorQuest(Toggle):
     """This controls whether locations specific to the Nestor and Rafta quest are randomized."""
     display_name = "Include Nestor and Rafta's Quest"
-    default = 0
 
 class IncludeShades(Choice):
     """This controls whether locations specific to the Spider recruitment quest are randomized."""
@@ -63,17 +59,14 @@ class IncludeMaskLocations(Toggle):
     """This controls whether locations specific to the
     Mask ending are randomized: Glitch world, floor 4, the basement pit,
     and the landlord's hidden room."""
-    default = 0
 
 class IncludeRoommateQuests(Toggle):
     """This controls whether roommate quests that involve escorting them to their apartments are
     randomized: Dan, Hellen, and Leigh's quests."""
-    default = 0
 
 class IncludeGameSkills(Toggle):
     """This controls whether the skills given by completing each of the video games are randomized."""
     display_name = "Include Game Skills"
-    default = 0
 
 # todo: allow this
 """class LockpicksInLogic(Toggle):
@@ -94,40 +87,26 @@ class StartingGames(Choice):
     option_random_3 = 0
     option_vanilla = 1
     option_none = 2
-    default = 0
+    default = 2
+
+class RandomizeGameSkills(Toggle):
+    """This controls whether game skills are randomized. Default true"""
 
 class DeathLink(Toggle):
     """This controls death link enablement"""
     display_name = "Death Link"
-    default = 0
-
-"""
-class Merchantsanity(OptionSet):
-    Whether merchants have randomized items
     
-    Overworld: Merchants  the overworld; Eugene and Mutt, and the secret rat shot if crown logic is selected
-    Vending machines: Items accessible from vending machines, Audrey included
-    Special currency: Shops that take currency other than cash; Rat Hole, Emmanuel, etc
-    Door encounters: Merchants that arrive at the front door
-    
-    valid_keys = frozenset({
-        Merchantsanity.queen_of_sauce, Merchantsanity.purchases,
-        Merchantsanity.skills, Merchantsanity.friendship,
-    })
-    display_name = "Randomize Merchants"
-    option_none = 0
-    option_overworld_only = 1
-    option_special_currency = 2
-    option_all_merchants = 2
-    default = 0
+class RatBabyName(FreeText):
+    """This controls rat baby's name, default is 'Rat' """
+    display_name = "Rat Child Name"
 
-class RandomizedMerchantItems(NamedRange):
-    Picks how many randomized items each merchant carries.
-    range_start = 1
-    range_end = 4
-    default = 1
-"""
+class AllowKillingShopkeepers(Toggle):
+    """This controls whether players are allowed to kill Eugene or Mutt to get their stuff. Default false"""
+    display_name = "Allow Killing Mutt/Eugene"
 
+class RandomizeDoorEncounters(Toggle):
+    """Randomize items from door encounters, including merchants. Default true"""
+    display_name = "Randomize Door Encounter Items"
 
 
 @dataclass
@@ -145,18 +124,22 @@ class LookOutsideOptions(PerGameCommonOptions):
     #lockpicks_in_logic: LockpicksInLogic
     starting_games: StartingGames
     death_link: DeathLink
+    rat_baby_name: RatBabyName
+    allow_killing_shopkeepers: AllowKillingShopkeepers
+    randomize_game_skills: RandomizeGameSkills
+    randomize_door_encounters: RandomizeDoorEncounters
 
 option_groups = [
     OptionGroup(
         "Location Options",
         [PlayerGoal, IncludeFriendlyFire, IncludeRustyCrown, IncludeNestorQuest, IncludeShades,
-         IncludeMaskLocations, IncludeRoommateQuests, IncludeGameSkills],
+         IncludeMaskLocations, IncludeRoommateQuests, IncludeGameSkills, RandomizeDoorEncounters],
     ),
     OptionGroup(
         "Item Options",
-        [IncludeTestGear, IncludeArms, StartingGames], # LockpicksInLogic
+        [IncludeTestGear, IncludeArms, StartingGames, RandomizeGameSkills], # LockpicksInLogic
     ),
-    OptionGroup("Other Options", [DeathLink])
+    OptionGroup("Other Options", [DeathLink, RatBabyName])
 ]
 
 # Finally, we can define some option presets if we want the player to be able to quickly choose a specific "mode".
@@ -173,7 +156,10 @@ option_presets = {
         "include_mask": True,
         "include_roommate_quests": True,
         #"lockpicks_in_logic": True,
-        "starting_games": 0,
+        "starting_games": 2,
+        "randomize_game_skills": 1,
+        "randomize_door_encounters": True,
+        "allow_killing_shopkeepers": False,
         "death_link": False
     },
 }

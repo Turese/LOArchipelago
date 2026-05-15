@@ -2,9 +2,9 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from worlds.look_outside.options import LookOutsideOptions, StartingGames, IncludeArms
+from worlds.look_outside.options import StartingGames, IncludeArms
 
-from worlds.look_outside.items_consts import ItemCat, ItemTag, item_table, get_item_id, item_name_groups,\
+from worlds.look_outside.items_consts import ItemCat, ItemTag, item_table, item_name_groups,\
     num_multiple_items, LOItem
 
 from BaseClasses import ItemClassification
@@ -22,7 +22,9 @@ def create_lo_item(world: LookOutsideWorld, item: str) -> LOItem:
         classification = ItemClassification.useful
     if (world.options.include_roommate_quests == 0 and item == "Cell Phone"):
         classification = ItemClassification.filler
-    elif ItemTag.CHECK_GATE in item_info.tags or ItemTag.BREAKABLE_KEY in item_info.tags or ItemTag.OFFERING in item_info.tags:
+    if (world.options.allow_killing_shopkeepers == 1 and item in item_name_groups["PROGRESSION_CASH"]):
+        classification = ItemClassification.useful
+    elif ItemTag.CHECK_GATE in item_info.tags or ItemTag.BREAKABLE_KEY in item_info.tags or ItemTag.OFFERING in item_info.tags or ItemTag.SPECIAL_CURRENCY in item_info.tags:
         classification = ItemClassification.progression
     elif item_info.category == ItemCat.SKILL:
         classification = ItemClassification.useful
@@ -30,6 +32,8 @@ def create_lo_item(world: LookOutsideWorld, item: str) -> LOItem:
         classification = ItemClassification.useful
     elif ItemTag.USEFUL in item_info.tags:
         classification = ItemClassification.useful
+    elif item_info.category == ItemCat.TRAP:
+        classification = ItemClassification.trap
     return LOItem(item, classification, world.item_name_to_id[item], world.player)
     
 def create_all_items(world: LookOutsideWorld):
@@ -61,17 +65,19 @@ def create_all_items(world: LookOutsideWorld):
 
         if world.options.include_mask == 0:
             for item in item_name_groups["MASK_AREA_ENTRY"]:
-                excluded_items.add(item)
+                excluded_items.add(item)          
 
         for item in world.multiworld.precollected_items[world.player]:
             excluded_items.add(item.name)
+
+        
 
         for item_name, item_info in item_table.items():
             if item_name in excluded_items:
                 continue
             category = item_info.category
             tags = item_info.tags
-            if ItemTag.PROGRESSIVE in tags or ItemTag.BREAKABLE_KEY in tags:
+            if ItemTag.PROGRESSIVE in tags or ItemTag.BREAKABLE_KEY in tags or ItemTag.AMMO in tags or ItemTag.SPECIAL_CURRENCY in tags:
                 mandatory_items += [item_name] * num_multiple_items[item_name]
             elif category == ItemCat.SKILL or category == ItemCat.MISC:
                 mandatory_items += [item_name]

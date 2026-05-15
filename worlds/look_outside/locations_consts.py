@@ -212,7 +212,8 @@ APT_33_LOCATIONS: dict[str, LocationData] = {
     "APT_33_BATHROOM_RECRUIT_ROACHES": LocationData("Apt. 33 Bathroom - Recruit Roaches", LC.RECRUIT, 405),
     "APT_33_RECRUIT_PHILLIPPE": LocationData("Apt. 33 Living Room - Recruit Phillippe", LC.RECRUIT, 406),
     "APT_33_RECRUIT_RAT_BABY": LocationData("Apt. 33 Living Room  - Recruit Rat Child", LC.RECRUIT, 407),
-    "APT_33_ROACH_QUEST": LocationData("Apt. 33 Living Room - Solve the Roaches' Dilemma", LC.EVENT_ITEM, 408)
+    "APT_33_ROACH_QUEST": LocationData("Apt. 33 Living Room - Solve the Roaches' Dilemma", LC.EVENT_ITEM, 408),
+    "APT_33_ROACH_WAR": LocationData("Apt. 33 - Declare War on the Roaches", LC.FRIENDLY_FIRE, 409)
 }
 
 # MODIFIERS - 500s
@@ -849,12 +850,16 @@ F1_RUINED_APARTMENT_LOCATIONS = {
     "F1_PIPE_ROOM_RAT_COMBAT_VICTORY": LocationData("Floor 1 Pipe Room - Slay Rats", LC.RAT_FRIENDLY_FIRE, 2401),
     "F1_PIPE_ROOM_RAT_MERCHANT": LocationData("Floor 1 Pipe Room - Secret Rat Shop Item", LC.MERCHANT, 2402),
     "F1_PIPE_ROOM_KEVIN_COMBAT_VICTORY": LocationData("Floor 1 Pipe Room - Slay Kevin", LC.FRIENDLY_FIRE, 2403),
-    "F1_PIPE_ROOM_KEVIN_MERCHANT": LocationData("Floor 1 Pipe Room - Kevin Shop Item", LC.MERCHANT, 2404),
+    "F1_LETTER_FROM_RAFTA": LocationData("Floor 1 Pipe Room - Help Rafta Write a Letter", LC.EVENT_ITEM, 2404),
     "F1_NESTOR_COMBAT_VICTORY": LocationData("Slay Nestor's Body", LC.COMBAT_VICTORY, 2405),
     "F1_NESTOR_HEAD_COMBAT_VICTORY": LocationData("Slay Nestor's Head", LC.COMBAT_VICTORY, 2406),
     "F1_NESTOR_FOOT_COMBAT_VICTORY": LocationData("Slay Nestor's Foot", LC.COMBAT_VICTORY, 2407),
     "F1_NESTOR_HAND_COMBAT_VICTORY": LocationData("Slay Nestor's Hand", LC.COMBAT_VICTORY, 2408),
-    "F1_LETTER_FROM_RAFTA": LocationData("Floor 1 Pipe Room - Help Rafta Write a Letter", LC.EVENT_ITEM, 2409)
+    "F1_PIPE_ROOM_KEVIN_MERCHANT_1": LocationData("Floor 1 Pipe Room - Kevin Shop Item 1", LC.MERCHANT, 2409),
+    "F1_PIPE_ROOM_KEVIN_MERCHANT_2": LocationData("Floor 1 Pipe Room - Kevin Shop Item 2", LC.MERCHANT, 2410),
+    "F1_PIPE_ROOM_KEVIN_MERCHANT_3": LocationData("Floor 1 Pipe Room - Kevin Shop Item 3", LC.MERCHANT, 2411),
+    "F1_PIPE_ROOM_KEVIN_MERCHANT_4": LocationData("Floor 1 Pipe Room - Kevin Shop Item 4", LC.MERCHANT, 2412),
+    "F1_PIPE_ROOM_KEVIN_MERCHANT_5": LocationData("Floor 1 Pipe Room - Kevin Shop Item 5", LC.MERCHANT, 2413),
 }
 
 F1_MAZE_LOCATIONS = {
@@ -865,7 +870,11 @@ F1_MAZE_LOCATIONS = {
     "F1_DEAD_END_WINGED": LocationData("Floor 1 Maze - Slay Winged", LC.COMBAT_VICTORY, 2505, difficulty_lock= {DL.CURSED}),
     "APT_13_DISC": LocationData("Apt. 13 - Item From Wall Mouth", LC.OVERWORLD_ITEM, 2506),
     "EYEBALL_SIMPLE_KEY": LocationData("Floor 1 Eyeball Room - Item", LC.OVERWORLD_ITEM, 2507),
-    "F1_PASSAGE_RAT_HOLE_MERCHANT": LocationData("Floor 1 Passage - Rat Hole Shop Item", LC.MERCHANT, 2508)
+    "F1_PASSAGE_RAT_HOLE_MERCHANT_1": LocationData("Floor 1 Passage - Rat Hole Shop Item 1", LC.MERCHANT, 2508),
+    "F1_PASSAGE_RAT_HOLE_MERCHANT_2": LocationData("Floor 1 Passage - Rat Hole Shop Item 2", LC.MERCHANT, 2509),
+    "F1_PASSAGE_RAT_HOLE_MERCHANT_3": LocationData("Floor 1 Passage - Rat Hole Shop Item 3", LC.MERCHANT, 2510),
+    "F1_PASSAGE_RAT_HOLE_MERCHANT_4": LocationData("Floor 1 Passage - Rat Hole Shop Item 4", LC.MERCHANT, 2511),
+    "F1_PASSAGE_RAT_HOLE_MERCHANT_5": LocationData("Floor 1 Passage - Rat Hole Shop Item 5", LC.MERCHANT, 2512),
 }
 
 RAT_APARTMENT_MAIN_LOCATIONS = {
@@ -1196,7 +1205,7 @@ MUTT_STOCK_LOCATIONS = {
 
 MUTT_MAIN_LOCATIONS = {
     "MUTT_WALLET": LocationData("Mutt's Shop - Item on South Table", LC.OVERWORLD_ITEM, 3716),
-    "MUTT_EMMANUEL_MERCHANT": LocationData("Mutt's Shop - Emmanuel Item", LC.MERCHANT, 3717),
+    "MUTT_VENDING_MACHINE_KEY": LocationData("Mutt's Shop - Get Help With Vending Machine Repair", LC.EVENT_ITEM, 3717),
     "MUTT_EMMANUEL_COMBAT_VICTORY": LocationData("Mutt's Shop - Slay Emmanuel", LC.FRIENDLY_FIRE, 3718),
     "MUTT_SPIDER_HUSK_HEART": LocationData("Mutt's Shop - Gift from Spider Husk", LC.EVENT_ITEM, 3719),
     "MUTT_BEER": LocationData("Mutt's Shop - Item on North Table", LC.OVERWORLD_ITEM, 3720),
@@ -1204,6 +1213,11 @@ MUTT_MAIN_LOCATIONS = {
     "MUTT_BATHROOM_URANUS_DISC": LocationData("Mutt's Shop Bathroom - Item on Counter", LC.OVERWORLD_ITEM, 3722, difficulty_lock= {DL.SURVIVOR, DL.EXPLORER}),
     "MUTT_TRASH": LocationData("Mutt's Shop - Trash Can", LC.TRASH_LOOT, 3729),
     "MUTT_FIRST_AID_BOX": LocationData("Mutt's Shop - First Aid Box", LC.FIRST_AID_BOX_LOOT, 3730),
+    "MUTT_EMMANUEL_MERCHANT_1": LocationData("Mutt's Shop - Emmanuel Item 1", LC.MERCHANT, 3731),
+    "MUTT_EMMANUEL_MERCHANT_2": LocationData("Mutt's Shop - Emmanuel Item 2", LC.MERCHANT, 3732),
+    "MUTT_EMMANUEL_MERCHANT_3": LocationData("Mutt's Shop - Emmanuel Item 3", LC.MERCHANT, 3733),
+    "MUTT_EMMANUEL_MERCHANT_4": LocationData("Mutt's Shop - Emmanuel Item 4", LC.MERCHANT, 3734),
+    "MUTT_EMMANUEL_MERCHANT_5": LocationData("Mutt's Shop - Emmanuel Item 5", LC.MERCHANT, 3735),
 }
 
 MUTT_BACKROOM_LOCATIONS = {
@@ -1701,7 +1715,20 @@ GARAGE_LOCATIONS = {
     "B_STUART_COMBAT_VICTORY": LocationData("Stuart's Hideout - Slay Stuart", LC.FRIENDLY_FIRE, 5320),
     "B_STUART_MERCHANT": LocationData("Stuart's Hideout - Stuart Shop Item", LC.MERCHANT, 5321),
     "B_STUART_FIRST_AID_KIT": LocationData("Stuart's Hideout - Item on Table", LC.OVERWORLD_ITEM, 5322),
-    "B_STUART_SIMPLE_KEY": LocationData("Stuart's Hideout - Item on South Table", LC.OVERWORLD_ITEM, 5323)
+    "B_STUART_SIMPLE_KEY": LocationData("Stuart's Hideout - Item on South Table", LC.OVERWORLD_ITEM, 5323),
+    "B_UTILITY_JUNK_1": LocationData("Basement Utility Room - Item on Counter 1", LC.OVERWORLD_ITEM, 5324),
+    "B_UTILITY_JUNK_2": LocationData("Basement Utility Room - Item on Counter 2", LC.OVERWORLD_ITEM, 5325),
+    "B_UTILITY_JUNK_3": LocationData("Basement Utility Room - Item on Counter 3", LC.OVERWORLD_ITEM, 5326),
+    "B_UTILITY_TRASH_1": LocationData("Basement Utility Room - Trash Can 1", LC.TRASH_LOOT, 5327),
+    "B_UTILITY_TRASH_2": LocationData("Basement Utility Room - Trash Can 2", LC.TRASH_LOOT, 5328),
+    "B_UTILITY_DUCT_TAPE_1": LocationData("Basement Utility Room - Item on Table 1", LC.OVERWORLD_ITEM, 5329),
+    "B_UTILITY_DUCT_TAPE_2": LocationData("Basement Utility Room - Item on Table 2", LC.OVERWORLD_ITEM, 5330),
+    "B_UTILITY_JANITOR_KEYRING": LocationData("Basement Utility Room - Item Dropped by Garbage Worm", LC.EVENT_ITEM, 5331),
+    "B_OOZE_MACHINE_MERCHANT_1": LocationData("Black Ooze Vending Machine - Item 1", LC.MERCHANT, 5332),
+    "B_OOZE_MACHINE_MERCHANT_2": LocationData("Black Ooze Vending Machine - Item 2", LC.MERCHANT, 5333),
+    "B_OOZE_MACHINE_MERCHANT_3": LocationData("Black Ooze Vending Machine - Item 3", LC.MERCHANT, 5334),
+    "B_OOZE_MACHINE_MERCHANT_4": LocationData("Black Ooze Vending Machine - Item 4", LC.MERCHANT, 5335),
+    "B_OOZE_MACHINE_MERCHANT_5": LocationData("Black Ooze Vending Machine - Item 5", LC.MERCHANT, 5336)
 }
 
 BLACKOUT_LOCATIONS = {
@@ -2077,5 +2104,33 @@ location_name_groups: dict[str, set[str]] = {
                     },
     "GAME_SKILLS": {
         *VIDEO_GAME_LOCATIONS.keys(),
+    },
+    "CASSETTE_TAPE": { 
+        "MUTT_EMMANUEL_MERCHANT_1", 
+        "MUTT_EMMANUEL_MERCHANT_2", 
+        "MUTT_EMMANUEL_MERCHANT_3", 
+        "MUTT_EMMANUEL_MERCHANT_4", 
+        "MUTT_EMMANUEL_MERCHANT_5"
+        },
+    "WORM_EGG": {
+        "F1_PIPE_ROOM_KEVIN_MERCHANT_1",
+        "F1_PIPE_ROOM_KEVIN_MERCHANT_2",
+        "F1_PIPE_ROOM_KEVIN_MERCHANT_3",
+        "F1_PIPE_ROOM_KEVIN_MERCHANT_4",
+        "F1_PIPE_ROOM_KEVIN_MERCHANT_5",
+    },
+    "RAT_TAIL": {
+        "F1_PASSAGE_RAT_HOLE_MERCHANT_1",
+        "F1_PASSAGE_RAT_HOLE_MERCHANT_2",
+        "F1_PASSAGE_RAT_HOLE_MERCHANT_3",
+        "F1_PASSAGE_RAT_HOLE_MERCHANT_4",
+        "F1_PASSAGE_RAT_HOLE_MERCHANT_5",
+    },
+    "BLACK_OOZE": {
+        "B_OOZE_MACHINE_MERCHANT_1",
+        "B_OOZE_MACHINE_MERCHANT_2",
+        "B_OOZE_MACHINE_MERCHANT_3",
+        "B_OOZE_MACHINE_MERCHANT_4",
+        "B_OOZE_MACHINE_MERCHANT_5",
     }
 }

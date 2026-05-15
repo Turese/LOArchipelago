@@ -11,7 +11,7 @@ class ItemCat(IntFlag):
     WEAPON = auto()
     ARMOR = auto()
     SKILL = auto()
-    MISC = auto()  # used for switch defined items - crafting kit, crosswords, recruits, elevator, etc and arms
+    MISC = auto()  # used for non individual game items
     RESOURCE_PACK = auto()
     TRAP = auto()
 
@@ -25,6 +25,7 @@ class ItemTag(IntFlag):
     PROGRESSIVE = auto()
     SPECIAL_CURRENCY = auto()
     UNIQUE = auto()
+    AMMO = auto()
 
 
 class ItemData(NamedTuple):
@@ -191,7 +192,7 @@ main_item_table: dict[str, ItemData] = {
     "Soap": ItemData(ItemCat.ITEM, {ItemTag.USEFUL}, 173),
     "Toothpaste": ItemData(ItemCat.ITEM, {ItemTag.USEFUL}, 174),
     "Duct Tape": ItemData(ItemCat.ITEM, {ItemTag.USEFUL}, 176),
-    "Junk": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE}, 177),
+    "Junk": ItemData(ItemCat.ITEM, { }, 177),
     "TV Dinner": ItemData(ItemCat.ITEM, {ItemTag.INGREDIENT}, 212),
     "Frozen Pizza": ItemData(ItemCat.ITEM, {ItemTag.INGREDIENT}, 213),
     "Pizza Bites": ItemData(ItemCat.ITEM, {ItemTag.INGREDIENT}, 214),
@@ -259,7 +260,7 @@ main_item_table: dict[str, ItemData] = {
     "Length of Rope": ItemData(ItemCat.ITEM, set(), 287),
     "Sapper Charge": ItemData(ItemCat.ITEM, {ItemTag.BREAKABLE_KEY }, 289),
     "Defused Mine": ItemData(ItemCat.ITEM, set(), 290),
-    "Dog Tags": ItemData(ItemCat.ITEM, {ItemTag.SPECIAL_CURRENCY}, 291),
+    "Dog Tags": ItemData(ItemCat.ITEM, { }, 291),
     "Supply Crate": ItemData(ItemCat.ITEM, {ItemTag.USEFUL}, 292),
     "Painter's Key": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 293),
     "Stained Key": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 294),
@@ -760,7 +761,82 @@ misc_table: dict[str, ItemData] = {
     "Sewer Grates Lowered": ItemData(ItemCat.MISC, {ItemTag.CHECK_GATE}, 24),
 }
 
-resource_pack_table: dict[str, ItemData] = {}
+resource_pack_table: dict[str, ItemData] = {
+    "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMBROS": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL}, 1),
+    "Glitch Elixir x99": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL}, 2),
+    "Sam's Life Savings": ItemData(ItemCat.RESOURCE_PACK, { ItemTag.UNIQUE }, 3),
+    "Taxidermy's Spare Cash": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 4),
+    "Edwin's Spare Cash": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 5),
+    "Frozen Apartment Spare Cash 1": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 6),
+    "Frozen Apartment Spare Cash 2": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 7),
+    "Wounded Neighbor's Spare Change": ItemData(ItemCat.RESOURCE_PACK, { ItemTag.UNIQUE }, 8),
+    "Vincent's Spare Cash": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 9),
+    "Louis' Spare Cash": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 10),
+    "Jeanne's Spare Cash 1": ItemData(ItemCat.RESOURCE_PACK, { ItemTag.UNIQUE }, 11),
+    "Jeanne's Spare Cash 2": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 12),
+    "Harriet's Spare Cash": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 13),
+    "Toxic Fred's Spare Cash": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 14),
+    "Hellen's Spare Cash": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 15),
+    "Vending Machine Snack Money": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.CHECK_GATE, ItemTag.SPECIAL_CURRENCY}, 16),
+    "Advice Can Funds": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.CHECK_GATE, ItemTag.SPECIAL_CURRENCY}, 17),
+    "Ten Dollars": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL}, 18),
+    "Fifty Dollars": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL}, 19),
+    "One Hundred Dollars": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL}, 20),
+    "Two Hundred Dollars": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.CHECK_GATE, ItemTag.SPECIAL_CURRENCY}, 21),
+    "Five Hundred Dollars": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.CHECK_GATE, ItemTag.SPECIAL_CURRENCY}, 22),
+    "20 Marble Pack": ItemData(ItemCat.RESOURCE_PACK, { ItemTag.AMMO }, 23),
+    "Rare Marble Pack": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.AMMO}, 24),
+    "3x Pistol Bullets": ItemData(ItemCat.RESOURCE_PACK, { ItemTag.AMMO }, 25),
+    "5x Pistol Bullets": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.AMMO}, 26),
+    "10x Pistol Bullets": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL,ItemTag.AMMO}, 27),
+    "3x Rifle Bullets": ItemData(ItemCat.RESOURCE_PACK, { ItemTag.AMMO }, 28),
+    "5x Rifle Bullets": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL,ItemTag.AMMO}, 29),
+    "10x Rifle Bullets": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL,ItemTag.AMMO}, 30),
+    "3x SMG Bullets": ItemData(ItemCat.RESOURCE_PACK, { ItemTag.AMMO }, 31),
+    "5x SMG Bullets": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL,ItemTag.AMMO}, 32),
+    "10x SMG Bullets": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL,ItemTag.AMMO}, 33),
+    "3x Magnum Bullets": ItemData(ItemCat.RESOURCE_PACK, { ItemTag.AMMO }, 34),
+    "5x Magnum Bullets": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL,ItemTag.AMMO}, 35),
+    "10x Magnum Bullets": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL,ItemTag.AMMO}, 36),
+    "3x Shotgun Shells": ItemData(ItemCat.RESOURCE_PACK, { ItemTag.AMMO }, 37),
+    "5x Shotgun Shells": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL,ItemTag.AMMO}, 38),
+    "10x Shotgun Shells": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL,ItemTag.AMMO}, 39),
+    "Apt. 30 Fridge Contents": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 40),
+    "Apt. 31 Fridge Contents": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 41),
+    "Apt. 32 Fridge Contents": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 42),
+    "Apt. 34 Fridge Contents": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 43),
+    "Apt. 35 Fridge Contents": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 44),
+    "Apt. 37 Fridge Contents": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 45),
+    "Apt. 38 Fridge Contents": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 46),
+    "Apt. 20 Fridge Contents": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 47),
+    "Apt. 21 Fridge Contents": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 48),
+    "Apt. 22 Fridge Contents": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 49),
+    "Apt. 24 Fridge Contents": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 50),
+    "Apt. 25 Fridge Contents": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 51),
+    "Apt. 27 Fridge Contents": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 52),
+    "Rat Apt. Fridge Contents": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 53),
+    "Apt. 18 Fridge Contents": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 54),
+    "Mutt's First Fridge Contents": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 55),
+    "Mutt's Second Fridge Contents": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 56),
+    "Mutt's Third Fridge Contents": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 57),
+    "Landlord's Fridge Contents": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 58),
+    "Apt. B1 Fridge Contents": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 59),
+    "Apt. B2 Fridge Contents": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 60),
+    "Sewer Fridge Contents": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 61),
+    "Junk Pile": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.SPECIAL_CURRENCY}, 62)
+}
+
+trap_table: dict[str, ItemData] = {
+    "Hunger Trap": ItemData(ItemCat.TRAP, {}, 1),
+    "Exhaustion Trap": ItemData(ItemCat.TRAP, {}, 2),
+    "Loneliness Trap": ItemData(ItemCat.TRAP, {}, 3),
+    "Stinky Trap": ItemData(ItemCat.TRAP, {}, 4),
+    "Depression Trap": ItemData(ItemCat.TRAP, {}, 5),
+    "Anxiety Trap": ItemData(ItemCat.TRAP, {}, 6),
+    "Bad Breath Trap": ItemData(ItemCat.TRAP, {}, 7),
+    "Danger Trap": ItemData(ItemCat.TRAP, {}, 8),
+}
+
 
 item_table: dict[str, ItemData] = {
     **main_item_table,
@@ -768,11 +844,13 @@ item_table: dict[str, ItemData] = {
     **weapon_table,
     **armor_table,
     **resource_pack_table,
-    **misc_table
+    **misc_table,
+    **trap_table
 }
 
 item_name_groups: dict[str, set[str]] = {
     "QUEST_ROOMMATES": {"Dan", "Hellen", "Leigh"},
+    "SHOPKEEPER_PROGRESSION_CASH": {"Two Hundred Dollars", "Five Hundred Dollars"},
     "OFFERING": {k for k, v in item_table.items() if ItemTag.OFFERING in v.tags},
     "PERFECT_OFFERING": {"Progressive Loose Manuscript",
                          "Correct Painting",
@@ -845,11 +923,33 @@ num_multiple_items: Dict[str, int] = {
     "Sapper Charge": 5, # todo: at least 5
     "Iris Key": 0, # todo: REAL NUMBER
     "Herbicide": 6, # todo: this seems to be the number blocking locations. what do i do about players putting it in acid sprayer?
-    "Ice Melt Salt": 19
-}
-
-currency_counts: Dict[str, int] = {
-    "Junk": 1,
-    "Worm Egg": 1,
-    "Casette Tape": 1,
+    "Ice Melt Salt": 19,
+    "Vending Machine Snack Money": 6, # used for the 4 $0.75 items on the 3rd floor machine and the $1.50 coffee machine on gf
+    "Advice Can Funds": 2, # progression for vending machine key, and then progression for recruit audrey
+    "Two Hundred Dollars": 3,
+    "One Hundred Dollars": 3,
+    "Five Hundred Dollars": 3,
+    "20 Marble Pack": 1,
+    "Rare Marble Pack": 1,
+    "3x Pistol Bullets": 8,
+    "5x Pistol Bullets": 4,
+    "10x Pistol Bullets": 2,
+    "3x Rifle Bullets": 10,
+    "5x Rifle Bullets": 4,
+    "10x Rifle Bullets": 2,
+    "3x SMG Bullets": 8,
+    "5x SMG Bullets": 4,
+    "10x SMG Bullets": 2,
+    "3x Magnum Bullets": 8,
+    "5x Magnum Bullets": 4,
+    "10x Magnum Bullets": 2,
+    "3x Shotgun Shells": 8,
+    "5x Shotgun Shells": 4,
+    "10x Shotgun Shells": 2,
+    # currencies
+    "Worm Egg": 17, # traded to kevin
+    "Cassette Tape": 16, #traded to emmanuel
+    "Rat Tail": 16, # traded to rat hole
+    "Junk Pile": 3, # each one has 5 junks, you need 14 to recruit morton; theres also random junks in the pool
+    "Black Ooze": 20
 }
