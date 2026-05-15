@@ -15,7 +15,7 @@ has_any_perfect_offering = Or(
 has_all_perfect_offerings = And(
     turned_in_complete_manuscript, turned_in_painting, turned_in_photo, turned_in_cctv)
 
-can_open_any_simple_lock = Has("Lockpicks")  # todo: count keys
+can_open_any_simple_lock = Or(Has("Lockpicks"), Has("Simple Key", count=num_multiple_items["Simple Key"]))
 can_access_stairwell = Has("Padlock Key")
 
 can_clear_with_herbicide = Has("Herbicide", count=num_multiple_items["Herbicide"])

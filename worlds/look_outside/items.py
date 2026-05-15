@@ -50,7 +50,7 @@ def create_all_items(world: LookOutsideWorld):
         remaining_items = []
 
         # todo: bring these back
-        excluded_items = {"Simple Key", "Iris Key"}
+        excluded_items = {"Iris Key"}
 
         precollect_games(world)
         precollect_arms(world)
@@ -115,7 +115,7 @@ def precollect_games(world: LookOutsideWorld):
     if game_option == StartingGames.option_random_3:
         game_list = list(item_name_groups["VIDEO_GAME"])
         world.multiworld.random.shuffle(game_list)
-        for game in game_list[:3]:
+        for game in game_list[:4]:
             world.multiworld.push_precollected(create_lo_item(world, game))
 
 # yaml option for starting arms
