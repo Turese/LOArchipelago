@@ -99,6 +99,7 @@ f3_regions_table: dict[str, RegionData] = {
         exits={
             "APT_33_EXIT": ExitData("FLOOR_3_HALL"),
             "APT_33_DOORWAY": ExitData("DOOR_ENCOUNTERS"),
+            "AUDREY_HOME": ExitData("AUDREY_VENDING_STOCK", Has("Audrey")),
         },
     ),
     "DOOR_ENCOUNTERS": RegionData(
@@ -335,7 +336,7 @@ f2_east_regions_table = {
         "APT_20_DOOR": ExitData("APT_20_JEANNE"),
         "APT_20_DOOR_HYDRA": ExitData("APT_20_JEANNE_HYDRA", Has("OPENED_GROUND_FLOOR_FROM_STAIRWELL")),
         "APT_21_DOOR": ExitData("APT_21_LYLE", Has("Apt. 21 Key")),
-        "APT_22_DOOR": ExitData("APT_22_HARRIET"),
+        "APT_22_DOOR": ExitData("APT_22_HARRIET", Has("OPENED_GROUND_FLOOR_FROM_STAIRWELL")),
         "LEIGHS_APARTMENT_DOOR": ExitData("LEIGHS_APARTMENT"),
         "LEIGHS_APARTMENT_QUEST_DOOR": ExitData("LEIGHS_APARTMENT_QUEST", can_leigh_quest),
         "APT_24_DOOR": ExitData("APT_24_EUGENE_SHOP"),
@@ -378,9 +379,11 @@ f1_regions_table: dict[str, RegionData] = {
             "ERNESTS_DOOR": ExitData("ERNESTS_HIDEOUT"),
             "RUINED_APARTMENT_DOOR": ExitData("F1_RUINED_APARTMENT"),
             "AURELIUS_CLOSET_DOOR": ExitData("AURELIUS_CLOSET"),
-            "F1_STAIRWELL_EXIT": ExitData("STAIRWELL")
+            "F1_STAIRWELL_EXIT": ExitData("STAIRWELL"),
+            "AUDREY_HALL": ExitData("AUDREY_VENDING_STOCK"),
         }
     ),
+    "AUDREY_VENDING_STOCK": RegionData(),
     "AURELIUS_CLOSET": RegionData(),
     "F1_RUINED_APARTMENT": RegionData(exits={
         "RUINED_APARTMENT_NORTH_EXIT": ExitData("APT_21_LYLE"),
@@ -529,7 +532,8 @@ basement_regions_table: dict[str, RegionData] = {
         "JUMP_IN_PIT": ExitData("BASEMENT_PIT_CHARAN"),
         "BASEMENT_WEST_EAST_DOOR": ExitData("BASEMENT_EAST"),
         "GARBAGE_ROOM_ENTRANCE": ExitData("GARBAGE_ROOM"),
-        "BLACKOUT_MODE": ExitData("GARAGE_UTILITY_ROOM_BLACKOUT", can_access_elevator),
+        # need basement key for blackout mode because it disables the elevator
+        "BLACKOUT_MODE": ExitData("GARAGE_UTILITY_ROOM_BLACKOUT", And(can_access_elevator, Has("Basement Key"))),
         "BOILER_ROOM_FUNGAL_MAZE_DOOR": ExitData("BOILER_ROOM_FUNGAL_MAZE"),
         "BASEMENT_SHADE_WEST": ExitData("BASEMENT_SHADE")
     }),

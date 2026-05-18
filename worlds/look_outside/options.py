@@ -18,7 +18,7 @@ class PlayerGoal(Choice):
 
 class IncludeArms(Choice):
     """Adds the player character's arms to the item pool."""
-    display_name = "Randomize Arms"
+    display_name = "Randomize Player Arms"
     option_start_armed = 0
     option_start_unarmed = 1
     option_start_left = 2
@@ -59,26 +59,18 @@ class IncludeMaskLocations(Toggle):
     """This controls whether locations specific to the
     Mask ending are randomized: Glitch world, floor 4, the basement pit,
     and the landlord's hidden room."""
+    display_name = "Include Mask Offering Locations"
 
 class IncludeRoommateQuests(Toggle):
     """This controls whether roommate quests that involve escorting them to their apartments are
     randomized: Dan, Hellen, and Leigh's quests."""
+    display_name = "Include Long Roommate Sidequests"
+    
 
 class IncludeGameSkills(Toggle):
     """This controls whether the skills given by completing each of the video games are randomized."""
+    display_name = "Randomize Video Game Skill Rewards"
     display_name = "Include Game Skills"
-
-# todo: allow this
-"""class LockpicksInLogic(Toggle):
-    This controls whether the lockpick items or simple key items are placed into the item pool.
-    If lockpicks_only is selected, then they can be used in place of keys at any locked location,
-    and Kaeley will not become upset if they are used in her puzzle room.
-    Default both lockpicks and simple keys are placed in the pool.
-    display_name = "Lockpicks and keys"
-    lockpicks_and_keys = 0
-    lockpicks_only = 1
-    keys_only = 2
-    default = 0"""
 
 class StartingGames(Choice):
     """This controls which games are available at the start of the game.
@@ -89,11 +81,9 @@ class StartingGames(Choice):
     option_none = 2
     default = 2
 
-class RandomizeGameSkills(Toggle):
-    """This controls whether game skills are randomized. Default true"""
-
 class DeathLink(Toggle):
     """This controls death link enablement"""
+    display_name = "Enable Death Link"
     display_name = "Death Link"
     
 class RatBabyName(FreeText):
@@ -102,6 +92,7 @@ class RatBabyName(FreeText):
 
 class AllowKillingShopkeepers(Toggle):
     """This controls whether players are allowed to kill Eugene or Mutt to get their stuff. Default false"""
+    display_name = "Allow Killing Mutt and Eugene"
     display_name = "Allow Killing Mutt/Eugene"
 
 class RandomizeDoorEncounters(Toggle):
@@ -121,12 +112,12 @@ class LookOutsideOptions(PerGameCommonOptions):
     include_shades: IncludeShades
     include_mask: IncludeMaskLocations
     include_roommate_quests: IncludeRoommateQuests
+    include_game_skills: IncludeGameSkills
     #lockpicks_in_logic: LockpicksInLogic
     starting_games: StartingGames
     death_link: DeathLink
     rat_baby_name: RatBabyName
     allow_killing_shopkeepers: AllowKillingShopkeepers
-    randomize_game_skills: RandomizeGameSkills
     randomize_door_encounters: RandomizeDoorEncounters
 
 option_groups = [
@@ -137,7 +128,7 @@ option_groups = [
     ),
     OptionGroup(
         "Item Options",
-        [IncludeTestGear, IncludeArms, StartingGames, RandomizeGameSkills], # LockpicksInLogic
+        [IncludeTestGear, IncludeArms, StartingGames], # LockpicksInLogic
     ),
     OptionGroup("Other Options", [DeathLink, RatBabyName])
 ]
@@ -157,7 +148,7 @@ option_presets = {
         "include_roommate_quests": True,
         #"lockpicks_in_logic": True,
         "starting_games": 2,
-        "randomize_game_skills": 1,
+        "include_game_skills": 1,
         "randomize_door_encounters": True,
         "allow_killing_shopkeepers": False,
         "death_link": False

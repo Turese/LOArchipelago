@@ -18,11 +18,13 @@ def create_lo_item(world: LookOutsideWorld, item: str) -> LOItem:
     
     if (item == "Rusty Crown" and world.options.rusty_crown == 0): 
         classification = ItemClassification.useful
-    if (world.options.include_roommate_quests == 0 and item in item_name_groups["QUEST_ROOMMATES"]):
+    elif (world.options.include_roommate_quests == 0 and item in item_name_groups["QUEST_ROOMMATES"]):
         classification = ItemClassification.useful
-    if (world.options.include_roommate_quests == 0 and item == "Cell Phone"):
+    elif (world.options.include_roommate_quests == 0 and item == "Cell Phone"):
         classification = ItemClassification.filler
-    if (world.options.allow_killing_shopkeepers == 1 and item in item_name_groups["PROGRESSION_CASH"]):
+    elif (world.options.allow_killing_shopkeepers == 1 and item in item_name_groups["PROGRESSION_CASH"]):
+        classification = ItemClassification.useful
+    elif world.options.include_game_skills == 0 and item in item_name_groups["USEFUL_SKILL_VIDEO_GAME"]:
         classification = ItemClassification.useful
     elif ItemTag.CHECK_GATE in item_info.tags or ItemTag.BREAKABLE_KEY in item_info.tags or ItemTag.OFFERING in item_info.tags or ItemTag.SPECIAL_CURRENCY in item_info.tags:
         classification = ItemClassification.progression
@@ -65,7 +67,10 @@ def create_all_items(world: LookOutsideWorld):
 
         if world.options.include_mask == 0:
             for item in item_name_groups["MASK_AREA_ENTRY"]:
-                excluded_items.add(item)          
+                excluded_items.add(item)
+
+        if world.options.include_game_skills == 0:
+            excluded_items.update(item_name_groups["VIDEO_GAME_SKILL"])
 
         for item in world.multiworld.precollected_items[world.player]:
             excluded_items.add(item.name)

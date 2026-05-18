@@ -9,7 +9,7 @@ from worlds.look_outside.items_consts import LOItem
 from worlds.look_outside.regions_consts import stairwell_planet_lock
 from worlds.look_outside.rules_consts import can_perform_flawed_ritual,\
     can_perform_perfect_ritual, can_perform_mask_ritual, can_perform_eternal_fate_ritual,\
-    can_perform_xin_amon_ritual, can_true_final
+    can_perform_xin_amon_ritual, can_true_final_skill, can_true_final_game
 from rule_builder.rules import Has
 from worlds.look_outside.rules_consts import can_keep_promise
 from worlds.look_outside.options import IncludeShades
@@ -127,9 +127,14 @@ def create_events(world: LookOutsideWorld) -> None:
         "RITUAL_CIRCLE_GUINEA_PIG_PERFECT", "XIN_AMON_ENDING", rule=can_perform_xin_amon_ritual, location_type=LOLocation, item_type=LOItem
     )
 
-    roof.add_event(
-        "RITUAL_CIRCLE_METEOR_STRIKE", "TRUE_FINAL_ENDING", rule=can_true_final, location_type=LOLocation, item_type=LOItem
-    )
+    if world.options.include_game_skills == 1:
+        roof.add_event(
+            "RITUAL_CIRCLE_METEOR_STRIKE", "TRUE_FINAL_ENDING", rule=can_true_final_skill, location_type=LOLocation, item_type=LOItem
+        )
+    else:
+        roof.add_event(
+            "RITUAL_CIRCLE_METEOR_STRIKE", "TRUE_FINAL_ENDING", rule=can_true_final_game, location_type=LOLocation, item_type=LOItem
+        )
 
     roof.add_event(
         "RITUAL_CIRCLE_PERFECT_FLEE", "SCREAMING_SKIES_ENDING", rule=can_perform_perfect_ritual, location_type=LOLocation, item_type=LOItem
@@ -177,5 +182,7 @@ def exclude_locations(world: LookOutsideWorld) -> None:
         exclude_set.update(UNDER_THE_STAIRS_LOCATIONS.keys())
     elif world.options.include_shades == IncludeShades.option_large_spider:
         exclude_set.add("STAIRS_CRAWLING_SHADE_COMBAT_VICTORY")
+    if world.options.include_game_skills == 0:
+        exclude_set.update(location_name_groups["GAME_SKILLS"])
 
     return exclude_set

@@ -13,7 +13,7 @@ from worlds.look_outside.items_consts import item_name_groups, \
 
 from worlds.look_outside.regions_consts import all_regions_table
 from worlds.look_outside.rules_consts import can_nestor_rafta, can_open_any_simple_lock, can_access_basement, can_leigh_quest
-from rule_builder.rules import Has, And, HasAll, HasAny
+from rule_builder.rules import Has, And, HasAll, HasAny, Or
 from worlds.look_outside.locations_consts import location_name_groups
 
 if TYPE_CHECKING:
@@ -37,24 +37,25 @@ def set_all_entrance_rules(world: LookOutsideWorld) -> None:
 
 def set_all_location_rules(world: LookOutsideWorld) -> None:
     # game rules
-    world.set_rule(world.get_location(get_location_name("GAME_SKILL_WAKE_THE_BLOOD_KNIGHT", world)), Has("Wake the Blood Knight"))
-    world.set_rule(world.get_location(get_location_name("GAME_SKILL_WIZARDS_HELL", world)), Has("Wizards Hell: Arcane Tears"))
-    world.set_rule(world.get_location(get_location_name("GAME_SKILL_SUPER_JUMPLAD", world)), Has("Super Jumplad"))
-    world.set_rule(world.get_location(get_location_name("GAME_SKILL_SUPER_JUMPLAD_3", world)), Has("Super Jumplad 3"))
-    world.set_rule(world.get_location(get_location_name("GAME_SKILL_CATAFALQUE", world)), Has("Catafalque"))
-    world.set_rule(world.get_location(get_location_name("GAME_SKILL_HONKOS_GRAND_JOURNEY", world)), Has("Honko's Grand Journey"))
-    world.set_rule(world.get_location(get_location_name("GAME_SKILL_MADWHEELS_97", world)), Has("Madwheels 97"))
-    world.set_rule(world.get_location(get_location_name("GAME_SKILL_WRAITHSCOURGE", world)), Has("Wraithscourge"))
-    world.set_rule(world.get_location(get_location_name("GAME_SKILL_MASSACRE_PRINCESS", world)), Has("Massacre Princess"))
-    world.set_rule(world.get_location(get_location_name("GAME_SKILL_KILL_TO_SHOOT", world)), Has("Kill to Shoot"))
-    world.set_rule(world.get_location(get_location_name("GAME_SKILL_MYRMIDON", world)), Has("Myrmidon"))
-    world.set_rule(world.get_location(get_location_name("GAME_SKILL_SCREAMATORIUM", world)), Has("Screamatorium"))
-    world.set_rule(world.get_location(get_location_name("GAME_SKILL_FROGIT_ABOUT_IT", world)), Has("Frogit About It"))
-    world.set_rule(world.get_location(get_location_name("GAME_SKILL_BLOOD_GHOUL_ORGY_3", world)), Has("Blood Ghoul Orgy 3"))
-    world.set_rule(world.get_location(get_location_name("GAME_SKILL_OCTOCOOK", world)), Has("Octocook"))
-    world.set_rule(world.get_location(get_location_name("GAME_SKILL_SPACE_TRUCKERZ", world)), Has("Space Truckerz"))
-    world.set_rule(world.get_location(get_location_name("GAME_SKILL_REPTILE_FOOTBALL", world)), Has("Reptile Football"))
-    world.set_rule(world.get_location(get_location_name("GAME_SKILL_CROSSWORD_CHALLENGE", world)), Has("Auntie Wilma's Crossword Challenge"))
+    if world.options.include_game_skills != 0:
+        world.set_rule(world.get_location(get_location_name("GAME_SKILL_WAKE_THE_BLOOD_KNIGHT", world)), Has("Wake the Blood Knight"))
+        world.set_rule(world.get_location(get_location_name("GAME_SKILL_WIZARDS_HELL", world)), Has("Wizards Hell: Arcane Tears"))
+        world.set_rule(world.get_location(get_location_name("GAME_SKILL_SUPER_JUMPLAD", world)), Has("Super Jumplad"))
+        world.set_rule(world.get_location(get_location_name("GAME_SKILL_SUPER_JUMPLAD_3", world)), Has("Super Jumplad 3"))
+        world.set_rule(world.get_location(get_location_name("GAME_SKILL_CATAFALQUE", world)), Has("Catafalque"))
+        world.set_rule(world.get_location(get_location_name("GAME_SKILL_HONKOS_GRAND_JOURNEY", world)), Has("Honko's Grand Journey"))
+        world.set_rule(world.get_location(get_location_name("GAME_SKILL_MADWHEELS_97", world)), Has("Madwheels 97"))
+        world.set_rule(world.get_location(get_location_name("GAME_SKILL_WRAITHSCOURGE", world)), Has("Wraithscourge"))
+        world.set_rule(world.get_location(get_location_name("GAME_SKILL_MASSACRE_PRINCESS", world)), Has("Massacre Princess"))
+        world.set_rule(world.get_location(get_location_name("GAME_SKILL_KILL_TO_SHOOT", world)), Has("Kill to Shoot"))
+        world.set_rule(world.get_location(get_location_name("GAME_SKILL_MYRMIDON", world)), Has("Myrmidon"))
+        world.set_rule(world.get_location(get_location_name("GAME_SKILL_SCREAMATORIUM", world)), Has("Screamatorium"))
+        world.set_rule(world.get_location(get_location_name("GAME_SKILL_FROGIT_ABOUT_IT", world)), Has("Frogit About It"))
+        world.set_rule(world.get_location(get_location_name("GAME_SKILL_BLOOD_GHOUL_ORGY_3", world)), Has("Blood Ghoul Orgy 3"))
+        world.set_rule(world.get_location(get_location_name("GAME_SKILL_OCTOCOOK", world)), Has("Octocook"))
+        world.set_rule(world.get_location(get_location_name("GAME_SKILL_SPACE_TRUCKERZ", world)), Has("Space Truckerz"))
+        world.set_rule(world.get_location(get_location_name("GAME_SKILL_REPTILE_FOOTBALL", world)), Has("Reptile Football"))
+        world.set_rule(world.get_location(get_location_name("GAME_SKILL_CROSSWORD_CHALLENGE", world)), Has("Auntie Wilma's Crossword Challenge"))
 
     # f3 rules
     world.set_rule(world.get_location(get_location_name("APT_33_RECRUIT_PHILLIPPE", world)), Has("Phillippe's Remains"))
@@ -79,7 +80,7 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     if world.options.include_roommate_quests != 0:
         world.set_rule(world.get_location(get_location_name("F2_GRASSHOPPER_COMBAT_VICTORY", world)), can_leigh_quest)
 
-    world.set_rule(world.get_location(get_location_name("APT_20_HYDRA_LAUNDRY", world)), Has("Laundry"))
+    world.set_rule(world.get_location(get_location_name("APT_20_HYDRA_LAUNDRY", world)), HasAll("Jeanne's Laundry", "OPENED_GROUND_FLOOR_FROM_STAIRWELL"))
 
     world.set_rule(world.get_location(get_location_name("APT_21_DARK_ROOM_PHOTO", world)), Has("Exposed Paper"))
     world.set_rule(world.get_location(get_location_name("APT_21_SECOND_KISS_GIFT", world)), Has("Exposed Paper"))
@@ -136,7 +137,15 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     world.set_rule(world.get_location(get_location_name("SECURITY_CORRECT_RECORDING", world)), And(Has("Guinea Pig"), HasAny("Blank VHS tape", "Incorrect CCTV Recording", "Correct CCTV Recording")))
 
     # audrey rules
-    world.set_rule(world.get_location(get_location_name("MUTT_VENDING_MACHINE_KEY", world)), Has("MET_AUDREY"))
+
+    # ive earmarked different coin drops for different audrey locations
+    # dollar coins for audrey items
+    # and special quarter packs for advice cans
+    # player will likely have far more than needed when they get this point
+    world.set_rule(world.get_location(get_location_name("MUTT_VENDING_MACHINE_KEY", world)), HasAll("MET_AUDREY", "Advice Can Funds"))
+
+    for location_id in location_name_groups["AUDREY_PURCHASE"]:
+        world.set_rule(world.get_location(get_location_name(location_id, world)), Or(Has("Dollar Coin", count=num_multiple_items["Dollar Coin"]), Has("Dollar Coin", count=num_multiple_items["Two-Dollar Coin"])))
 
     world.set_rule(world.get_location(get_location_name("APT_30_TAXIDERMY_AUDREY_LOOT", world)), Has("Audrey"))
     world.set_rule(world.get_location(get_location_name("APT_28_SHRIMP_KNIGHT_AUDREY_LOOT", world)), Has("Audrey"))
