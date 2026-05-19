@@ -35,7 +35,7 @@ can_leigh_quest = And(Has("Leigh"), Has("Phone"))
 
 can_perform_flawed_ritual = has_any_perfect_offering
 can_perform_perfect_ritual = has_all_perfect_offerings
-can_true_final_skill = And(can_perform_perfect_ritual, Has("Meteor Strike"))
+can_true_final_skill = And(can_perform_perfect_ritual, Has("Skill: Meteor Strike"))
 can_true_final_game = And(can_perform_perfect_ritual, Has("Massacre Princess"))
 can_keep_promise = And(can_perform_perfect_ritual, Has("AWAKENED_SIBYL"))
 can_perform_mask_ritual = And(HasAll(*item_name_groups["MASK_OFFERING"]), met_all_astronomers)
