@@ -831,6 +831,7 @@ resource_pack_table: dict[str, ItemData] = {
     "Revival Item Pack": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL}, 65),
     "Medication Pack": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL}, 66),
     "2x Tonic": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL}, 67),
+    "Landlord's Couch Cash": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 68),
 }
 
 trap_table: dict[str, ItemData] = {

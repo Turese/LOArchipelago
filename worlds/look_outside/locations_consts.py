@@ -912,6 +912,7 @@ RAT_APARTMENT_NURSERY_LOCATIONS = {
     "RAT_APT_BABY_ROOM_RATS_COMBAT_VICTORY": LocationData("Rat Apt. Baby's Room - Slay Mouth and Throat Rats", LC.RAT_FRIENDLY_FIRE, 2609, difficulty_lock={DL.CURSED}),
     "RAT_APT_BABY_ROOM_BANDAGES": LocationData("Rat Apt. Baby's Room - Item on Table", LC.OVERWORLD_ITEM, 2610),
     "RAT_APT_BABY_ROOM_DRAWINGS": LocationData("Rat Apt. Baby's Room - Item on Wall", LC.OVERWORLD_ITEM, 2611),
+    "RAT_APT_RAT_BABY_THING": LocationData("Rat Apt. Baby's Room - Thing in Crib", LC.OVERWORLD_ITEM, 2622),
 }
 
 F1_RAT_APARTMENT_LOCATIONS = {
@@ -1131,12 +1132,14 @@ GF_HALL_MAIN_LOCATIONS = {
     "GF_COFFEE_MACHINE_MERCHANT": LocationData("Ground Floor - Coffee Machine Item", LC.MERCHANT, 3403),
     "GF_HERBICIDE": LocationData("Ground Floor - Item Near Bathrooms", LC.OVERWORLD_ITEM, 3404),
     "GF_LEG_FOOT_WORM_COMBAT_VICTORY": LocationData("Ground Floor - Slay Leg Worms", LC.COMBAT_VICTORY, 3405),
-    "GF_OFFICE_JASPER_COMBAT_VICTORY": LocationData("F1 Office - Slay Jasper", LC.FRIENDLY_FIRE, 3406),
-    "GF_OFFICE_JASPER_GIFT_OFFERING": LocationData("F1 Office - Pre-Ritual Gift From Jasper", LC.EVENT_ITEM, 3407),
-    "GF_OFFICE_JASPER_FIX_TELESCOPE": LocationData("F1 Office - Have Jasper Fix Telescope", LC.EVENT_ITEM, 3408),
+    "GF_OFFICE_JASPER_COMBAT_VICTORY": LocationData("GF Office - Slay Jasper", LC.FRIENDLY_FIRE, 3406),
+    "GF_OFFICE_JASPER_GIFT_OFFERING": LocationData("GF Office - Pre-Ritual Gift From Jasper", LC.EVENT_ITEM, 3407),
+    "GF_OFFICE_JASPER_FIX_TELESCOPE": LocationData("GF Office - Have Jasper Fix Telescope", LC.EVENT_ITEM, 3408),
+    "GF_OFFICE_TRASH": LocationData("GF Office - Trash Can", LC.TRASH_LOOT, 3414),
     "GF_OFFICE_BATHROOM_WORM_COMBAT_VICTORY": LocationData("F1 Office Bathroom - Slay Leg and Foot Worms", LC.COMBAT_VICTORY, 3409),
     "MAILROOM_OFFICE_CELL_PHONE": LocationData("Mailroom Office - Item in Southeast Corner", LC.OVERWORLD_ITEM, 3903),
     "MAILROOM_OFFICE_SUN_DISC": LocationData("Mailroom Office - Item on Counter", LC.OVERWORLD_ITEM, 3904),
+    "MAILROOM_OFFICE_TRASH": LocationData("Mailroom Office - Trash Can", LC.TRASH_LOOT, 3910),
 }
 
 GF_OFFICE_BATHROOM_LOCATIONS = {
@@ -1156,6 +1159,7 @@ GF_MENS_BATHROOM_LAUNDRY_LOCATIONS = {
     "GF_MENS_BATHROOM_MARSHALL_COMBAT_VICTORY": LocationData("Men's Bathroom - Slay Marshall", LC.COMBAT_VICTORY, 3501),
     "GF_MENS_BATHROOM_FIRST_AID_BOX": LocationData("Men's Bathroom - First Aid Box", LC.FIRST_AID_BOX_LOOT, 3502),
     "GF_MENS_BATHROOM_SIMPLE_KEY": LocationData("Men's Bathroom - Item in Stall", LC.OVERWORLD_ITEM, 3503),
+    "GF_MENS_BATHROOM_TRASH": LocationData("Men's Bathroom - Trash Can", LC.TRASH_LOOT, 3518),
     "LAUNDRY_CLOTH_1": LocationData("Laundromat - Item on North Counter", LC.OVERWORLD_ITEM, 3507),
     "LAUNDRY_KLYSOX_1": LocationData("Laundromat - Item on Middle Counter", LC.OVERWORLD_ITEM, 3508),
     "LAUNDRY_WORM_COMBAT_VICTORY": LocationData("Laundromat - Slay Worm", LC.COMBAT_VICTORY, 3509),
@@ -1307,6 +1311,7 @@ LANDLORDS_APT_PHASE_2_LOCATIONS = {
     "LL_OFFICE_CARVED_BEAVER": LocationData("Landlord Office - Item on Southeast Table", LC.OVERWORLD_ITEM, 4038),
     "LL_OFFICE_DETONATOR": LocationData("Landlord Office - Item on North Table", LC.OVERWORLD_ITEM, 4039),
     "LL_OFFICE_MANATARMS_COMBAT_VICTORY": LocationData("Landlord Office - Slay Man at Arms", LC.COMBAT_VICTORY, 4040),
+    "LL_OFFICE_CASH": LocationData("Landlord Office - Item on Center Table", LC.OVERWORLD_ITEM, 4085),	
     "LL_EAST_SOLDIER_COMBAT_VICTORY": LocationData("Landlord Hell East - Slay Soldier", LC.COMBAT_VICTORY, 4041),
     "LL_EAST_SIDE_TABLE": LocationData("Landlord Hell East - Side Table Loot", LC.DRAWER_LOOT, 4042),
     "LL_EAST_GATLING_COMBAT_VICTORY": LocationData("Landlord Hell East - Slay Gatling", LC.COMBAT_VICTORY, 4043),
