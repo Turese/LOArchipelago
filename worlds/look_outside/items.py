@@ -25,7 +25,10 @@ def create_lo_item(world: LookOutsideWorld, item: str) -> LOItem:
     elif (world.options.allow_killing_shopkeepers == 1 and item in item_name_groups["PROGRESSION_CASH"]):
         classification = ItemClassification.useful
     elif world.options.include_game_skills == 0 and item in item_name_groups["USEFUL_SKILL_VIDEO_GAME"]:
-        classification = ItemClassification.useful
+        if item == "Honko's Grand Journey" and world.options.include_mask == 1:
+            classification = ItemClassification.progression
+        else:
+            classification = ItemClassification.useful
     elif ItemTag.CHECK_GATE in item_info.tags or ItemTag.BREAKABLE_KEY in item_info.tags or ItemTag.OFFERING in item_info.tags or ItemTag.SPECIAL_CURRENCY in item_info.tags:
         classification = ItemClassification.progression
     elif item_info.category == ItemCat.SKILL:

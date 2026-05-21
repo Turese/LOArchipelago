@@ -3,15 +3,14 @@ from rule_builder.rules import Has, HasAll, Rule, And, Or
 from worlds.look_outside.items_consts import num_multiple_items
 
 from typing_extensions import NamedTuple
-from worlds.look_outside.rules_consts import can_leigh_quest, can_open_any_simple_lock,\
+from worlds.look_outside.rules_consts import can_leigh_quest, can_open_any_simple_lock, \
 can_access_stairwell, can_clear_with_herbicide, can_clear_with_sapper_charge, can_access_elevator
-
 
 # shade rules go here because i use them here
 can_access_all_large_shades = And(
     HasAll("DEFEATED_FLOOR_3_SHADE", "DEFEATED_FLOOR_1_SHADE", "DEFEATED_GF_SHADE", "DEFEATED_BASEMENT_SHADE"),
     Or(
-        Has("DEFEATED_FLOOR_2_SHADE_ON_EAST_SIDE"), 
+        Has("DEFEATED_FLOOR_2_SHADE_ON_EAST_SIDE"),
         Has("DEFEATED_FLOOR_2_SHADE_ON_WEST_SIDE")
     )
 )
@@ -21,13 +20,13 @@ stairwell_planet_lock = Or(
     HasAll("Mars Disc", "Earth Disc"), HasAll("Sun Disc", "Negative Disc"))
 planetarium_lock = HasAll(
     "Sun Disc",
-    "Mercury Disc", 
-    "Venus Disc", 
-    "Earth Disc", 
-    "Mars Disc", 
-    "Jupiter Disc", 
+    "Mercury Disc",
+    "Venus Disc",
+    "Earth Disc",
+    "Mars Disc",
+    "Jupiter Disc",
     "Saturn Disc",
-    "Uranus Disc", 
+    "Uranus Disc",
     "Neptune Disc"
 )
 
@@ -64,7 +63,7 @@ security_room_solution_4 = HasAll("Earth Disc", "Uranus Disc", "Sun Disc", "Nept
 security_room_solution_5 = HasAll("Earth Disc", "Pluto Disc", "Neptune Disc", "Negative Disc")
 
 security_room_planet_lock = Or(
-    security_room_solution_1, 
+    security_room_solution_1,
     security_room_solution_2,
     security_room_solution_3,
     security_room_solution_4,
@@ -76,7 +75,6 @@ security_closet_planet_lock = Or(
     And(security_room_solution_2, HasAll("Mars Disc", "Neptune Disc")),
     And(security_room_solution_1, HasAll("Negative Disc", "Uranus Disc")),
 )
-
  
 
 class ExitData(NamedTuple):
@@ -375,7 +373,7 @@ f1_regions_table: dict[str, RegionData] = {
             "RAT_LAIR_DOOR": ExitData("RAT_LAIR"),
             "RAT_INFESTED_APARTMENT_DOOR": ExitData("RAT_INFESTED_APARTMENT"),
             "FRED_APARTMENT_DOOR": ExitData("FRED_APARTMENT_ENTRANCE"),
-            "RAT_HELL_ENTRANCE": ExitData("RAT_HELL", Has("OPENED_GROUND_FLOOR_FROM_STAIRWELL")), # might want a new event for activating ernestquest
+            "RAT_HELL_ENTRANCE": ExitData("RAT_HELL", Has("OPENED_GROUND_FLOOR_FROM_STAIRWELL")),  # might want a new event for activating ernestquest
             "ERNESTS_DOOR": ExitData("ERNESTS_HIDEOUT"),
             "RUINED_APARTMENT_DOOR": ExitData("F1_RUINED_APARTMENT"),
             "AURELIUS_CLOSET_DOOR": ExitData("AURELIUS_CLOSET"),
@@ -454,7 +452,7 @@ ground_regions_table: dict[str, RegionData] = {
     }),
     "MUTTS_STOCK": RegionData(),
     "MUTTS_SHOP": RegionData(exits={
-        "MUTTS_COUNTER": ExitData("MUTTS_STOCK", Has("500 dollars", count=3)), 
+        "MUTTS_COUNTER": ExitData("MUTTS_STOCK", Has("500 dollars", count=3)),
         # with no multiplier, mutt's entire stock costs 1510 dollars
     }),
     "LANDLORDS_APARTMENT_PHASE_1": RegionData(exits={
@@ -485,7 +483,7 @@ ground_regions_table: dict[str, RegionData] = {
 basement_regions_table: dict[str, RegionData] = {
     "BASEMENT_EAST": RegionData(exits={
         "SECURITY_ROOM_PLANET_DOOR": ExitData("SECURITY_ROOM", security_room_planet_lock),
-        "STEVE_APARTMENT": ExitData("STEVE_APARTMENT", Has("Antoine's Key")), # todo: hardmode lock
+        "STEVE_APARTMENT": ExitData("STEVE_APARTMENT", Has("Antoine's Key")),  # todo: hardmode lock
         "APT_B1_ARTHROPOD_DOOR": ExitData("APT_B1_ARTHROPOD"),
         "APT_B2_ANTOINE_DOOR": ExitData("APT_B2_ANTOINE"),
         "B_STAIRWELL_EXIT": ExitData("STAIRWELL"),
@@ -494,7 +492,7 @@ basement_regions_table: dict[str, RegionData] = {
     "BASEMENT_SHADE": RegionData(),
     "APT_B1_ARTHROPOD": RegionData(
         exits={
-            "ARTHROPOD_BATHROOM_DOOR": ExitData("APT_B1_ARTHROPOD_BATHROOM", HasAll("Clyde's Key", "Jennifer's Key", "Auguste's Key")) # todo: hardmode lock
+            "ARTHROPOD_BATHROOM_DOOR": ExitData("APT_B1_ARTHROPOD_BATHROOM", HasAll("Clyde's Key", "Jennifer's Key", "Auguste's Key"))  # todo: hardmode lock
         }
     ),
     "APT_B2_ANTOINE": RegionData(),
@@ -508,9 +506,9 @@ basement_regions_table: dict[str, RegionData] = {
         }
     ),
     "SEWER": RegionData(exits={
-        "SEWER_GRATES_WEST": ExitData("SEWER_WEST", Has("Sewer Grates Lowered")),
+        "SEWER_GRATES_WEST_E_SIDE": ExitData("SEWER_WEST", Has("Sewer Grates Lowered")),
     }),
-    "SEWER_WEST": RegionData(exits={"SEWER_GRATES_WEST_E_SIDE": ExitData("SEWER", Has("Sewer Grates Lowered"))}),
+    "SEWER_WEST": RegionData(exits={"SEWER_GRATES_WEST_W_SIDE": ExitData("SEWER")}),
     "BASEMENT_STORAGE_PLUTO_ROOM": RegionData(exits={
         "CROSSWORD_SAFE": ExitData("CROSSWORD_DUNGEON", Has("Book of Crossword Puzzles"))
     }),

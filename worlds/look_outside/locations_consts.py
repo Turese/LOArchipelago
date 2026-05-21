@@ -1336,6 +1336,8 @@ LANDLORDS_APT_PHASE_3_LOCATIONS = {
     "LL_NORTH_FIRST_AID_KIT": LocationData("Landlord Hell North - Item on Table 2", LC.OVERWORLD_ITEM, 4055),
     "LL_NORTH_PISTOL_BULLETS": LocationData("Landlord Hell North - Item on Table 3", LC.OVERWORLD_ITEM, 4056),
     "LL_NORTH_SIDE_TABLE_W": LocationData("Landlord Hell North - Drawer Loot", LC.DRAWER_LOOT, 4057),
+    "LL_WEST_DRAWER": LocationData("Landlord Hell West - Drawer Loot", LC.DRAWER_LOOT, 4086),
+    "LL_WEST_MANATARMS_COMBAT_VICTORY": LocationData("Landlord Hell West - Slay Man at Arms", LC.COMBAT_VICTORY, 4087),
 }
 
 LL_BEDROOM_HALL_CACHE_LOCATIONS = {
@@ -1743,7 +1745,8 @@ GARAGE_LOCATIONS = {
     "B_OOZE_MACHINE_MERCHANT_2": LocationData("Black Ooze Vending Machine - Item 2", LC.MERCHANT, 5333),
     "B_OOZE_MACHINE_MERCHANT_3": LocationData("Black Ooze Vending Machine - Item 3", LC.MERCHANT, 5334),
     "B_OOZE_MACHINE_MERCHANT_4": LocationData("Black Ooze Vending Machine - Item 4", LC.MERCHANT, 5335),
-    "B_OOZE_MACHINE_MERCHANT_5": LocationData("Black Ooze Vending Machine - Item 5", LC.MERCHANT, 5336)
+    "B_OOZE_MACHINE_MERCHANT_5": LocationData("Black Ooze Vending Machine - Item 5", LC.MERCHANT, 5336),
+    "B_CAR_TRASH": LocationData("Basement Garage - Trash Can", LC.TRASH_LOOT, 5337)
 }
 
 BLACKOUT_LOCATIONS = {

@@ -70,7 +70,6 @@ class IncludeRoommateQuests(Toggle):
 class IncludeGameSkills(Toggle):
     """This controls whether the skills given by completing each of the video games are randomized."""
     display_name = "Randomize Video Game Skill Rewards"
-    display_name = "Include Game Skills"
 
 class StartingGames(Choice):
     """This controls which games are available at the start of the game.
