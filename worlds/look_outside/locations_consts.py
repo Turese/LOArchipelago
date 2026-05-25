@@ -219,8 +219,62 @@ APT_33_LOCATIONS: dict[str, LocationData] = {
     "APT_33_ROACH_WAR": LocationData("Apt. 33 - Declare War on the Roaches", LC.FRIENDLY_FIRE, 409),
 }
 
-# MODIFIERS - 500s
-FRONT_DOOR_LOCATIONS: dict[str, LocationData] = {}
+FRONT_DOOR_LOCATIONS: dict[str, LocationData] = {
+    "DOOR_RECRUIT_HELLEN": LocationData("Door Encounter - Recruit Hellen", LC.RECRUIT, 501),
+    "DOOR_HELLEN_COMBAT_VICTORY": LocationData("Door Encounter - Slay Hellen", LC.FRIENDLY_FIRE, 502),
+    "DOOR_HELLEN_CURSED_COMBAT_VICTORY": LocationData("Door Encounter - Slay Maniac", LC.COMBAT_VICTORY, 503),
+    "DOOR_RECRUIT_DAN": LocationData("Door Encounter - Recruit Dan", LC.RECRUIT, 504),
+    "DOOR_DAN_COMBAT_VICTORY": LocationData("Door Encounter - Slay Non-cursed Dan", LC.FRIENDLY_FIRE, 505),
+    "DOOR_DAN_CURSED_COMBAT_VICTORY": LocationData("Door Encounter - Slay Same Old Dan", LC.COMBAT_VICTORY, 506),
+    "DOOR_RECRUIT_SOPHIE": LocationData("Door Encounter - Recruit Sophie", LC.RECRUIT, 507),
+    "DOOR_BEFRIEND_TRICKSTER": LocationData("Door Encounter - Befriend Trickster", LC.EVENT_ITEM, 508),
+    "DOOR_TRICKSTER_COMBAT_VICTORY": LocationData("Door Encounter - Slay Trickster", LC.FRIENDLY_FIRE, 509),
+    "DOOR_RECRUIT_MORTON": LocationData("Door Encounter - Recruit Morton", LC.RECRUIT, 510),
+    "DOOR_MORTON_COMBAT_VICTORY": LocationData("Door Encounter - Slay Non-cursed Morton", LC.FRIENDLY_FIRE, 511),
+    "DOOR_MORTON_CURSED_COMBAT_VICTORY": LocationData("Door Encounter - Slay Cursed Morton", LC.COMBAT_VICTORY, 512),
+    "DOOR_RECRUIT_GOTHS": LocationData("Door Encounter - Recruit Xaria and Montgomery", LC.RECRUIT, 513),
+    "DOOR_GOTHS_COMBAT_VICTORY": LocationData("Door Encounter - Slay Xaria and Montgomery", LC.FRIENDLY_FIRE, 514),
+    "DOOR_LIMB_THIEF_COMBAT_VICTORY": LocationData("Door Encounter - Slay Guillaume the Limb Thief", LC.COMBAT_VICTORY, 515),
+    "DOOR_HARRIET": LocationData("Door Encounter - Reunite Harriet and Sophie", LC.EVENT_ITEM, 516),
+    "DOOR_HARRIET_COMBAT_VICTORY": LocationData("Door Encounter - Slay Harriet", LC.FRIENDLY_FIRE, 517),
+    "DOOR_HARRIET_CURSED_COMBAT_VICTORY": LocationData("Door Encounter - Slay Strange Lady", LC.COMBAT_VICTORY, 518),
+    "DOOR_PIZZA": LocationData("Door Encounter - Buy Pizza", LC.EVENT_ITEM, 519),
+    "DOOR_PIZZA_GUY_COMBAT_VICTORY": LocationData("Door Encounter - Slay Pizza Guy", LC.FRIENDLY_FIRE, 520),
+    "DOOR_MAD_PIE_COMBAT_VICTORY": LocationData("Door Encounter - Slay Mad Pie", LC.COMBAT_VICTORY, 521),
+    "DOOR_FREE_ITEM": LocationData("Door Encounter - Empty Hall Free Item", LC.EVENT_ITEM, 522),
+    "DOOR_HALLWAY_MIMIC_COMBAT_VICTORY": LocationData("Door Encounter - Slay Hallway Mimic", LC.COMBAT_VICTORY, 523),
+    "DOOR_WILLIAM_PRIZE_1": LocationData("Door Encounter - Give William Helpful Item", LC.EVENT_ITEM, 524),
+    "DOOR_WILLIAM_PRIZE_2": LocationData("Door Encounter - Give William Very Helpful Item", LC.EVENT_ITEM, 525),
+    "DOOR_WILLIAM_COMBAT_VICTORY": LocationData("Door Encounter - Slay William", LC.FRIENDLY_FIRE, 526),
+    "DOOR_WILLIAM_CURSED_COMBAT_VICTORY": LocationData("Door Encounter - Slay Stressed-out", LC.COMBAT_VICTORY, 527),
+    "DOOR_HOBBS_PRIZE": LocationData("Door Encounter - Give Ingredients to Hobbs", LC.EVENT_ITEM, 528),
+    "DOOR_HOBBS_COMBAT_VICTORY": LocationData("Door Encounter - Slay Hobbs", LC.FRIENDLY_FIRE, 529),
+    "DOOR_HOBBS_CURSED_COMBAT_VICTORY": LocationData("Door Encounter - Slay Cursed Hobbs", LC.COMBAT_VICTORY, 530),
+    "DOOR_PIERRE_GIFT": LocationData("Door Encounter - Item from Pierre", LC.EVENT_ITEM, 531),
+    "DOOR_FATHER_ANDREW_GIFT": LocationData("Door Encounter - Gift from Father Andrew", LC.EVENT_ITEM, 532),
+    "DOOR_FATHER_ANDREW_COMBAT_VICTORY": LocationData("Door Encounter - Slay Father Andrew", LC.FRIENDLY_FIRE, 533),
+    "DOOR_WARPED_PRIEST_COMBAT_VICTORY": LocationData("Door Encounter - Slay Warped Priest", LC.COMBAT_VICTORY, 534),
+    "DOOR_HUMPHREY_COMBAT_VICTORY": LocationData("Door Encounter - Slay Humphrey", LC.FRIENDLY_FIRE, 535),
+    "DOOR_GAMER_ITEM_1": LocationData("Door Encounter - Gamer Item 1", LC.MERCHANT, 537),
+    "DOOR_GAMER_ITEM_2": LocationData("Door Encounter - Gamer Item 2", LC.MERCHANT, 538),
+    "DOOR_GAMER_ITEM_3": LocationData("Door Encounter - Gamer Item 3", LC.DOOR_MERCHANT, 539),
+    "DOOR_GAMER_ITEM_4": LocationData("Door Encounter - Gamer Item 4", LC.MERCHANT, 540),
+    "DOOR_GAMER_KATANA": LocationData("Door Encounter - Accept the Gamer's Bribe", LC.MERCHANT, 541),
+    "DOOR_GAMER_COMBAT_VICTORY": LocationData("Door Encounter - Slay the Gamer", LC.FRIENDLY_FIRE, 542),
+    "DOOR_TOUGH_GUY_COMBAT_VICTORY": LocationData("Door Encounter - Slay the Tough Guy", LC.FRIENDLY_FIRE, 543),
+    "DOOR_BRUTE_COMBAT_VICTORY": LocationData("Door Encounter - Slay Brute", LC.COMBAT_VICTORY, 544),
+    "DOOR_CURIO_COMBAT_VICTORY": LocationData("Door Encounter - Slay the Curio Merchant", LC.FRIENDLY_FIRE, 545),
+    "DOOR_NURSE_COMBAT_VICTORY": LocationData("Door Encounter - Slay the Nurse", LC.FRIENDLY_FIRE, 546),
+    "DOOR_SYRINGE_COMBAT_VICTORY": LocationData("Door Encounter - Slay Syringe", LC.COMBAT_VICTORY, 547),
+    "DOOR_GUN_TRADER_COMBAT_VICTORY": LocationData("Door Encounter - Slay Gun Trader", LC.FRIENDLY_FIRE, 548),
+    "DOOR_GUN_TRADER_CURSED_COMBAT_VICTORY": LocationData("Door Encounter - Slay Cursed Gun Trader", LC.COMBAT_VICTORY, 549),
+    "DOOR_FOOD_TRADER_COMBAT_VICTORY": LocationData("Door Encounter - Slay Food Trader", LC.FRIENDLY_FIRE, 550),
+    "BUTCHER_COMBAT VICTORY": LocationData("Door Encounter - Slay Butcher", LC.FRIENDLY_FIRE, 551),
+    "DOOR_GENERAL_TRADER_COMBAT_VICTORY": LocationData("Door Encounter - Slay General Trader", LC.FRIENDLY_FIRE, 552),
+    "DOOR_FLY_MAN_COMBAT_VICTORY": LocationData("Door Encounter - Slay Fly Man", LC.COMBAT_VICTORY, 553),
+    "SEBASTIAN_COMBAT_VICTORY": LocationData("Door Encounter - Slay Sebastian", LC.FRIENDLY_FIRE, 554),
+    "DOOR_BUTCHER_ITEM": LocationData("Door Encounter - Buy Meat From the Butcher", LC.MERCHANT, 555),
+}
 
 APT_33_MEAT_LOCATIONS: dict[str, LocationData] = {
     "APT_33_MEAT_SPINE_COMBAT_VICTORY": LocationData("Apt. 33 Meat World Living Room - Slay Spine", LC.FRIENDLY_FIRE, 601),
@@ -868,7 +922,6 @@ F1_RUINED_APARTMENT_LOCATIONS = {
 F1_MAZE_LOCATIONS = {
     "F1_LARGE_SHADE_COMBAT_VICTORY": LocationData("Floor 1 - Slay Large Shade '? ???? ?????'", LC.COMBAT_VICTORY, 2501),
     "F1_RAT_KING_COMBAT_VICTORY": LocationData("Floor 1 Maze - Slay Rat King", LC.COMBAT_VICTORY, 2502),
-    "F1_AUDREY_RECRUIT": LocationData("Floor 1 Maze - Recruit Audrey", LC.RECRUIT, 2503),
     "F1_HAND_WORMS_COMBAT_VICTORY": LocationData("Floor 1 Maze - Slay Hand Worms", LC.COMBAT_VICTORY, 2504),
     "F1_DEAD_END_WINGED": LocationData("Floor 1 Maze - Slay Winged", LC.COMBAT_VICTORY, 2505, difficulty_lock={DL.CURSED}),
     "APT_13_DISC": LocationData("Apt. 13 - Item From Wall Mouth", LC.OVERWORLD_ITEM, 2506),
@@ -881,6 +934,8 @@ F1_MAZE_LOCATIONS = {
 }
 
 AUDREY_VENDING_LOCATIONS = {
+    "F1_AUDREY_RECRUIT": LocationData("Floor 1 Maze - Recruit Audrey", LC.RECRUIT, 2503),
+    "F1_AUDREY_RESTOCK": LocationData("Floor 1 Maze - Help Audrey Restock", LC.EVENT_ITEM, 2517),
     "AUDREY_VENDING_COLA": LocationData("Audrey - Vending Machine Item 1", LC.MERCHANT, 2513),
     "AUDREY_VENDING_LEMON": LocationData("Audrey - Vending Machine Item 2", LC.MERCHANT, 2514),
     "AUDREY_VENDING_ORANGE": LocationData("Audrey - Vending Machine Item 3", LC.MERCHANT, 2515),
@@ -1027,6 +1082,7 @@ TRUE_FRED_CLOSET_LOCATIONS = {
     "TRUE_FRED_CLOSET_TURPENTINE_1": LocationData("True Fred Closet - Item on South Table 1", LC.OVERWORLD_ITEM, 3146),
     "TRUE_FRED_CLOSET_TURPENTINE_2": LocationData("True Fred Closet - Item on South Table 2", LC.OVERWORLD_ITEM, 3147),
     "TRUE_FRED_CLOSET_ROACH": LocationData("True Fred Closet - Roach", LC.OVERWORLD_ITEM, 3148),
+    "TRUE_FRED_RETURN_FACE": LocationData("True Fred Closet - Return the Torn-Off Face", LC.OVERWORLD_ITEM, 3149),
     "FRED_ALL_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay All Freds", LC.FRIENDLY_FIRE, 3110),
 }
 
@@ -1128,31 +1184,34 @@ APT_18_HELLEN_QUEST_LOCATIONS = {
 
 GF_HALL_MAIN_LOCATIONS = {
     "GF_LARGE_SHADE_COMBAT_VICTORY": LocationData("Ground Floor - Slay Large Shade '??? ?? ?? ???'", LC.COMBAT_VICTORY, 3401),
-    "GF_CANDY_MACHINE_MERCHANT": LocationData("Ground Floor - Candy Machine Item", LC.MERCHANT, 3402),
-    "GF_COFFEE_MACHINE_MERCHANT": LocationData("Ground Floor - Coffee Machine Item", LC.MERCHANT, 3403),
+    "GF_CANDY_MACHINE_MERCHANT": LocationData("Ground Floor - Candy Machine", LC.MERCHANT, 3402),
+    "GF_COFFEE_MACHINE_MERCHANT": LocationData("Ground Floor - Coffee Machine", LC.MERCHANT, 3403),
     "GF_HERBICIDE": LocationData("Ground Floor - Item Near Bathrooms", LC.OVERWORLD_ITEM, 3404),
     "GF_LEG_FOOT_WORM_COMBAT_VICTORY": LocationData("Ground Floor - Slay Leg Worms", LC.COMBAT_VICTORY, 3405),
     "GF_OFFICE_JASPER_COMBAT_VICTORY": LocationData("GF Office - Slay Jasper", LC.FRIENDLY_FIRE, 3406),
     "GF_OFFICE_JASPER_GIFT_OFFERING": LocationData("GF Office - Pre-Ritual Gift From Jasper", LC.EVENT_ITEM, 3407),
-    "GF_OFFICE_JASPER_FIX_TELESCOPE": LocationData("GF Office - Have Jasper Fix Telescope", LC.EVENT_ITEM, 3408),
+    "GF_OFFICE_JASPER_FIX_TELESCOPE": LocationData("GF Office - Have Jasper Fix the Telescope", LC.EVENT_ITEM, 3408),
+    "GF_OFFICE_JASPERS_KEY": LocationData("GF Office - Key to Apt. 12", LC.EVENT_ITEM, 3417),
     "GF_OFFICE_TRASH": LocationData("GF Office - Trash Can", LC.TRASH_LOOT, 3414),
-    "GF_OFFICE_BATHROOM_WORM_COMBAT_VICTORY": LocationData("F1 Office Bathroom - Slay Leg and Foot Worms", LC.COMBAT_VICTORY, 3409),
+    "GF_OFFICE_VODKA": LocationData("GF Office West - Item", LC.OVERWORLD_ITEM, 3415),
+    "GF_OFFICE_ROACH": LocationData("GF Office West - Roach", LC.OVERWORLD_ITEM, 3416),
+    "GF_OFFICE_BATHROOM_WORM_COMBAT_VICTORY": LocationData("GF Office Bathroom - Slay Leg and Foot Worms", LC.COMBAT_VICTORY, 3409),
     "MAILROOM_OFFICE_CELL_PHONE": LocationData("Mailroom Office - Item in Southeast Corner", LC.OVERWORLD_ITEM, 3903),
     "MAILROOM_OFFICE_SUN_DISC": LocationData("Mailroom Office - Item on Counter", LC.OVERWORLD_ITEM, 3904),
     "MAILROOM_OFFICE_TRASH": LocationData("Mailroom Office - Trash Can", LC.TRASH_LOOT, 3910),
 }
 
 GF_OFFICE_BATHROOM_LOCATIONS = {
-    "GF_OFFICE_BATHROOM_ELIXIR": LocationData("F1 Office Bathroom - Item on Counter", LC.OVERWORLD_ITEM, 3410),
+    "GF_OFFICE_BATHROOM_ELIXIR": LocationData("GF Office Bathroom - Item on Counter", LC.OVERWORLD_ITEM, 3410),
 }
 
 GF_OFFICE_LOCKED_ROOM_LOCATIONS = {
-    "GF_OFFICE_WHISKEY": LocationData("F1 Office Locked Room - Item on Counter", LC.OVERWORLD_ITEM, 3411),
-    "GF_OFFICE_CLAYMORE": LocationData("F1 Office Locked Room - Item on Table", LC.OVERWORLD_ITEM, 3412),
+    "GF_OFFICE_WHISKEY": LocationData("GF Office Locked Room - Item on Counter", LC.OVERWORLD_ITEM, 3411),
+    "GF_OFFICE_CLAYMORE": LocationData("GF Office Locked Room - Item on Table", LC.OVERWORLD_ITEM, 3412),
 }
 
 GF_OFFICE_UNLABELED_CARTRIDGE_LOCATIONS = {
-    "GF_OFFICE_UNLABELED_CARTRIDGE": LocationData("F1 Office Unlabeled Cartridge Room - Item", LC.OVERWORLD_ITEM, 3413)
+    "GF_OFFICE_UNLABELED_CARTRIDGE": LocationData("GF Office Unlabeled Cartridge Room - Item", LC.OVERWORLD_ITEM, 3413)
 }
 
 GF_MENS_BATHROOM_LAUNDRY_LOCATIONS = {
@@ -1411,7 +1470,9 @@ LANDLORDS_WARZONE_LOCATIONS = {
     "LL_MINESWEEPER_VODKA": LocationData("LL Minesweeper Tent - Item on Table", LC.OVERWORLD_ITEM, 4123),
     "LL_MINESWEEPER_COMBAT_VICTORY": LocationData("LL Minesweeper Tent - Slay Minesweeper", LC.FRIENDLY_FIRE, 4124),
     "LL_MINESWEEPER_GIFT": LocationData("LL Minesweeper Tent - Gift From Minesweeper", LC.EVENT_ITEM, 4125),
-    "LL_MINESWEEPER_12_MINE_PRIZE": LocationData("LL Minesweeper Tent - Prize for 12 Mines", LC.EVENT_ITEM, 4126)
+    "LL_MINESWEEPER_12_MINE_PRIZE": LocationData("LL Minesweeper Tent - Prize for 12 Mines", LC.EVENT_ITEM, 4126),
+    "LL_SMALL_TENT_RIFLE_BULLETS": LocationData("LL Small Tent - Item", LC.EVENT_ITEM, 4127),
+    "LL_BATTLEFIELD_FRIDGE": LocationData("LL Battlefield - Fridge", LC.EVENT_ITEM, 4128)
 }
 
 GF_NORTH_JANITORS_CLOSET_LOCATIONS = {
@@ -1553,8 +1614,8 @@ CROSSWORD_DUNGEON_LOCATIONS = {
 
 SEWER_LOCATIONS = {
     "SEWER_BOILER_BEAST_COMBAT_VICTORY": LocationData("Sewer - Slay the Boiler Beast", LC.COMBAT_VICTORY, 4801),
-    "SEWER_N_TICKLE_COMBAT_VICTORY": LocationData("Sewer North - Slay Tickle", LC.FRIENDLY_FIRE, 4802),
-    "SEWER_N_TICKLE_SHOP_ITEM": LocationData("Sewer North - Tickle Shop Item", LC.MERCHANT, 4803),
+    "SEWER_N_TICKLE_COMBAT_VICTORY": LocationData("Sewer North - Remove Tickle", LC.FRIENDLY_FIRE, 4802),
+    "SEWER_N_TICKLES_DRAWING": LocationData("Sewer North - Drawing From Tickle", LC.MERCHANT, 4803),
     "SEWER_N_TICKLES_GIFT": LocationData("Sewer North - Gift From Tickle", LC.EVENT_ITEM, 4804),
     "SEWER_N_PIPE_MAN_COMBAT_VICTORY": LocationData("Sewer North - Slay Pipe Men", LC.COMBAT_VICTORY, 4805),
     "SEWER_N_FLOATING_CORPSE_COMBAT_VICTORY": LocationData("Sewer North - Slay Floating Corpse", LC.COMBAT_VICTORY, 4806),
@@ -1609,7 +1670,14 @@ SEWER_LOCATIONS = {
     "SEWER_SW_PADDED_JACKET": LocationData("Sewer SW - Item Near Tristan and Charlie", LC.OVERWORLD_ITEM, 4855),
     "SEWER_NW_SCUTTLE_COMBAT_VICTORY": LocationData("Sewer NW - Slay Pipe Men Scuttle", LC.COMBAT_VICTORY, 4856),
     "SEWER_NW_TICK_COMBAT_VICTORY": LocationData("Sewer NW - Slay Tick", LC.COMBAT_VICTORY, 4857),
-    "SEWER_NW_LEECH_COMBAT_VICTORY": LocationData("Sewer NW - Slay Leech", LC.COMBAT_VICTORY, 4858)
+    "SEWER_NW_LEECH_COMBAT_VICTORY": LocationData("Sewer NW - Slay Leech", LC.COMBAT_VICTORY, 4858),
+    "SEWER_NE_FLOATING_CORPSE_COMBAT_VICTORY": LocationData("Sewer NE - Slay Floating Corpse", LC.COMBAT_VICTORY, 4860),
+    "SEWER_S_TICK_COMBAT_VICTORY": LocationData("Sewer South - Slay Tick", LC.COMBAT_VICTORY, 4861),
+    "SEWER_TICKLE_BLOODCLOT_BOMB": LocationData("Sewer North - Tickle Shop Item 1", LC.EVENT_ITEM, 4862),
+    "SEWER_TICKLE_MOSQUITO_KNIFE": LocationData("Sewer North - Tickle Shop Item 2", LC.EVENT_ITEM, 4863),
+    "SEWER_TICKLE_BLOOD_CAP": LocationData("Sewer North - Tickle Shop Item 3", LC.EVENT_ITEM, 4864),
+    "SEWER_TICKLE_VAMPIRIC_JACKET": LocationData("Sewer North - Tickle Shop Item 4", LC.EVENT_ITEM, 4865),
+    "SEWER_TICKLE_CRIMSON_RING": LocationData("Sewer North - Tickle Shop Item 5", LC.EVENT_ITEM, 4866),
 }
 
 SEWER_BOILER_ENTRANCE_LOCATIONS = {

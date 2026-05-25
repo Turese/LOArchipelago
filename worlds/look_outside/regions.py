@@ -31,18 +31,14 @@ def connect_regions(world: LookOutsideWorld) -> None:
     excluded_regions = exclude_regions(world)
     excluded_exits = exclude_exits(world)
 
-
     for region_name, region_info in all_regions_table.items():
         if region_name in excluded_regions:
             continue
         region = world.get_region(region_name)
         for exit_name, exit_info in region_info.exits.items():
-            if exit_info.target_region in excluded_regions:
-                continue
-            if exit_name in excluded_exits:
-                continue
-            target_region = world.get_region(exit_info.target_region)
-            region.connect(target_region, exit_name, rule=exit_info.rule)
+            if exit_info.target_region not in excluded_regions and exit_name not in excluded_exits:
+                target_region = world.get_region(exit_info.target_region)
+                region.connect(target_region, exit_name, rule=exit_info.rule)
 
 
 def exclude_regions(world: LookOutsideWorld) -> set[str]:
@@ -55,7 +51,8 @@ def exclude_regions(world: LookOutsideWorld) -> set[str]:
 
 def exclude_exits(world: LookOutsideWorld) -> set[str]:
     exclude_set = set()
-    if world.options.allow_killing_shopkeepers == 1:
-        exclude_set.update({ "MUTTS_COUNTER" })
-        # if player is killing shopkeepers, we're going to assume theyre killing mutt to get his stuff
+    if world.options.allow_killing_shopkeepers == 0:
+        exclude_set.add("MUTTS_BACK_DOOR")
+        # if player isnt killing shopkeepers, they cant get mutt's stuff through the back door
+
     return exclude_set

@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING
 
 from BaseClasses import Location, LocationProgressType
 from worlds.look_outside.locations_consts import location_name_groups, LocationData, location_table, location_to_region,\
-    UNDER_THE_STAIRS_LOCATIONS
+    UNDER_THE_STAIRS_LOCATIONS, FRONT_DOOR_LOCATIONS
 from worlds.look_outside.items_consts import LOItem
 from worlds.look_outside.regions_consts import stairwell_planet_lock
 from worlds.look_outside.rules_consts import can_perform_flawed_ritual,\
@@ -51,6 +51,9 @@ def create_events(world: LookOutsideWorld) -> None:
 
     world.get_region("FLOOR_2_EAST").add_event("F2_ASTER", "MET_ASTER", location_type=LOLocation, item_type=LOItem)
 
+    world.get_region("APT_24_EUGENE_SHOP").add_event("EUGENE_SHOP_INTERACT", "KILLED_EUGENE", location_type=LOLocation, item_type=LOItem)
+
+
     world.get_region("AURELIUS_CLOSET").add_event("F1_AURELIUS", "MET_AURELIUS", location_type=LOLocation, item_type=LOItem)
 
     world.get_region("GROUND_FLOOR_HALL_EAST").add_event("GF_JASPER", "MET_JASPER", location_type=LOLocation, item_type=LOItem)
@@ -81,9 +84,8 @@ def create_events(world: LookOutsideWorld) -> None:
         "APT_12_BATHROOM", "MET_SPIDER_HUSK", location_type=LOLocation, item_type=LOItem
     )
 
-    # todo: mutt is only killable when allowing fire on shopkeepers
     world.get_region("MUTTS_BACK_ROOM").add_event(
-        "MUTT_BACK_DOOR", "KILLED_MUTT", location_type=LOLocation, item_type=LOItem
+        "MUTT_DOORWAY", "KILLED_MUTT", location_type=LOLocation, item_type=LOItem
     )
 
     # ENDINGS
@@ -178,11 +180,14 @@ def exclude_locations(world: LookOutsideWorld) -> None:
     if world.options.include_shades == IncludeShades.option_none:
         exclude_set.update(location_name_groups["LARGE_SHADE"])
         exclude_set.update(UNDER_THE_STAIRS_LOCATIONS.keys())
-    elif world.options.include_shades == IncludeShades.option_large:
+    elif world.options.include_shades == IncludeShades.option_large_shades:
         exclude_set.update(UNDER_THE_STAIRS_LOCATIONS.keys())
-    elif world.options.include_shades == IncludeShades.option_large_spider:
+    elif world.options.include_shades == IncludeShades.option_large_shades_and_spider:
         exclude_set.add("STAIRS_CRAWLING_SHADE_COMBAT_VICTORY")
     if world.options.include_game_skills == 0:
         exclude_set.update(location_name_groups["GAME_SKILLS"])
-
+    if world.options.randomize_door_encounters == 0:
+        exclude_set.update(FRONT_DOOR_LOCATIONS.keys())
+    if world.options.allow_killing_shopkeepers == 1:
+        exclude_set.update({"APT_24_EUGENE_COMBAT_VICTORY", "MUTT_COMBAT_VICTORY"})
     return exclude_set

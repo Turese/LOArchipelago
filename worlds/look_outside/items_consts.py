@@ -325,7 +325,7 @@ main_item_table: dict[str, ItemData] = {
     "Cassette Tape": ItemData(ItemCat.ITEM, {ItemTag.SPECIAL_CURRENCY}, 359),
     "Rose": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 360),
     "Four-Leaf Clover": ItemData(ItemCat.ITEM, {ItemTag.UNIQUE}, 361),
-    "Torn-Off Face": ItemData(ItemCat.ITEM, {ItemTag.UNIQUE}, 362),
+    "Torn-Off Face": ItemData(ItemCat.ITEM, {ItemTag.UNIQUE, ItemTag.CHECK_GATE}, 362),
     "Lockpicks": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 363),
     "Electronic Key": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 364),
     "Empty Photograph": ItemData(ItemCat.ITEM, {ItemTag.OFFERING}, 365),
@@ -561,10 +561,10 @@ armor_table: dict[str, ItemData] = {
     "Studded Jacket": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL}, 21),
     "Strange Robe": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 22),
     "Dark Robes": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL}, 23),
-    "Mackinaw Jacket": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 24),
+    #"Mackinaw Jacket": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 24), <- pap starts with this one
     "Old Uniform": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL}, 25),
     "Elegant Suit": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 26),
-    "Monty's Jacket": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 28),
+    #"Monty's Jacket": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 28), <- monty starts with this one
     "Floral Shirt": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 29),
     "Painter's Beret": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 40),
     "Giant Rat Skull": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL}, 41),
@@ -592,7 +592,7 @@ armor_table: dict[str, ItemData] = {
     "Dinosaur Helmet": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL}, 65),
     "Circlet of Reason": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL}, 66),
     "Indigo Hockey Mask": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL,ItemTag.UNIQUE}, 67),
-    "Arrowed Sash": ItemData(ItemCat.ARMOR, {ItemTag.UNIQUE}, 69),
+    #"Arrowed Sash": ItemData(ItemCat.ARMOR, {ItemTag.UNIQUE}, 69), <- pap starts with this one
     "Scarf": ItemData(ItemCat.ARMOR, set(), 70),
     "Four of Spades": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 71),
     "Rat Tail Belt": ItemData(ItemCat.ARMOR, set(), 72),
@@ -611,7 +611,7 @@ armor_table: dict[str, ItemData] = {
     "Clogs": ItemData(ItemCat.ARMOR, set(), 86),
     "Winter Boots": ItemData(ItemCat.ARMOR, set(), 87),
     "Army Boots": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL}, 88),
-    "Work Boots": ItemData(ItemCat.ARMOR, set(), 89),
+    #"Work Boots": ItemData(ItemCat.ARMOR, set(), 89), <- pap starts with this one
     "Cowboy Boots": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL}, 90),
     "Vintage Sneakers": ItemData(ItemCat.ARMOR, set(), 91),
     "High Heels": ItemData(ItemCat.ARMOR, set(), 92),
@@ -650,7 +650,7 @@ armor_table: dict[str, ItemData] = {
     "Super Slingshot": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 179),
     "Shadow Gun": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 184),
     "Eyeball Hat": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 189),
-    "Chill Touch": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 194),
+    #"Chill Touch": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 194), <- xaria starts with this one
     "Silver Magnum": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 199),
     "SMG Special": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 204),
     "War Rifle": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 208),
@@ -750,7 +750,7 @@ misc_table: dict[str, ItemData] = {
     "Dan": ItemData(ItemCat.MISC, {ItemTag.CHECK_GATE}, 11),
     "Ernest": ItemData(ItemCat.MISC, {ItemTag.USEFUL}, 12),
     "Roaches": ItemData(ItemCat.MISC, {ItemTag.CHECK_GATE}, 13),
-    "Sophie": ItemData(ItemCat.MISC, {ItemTag.USEFUL}, 14),
+    "Sophie": ItemData(ItemCat.MISC, {ItemTag.USEFUL, ItemTag.CHECK_GATE}, 14),
     "Phillippe": ItemData(ItemCat.MISC, {ItemTag.USEFUL}, 15),
     "Papineau": ItemData(ItemCat.MISC, {ItemTag.USEFUL}, 16),
     "Masked Shadow Roommate": ItemData(ItemCat.MISC, {ItemTag.USEFUL}, 17),
@@ -883,7 +883,7 @@ item_name_groups: dict[str, set[str]] = {
     "ARM": {"Player's Left Arm", "Player's Right Arm"},
     "NESTOR_QUEST_INTRO": {"Fountain Pen",
                            "Stationery",
-                           "Love Letter"},  # should raftas part have to be done before nestors can?
+                           "Love Letter"}, 
     "VIDEO_GAME_SKILL": {"Skill: Jump Attack",
                         "Skill: Nitro Boost",
                         "Skill: Combat Medic",

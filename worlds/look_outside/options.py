@@ -12,18 +12,19 @@ class PlayerGoal(Choice):
     option_mask = 4
     option_xin_amon = 5
     option_unity = 6
-    option_all_roof_endings = 7
+    option_true_final = 7
+    option_all_roof_endings = 8
     option_all_endings = 9
     default = 3
 
 class IncludeArms(Choice):
     """Adds the player character's arms to the item pool."""
     display_name = "Randomize Player Arms"
-    option_start_armed = 0
+    option_start_with_both_arms = 0
     option_start_unarmed = 1
-    option_start_left = 2
-    option_start_right = 3
-    default = 0
+    option_start_with_left_arm = 2
+    option_start_with_right_arm = 3
+    default = 1
 
 class IncludeFriendlyFire(Toggle):
     """This controls whether locations specific to attacking non-hostile
@@ -39,20 +40,20 @@ class IncludeRustyCrown(Toggle):
     """This controls whether locations specific to interacting with non-hostile rats are randomized."""
 
 class IncludeTestGear(Toggle):
-    """Adds Test Armor and Test Swords to the item pool."""
+    """Adds Test Armor and Test Swords to the item pool. These items are incredibly busted; they make most fights trivial."""
     display_name = "Include Test Armor/Test Swords"
 
 class IncludeNestorQuest(Toggle):
-    """This controls whether locations specific to the Nestor and Rafta quest are randomized."""
-    display_name = "Include Nestor and Rafta's Quest"
+    """This controls whether locations specific to the Nestor and Rafta romance quest are randomized."""
+    display_name = "Include Nestor and Rafta Quest"
 
 class IncludeShades(Choice):
     """This controls whether locations specific to the Spider recruitment quest are randomized."""
     display_name = "Include the Spider's Recruitment Quest"
     option_none = 0
-    option_large = 1
-    option_large_spider = 2
-    option_large_spider_crawling = 3
+    option_large_shades = 1
+    option_large_shades_and_spider = 2
+    option_large_shades_and_spider_and_crawling_shade = 3
     default = 0
 
 class IncludeMaskLocations(Toggle):
@@ -62,7 +63,7 @@ class IncludeMaskLocations(Toggle):
     display_name = "Include Mask Offering Locations"
 
 class IncludeRoommateQuests(Toggle):
-    """This controls whether roommate quests that involve escorting them to their apartments are
+    """This controls whether roommate quests that involve escorting companions to their own apartments are
     randomized: Dan, Hellen, and Leigh's quests."""
     display_name = "Include Long Roommate Sidequests"
     
@@ -81,21 +82,20 @@ class StartingGames(Choice):
     default = 2
 
 class DeathLink(Toggle):
-    """This controls death link enablement"""
-    display_name = "Enable Death Link"
+    """This controls death link enablement.
+    If you game over, other players with death link enabled will also game over, and vice versa."""
     display_name = "Death Link"
     
 class RatBabyName(FreeText):
-    """This controls rat baby's name, default is 'Rat' """
+    """This controls the rat child's name, default is 'Rat'."""
     display_name = "Rat Child Name"
 
 class AllowKillingShopkeepers(Toggle):
     """This controls whether players are allowed to kill Eugene or Mutt to get their stuff. Default false"""
     display_name = "Allow Killing Mutt and Eugene"
-    display_name = "Allow Killing Mutt/Eugene"
 
 class RandomizeDoorEncounters(Toggle):
-    """Randomize items from door encounters, including merchants. Default true"""
+    """Randomize items from door encounters, including merchants. Default true."""
     display_name = "Randomize Door Encounter Items"
 
 
@@ -122,8 +122,8 @@ class LookOutsideOptions(PerGameCommonOptions):
 option_groups = [
     OptionGroup(
         "Location Options",
-        [PlayerGoal, IncludeFriendlyFire, IncludeRustyCrown, IncludeNestorQuest, IncludeShades,
-         IncludeMaskLocations, IncludeRoommateQuests, IncludeGameSkills, RandomizeDoorEncounters],
+        [PlayerGoal, IncludeFriendlyFire, IncludeRustyCrown, IncludeRatFriendlyFire, IncludeNestorQuest, IncludeShades,
+         IncludeMaskLocations, IncludeRoommateQuests, IncludeGameSkills, RandomizeDoorEncounters, AllowKillingShopkeepers],
     ),
     OptionGroup(
         "Item Options",

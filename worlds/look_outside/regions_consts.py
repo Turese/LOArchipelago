@@ -30,12 +30,12 @@ planetarium_lock = HasAll(
     "Neptune Disc"
 )
 
-bring_earth_mars_disc_to_jasper = Or(HasAll("Sun Disc", "Negative Disc"), can_access_elevator)
-bring_sun_disc_to_jasper = Or(HasAll("Earth Disc", "Mars Disc"), can_access_elevator)
+bring_earth_mars_disc_to_gf = Or(HasAll("Sun Disc", "Negative Disc"), can_access_elevator)
+bring_sun_disc_to_gf = Or(HasAll("Earth Disc", "Mars Disc"), can_access_elevator)
 
-jaspers_room_solution_1 = And(HasAll("Uranus Disc", "Earth Disc"), bring_earth_mars_disc_to_jasper)
+jaspers_room_solution_1 = And(HasAll("Uranus Disc", "Earth Disc"), bring_earth_mars_disc_to_gf)
 
-jaspers_room_solution_2 = And(HasAll("Sun Disc", "Neptune Disc"), bring_sun_disc_to_jasper)
+jaspers_room_solution_2 = And(HasAll("Sun Disc", "Neptune Disc"), bring_sun_disc_to_gf)
 
 jaspers_room_planet_lock = Or(jaspers_room_solution_1, jaspers_room_solution_2)
 
@@ -46,11 +46,17 @@ unlabeled_planet_lock = And(
             jaspers_room_solution_1,
             Or(
                 HasAll("Neptune Disc", "Void Disc"),
-                And(bring_sun_disc_to_jasper, HasAll("Sun Disc", "Mars Disc"))
+                And(bring_sun_disc_to_gf, HasAll("Sun Disc", "Mars Disc"))
             )
         )
 
-mailroom_planet_lock = HasAll("Mars Disc", "Jupiter Disc", "Uranus Disc", "Neptune Disc", "Pluto Disc")
+mailroom_planet_lock = And(bring_earth_mars_disc_to_gf, 
+    Or(
+        HasAll("Mars Disc", "Jupiter Disc", "Uranus Disc", "Neptune Disc", "Pluto Disc"), 
+        HasAll("Mercury Disc", "Venus Disc", "Earth Disc", "Saturn Disc", "Void Disc")
+    )
+)
+
 
 security_room_solution_1 = HasAll("Sun Disc", "Pluto Disc", "Mars Disc", "Neptune Disc")
 
@@ -62,18 +68,33 @@ security_room_solution_4 = HasAll("Earth Disc", "Uranus Disc", "Sun Disc", "Nept
 
 security_room_solution_5 = HasAll("Earth Disc", "Pluto Disc", "Neptune Disc", "Negative Disc")
 
+security_room_solution_6 =  HasAll("Earth Disc", "Void Disc", "Mars Disc", "Mercury Disc")
+
+security_room_solution_7 =  HasAll("Earth Disc", "Void Disc", "Mars Disc", "Venus Disc")
+
+security_room_solution_8 =  HasAll("Sun Disc", "Mars Disc", "Neptune Disc", "Void Disc")
+
+security_room_solution_9 =  HasAll("Mercury Disc", "Venus Disc", "Earth Disc", "Void Disc")
+
+security_room_solution_10 =  HasAll("Sun Disc", "Negative Disc", "Earth Disc", "Mars Disc")
+
 security_room_planet_lock = Or(
     security_room_solution_1,
     security_room_solution_2,
     security_room_solution_3,
     security_room_solution_4,
     security_room_solution_5,
+    security_room_solution_6,
+    security_room_solution_7,
+    security_room_solution_8,
+    security_room_solution_9,
+    security_room_solution_10
 )
 
 security_closet_planet_lock = Or(
-    And(security_room_solution_3, HasAll("Sun Disc", "Pluto Disc")),
-    And(security_room_solution_2, HasAll("Mars Disc", "Neptune Disc")),
-    And(security_room_solution_1, HasAll("Negative Disc", "Uranus Disc")),
+    And(Or(security_room_solution_3, security_room_solution_6, security_room_solution_7, security_room_solution_9), HasAll("Sun Disc", "Pluto Disc")),
+    And(Or(security_room_solution_2, security_room_solution_9), HasAll("Mars Disc", "Neptune Disc")),
+    And(Or(security_room_solution_1, security_room_solution_6, security_room_solution_7, security_room_solution_8, security_room_solution_9), HasAll("Negative Disc", "Uranus Disc")),
 )
  
 
@@ -89,7 +110,6 @@ class ExitData(NamedTuple):
 class RegionData(NamedTuple):
     """Represents a region."""
     exits: dict[str, ExitData] = {}
-    locations: set[str] = set()  # TODO: manage this somewhere else
 
 
 f3_regions_table: dict[str, RegionData] = {
@@ -100,9 +120,7 @@ f3_regions_table: dict[str, RegionData] = {
             "AUDREY_HOME": ExitData("AUDREY_VENDING_STOCK", Has("Audrey")),
         },
     ),
-    "DOOR_ENCOUNTERS": RegionData(
-        locations=set()
-    ),
+    "DOOR_ENCOUNTERS": RegionData(),
     "FLOOR_3_HALL": RegionData(
         exits={
             "F3_STAIRWELL_EXIT": ExitData("STAIRWELL", can_access_stairwell),
@@ -452,7 +470,7 @@ ground_regions_table: dict[str, RegionData] = {
     }),
     "MUTTS_STOCK": RegionData(),
     "MUTTS_SHOP": RegionData(exits={
-        "MUTTS_COUNTER": ExitData("MUTTS_STOCK", Has("500 dollars", count=3)),
+        "MUTTS_COUNTER": ExitData("MUTTS_STOCK", Has("Five Hundred Dollars", count=3)),
         # with no multiplier, mutt's entire stock costs 1510 dollars
     }),
     "LANDLORDS_APARTMENT_PHASE_1": RegionData(exits={
@@ -506,9 +524,9 @@ basement_regions_table: dict[str, RegionData] = {
         }
     ),
     "SEWER": RegionData(exits={
-        "SEWER_GRATES_WEST_E_SIDE": ExitData("SEWER_WEST", Has("Sewer Grates Lowered")),
+        "SEWER_GRATES_E_SIDE": ExitData("SEWER_WEST", Has("Sewer Grates Lowered")),
     }),
-    "SEWER_WEST": RegionData(exits={"SEWER_GRATES_WEST_W_SIDE": ExitData("SEWER")}),
+    "SEWER_WEST": RegionData(exits={"SEWER_GRATES_W_SIDE": ExitData("SEWER")}),
     "BASEMENT_STORAGE_PLUTO_ROOM": RegionData(exits={
         "CROSSWORD_SAFE": ExitData("CROSSWORD_DUNGEON", Has("Book of Crossword Puzzles"))
     }),

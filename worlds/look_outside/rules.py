@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING
 
 from rule_builder.options import OptionFilter
 from worlds.look_outside.locations import get_location_name
-from worlds.look_outside.regions import exclude_regions
+from worlds.look_outside.regions import exclude_regions, exclude_exits
 
 from .options import PlayerGoal
 
@@ -12,7 +12,8 @@ from worlds.look_outside.items_consts import item_name_groups, \
     num_multiple_items
 
 from worlds.look_outside.regions_consts import all_regions_table
-from worlds.look_outside.rules_consts import can_nestor_rafta, can_open_any_simple_lock, can_access_basement, can_leigh_quest
+from worlds.look_outside.rules_consts import can_nestor_rafta, can_open_any_simple_lock, can_access_basement, can_leigh_quest,\
+    met_all_astronomers
 from rule_builder.rules import Has, And, HasAll, HasAny, Or
 from worlds.look_outside.locations_consts import location_name_groups
 
@@ -28,10 +29,11 @@ def set_all_rules(world: LookOutsideWorld) -> None:
 
 def set_all_entrance_rules(world: LookOutsideWorld) -> None:
     excluded_regions = exclude_regions(world)
+    excluded_exits = exclude_exits(world)
  
     for region_info in all_regions_table.values():
         for exit_name, exit_info in region_info.exits.items():
-            if exit_info.target_region not in excluded_regions and exit_info.rule is not None:
+            if exit_info.target_region not in excluded_regions and exit_name not in excluded_exits and exit_info.rule is not None:
                 world.set_rule(world.get_entrance(exit_name), exit_info.rule)
 
 
@@ -56,6 +58,14 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
         world.set_rule(world.get_location(get_location_name("GAME_SKILL_SPACE_TRUCKERZ", world)), Has("Space Truckerz"))
         world.set_rule(world.get_location(get_location_name("GAME_SKILL_REPTILE_FOOTBALL", world)), Has("Reptile Football"))
         world.set_rule(world.get_location(get_location_name("GAME_SKILL_CROSSWORD_CHALLENGE", world)), Has("Auntie Wilma's Crossword Challenge"))
+
+    # door rules
+
+    if (world.options.randomize_door_encounters == 1):
+        world.set_rule(world.get_location(get_location_name("DOOR_GAMER_KATANA", world)), Has("Massacre Princess"))
+        world.set_rule(world.get_location(get_location_name("DOOR_HARRIET", world)), Has("Sophie"))
+
+
 
     # f3 rules
     world.set_rule(world.get_location(get_location_name("APT_33_RECRUIT_PHILLIPPE", world)), Has("Phillippe's Remains"))
@@ -88,13 +98,21 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     world.set_rule(world.get_location(get_location_name("APT_27_COMPLETE_MANUSCRIPT", world)), Has("Progressive Loose Manuscript"))
 
     if (world.options.allow_killing_shopkeepers == 1):
-        world.set_rule(world.get_location(get_location_name("APT_24_REPTILE_FOOTBALL", world)), Has("Two Hundred Dollars")) # 75c each
-
+        world.set_rule(world.get_location(get_location_name("APT_24_REPTILE_FOOTBALL", world)), HasAny("Two Hundred Dollars", "KILLED_EUGENE")) 
+    else:
+        world.set_rule(world.get_location(get_location_name("APT_24_REPTILE_FOOTBALL", world)), Has("Two Hundred Dollars")) 
+    
     # f1 rules
 
     world.set_rule(world.get_location(get_location_name("F1_AUDREY_RECRUIT", world)), And(Has("Vending Machine Key"), Has("Advice Can Funds", count=num_multiple_items["Advice Can Funds"])))
+    world.set_rule(world.get_location(get_location_name("F1_AUDREY_RESTOCK", world)), And(Has("Vending Machine Key"), Has("Advice Can Funds", count=num_multiple_items["Advice Can Funds"])))
+
+    world.set_rule(world.get_location(get_location_name("TRUE_FRED_RETURN_FACE", world)), Has("Torn-Off Face"))
 
     # gf rules
+
+    world.set_rule(world.get_location(get_location_name("GF_OFFICE_JASPERS_KEY", world)), met_all_astronomers)
+    world.set_rule(world.get_location(get_location_name("GF_OFFICE_JASPER_FIX_TELESCOPE", world)), Has("Telescope Pieces"))
 
     world.set_rule(world.get_location(get_location_name("MUTT_SPIDER_HUSK_HEART", world)), Has("MET_SPIDER_HUSK"))
     

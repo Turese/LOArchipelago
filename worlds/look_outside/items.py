@@ -22,8 +22,6 @@ def create_lo_item(world: LookOutsideWorld, item: str) -> LOItem:
         classification = ItemClassification.useful
     elif (world.options.include_roommate_quests == 0 and item == "Cell Phone"):
         classification = ItemClassification.filler
-    elif (world.options.allow_killing_shopkeepers == 1 and item in item_name_groups["PROGRESSION_CASH"]):
-        classification = ItemClassification.useful
     elif world.options.include_game_skills == 0 and item in item_name_groups["USEFUL_SKILL_VIDEO_GAME"]:
         if item == "Honko's Grand Journey" and world.options.include_mask == 1:
             classification = ItemClassification.progression
@@ -129,10 +127,10 @@ def precollect_games(world: LookOutsideWorld):
 # yaml option for starting arms
 def precollect_arms(world: LookOutsideWorld):
     arms_option = world.options.include_arms
-    if arms_option == IncludeArms.option_start_armed:
+    if arms_option == IncludeArms.option_start_with_both_arms:
         world.multiworld.push_precollected(create_lo_item(world, "Player's Left Arm"))
         world.multiworld.push_precollected(create_lo_item(world, "Player's Right Arm"))
-    elif arms_option == IncludeArms.option_start_left:
+    elif arms_option == IncludeArms.option_start_with_left_arm:
         world.multiworld.push_precollected(create_lo_item(world, "Player's Left Arm"))
-    elif arms_option == IncludeArms.option_start_right:
+    elif arms_option == IncludeArms.option_start_with_right_arm:
         world.multiworld.push_precollected(create_lo_item(world, "Player's Right Arm"))
