@@ -81,10 +81,6 @@ F3_HALL_LOCATIONS: dict[str, LocationData] = {
 APT_30_MAIN_LOCATIONS: dict[str, LocationData] = {
     "APT_30_TAXIDERMY_EAGLE": LocationData("Apt. 30 Entryway - Item Near Front Door", LC.OVERWORLD_ITEM, 1103),
     "APT_30_TAXIDERMY_DOG": LocationData("Apt. 30 Entryway - Item on Table Near Couch", LC.OVERWORLD_ITEM, 1104),
-    "APT_30_NE_TAXIDERMY_CREATURE": LocationData("Apt. 30 Office - Item on North Table 1", LC.OVERWORLD_ITEM, 1105),
-    "APT_30_NE_SCALPEL": LocationData("Apt. 30 Office - Item on North Table 2", LC.OVERWORLD_ITEM, 1106),
-    "APT_30_NE_SQUIRREL": LocationData("Apt. 30 Office - Item Near Door", LC.OVERWORLD_ITEM, 1107),
-    "APT_30_NE_WHISKEY": LocationData("Apt. 30 Office - Item Near Far Wall", LC.OVERWORLD_ITEM, 1108),
     "APT_30_NW_SPIRIT_BOARD": LocationData("Apt. 30 Bedroom - Item on Topmost Table Near Door", LC.OVERWORLD_ITEM, 1109),
     "APT_30_NW_SHRUNKEN_HEAD": LocationData("Apt. 30 Bedroom - Item Near Far Wall", LC.OVERWORLD_ITEM, 1110),
     "APT_30_NW_GRANOLA_BAR": LocationData("Apt. 30 Bedroom - Item on Bottom Table", LC.OVERWORLD_ITEM, 1111),
@@ -103,6 +99,10 @@ APT_30_MAIN_LOCATIONS: dict[str, LocationData] = {
 }
 
 APT_30_FLESH_LOCATIONS: dict[str, LocationData] = {
+    "APT_30_NE_TAXIDERMY_CREATURE": LocationData("Apt. 30 Office - Item on North Table 1", LC.OVERWORLD_ITEM, 1105),
+    "APT_30_NE_SCALPEL": LocationData("Apt. 30 Office - Item on North Table 2", LC.OVERWORLD_ITEM, 1106),
+    "APT_30_NE_SQUIRREL": LocationData("Apt. 30 Office - Item Near Door", LC.OVERWORLD_ITEM, 1107),
+    "APT_30_NE_WHISKEY": LocationData("Apt. 30 Office - Item Near Far Wall", LC.OVERWORLD_ITEM, 1108),
     "APT_30_TAXIDERMY_COMBAT_VICTORY": LocationData("Apt. 30 Entryway - Slay Taxidermy", LC.COMBAT_VICTORY, 1101),
     "APT_30_TAXIDERMY_AUDREY_LOOT": LocationData("Apt. 30 Entryway - Taxidermy Audrey Loot", LC.EVENT_ITEM, 1102),
     "APT_30_FLESH_ROGUE_COMBAT_VICTORY": LocationData("Apt. 30 Flesh - Slay Rogue Taxidermy", LC.COMBAT_VICTORY, 1124),
@@ -116,7 +116,8 @@ APT_30_FLESH_LOCATIONS: dict[str, LocationData] = {
     "APT_30_FLESH_SE_NEEDLE_GLOVES": LocationData("Apt. 30 Flesh Southeast - Item on Table", LC.OVERWORLD_ITEM, 1132),
     "APT_30_FLESH_SE_LIMBS_COMBAT_VCTORY": LocationData("Apt. 30 Flesh Southeast - Slay Limbs", LC.COMBAT_VICTORY, 1133),
     "APT_30_FLESH_NW_CROCODILE_COMBAT_VICTORY": LocationData("Apt. 30 Flesh Northwest - Slay Crocodile", LC.COMBAT_VICTORY, 1134),
-    "APT_30_FLESH_NW_PATCHWORK_JACKET": LocationData("Apt. 30 Flesh Northwest - Item on Table", LC.OVERWORLD_ITEM, 1135)
+    "APT_30_FLESH_NW_PATCHWORK_JACKET": LocationData("Apt. 30 Flesh Northwest - Item on Table", LC.OVERWORLD_ITEM, 1135),
+    "APT_30_NE_SAFE": LocationData("Apt. 30 Office - Safe", LC.SAFE_LOOT, 1136)
 }
 
 APT_30_TAXIDERMY_LOCATIONS: dict[str, LocationData] = {
@@ -139,7 +140,7 @@ APT_31_STARGAZER_LOCATIONS: dict[str, LocationData] = {
     "APT_31_BATHROOM_SOAP": LocationData("Apt. 31 Bathroom - Item on Center Counter", LC.OVERWORLD_ITEM, 212),
     "APT_31_BEDROOM_METAL_BAT": LocationData("Apt. 31 Bedroom - Item on Table", LC.OVERWORLD_ITEM, 213),
     "APT_31_BEDROOM_TONIC": LocationData("Apt. 31 Bedroom - Item on Table Near Safe", LC.OVERWORLD_ITEM, 214, difficulty_lock={DL.EXPLORER}),
-    "APT_31_BEDROOM_SAFE_ITEM": LocationData("Apt. 31 Bedroom - Item in Safe", LC.SAFE_LOOT, 215),
+    "APT_31_BEDROOM_SAFE_ITEM": LocationData("Apt. 31 Bedroom - Safe", LC.SAFE_LOOT, 215),
     "APT_31_OBSERVATORY_PLUTO_DISC": LocationData("Apt. 31 Observatory - Item Near Door", LC.OVERWORLD_ITEM, 216),
     "APT_31_OBSERVATORY_VOID_DISC": LocationData("Apt. 31 Observatory - Item On Center Table", LC.OVERWORLD_ITEM, 217),
     "APT_31_OBSERVATORY_TRASH": LocationData("Apt. 31 Observatory - Trash Can", LC.TRASH_LOOT, 218),
@@ -183,7 +184,7 @@ APT_32_TEETH_LOCATIONS_MAIN: dict[str, LocationData] = {
 
 APT_32_TEETH_BEHIND_DOOR_KNOB: dict[str, LocationData] = {
     "APT_32_MASTER_BEDROOM_TANK_TOP": LocationData("Apt. 32 Master Bedroom - Item on Table Near Door (Day 2-5)", LC.OVERWORLD_ITEM, 321),
-    "APT_32_MASTER_BEDROOM_SAFE_ITEM": LocationData("Apt. 32 Master Bedroom - Item in Safe (Day 2-5)", LC.SAFE_LOOT, 322),
+    "APT_32_MASTER_BEDROOM_SAFE_ITEM": LocationData("Apt. 32 Master Bedroom - Safe (Day 2-5)", LC.SAFE_LOOT, 322),
     "APT_32_MASTER_BEDROOM_TERATOMA_COMBAT_VICTORY": LocationData("Apt. 32 Master Bedroom - Slay Teratoma (Day 2-5)", LC.COMBAT_VICTORY, 323),
     "APT_32_MASTER_BEDROOM_BALM": LocationData("Apt. 32 Master Bedroom - Item on Table by Bed (Day 2-5)", LC.OVERWORLD_ITEM, 324),
     "APT_32_MASTER_BEDROOM_MADISON_COMBAT_VICTORY": LocationData("Apt. 32 Master Bedroom - Slay Madison (Day 2-4)", LC.COMBAT_VICTORY, 325),
@@ -273,14 +274,20 @@ FRONT_DOOR_LOCATIONS: dict[str, LocationData] = {
     "DOOR_GENERAL_TRADER_COMBAT_VICTORY": LocationData("Door Encounter - Slay General Trader", LC.FRIENDLY_FIRE, 552),
     "DOOR_FLY_MAN_COMBAT_VICTORY": LocationData("Door Encounter - Slay Fly Man", LC.COMBAT_VICTORY, 553),
     "SEBASTIAN_COMBAT_VICTORY": LocationData("Door Encounter - Slay Sebastian", LC.FRIENDLY_FIRE, 554),
-    "DOOR_BUTCHER_ITEM": LocationData("Door Encounter - Buy Meat From the Butcher", LC.MERCHANT, 555),
+    "DOOR_MYSTERY_TRADER_COMBAT_VICTORY": LocationData("Door Encounter - Slay Strange Woman", LC.FRIENDLY_FIRE, 555),
+    "DOOR_BUTCHER_ITEM": LocationData("Door Encounter - Buy Meat From the Butcher", LC.MERCHANT, 556),
+    "DOOR_BUTCHER_COMBAT_VICTORY": LocationData("Door Encounter - Slay Butcher", LC.MERCHANT, 557),
+    "DOOR_KIND_COMBAT_VICTORY": LocationData("Door Encounter - Slay Kind-Faced Man", LC.FRIENDLY_FIRE, 558),
+    "DOOR_RECRUIT_KIND": LocationData("Door Encounter - Welcome Kind-Faced Man Into Your Home", LC.RECRUIT, 559),
 }
 
 APT_33_MEAT_LOCATIONS: dict[str, LocationData] = {
     "APT_33_MEAT_SPINE_COMBAT_VICTORY": LocationData("Apt. 33 Meat World Living Room - Slay Spine", LC.FRIENDLY_FIRE, 601),
     "APT_33_MEAT_SPINE_SPARE": LocationData("Apt. 33 Meat World Living Room - Spare Spine", LC.EVENT_ITEM, 602),
     "APT_33_MEAT_CONFUSION_COMBAT_VICTORY": LocationData("Apt. 33 Meat World Bedroom - Slay Confusion", LC.COMBAT_VICTORY, 603),
-    "APT_33_MEAT_STRETCH_FACE_COMBAT_VICTORY": LocationData("Apt. 33 Meat World Bathroom - Slay Stretch Face", LC.COMBAT_VICTORY, 604)
+    "APT_33_MEAT_STRETCH_FACE_COMBAT_VICTORY": LocationData("Apt. 33 Meat World Bathroom - Slay Stretch Face", LC.COMBAT_VICTORY, 604),
+    "APT_33_MEAT_SPINE_GIFT": LocationData("Apt. 33 Meat World Living Room - Gift From Spine", LC.EVENT_ITEM, 605),
+
 }
 
 APT_34_FROZEN_ENTRYWAY_LOCATIONS: dict[str, LocationData] = {
@@ -393,7 +400,7 @@ APT_36_WOUNDED_LOCATIONS: dict[str, LocationData] = {
     "APT_36_BATHROOM_PADLOCK_KEY": LocationData("Apt. 36 Bathroom - Item Dropped by Wounded Neighbor", LC.OVERWORLD_ITEM, 907),
     "APT_36_BATHROOM_WOUNDED_NEIGHBOR_KNIFE": LocationData("Apt. 36 Bathroom - Item on Body", LC.OVERWORLD_ITEM, 908),
     "APT_36_BATHROOM_WOUNDED_NEIGHBOR_COMBAT_VICTORY": LocationData("Apt. 36 Bathroom - Slay Wounded Neighbor", LC.COMBAT_VICTORY, 909),
-    "APT_36_BEDROOM_SAFE_ITEM": LocationData("Apt. 36 Bedroom - Item in Safe", LC.SAFE_LOOT, 910),
+    "APT_36_BEDROOM_SAFE_ITEM": LocationData("Apt. 36 Bedroom - Safe", LC.SAFE_LOOT, 910),
     "APT_36_BEDROOM_SIMPLE_KEY": LocationData("Apt. 36 Bedroom - Item on Table", LC.OVERWORLD_ITEM, 911),
     "APT_36_BEDROOM_OBSERVER_COMBAT_VICTORY": LocationData("Apt. 36 Bedroom - Slay Observer", LC.COMBAT_VICTORY, 912)
 }
@@ -711,7 +718,7 @@ APT_21_LYLE_MAIN_LOCATIONS = {
     "APT_21_CLOSET_BROOM": LocationData("Apt. 21 Closet - Item Between Boxes", LC.OVERWORLD_ITEM, 1709),
     "APT_21_CLOSET_ANTIDOTE": LocationData("Apt. 21 Closet - Item on Shelf", LC.OVERWORLD_ITEM, 1710),
     "APT_21_CLOSET_LOKJAW_COMBAT_VICTORY": LocationData("Apt. 21 Closet - Slay Lokjaw", LC.COMBAT_VICTORY, 1711),
-    "APT_21_CLOSET_SAFE": LocationData("Apt. 21 Closet - Item in Safe", LC.SAFE_LOOT, 1712),
+    "APT_21_CLOSET_SAFE": LocationData("Apt. 21 Closet - Safe", LC.SAFE_LOOT, 1712),
     "APT_21_BATHROOM_SOAP": LocationData("Apt. 21 Bathroom - Item on Floor Near Tub", LC.OVERWORLD_ITEM, 1713),
     "APT_21_BATHROOM_ANXIETY_MEDS": LocationData("Apt. 21 Bathroom - Item on Counter 1", LC.OVERWORLD_ITEM, 1714),
     "APT_21_BATHROOM_MEDICELL": LocationData("Apt. 21 Bathroom - Item on Counter 2", LC.OVERWORLD_ITEM, 1715),
@@ -807,7 +814,7 @@ APT_24_EUGENE_SEWING_CLOSET_LOCATIONS = {
     "APT_24_SEWING_FACE_WORMS_COMBAT_VICTORY": LocationData("Eugene's Apt. Sewing Room - Slay Face Worms", LC.COMBAT_VICTORY, 2021),
     "APT_24_SEWING_DENIM_VEST": LocationData("Eugene's Apt. Sewing Room - Item Near Sewing Bench 1", LC.OVERWORLD_ITEM, 2022),
     "APT_24_SEWING_BUTTON_UP_SHIRT": LocationData("Eugene's Apt. Sewing Room - Item Near Sewing Bench 2", LC.OVERWORLD_ITEM, 2023),
-    "APT_24_SAFE_ITEM": LocationData("Eugene's Apt. Sewing Room - Item In Safe", LC.SAFE_LOOT, 2024),
+    "APT_24_SAFE_ITEM": LocationData("Eugene's Apt. Sewing Room - Safe", LC.SAFE_LOOT, 2024),
     "APT_24_SUIT": LocationData("Eugene's Apt. Sewing Room - Item on South Table", LC.OVERWORLD_ITEM, 2025)
 }
 
@@ -1063,7 +1070,7 @@ FRED_APT_MAIN_LOCATIONS = {
     "FRED_TOXIC_ROOM_TONIC": LocationData("Toxic Fred's Room East - Item on Table 1", LC.OVERWORLD_ITEM, 3130, difficulty_lock={DL.EXPLORER}),
     "FRED_TOXIC_ROOM_JUNK": LocationData("Toxic Fred's Room East - Item on Table 2", LC.OVERWORLD_ITEM, 3131),
     "FRED_TOXIC_ROOM_COMIC_BOOKS": LocationData("Toxic Fred's Room East - Item on South Table", LC.OVERWORLD_ITEM, 3132),
-    "FRED_TOXIC_ROOM_SAFE": LocationData("Toxic Fred's Room East - Item in Safe", LC.SAFE_LOOT, 3133),
+    "FRED_TOXIC_ROOM_SAFE": LocationData("Toxic Fred's Room East - Safe", LC.SAFE_LOOT, 3133),
     "FRED_GODHEAD_ROOM_SHOTGUN_SHELLS": LocationData("Godhead Fred's Room - Item on Table 1", LC.OVERWORLD_ITEM, 3134),
     "FRED_GODHEAD_ROOM_SHOTGUN": LocationData("Godhead Fred's Room - Item on Table 2", LC.OVERWORLD_ITEM, 3135),
     "FRED_GODHEAD_ROOM_SHOTGUN_SHELLS_BOX": LocationData("Godhead Fred's Room - Item on Table 3", LC.OVERWORLD_ITEM, 3136),
@@ -1131,7 +1138,7 @@ APT_12_PLANETARIUM_SOUTH_LOCATIONS = {
 }
 
 APT_12_KITCHEN_CLOSET_LOCATIONS = {
-    "APT_12_KITCHEN_CLOSET_IRIS_KEY": LocationData("Apt. 12 Kitchen Closet - Item on Table", LC.OVERWORLD_ITEM, 3211),
+    "APT_12_KITCHEN_CLOSET_IRIS_KEY": LocationData("Apt. 12 Meat World Connection - Item on Table", LC.OVERWORLD_ITEM, 3211),
 }
 
 APT_12_SIBYL_LOCATIONS = {
@@ -1139,7 +1146,7 @@ APT_12_SIBYL_LOCATIONS = {
     **APT_12_TRUE_LOCATIONS,
     **APT_12_WALLS_LOCATIONS,
     **APT_12_PLANETARIUM_SOUTH_LOCATIONS,
-    # **APT_12_KITCHEN_CLOSET_LOCATIONS LEAVING THIS OUT FOR NOW SINCE THIS IS PART OF MEAT WORLD
+    **APT_12_KITCHEN_CLOSET_LOCATIONS
 }
 
 APT_18_HELLEN_LOCATIONS = {
@@ -1155,7 +1162,7 @@ APT_18_HELLEN_LOCATIONS = {
     "APT_18_N_GREAT_FLOWER_COMBAT_VICTORY": LocationData("Apt. 18 Bedroom - Slay Great Flower", LC.COMBAT_VICTORY, 3310),
     "APT_18_N_CASH": LocationData("Apt. 18 Bedroom - Item on Table", LC.OVERWORLD_ITEM, 3311),
     "APT_18_E_SEED_FREAK_COMBAT_VICTORY": LocationData("Apt. 18 East - Slay Seed Freak", LC.COMBAT_VICTORY, 3312),
-    "APT_18_E_SAFE_ITEM": LocationData("Apt. 18 East - Item in Safe", LC.SAFE_LOOT, 3313),
+    "APT_18_E_SAFE_ITEM": LocationData("Apt. 18 East - Safe", LC.SAFE_LOOT, 3313),
     "APT_18_E_MOSS_FREAK_COMBAT_VICTORY": LocationData("Apt. 18 East - Slay Moss Freak", LC.COMBAT_VICTORY, 3314),
     "APT_18_E_OLD_CDS": LocationData("Apt. 18 East - Item on South Table", LC.OVERWORLD_ITEM, 3315),
     "APT_18_E_HEADPHONES": LocationData("Apt. 18 East - Item on Southeast Table", LC.OVERWORLD_ITEM, 3316),
@@ -1175,7 +1182,8 @@ APT_18_HELLEN_LOCATIONS = {
 
 APT_18_HELLEN_QUEST_LOCATIONS = {
     "APT_18_HELLEN_QUEST_FRUIT": LocationData("Apt. 18 Secret Garden - Slay Fruit", LC.COMBAT_VICTORY, 3328),
-    "APT_18_HELLEN_QUEST_SHEARS": LocationData("Apt. 18 Secret Garden - Gift From Hellen", LC.EVENT_ITEM, 3329)
+    "APT_18_HELLEN_QUEST_SHEARS": LocationData("Apt. 18 Secret Garden - Gift From Hellen", LC.EVENT_ITEM, 3329),
+    "APT_18_HELLEN_QUEST_BETRAY": LocationData("Hellen's Quest - Fail the Quest and Slay Hellen", LC.FRIENDLY_FIRE, 3331)
 }
 
 """
@@ -1314,7 +1322,7 @@ GF_CORNER_STORE_LOCATIONS = {
     "CORNER_STORE_FIRST_AID_KIT": LocationData("Corner Store - Item on Long Counter", LC.OVERWORLD_ITEM, 3802),
     "CORNER_STORE_MYRMIDON_XII": LocationData("Corner Store - Item on Small Counter", LC.OVERWORLD_ITEM, 3803),
     "CORNER_STORE_STORAGE_FIRST_AID_BOX": LocationData("Corner Store Back - First Aid Box", LC.FIRST_AID_BOX_LOOT, 3804),
-    "CORNER_STORE_STORAGE_SAFE": LocationData("Corner Store Back - Item in Safe", LC.SAFE_LOOT, 3805),
+    "CORNER_STORE_STORAGE_SAFE": LocationData("Corner Store Back - Safe", LC.SAFE_LOOT, 3805),
     "CORNER_STORE_STORAGE_VHS": LocationData("Corner Store Back - Item on Southwest Counter", LC.OVERWORLD_ITEM, 3806),
     "CORNER_STORE_STORAGE_DUCT_TAPE": LocationData("Corner Store Back - Item on South Counter 1", LC.OVERWORLD_ITEM, 3807),
     "CORNER_STORE_STORAGE_HERBICIDE": LocationData("Corner Store Back - Item on South Counter 2", LC.OVERWORLD_ITEM, 3808)
@@ -1322,7 +1330,7 @@ GF_CORNER_STORE_LOCATIONS = {
 
 MAILROOM_SHIPPING_WEST_HALL_LOCATIONS = {
     "MAILROOM_N_GARBAGE_WORM_COMBAT_VICTORY": LocationData("Mailroom North - Slay Garbage Worm", LC.COMBAT_VICTORY, 3901),
-    "MAILROOM_N_SAFE": LocationData("Mailroom North - Item in Safe", LC.SAFE_LOOT, 3902),
+    "MAILROOM_N_SAFE": LocationData("Mailroom North - Safe", LC.SAFE_LOOT, 3902),
     "GF_WEST_HAND_WORMS_COMBAT_VICTORY": LocationData("Ground Floor West - Slay Hand Worms", LC.COMBAT_VICTORY, 3909),
 }
 
@@ -1348,7 +1356,7 @@ LANDLORDS_APT_PHASE_1_LOCATIONS = {
     "LL_BEDROOM_COIN_COLLECTION": LocationData("Landlord Bedroom - Item on Table 1", LC.OVERWORLD_ITEM, 4023),
     "LL_BEDROOM_MILITARY_UNIFORM": LocationData("Landlord Bedroom - Item on Table 2", LC.OVERWORLD_ITEM, 4024),
     "LL_BEDROOM_SIDE_TABLE_W": LocationData("Landlord Bedroom - Drawer Loot", LC.DRAWER_LOOT, 4025),
-    "LL_BEDROOM_SAFE": LocationData("Landlord Bedroom - Item in Safe", LC.SAFE_LOOT, 4026),
+    "LL_BEDROOM_SAFE": LocationData("Landlord Bedroom - Safe", LC.SAFE_LOOT, 4026),
     "LL_BEDROOM_WIDE_TABLE_E": LocationData("Landlord Bedroom - Side Table Loot", LC.DRAWER_LOOT, 4082),
 }
 
@@ -1494,6 +1502,8 @@ GF_NORTH_JANITORS_CLOSET_LOCATIONS = {
     "GF_KOTD_JANITOR_COMBAT_VICTORY": LocationData("GF Janitor's Closet North - Slay Janitor", LC.COMBAT_VICTORY, 4216),
     "GF_KOTD_VACUUM_COMBAT_VICTORY": LocationData("GF Janitor's Closet North - Slay Vacuum", LC.COMBAT_VICTORY, 4217),
     "GF_KOTD_COMBAT_VICTORY": LocationData("GF Janitor's Closet North - Slay KOTD Characters", LC.COMBAT_VICTORY, 4218),
+    "GF_JANITOR_NORTH_ROACH_1": LocationData("GF Janitor's Closet North - Roach 1", LC.OVERWORLD_ITEM, 4222),
+    "GF_JANITOR_NORTH_ROACH_2": LocationData("GF Janitor's Closet North - Roach 2", LC.OVERWORLD_ITEM, 4223),
 }
 
 GF_SOUTH_JANITORS_CLOSET_LOCATIONS = {
@@ -1558,8 +1568,8 @@ APT_B2_ANTOINE_LOCATIONS = {
 STEVE_APARTMENT_LOCATIONS_MAIN = {
     "B_STEVE_BANDAGE_GIFT": LocationData("Basement Storage - Give Bandages to Steve", LC.EVENT_ITEM, 4601),
     "B_STEVE_COMBAT_VICTORY": LocationData("Basement Storage - Slay Steve", LC.FRIENDLY_FIRE, 4602),
-    "B_STEVE_ROACH_1": LocationData("Basement Sewer Entrance - First Roach", LC.OVERWORLD_ITEM, 4603),
-    "B_STEVE_ROACH_2": LocationData("Basement Sewer Entrance - Second Roach", LC.OVERWORLD_ITEM, 4604),
+    "B_STEVE_ROACH_1": LocationData("Basement Sewer Entrance - Roach 1", LC.OVERWORLD_ITEM, 4603),
+    "B_STEVE_ROACH_2": LocationData("Basement Sewer Entrance - Roach 2", LC.OVERWORLD_ITEM, 4604),
     "B_STEVE_DUCT_TAPE": LocationData("Basement Storage - Item on Table 1", LC.OVERWORLD_ITEM, 4605),
     "B_STEVE_JUNK_1": LocationData("Basement Storage - Item on Table 2", LC.OVERWORLD_ITEM, 4606),
     "B_STEVE_JUNK_2": LocationData("Basement Storage - Item on South Table", LC.OVERWORLD_ITEM, 4607),
@@ -1657,7 +1667,7 @@ SEWER_LOCATIONS = {
     "SEWER_W_HARVESTMAN_COMBAT_VICTORY": LocationData("Sewer West - Slay Harvestman", LC.COMBAT_VICTORY, 4842),
     "SEWER_SW_TICK_COMBAT_VICTORY": LocationData("Sewer SW - Slay Tick Near Victor and Florence", LC.COMBAT_VICTORY, 4843),
     "SEWER_SW_VICTOR_FLORENCE": LocationData("Sewer SW - Rescue Victor and Florence", LC.EVENT_ITEM, 4844),
-    "SEWER_SW_SAFE_ITEM": LocationData("Sewer SW - Safe Item", LC.SAFE_LOOT, 4845),
+    "SEWER_SW_SAFE_ITEM": LocationData("Sewer SW - Safe", LC.SAFE_LOOT, 4845),
     "SEWER_SW_FRIDGE": LocationData("Sewer SW - Fridge", LC.FRIDGE_LOOT, 4846),
     "SEWER_SW_CHOCKY_BAR": LocationData("Sewer SW - Item Near Victor and Florence 1", LC.OVERWORLD_ITEM, 4847),
     "SEWER_SW_COLA": LocationData("Sewer SW - Item Near Victor and Florence 2", LC.OVERWORLD_ITEM, 4848),
@@ -1744,9 +1754,9 @@ FUNGUS_MAZE_LOCATIONS = {
     "FUNGUS_SYLVAIN_RESCUE_COMBAT_VICTORY": LocationData("Fungus Maze - Rescue Sylvain", LC.COMBAT_VICTORY, 5113),
     "FUNGUS_DANIELLE_RESCUE_COMBAT_VICTORY": LocationData("Fungus Maze - Rescue Danielle", LC.COMBAT_VICTORY, 5114),
     "FUNGUS_JEAN_P_RESCUE_COMBAT_VICTORY": LocationData("Fungus Maze - Rescue Jean Pierre", LC.COMBAT_VICTORY, 5115),
-    "FUNGUS_CLAIRE_COMBAT_VICTORY": LocationData("Fungus Maze - Rescue Claire", LC.COMBAT_VICTORY, 5116),
-    "FUNGUS_LAUGHING_MOLD_ROUTINE": LocationData("Fungus Maze - Listen to Laughing Mold's Routine", LC.EVENT_ITEM, 5117),
-    "FUNGUS_LAUGHING_MOLD_COMBAT_VICTORY": LocationData("Fungus Maze - Slay Laughing Mold", LC.FRIENDLY_FIRE, 5118),
+    "FUNGUS_CLAIRE_RESCUE_COMBAT_VICTORY": LocationData("Fungus Maze - Rescue Claire", LC.COMBAT_VICTORY, 5116),
+    "FUNGUS_LAUGHING_MOLD_ROUTINE": LocationData("Fungus Maze - Help with Laughing Mold's Routine", LC.EVENT_ITEM, 5117),
+    #"FUNGUS_LAUGHING_MOLD_COMBAT_VICTORY": LocationData("Fungus Maze - Slay Laughing Mold", LC.FRIENDLY_FIRE, 5118),
     "FUNGUS_NEPTUNE_DISC": LocationData("Fungus Maze - Item in Maze", LC.OVERWORLD_ITEM, 5119),
     "FUNGUS_SPORE_SHAMBLER_COMBAT_VICTORY": LocationData("Fungus Maze - Slay Spore Shambler", LC.COMBAT_VICTORY, 5120),
     "FUNGUS_SPORE_GUARDIAN_COMBAT_VICTORY": LocationData("Fungus Maze Depths - Slay Spore Guardian", LC.COMBAT_VICTORY, 5121),
@@ -1764,8 +1774,15 @@ FUNGUS_MAZE_LOCATIONS = {
     "FUNGUS_DEPTHS_MUSHROOM_10": LocationData("Fungus Maze Depths - Item 10", LC.OVERWORLD_ITEM, 5133),
     "FUNGUS_DEPTHS_MUSHROOM_11": LocationData("Fungus Maze Depths - Item 11", LC.OVERWORLD_ITEM, 5134),
     "FUNGUS_DEPTHS_MUSHROOM_12": LocationData("Fungus Maze Depths - Item 12", LC.OVERWORLD_ITEM, 5135),
-    "FUNGUS_DEPTHS_MUSHROOM_13": LocationData("Fungus Maze Depths - Item on Comatus Path", LC.OVERWORLD_ITEM, 5136),
-    "FUNGUS_COMATUS_COMBAT_VICTORY": LocationData("Fungus Maze Depths - Defeat Swordmaster Comatus", LC.COMBAT_VICTORY, 5137)
+    "FUNGUS_DEPTHS_MUSHROOM_13": LocationData("Fungus Maze Depths - Item 13", LC.OVERWORLD_ITEM, 5136),
+    "FUNGUS_COMATUS_COMBAT_VICTORY": LocationData("Fungus Maze - Defeat Swordmaster Comatus", LC.COMBAT_VICTORY, 5137),
+    "FUNGUS_PHILLIPPE_COMBAT_VICTORY": LocationData("Fungus Maze - Slay Phillippe", LC.COMBAT_VICTORY, 5138),
+    "FUNGUS_SYLVAIN_COMBAT_VICTORY": LocationData("Fungus Maze Depths - Slay Sylvain", LC.COMBAT_VICTORY, 5139),
+    "FUNGUS_DANIELLE_COMBAT_VICTORY": LocationData("Fungus Maze Depths - Slay Danielle", LC.COMBAT_VICTORY, 5140),
+    "FUNGUS_JEAN_P_COMBAT_VICTORY": LocationData("Fungus Maze Depths - Slay Jean Pierre", LC.COMBAT_VICTORY, 5141),
+    "FUNGUS_CLAIRE_COMBAT_VICTORY": LocationData("Fungus Maze Depths - Slay Claire", LC.COMBAT_VICTORY, 5142),
+    "FUNGUS_DEPTHS_MUSHROOM_COMATUS": LocationData("Fungus Maze Depths - Item on Comatus Path", LC.OVERWORLD_ITEM, 5143),
+
 }
 
 CHARAN_PIT_CLEAR_LOCATIONS = {
@@ -1910,6 +1927,105 @@ ELEVATOR_LOCATIONS = {
     "ELEVATOR_FREAK_COMBAT_VICTORY": LocationData("Elevator - Slay Elevator Freak", LC.COMBAT_VICTORY, 5805),
 }
 
+"""
+--- MEAT LOCATIONS --- 
+"""
+
+MEAT_SIBYL_LOCATIONS = {
+    "MEAT_SIBYL_COMBAT_VICTORY": LocationData("Meat World - Slay Sibyl Core", LC.FRIENDLY_FIRE, 5901),
+    "MEAT_SIBYL_TONIC": LocationData("Meat World - Item Near Sibyl", LC.OVERWORLD_ITEM, 5902),
+    "MEAT_SIBYL_VENTRICLE_COMBAT_VICTORY": LocationData("Meat World Sibyl - Slay Ventricle", LC.COMBAT_VICTORY, 5903),
+    "MEAT_SIBYL_VENTRICLE_2_COMBAT_VICTORY": LocationData("Meat World Sibyl - Slay Ventricle 2", LC.COMBAT_VICTORY, 5904),
+    "MEAT_SIBYL_MOUTH_COMBAT_VICTORY": LocationData("Meat World Sibyl - Slay Mouth", LC.COMBAT_VICTORY, 5905),
+    "MEAT_SIBYL_CHARLES_COMBAT_VICTORY": LocationData("Meat World Sibyl - Defeat Charles", LC.COMBAT_VICTORY, 5906),
+    "MEAT_SIBYL_VENTRICLE_3_COMBAT_VICTORY": LocationData("Meat World Sibyl - Slay Ventricle 3", LC.COMBAT_VICTORY, 5907),
+    "MEAT_SIBYL_SHOTGUN_SHELLS": LocationData("Meat World Sibyl - Item In Center Room", LC.OVERWORLD_ITEM, 5908),
+    "MEAT_SIBYL_LIBRA_COMBAT_VICTORY": LocationData("Meat World Sibyl - Slay Libra", LC.COMBAT_VICTORY, 5909),
+    "MEAT_SIBYL_EMPTY_HUSK": LocationData("Meat World Sibyl - Slay Empty Husk", LC.COMBAT_VICTORY, 5910),
+    "MEAT_SIBYL_ENZYME": LocationData("Meat World Sibyl - Item Near Empty Husk", LC.OVERWORLD_ITEM, 5911),
+    "MEAT_SIBYL_DOUBLE_HUSK_COMBAT_VICTORY": LocationData("Meat World Sibyl - Slay Double Husk", LC.COMBAT_VICTORY, 5912),
+    "MEAT_SIBYL_MAD_HUSK_COMBAT_VICTORY": LocationData("Meat World Sibyl - Slay Mad Husk", LC.COMBAT_VICTORY, 5913),
+    "MEAT_SIBYL_CLUSTER_HUSK_COMBAT_VICTORY": LocationData("Meat World Sibyl - Slay Cluster Husk", LC.COMBAT_VICTORY, 5914),
+    "MEAT_SIBYL_RIFLE_BULLETS": LocationData("Meat World Sibyl - Item Near Husks", LC.OVERWORLD_ITEM, 5915)
+}
+
+MEAT_TV_LOCATIONS = {
+    "MEAT_TV_GLANCE_COMBAT_VICTORY": LocationData("Meat World TV - Slay Glance", LC.COMBAT_VICTORY, 6001),
+    "MEAT_TV_EYE_SUCKER_COMBAT_VICTORY": LocationData("Meat World TV - Slay Eye Sucker", LC.COMBAT_VICTORY, 6002),
+    "MEAT_TV_HEALING_SPRAY": LocationData("Meat World TV - Item in East Room", LC.OVERWORLD_ITEM, 6003),
+    "MEAT_TV_CLEMENTINE_COMBAT_VICTORY": LocationData("Meat World TV - Defeat Clementine", LC.COMBAT_VICTORY, 6004),
+    "MEAT_TV_CATALYST": LocationData("Meat World TV - Item Near Clementine", LC.OVERWORLD_ITEM, 6005),
+    "MEAT_TV_MEAT_WORM_COMBAT_VICTORY": LocationData("Meat World TV - Slay Meat Worm", LC.COMBAT_VICTORY, 6006),
+    "MEAT_TV_VENTRICLE_COMBAT_VICTORY": LocationData("Meat World TV - Slay Ventricle", LC.COMBAT_VICTORY, 6007),
+    "MEAT_TV_CROWDED_EYES_COMBAT_VICTORY": LocationData("Meat World TV - Slay Crowded Eyes", LC.COMBAT_VICTORY, 6008)
+}
+
+MEAT_SPINE_LOCATIONS = {
+    "MEAT_SPINE_VENTRICLE_COMBAT_VICTORY": LocationData("Meat World Spine - Slay Ventricle", LC.COMBAT_VICTORY, 6101),
+    "MEAT_SPINE_LOU_COMBAT_VICTORY": LocationData("Meat World Spine - Defeat Lou", LC.COMBAT_VICTORY, 6102),
+    "MEAT_SPINE_TWOJAWS_COMBAT_VICTORY": LocationData("Meat World Spine - Slay Twojaws", LC.COMBAT_VICTORY, 6103),
+    "MEAT_SPINE_HAND_COMBAT_VICTORY": LocationData("Meat World Spine - Slay Hand", LC.COMBAT_VICTORY, 6104)
+}
+
+MEAT_LYLE_LOCATIONS = {
+    "MEAT_LYLE_CATELINE_COMBAT_VICTORY": LocationData("Meat World Lyle - Defeat Cateline", LC.COMBAT_VICTORY, 6151),
+    "MEAT_LYLE_PEEKING_COMBAT_VICTORY": LocationData("Meat World Lyle - Slay Peeking", LC.COMBAT_VICTORY, 6152),
+    "MEAT_LYLE_VENTRICLE_COMBAT_VICTORY": LocationData("Meat World Lyle - Slay Ventricle", LC.COMBAT_VICTORY, 6153),
+    "MEAT_LYLE_PISTOL_BULLETS": LocationData("Meat World Lyle - Item", LC.OVERWORLD_ITEM, 6154)
+}
+
+MEAT_SUMMER_LOCATIONS = {
+    "MEAT_SUMMER_URSULINE_COMBAT_VICTORY": LocationData("Meat World Lethargy - Defeat Ursuline", LC.COMBAT_VICTORY, 6201),
+    "MEAT_SUMMER_REAGENT": LocationData("Meat World Lethargy - Item in Ground Floor Hall", LC.OVERWORLD_ITEM, 6202),
+    "MEAT_SUMMER_OBSERVER_COMBAT_VICTORY": LocationData("Meat World Lethargy - Slay Observer", LC.COMBAT_VICTORY, 6203),
+    "MEAT_SUMMER_GLANCE_COMBAT_VICTORY": LocationData("Meat World Lethargy - Slay Glance", LC.COMBAT_VICTORY, 6204)
+}
+
+MEAT_GROUND_FLOOR_LOCATIONS = {
+    "MEAT_MENS_ROOM_GOBLIN_CLAWS": LocationData("Meat World Men's Room - Item", LC.OVERWORLD_ITEM, 6251),
+    "MEAT_GF_IRIS_KEY": LocationData("Meat World Ground Floor - Southmost Item", LC.OVERWORLD_ITEM, 6252),
+    "MEAT_GF_PREDATOR_COMBAT_VICTORY": LocationData("Meat World Ground Floor - Slay Predator", LC.COMBAT_VICTORY, 6253)
+}
+
+MEAT_TOILET_LOCATIONS = {
+    "MEAT_BATHROOM_COLIN_GLENN_COMBAT_VICTORY": LocationData("Meat World Bathroom - Defeat Colin and Glenn", LC.COMBAT_VICTORY, 6254)
+}
+
+MEAT_EYEBALL_LOCATIONS = {
+    "MEAT_EYEBALL_STANLEY_COMBAT_VICTORY": LocationData("Meat World Eyeball - Defeat Stanley", LC.COMBAT_VICTORY, 6301),
+    "MEAT_EYEBALL_BRAIN_LEECH_COMBAT_VICTORY": LocationData("Meat World Eyeball - Slay Brain Leeches", LC.COMBAT_VICTORY, 6302),
+    "MEAT_EYEBALL_OBSERVER_COMBAT_VICTORY": LocationData("Meat World Eyeball - Slay Observer", LC.COMBAT_VICTORY, 6303),
+    "MEAT_EYEBALL_OCULAR_TETHERBLADE": LocationData("Meat World Eyeball - West Item", LC.OVERWORLD_ITEM, 6304),
+    "MEAT_EYEBALL_GLANCE_COMBAT_VICTORY": LocationData("Meat World Eyeball - Slay Glance", LC.COMBAT_VICTORY, 6305)
+}
+
+MEAT_CENTRAL_LOCATIONS = {
+    "MEAT_FELE_F1_IRIS_KEY": LocationData("Meat World Central - F1 Elevator Room Item", LC.OVERWORLD_ITEM, 6401),
+    "MEAT_MAZE_UNDERBITE_COMBAT_VICTORY": LocationData("Meat World Central Maze - Slay Underbite", LC.COMBAT_VICTORY, 6402),
+    "MEAT_MAZE_SCRABBLY_COMBAT_VICTORY": LocationData("Meat World Central Maze - Slay Scrabbly", LC.COMBAT_VICTORY, 6403),
+    "MEAT_MAZE_SPLIT_TAIL_COMBAT_VICTORY": LocationData("Meat World Central Maze - Slay Split Tail", LC.COMBAT_VICTORY, 6404),
+    "MEAT_MAZE_SPLIT_TAIL_2_COMBAT_VICTORY": LocationData("Meat World Central Maze - Slay Split Tail 2", LC.COMBAT_VICTORY, 6405),
+    "MEAT_MAZE_OBSERVER_COMBAT_VICTORY": LocationData("Meat World Central - Slay Observer", LC.COMBAT_VICTORY, 6406),
+    "MEAT_MAZE_OCULAR_TETHERBLADE": LocationData("Meat World Central - Item Behind Observer", LC.OVERWORLD_ITEM, 6407),
+    "MEAT_MAZE_BRAIN_LEECH_COMBAT_VICTORY": LocationData("Meat World Central - Slay Brainleech", LC.COMBAT_VICTORY, 6408),
+    "MEAT_GROCERY_UNDERBITE_COMBAT_VICTORY": LocationData("Meat World Corner Store - Slay Underbite", LC.COMBAT_VICTORY, 6409),
+    "MEAT_GROCERY_IRIS_KEY": LocationData("Meat World Corner Store - Item 1", LC.OVERWORLD_ITEM, 6410),
+    "MEAT_GROCERY_MAGNUM_BULLETS": LocationData("Meat World Corner Store - Item 2", LC.OVERWORLD_ITEM, 6411),
+    "MEAT_GROCERY_SMG_BULLETS": LocationData("Meat World Corner Store - Item 3", LC.OVERWORLD_ITEM, 6412),
+    "MEAT_CENTRAL_BASEMENT_CAMILLE_COMBAT_VICTORY": LocationData("Meat World Central Basement - Defeat Camille", LC.COMBAT_VICTORY, 6413),
+    "MEAT_CENTRAL_BASEMENT_STIMULANT": LocationData("Meat World Central Basement - Item Near Camille", LC.OVERWORLD_ITEM, 6414),
+    "MEAT_CENTRAL_BASEMENT_SPINERO_COMBAT_VICTORY": LocationData("Meat World Central Basement - Slay Spinero", LC.OVERWORLD_ITEM, 6415),
+    "MEAT_CENTRAL_BASEMENT_BITE_ELEMENTAL_COMBAT_VICTORY": LocationData("Meat World Central Basement - Slay Bite Elemental", LC.COMBAT_VICTORY, 6416),
+    "MEAT_WEST_BASEMENT_CRUSHER_COMBAT_VICTORY": LocationData("Meat World Basement West - Slay Crusher", LC.COMBAT_VICTORY, 6417),
+    "MEAT_WEST_BASEMENT_SHURIKEN": LocationData("Meat World Basement West - Item", LC.OVERWORLD_ITEM, 6418),
+    "MEAT_FELE_G_IRIS_KEY": LocationData("Meat World Central - GF Elevator Room Item", LC.OVERWORLD_ITEM, 6419)
+}
+
+MEAT_HELLCAR_LOCATIONS = {
+    "MEAT_UTERUS_MARCUS_COMBAT_VICTORY": LocationData("Meat World Garage - Defeat Marcus", LC.COMBAT_VICTORY, 6351),
+    "MEAT_UTERUS_HUNGER_COMBAT_VICTORY": LocationData("Meat World Garage - Slay Hunger", LC.COMBAT_VICTORY, 6352)
+}
+
 location_table: dict[str, LocationData] = {
     **VIDEO_GAME_LOCATIONS,
     **F3_HALL_LOCATIONS,
@@ -1989,7 +2105,17 @@ location_table: dict[str, LocationData] = {
     **STAIRWELL_LOCATIONS,
     **UNDER_THE_STAIRS_LOCATIONS,
     **ROOF_LOCATIONS,
-    **ELEVATOR_LOCATIONS
+    **ELEVATOR_LOCATIONS,
+    **MEAT_CENTRAL_LOCATIONS,
+    **MEAT_GROUND_FLOOR_LOCATIONS,
+    **MEAT_SIBYL_LOCATIONS,
+    **MEAT_LYLE_LOCATIONS,
+    **MEAT_TV_LOCATIONS,
+    **MEAT_SPINE_LOCATIONS,
+    **MEAT_SUMMER_LOCATIONS,
+    **MEAT_TOILET_LOCATIONS,
+    **MEAT_HELLCAR_LOCATIONS,
+    **MEAT_EYEBALL_LOCATIONS
 }
 
 region_locs: dict[str, set[str]] = {
@@ -2088,6 +2214,7 @@ region_locs: dict[str, set[str]] = {
     "APT_12_MAIN": APT_12_TRUE_LOCATIONS.keys(),
     "APT_12_WALLS": APT_12_WALLS_LOCATIONS.keys(),
     "APT_12_PLANETARIUM_SOUTH": APT_12_PLANETARIUM_SOUTH_LOCATIONS.keys(),
+    "APT_12_KITCHEN_CLOSET": APT_12_KITCHEN_CLOSET_LOCATIONS.keys(),
     "APT_12_UNITY_ROOM": {},
     "APT_18_OVERGROWN": APT_18_HELLEN_LOCATIONS.keys(),
     "APT_18_HELLEN_QUEST": APT_18_HELLEN_QUEST_LOCATIONS.keys(),
@@ -2143,7 +2270,18 @@ region_locs: dict[str, set[str]] = {
     "STAIRWELL": STAIRWELL_LOCATIONS.keys(),
     "UNDER_THE_STAIRS": UNDER_THE_STAIRS_LOCATIONS.keys(),
     "ROOF": ROOF_LOCATIONS.keys(),
-    "ELEVATOR": ELEVATOR_LOCATIONS.keys()
+    "ELEVATOR": ELEVATOR_LOCATIONS.keys(),
+    # MEAT
+    "MEAT_CENTRAL": MEAT_CENTRAL_LOCATIONS.keys(),
+    "MEAT_GROUND_FLOOR": MEAT_GROUND_FLOOR_LOCATIONS.keys(),
+    "MEAT_SIBYL": MEAT_SIBYL_LOCATIONS.keys(),
+    "MEAT_LYLE": MEAT_LYLE_LOCATIONS.keys(),
+    "MEAT_TV": MEAT_TV_LOCATIONS.keys(),
+    "MEAT_SPINE": MEAT_SPINE_LOCATIONS.keys(),
+    "MEAT_SUMMER": MEAT_SUMMER_LOCATIONS.keys(),
+    "MEAT_TOILET": MEAT_TOILET_LOCATIONS.keys(),
+    "MEAT_HELLCAR": MEAT_HELLCAR_LOCATIONS.keys(),
+    "MEAT_EYEBALL": MEAT_EYEBALL_LOCATIONS.keys(),
 }
 
 
@@ -2223,5 +2361,6 @@ location_name_groups: dict[str, set[str]] = {
         "B_OOZE_MACHINE_MERCHANT_3",
         "B_OOZE_MACHINE_MERCHANT_4",
         "B_OOZE_MACHINE_MERCHANT_5",
-    }
+    },
+    "SAFE": { id for id, data in location_table.items() if data.category == LC.SAFE_LOOT },
 }

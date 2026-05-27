@@ -52,8 +52,7 @@ def create_all_items(world: LookOutsideWorld):
         unique_items = []
         remaining_items = []
 
-        # todo: bring these back
-        excluded_items = {"Iris Key"}
+        excluded_items = set()
 
         precollect_games(world)
         precollect_arms(world)

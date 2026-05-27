@@ -4,7 +4,8 @@ from worlds.look_outside.items_consts import num_multiple_items
 
 from typing_extensions import NamedTuple
 from worlds.look_outside.rules_consts import can_leigh_quest, can_open_any_simple_lock, \
-can_access_stairwell, can_clear_with_herbicide, can_clear_with_sapper_charge, can_access_elevator
+can_access_stairwell, can_clear_with_herbicide, can_clear_with_sapper_charge, can_access_elevator, \
+can_open_with_iris_key
 
 # shade rules go here because i use them here
 can_access_all_large_shades = And(
@@ -140,13 +141,24 @@ f3_regions_table: dict[str, RegionData] = {
         "TAXIDERMY_DOOR": ExitData("APT_30_TAXIDERMY_FLESH", Has("Shrunken Head"))}),
     "APT_30_TAXIDERMY_FLESH": RegionData(),
     "APT_31_STARGAZER": RegionData(exits={
-        "GLITCH_WORLD_TV": ExitData("GLITCH_WORLD_MAIN", Has("Unlabeled Cartridge"))
+        "GLITCH_WORLD_TV": ExitData("GLITCH_WORLD_MAIN", Has("Unlabeled Cartridge")),
+        "APT_33_MEAT_RUBBLE": ExitData(
+            "MEAT_SPINE", can_clear_with_sapper_charge
+        )
     }),
     "APT_32_TEETH": RegionData(exits={
         "MASTER_BEDROOM_DOOR": ExitData("APT_32_MASTER_BEDROOM_KITCHEN", Has("Door Knob"))}),
     "APT_32_MASTER_BEDROOM_KITCHEN": RegionData(),
-    "APT_35_SIBYL": RegionData(),
-    "APT_36_WOUNDED": RegionData(),
+    "APT_35_SIBYL": RegionData(
+        exits={
+            "AWAKENED_SIBYL_PORTAL": ExitData("MEAT_SIBYL", Has("AWAKENED_SIBYL"))
+        }
+    ),
+    "APT_36_WOUNDED": RegionData(
+        exits={
+            "APT_36_TV_IRIS_DOOR": ExitData("MEAT_TV", can_open_with_iris_key)
+        }
+    ),
     "APT_37_VINCENT": RegionData(
         exits={"APT_37_LOCKED_DOOR": ExitData("APT_37_LOCKED_ROOM", can_open_any_simple_lock)}
     ),
@@ -344,7 +356,11 @@ f2_west_regions_table = {
     "APT_28_FLOODED_ABYSSAL": RegionData(exits={
         "HADAL_DOOR": ExitData("APT_28_FLOODED_HADAL", Has("Hadal Valve"))
     }),
-    "APT_28_FLOODED_HADAL": RegionData()
+    "APT_28_FLOODED_HADAL": RegionData(
+        exits={
+            "APT_28_HADAL_IRIS_DOOR": ExitData("MEAT_SUMMER", can_open_with_iris_key)
+        }
+    )
 }
 
 f2_east_regions_table = {
@@ -368,7 +384,9 @@ f2_east_regions_table = {
             "LYLE_BEDROOM_DOOR": ExitData("LYLE_BEDROOM", can_clear_with_herbicide)
             }),
     "LYLE_DARK_ROOM": RegionData(),
-    "LYLE_BEDROOM": RegionData(),
+    "LYLE_BEDROOM": RegionData(exits={
+        "LYLE_BEDROOM_IRIS_DOOR": ExitData("MEAT_LYLE", can_open_with_iris_key)
+    }),
     "APT_22_HARRIET": RegionData(),
     "LEIGHS_APARTMENT": RegionData(),
     "LEIGHS_APARTMENT_QUEST": RegionData(),
@@ -397,6 +415,7 @@ f1_regions_table: dict[str, RegionData] = {
             "AURELIUS_CLOSET_DOOR": ExitData("AURELIUS_CLOSET"),
             "F1_STAIRWELL_EXIT": ExitData("STAIRWELL"),
             "AUDREY_HALL": ExitData("AUDREY_VENDING_STOCK"),
+            "EYEBALL_ROOM_IRIS_LOCK": ExitData("MEAT_EYEBALL", can_open_with_iris_key)
         }
     ),
     "AUDREY_VENDING_STOCK": RegionData(),
@@ -422,6 +441,9 @@ f1_regions_table: dict[str, RegionData] = {
     "APT_11_ABYSS": RegionData(),
     "APT_12_ENTRYWAY": RegionData(exits={
         "APT_12_HIDDEN_DOOR": ExitData("APT_12_MAIN", Has("Jasper's Key"))
+    }),
+    "APT_12_KITCHEN_CLOSET": RegionData(exits={
+        "APT_12_KITCHEN_CLOSET_DOOR" : ExitData("APT_12_MAIN")
     }),
     "APT_12_MAIN": RegionData(exits={
         "APT_12_WAll_GAP": ExitData("APT_12_WALLS", can_clear_with_herbicide),
@@ -462,7 +484,11 @@ ground_regions_table: dict[str, RegionData] = {
         "UNLABELED_CARTRIDGE_PLANET_LOCK": ExitData("OFFICE_UNLABELED_CARTRIDGE_ROOM", unlabeled_planet_lock)
     }),
     "OFFICE_UNLABELED_CARTRIDGE_ROOM": RegionData(),
-    "WOMENS_BATHROOM": RegionData(),
+    "WOMENS_BATHROOM": RegionData(
+        exits={
+            "TOILET_IRIS_DOOR": ExitData("MEAT_TOILET", can_open_with_iris_key)
+        }
+    ),
     "CORNER_STORE": RegionData(),
     "MUTTS_BACK_ROOM": RegionData(exits={
         "MUTTS_BACK_DOOR": ExitData("MUTTS_STOCK", Has("KILLED_MUTT")),
@@ -551,7 +577,8 @@ basement_regions_table: dict[str, RegionData] = {
         # need basement key for blackout mode because it disables the elevator
         "BLACKOUT_MODE": ExitData("GARAGE_UTILITY_ROOM_BLACKOUT", And(can_access_elevator, Has("Basement Key"))),
         "BOILER_ROOM_FUNGAL_MAZE_DOOR": ExitData("BOILER_ROOM_FUNGAL_MAZE"),
-        "BASEMENT_SHADE_WEST": ExitData("BASEMENT_SHADE")
+        "BASEMENT_SHADE_WEST": ExitData("BASEMENT_SHADE"),
+        "HELLCAR_LAIR_IRIS_DOOR": ExitData("MEAT_HELLCAR", can_open_with_iris_key)
     }),
     "BOILER_ROOM_FUNGAL_MAZE": RegionData(exits={
         "BOILER_ROOM_NORTH_EXIT": ExitData("BASEMENT_WEST_PARKING_GARAGE"),
@@ -595,6 +622,59 @@ misc_regions_table: dict[str, RegionData] = {
 
 }
 
+meat_regions_table: dict[str, RegionData] = {
+    "MEAT_CENTRAL": RegionData(
+        exits={
+            "LAUNDROMAT_MEAT_EXIT": ExitData("GROUND_FLOOR_HALL_EAST"),
+            "RAT_LAIR_MEAT_EXIT": ExitData("FLOOR_1_MAZE"),
+        }
+    ),
+    "MEAT_GROUND_FLOOR": RegionData(),
+    "MEAT_SIBYL": RegionData(
+        exits={
+            "SYBIL_1WAY_DOOR": ExitData("MEAT_CENTRAL"),
+            "SYBIL_APT_1WAY_DOOR": ExitData("APT_12_KITCHEN_CLOSET")
+        }),
+    "MEAT_LYLE": RegionData(
+        exits={
+            "LYLE_1WAY_DOOR": ExitData("MEAT_SPINE"),
+        }
+    ),
+    "MEAT_TV": RegionData(
+        exits={
+             "36_MEAT_EXIT": ExitData("APT_36_WOUNDED")
+        }
+    ),
+    "MEAT_SPINE": RegionData(
+        exits={
+            "STAIRWELL_MEAT_EXIT": ExitData("STAIRWELL")
+        }
+    ),
+    "MEAT_SUMMER": RegionData(
+        exits={
+            "SUMMER_1WAY_DOOR": ExitData("MEAT_GROUND_FLOOR")
+        }
+    ),
+    "MEAT_TOILET": RegionData(
+        exits={
+            "TOILET_1WAY_DOOR": ExitData("MEAT_GROUND_FLOOR"),
+        }
+    ),
+    "MEAT_HELLCAR": RegionData(
+        exits={
+            "HELLCAR_1WAY_DOOR": ExitData("MEAT_CENTRAL"),
+        }
+    ),
+    "MEAT_EYEBALL": RegionData(
+        exits={
+            "EYEBALL_1WAY_DOOR": ExitData("MEAT_SPINE"),
+        }
+    ),
+
+
+
+}
+
 all_regions_table = {
     **misc_regions_table,
     **f3_regions_table,
@@ -605,7 +685,8 @@ all_regions_table = {
     **f2_west_regions_table,
     **f1_regions_table,
     **ground_regions_table,
-    **basement_regions_table
+    **basement_regions_table,
+    **meat_regions_table
 }
 
 region_name_groups = {

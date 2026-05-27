@@ -56,7 +56,7 @@ def get_item_id(item_data: ItemData) -> int:
 main_item_table: dict[str, ItemData] = {
     "Healing Spray": ItemData(ItemCat.ITEM, {ItemTag.USEFUL}, 2),
     "Suturing Kit": ItemData(ItemCat.ITEM, {ItemTag.USEFUL, ItemTag.UNIQUE}, 3),
-    "Medic-in-a-jar": ItemData(ItemCat.ITEM, {ItemTag.USEFUL}, 4),
+    "Medic-in-a-jar": ItemData(ItemCat.ITEM, {ItemTag.USEFUL, ItemTag.UNIQUE}, 4),
     "Rat Baby Thing": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE}, 5),
     "Eye Drops": ItemData(ItemCat.ITEM, {ItemTag.USEFUL}, 6),
     "Bandage": ItemData(ItemCat.ITEM, set(), 7),
@@ -356,8 +356,8 @@ main_item_table: dict[str, ItemData] = {
     "Iris Key": ItemData(ItemCat.ITEM, {ItemTag.BREAKABLE_KEY}, 395),
     "Rebreather": ItemData(ItemCat.ITEM, {ItemTag.UNIQUE}, 396),
     "Cooking Book": ItemData(ItemCat.ITEM, set(), 397),
-    "Strange Key": ItemData(ItemCat.ITEM, {ItemTag.UNIQUE, ItemTag.CHECK_GATE}, 398),
-    "Old Key": ItemData(ItemCat.ITEM, set(), 399),
+    #"Strange Key": ItemData(ItemCat.ITEM, {ItemTag.UNIQUE, ItemTag.CHECK_GATE}, 398), for boss rush; not including yet
+    #"Old Key": ItemData(ItemCat.ITEM, set(), 399),
     "Clyde's Key": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 403),
     "Jennifer's Key": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 404),
     "Auguste's Key": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 405),
@@ -942,7 +942,7 @@ crafting_recipes: dict[str, set[tuple[str, str]]] = {
 num_multiple_items: Dict[str, int] = {
     "Progressive Loose Manuscript": 2,
     "Progressive Rat Child": 2,
-    "Simple Key": 27, # 13 safes + 12 kaeley locks + 2 locked doors
+    "Simple Key": 26, # 12 safes + 12 kaeley locks + 2 locked doors
     "green key": 1,
     "red key": 1,
     "yellow key": 2,
@@ -952,7 +952,7 @@ num_multiple_items: Dict[str, int] = {
     "Sapper Charge": 5,
     "Two-Dollar Coin": 2,
     "Dollar Coin": 4,
-    "Iris Key": 0, # todo: REAL NUMBER
+    "Iris Key": 6,
     "Herbicide": 6,
     "Ice Melt Salt": 19,
     "Vending Machine Snack Money": 6, # used for the 4 $0.75 items on the 3rd floor machine and the $1.50 coffee machine on gf

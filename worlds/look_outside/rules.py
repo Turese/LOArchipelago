@@ -60,12 +60,9 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
         world.set_rule(world.get_location(get_location_name("GAME_SKILL_CROSSWORD_CHALLENGE", world)), Has("Auntie Wilma's Crossword Challenge"))
 
     # door rules
-
     if (world.options.randomize_door_encounters == 1):
         world.set_rule(world.get_location(get_location_name("DOOR_GAMER_KATANA", world)), Has("Massacre Princess"))
         world.set_rule(world.get_location(get_location_name("DOOR_HARRIET", world)), Has("Sophie"))
-
-
 
     # f3 rules
     world.set_rule(world.get_location(get_location_name("APT_33_RECRUIT_PHILLIPPE", world)), Has("Phillippe's Remains"))
@@ -127,16 +124,8 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     world.set_rule(world.get_location(get_location_name("APT_28_TWILIGHT_PIRANHAS_COMBAT_VICTORY", world)), Has("ACTIVATED_PIRANHAS"))
 
     # locked safes
-    world.set_rule(world.get_location(get_location_name("APT_31_BEDROOM_SAFE_ITEM", world)), can_open_any_simple_lock)
-    world.set_rule(world.get_location(get_location_name("APT_32_MASTER_BEDROOM_SAFE_ITEM", world)), can_open_any_simple_lock)
-    world.set_rule(world.get_location(get_location_name("APT_36_BEDROOM_SAFE_ITEM", world)), can_open_any_simple_lock)
-    world.set_rule(world.get_location(get_location_name("APT_21_CLOSET_SAFE", world)), can_open_any_simple_lock)
-    world.set_rule(world.get_location(get_location_name("APT_24_SAFE_ITEM", world)), can_open_any_simple_lock)
-    world.set_rule(world.get_location(get_location_name("FRED_TOXIC_ROOM_SAFE", world)), can_open_any_simple_lock)
-    world.set_rule(world.get_location(get_location_name("APT_18_E_SAFE_ITEM", world)), can_open_any_simple_lock)
-    world.set_rule(world.get_location(get_location_name("CORNER_STORE_STORAGE_SAFE", world)), can_open_any_simple_lock)
-    world.set_rule(world.get_location(get_location_name("MAILROOM_N_SAFE", world)), can_open_any_simple_lock)
-    world.set_rule(world.get_location(get_location_name("LL_BEDROOM_SAFE", world)), can_open_any_simple_lock)
+    for location_id in location_name_groups["SAFE"]:
+            world.set_rule(world.get_location(get_location_name(location_id, world)), can_open_any_simple_lock)
 
     # nestor quest rules
     if world.options.include_nestor_quest != 0:

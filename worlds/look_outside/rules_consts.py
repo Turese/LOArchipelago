@@ -20,6 +20,8 @@ can_access_stairwell = Has("Padlock Key")
 
 can_clear_with_herbicide = Has("Herbicide", count=num_multiple_items["Herbicide"])
 can_clear_with_sapper_charge = Has("Sapper Charge", count=num_multiple_items["Sapper Charge"])
+can_open_with_iris_key = Has("Iris Key", count=num_multiple_items["Iris Key"])
+
 
 met_all_astronomers = HasAll("MET_ASTER", "MET_JASPER", "MET_AURELIUS", "MET_BERYL")
 
