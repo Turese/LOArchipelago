@@ -184,9 +184,9 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
 
 flawed_ritual_endings = {"FLAWED_RITUAL_ENDING", "SCREAMING_SKIES_ENDING", "ETERNAL_FATE_ENDING", "XIN_AMON_ENDING", "MASK_ENDING"}
 
-perfect_rituals = {"PERFECT_RITUAL_ENDING", "PROMISE_ENDING", "TRUE_FINAL_ENDING"}
+advanced_perfect_rituals = {"PROMISE_ENDING", "TRUE_FINAL_ENDING"}
 
-all_rituals = {*flawed_ritual_endings, *perfect_rituals}
+all_rituals = {*flawed_ritual_endings, "PERFECT_RITUAL_ENDING", *advanced_perfect_rituals}
 
 all_roof_endings = {*all_rituals, "FAILED_RITUAL_ENDING"}
 
@@ -201,13 +201,15 @@ def set_completion_condition(world: LookOutsideWorld) -> None:
     elif player_goal == PlayerGoal.option_any_partial_ritual_ending:
         world.set_completion_rule(HasAny(*all_rituals))
     elif player_goal == PlayerGoal.option_any_perfect_ritual_ending:
-        world.set_completion_rule(HasAny(*perfect_rituals))
+        world.set_completion_rule(Has("PERFECT_RITUAL_ENDING"))
     elif player_goal == PlayerGoal.option_screaming_skies:
         world.set_completion_rule(Has("SCREAMING_SKIES_ENDING"))
     elif player_goal == PlayerGoal.option_promise:
         world.set_completion_rule(Has("PROMISE_ENDING"))
     elif player_goal == PlayerGoal.option_mask:
         world.set_completion_rule(Has("MASK_ENDING"))
+    elif player_goal == PlayerGoal.option_true_final:
+        world.set_completion_rule(Has("TRUE_FINAL_ENDING"))
     elif player_goal == PlayerGoal.option_xin_amon:
         world.set_completion_rule(Has("XIN_AMON_ENDING"))
     elif player_goal == PlayerGoal.option_unity:

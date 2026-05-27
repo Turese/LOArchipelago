@@ -2,7 +2,8 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from worlds.look_outside.options import StartingGames, IncludeArms
+from worlds.look_outside.options import StartingGames, IncludeArms,\
+    LookOutsideOptions, PlayerGoal
 
 from worlds.look_outside.items_consts import ItemCat, ItemTag, item_table, item_name_groups,\
     num_multiple_items, LOItem
@@ -12,23 +13,42 @@ from BaseClasses import ItemClassification
 if TYPE_CHECKING:
     from .__init__ import LookOutsideWorld
 
+def check_gate_classification_by_options(item: str, options: LookOutsideOptions) -> ItemClassification:
+    if item == "Rusty Crown":
+        if options.rusty_crown:
+            return ItemClassification.progression
+        else:
+            return ItemClassification.useful
+    if item in item_name_groups["QUEST_ROOMMATES"]:
+        if options.include_roommate_quests:
+            return ItemClassification.progression
+        else:
+            return ItemClassification.useful
+    if item in item_name_groups["USEFUL_SKILL_VIDEO_GAME"]:
+        if options.include_game_skills:
+            return ItemClassification.progression
+    if options.include_mask:
+        if item == "Honko's Grand Journey": # needed to fight honko
+            return ItemClassification.progression
+    if options.allow_killing_shopkeepers:
+        if item in item_name_groups["SHOPKEEPER_PROGRESSION_CASH"]:
+            return ItemClassification.useful
+        else:
+            return ItemClassification.progression
+    if options.goal in { PlayerGoal.option_all_roof_endings, PlayerGoal.option_all_endings, PlayerGoal.option_true_final }:
+        if item == "Skill: Meteor Strike":
+            return ItemClassification.progression
+    else:
+        if item == "Skill: Meteor Strike":
+            return ItemClassification.filler
+    return ItemClassification.progression
+
 def create_lo_item(world: LookOutsideWorld, item: str) -> LOItem:
     classification = ItemClassification.filler
     item_info = item_table[item]
-    
-    if (item == "Rusty Crown" and world.options.rusty_crown == 0): 
-        classification = ItemClassification.useful
-    elif (world.options.include_roommate_quests == 0 and item in item_name_groups["QUEST_ROOMMATES"]):
-        classification = ItemClassification.useful
-    elif (world.options.include_roommate_quests == 0 and item == "Cell Phone"):
-        classification = ItemClassification.filler
-    elif world.options.include_game_skills == 0 and item in item_name_groups["USEFUL_SKILL_VIDEO_GAME"]:
-        if item == "Honko's Grand Journey" and world.options.include_mask == 1:
-            classification = ItemClassification.progression
-        else:
-            classification = ItemClassification.useful
-    elif ItemTag.CHECK_GATE in item_info.tags or ItemTag.BREAKABLE_KEY in item_info.tags or ItemTag.OFFERING in item_info.tags or ItemTag.SPECIAL_CURRENCY in item_info.tags:
-        classification = ItemClassification.progression
+
+    if ItemTag.CHECK_GATE in item_info.tags or ItemTag.BREAKABLE_KEY in item_info.tags or ItemTag.OFFERING in item_info.tags or ItemTag.SPECIAL_CURRENCY in item_info.tags:
+        classification = check_gate_classification_by_options(item, world.options)
     elif item_info.category == ItemCat.SKILL:
         classification = ItemClassification.useful
     elif item_info.category == ItemCat.MISC:
@@ -57,25 +77,27 @@ def create_all_items(world: LookOutsideWorld):
         precollect_games(world)
         precollect_arms(world)
 
-        if world.options.include_nestor_quest == 0:
+        if not world.options.include_nestor_quest:
             for item in item_name_groups["NESTOR_QUEST_INTRO"]:
                 excluded_items.add(item)
 
-        if world.options.include_test_gear == 0:
+        if not world.options.include_test_gear:
             for item in item_name_groups["BROKEN_TEST_ITEM"]:
                 excluded_items.add(item)
 
-        if world.options.include_mask == 0:
+        if not world.options.include_mask:
             for item in item_name_groups["MASK_AREA_ENTRY"]:
                 excluded_items.add(item)
 
-        if world.options.include_game_skills == 0:
+        if not world.options.include_game_skills:
             excluded_items.update(item_name_groups["VIDEO_GAME_SKILL"])
 
-        for item in world.multiworld.precollected_items[world.player]:
-            excluded_items.add(item.name)
+        if not world.options.include_roommate_quests:
+            excluded_items.add("Cell Phone")
 
-        
+        for item in world.multiworld.precollected_items[world.player]:
+            if ItemTag.UNIQUE in item_table[item.name].tags:
+                excluded_items.add(item.name)
 
         for item_name, item_info in item_table.items():
             if item_name in excluded_items:

@@ -112,7 +112,6 @@ class LookOutsideOptions(PerGameCommonOptions):
     include_mask: IncludeMaskLocations
     include_roommate_quests: IncludeRoommateQuests
     include_game_skills: IncludeGameSkills
-    #lockpicks_in_logic: LockpicksInLogic
     starting_games: StartingGames
     death_link: DeathLink
     rat_baby_name: RatBabyName
@@ -127,7 +126,7 @@ option_groups = [
     ),
     OptionGroup(
         "Item Options",
-        [IncludeTestGear, IncludeArms, StartingGames], # LockpicksInLogic
+        [IncludeTestGear, IncludeArms, StartingGames],
     ),
     OptionGroup("Other Options", [DeathLink, RatBabyName])
 ]
@@ -135,19 +134,18 @@ option_groups = [
 # Finally, we can define some option presets if we want the player to be able to quickly choose a specific "mode".
 option_presets = {
     "default": {
-        "goal": 1,
-        "include_arms": 0,
+        "goal": PlayerGoal.option_promise,
+        "include_arms": IncludeArms.option_start_unarmed,
         "friendly_fire": False,
         "rat_friendly_fire": False,
         "rusty_crown": True,
         "include_test_gear": False,
         "include_nestor_quest": False,
-        "include_shades": 0,
+        "include_shades": IncludeShades.option_large_shades_and_spider,
         "include_mask": True,
         "include_roommate_quests": True,
-        #"lockpicks_in_logic": True,
-        "starting_games": 2,
-        "include_game_skills": 1,
+        "starting_games": StartingGames.option_none,
+        "include_game_skills": True,
         "randomize_door_encounters": True,
         "allow_killing_shopkeepers": False,
         "death_link": False
