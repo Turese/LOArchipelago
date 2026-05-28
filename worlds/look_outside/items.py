@@ -14,6 +14,12 @@ if TYPE_CHECKING:
     from .__init__ import LookOutsideWorld
 
 def check_gate_classification_by_options(item: str, options: LookOutsideOptions) -> ItemClassification:
+    
+    if item == "Small Red Key":
+        if options.goal == PlayerGoal.option_all_endings or options.goal == PlayerGoal.option_unity:
+            return ItemClassification.progression
+        else:
+            return ItemClassification.filler
     if item == "Rusty Crown":
         if options.rusty_crown:
             return ItemClassification.progression
@@ -38,8 +44,12 @@ def check_gate_classification_by_options(item: str, options: LookOutsideOptions)
     if options.goal in { PlayerGoal.option_all_roof_endings, PlayerGoal.option_all_endings, PlayerGoal.option_true_final }:
         if item == "Skill: Meteor Strike":
             return ItemClassification.progression
+        if item == "Massacre Princess":
+            return ItemClassification.progression
     else:
         if item == "Skill: Meteor Strike":
+            return ItemClassification.filler
+        if item == "Massacre Princess" and not options.include_game_skills:
             return ItemClassification.filler
     return ItemClassification.progression
 
@@ -142,7 +152,7 @@ def precollect_games(world: LookOutsideWorld):
     if game_option == StartingGames.option_random_3:
         game_list = list(item_name_groups["VIDEO_GAME"])
         world.multiworld.random.shuffle(game_list)
-        for game in game_list[:4]:
+        for game in game_list[:3]:
             world.multiworld.push_precollected(create_lo_item(world, game))
 
 # yaml option for starting arms

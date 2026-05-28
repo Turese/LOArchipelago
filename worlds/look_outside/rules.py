@@ -3,17 +3,19 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from rule_builder.options import OptionFilter
-from worlds.look_outside.locations import get_location_name
+from worlds.look_outside.locations import LOLocation, get_location_name
 from worlds.look_outside.regions import exclude_regions, exclude_exits
 
 from .options import PlayerGoal
 
-from worlds.look_outside.items_consts import item_name_groups, \
+from worlds.look_outside.items_consts import LOItem, item_name_groups, \
     num_multiple_items
 
 from worlds.look_outside.regions_consts import all_regions_table
 from worlds.look_outside.rules_consts import can_nestor_rafta, can_open_any_simple_lock, can_access_basement, can_leigh_quest,\
-    met_all_astronomers
+    met_all_astronomers, can_perform_flawed_ritual, can_keep_promise,\
+    can_perform_perfect_ritual, can_perform_mask_ritual, can_perform_eternal_fate_ritual,\
+    can_perform_xin_amon_ritual, can_true_final_skill, can_true_final_game
 from rule_builder.rules import Has, And, HasAll, HasAny, Or
 from worlds.look_outside.locations_consts import location_name_groups
 
@@ -61,8 +63,7 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
 
     # door rules
     if (world.options.randomize_door_encounters == 1):
-        world.set_rule(world.get_location(get_location_name("DOOR_GAMER_KATANA", world)), Has("Massacre Princess"))
-        world.set_rule(world.get_location(get_location_name("DOOR_HARRIET", world)), Has("Sophie"))
+        world.set_rule(world.get_location(get_location_name("DOOR_HARRIET_REUNITE", world)), Has("Sophie"))
 
     # f3 rules
     world.set_rule(world.get_location(get_location_name("APT_33_RECRUIT_PHILLIPPE", world)), Has("Phillippe's Remains"))
@@ -81,6 +82,10 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
 
     world.set_rule(world.get_location(get_location_name("APT_37_PROJECTOR_ROOM_PHOTO", world)), And(Has("Negative Disc"), Has("Photo Paper")))
 
+    world.get_region("APT_35_SIBYL").add_event(
+                "SIBYL", "AWAKENED_SIBYL", rule=Has("Telescope"), location_type=LOLocation, item_type=LOItem
+            )
+    
     # f2 rules
     world.set_rule(world.get_location(get_location_name("F2_RECRUIT_ASTER", world)), And(Has("MET_AURELIUS"), Has("MET_JASPER"), can_access_basement))  # todo: event for meeting astronomers instead?
     
@@ -94,7 +99,7 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
 
     world.set_rule(world.get_location(get_location_name("APT_27_COMPLETE_MANUSCRIPT", world)), Has("Progressive Loose Manuscript"))
 
-    if (world.options.allow_killing_shopkeepers == 1):
+    if (world.options.allow_killing_shopkeepers):
         world.set_rule(world.get_location(get_location_name("APT_24_REPTILE_FOOTBALL", world)), HasAny("Two Hundred Dollars", "KILLED_EUGENE")) 
     else:
         world.set_rule(world.get_location(get_location_name("APT_24_REPTILE_FOOTBALL", world)), Has("Two Hundred Dollars")) 
@@ -107,6 +112,8 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     world.set_rule(world.get_location(get_location_name("TRUE_FRED_RETURN_FACE", world)), Has("Torn-Off Face"))
 
     # gf rules
+
+    world.set_rule(world.get_location(get_location_name("LAUNDRY_JEANNES_LAUNDRY", world)), Has("MET_JEANNE"))
 
     world.set_rule(world.get_location(get_location_name("GF_OFFICE_JASPERS_KEY", world)), met_all_astronomers)
     world.set_rule(world.get_location(get_location_name("GF_OFFICE_JASPER_FIX_TELESCOPE", world)), Has("Telescope Pieces"))
@@ -193,7 +200,63 @@ all_roof_endings = {*all_rituals, "FAILED_RITUAL_ENDING"}
 all_endings = {*all_roof_endings, "UNITY_ENDING", "WORDS_OF_POWER_ENDING"}
 
 def set_completion_condition(world: LookOutsideWorld) -> None:
+
     player_goal = world.options.goal
+
+    # ENDINGS
+    
+    if player_goal == PlayerGoal.option_all_endings or player_goal == PlayerGoal.option_unity:
+        world.get_region("APT_12_WALLS").add_event(
+            "UNITY_ENDING_NOTE", "UNITY_ENDING", rule=Has("Small Red Key"),location_type=LOLocation, item_type=LOItem
+        )
+    if player_goal == PlayerGoal.option_all_endings:
+        world.get_region("CROSSWORD_DUNGEON").add_event("FREE_WILHELMINA", "WORDS_OF_POWER_ENDING")
+
+    roof = world.get_region("ROOF")
+
+    roof.add_event(
+        "RITUAL_CIRCLE_NO_ASTRONOMERS", "FAILED_RITUAL_ENDING", location_type=LOLocation, item_type=LOItem
+    )
+    roof.add_event(
+        "RITUAL_CIRCLE_SOME_OFFERINGS", "FLAWED_RITUAL_ENDING", rule=can_perform_flawed_ritual, location_type=LOLocation, item_type=LOItem
+    )
+
+    roof.add_event(
+        "RITUAL_CIRCLE_PERFECT", "PERFECT_RITUAL_ENDING", rule=can_perform_perfect_ritual, location_type=LOLocation, item_type=LOItem
+    ) # no distinction between truth and denial here. this should fire off upon killing the E4
+
+    roof.add_event(
+        "RITUAL_CIRCLE_PERFECT_PROMISE", "PROMISE_ENDING", rule=can_keep_promise, location_type=LOLocation, item_type=LOItem
+    )
+
+    roof.add_event(
+        "RITUAL_CIRCLE_WEIRD_OFFERINGS", "MASK_ENDING", rule=can_perform_mask_ritual, location_type=LOLocation, item_type=LOItem
+    )
+
+    roof.add_event(
+        "RITUAL_CIRCLE_GUINEA_PIG", "ETERNAL_FATE_ENDING", rule=can_perform_eternal_fate_ritual, location_type=LOLocation, item_type=LOItem
+    )
+
+    roof.add_event(
+        "RITUAL_CIRCLE_GUINEA_PIG_PERFECT", "XIN_AMON_ENDING", rule=can_perform_xin_amon_ritual, location_type=LOLocation, item_type=LOItem
+    )
+
+    if player_goal == PlayerGoal.option_all_endings or player_goal == PlayerGoal.option_all_roof_endings or player_goal == PlayerGoal.option_true_final:
+        if world.options.include_game_skills:
+            roof.add_event(
+                "RITUAL_CIRCLE_METEOR_STRIKE", "TRUE_FINAL_ENDING", rule=can_true_final_skill, location_type=LOLocation, item_type=LOItem
+            )
+        else:
+            roof.add_event(
+                "RITUAL_CIRCLE_METEOR_STRIKE", "TRUE_FINAL_ENDING", rule=can_true_final_game, location_type=LOLocation, item_type=LOItem
+            )
+
+    roof.add_event(
+        "RITUAL_CIRCLE_PERFECT_FLEE", "SCREAMING_SKIES_ENDING", rule=can_perform_perfect_ritual, location_type=LOLocation, item_type=LOItem
+    )
+
+
+
     if player_goal == PlayerGoal.option_all_endings:
         world.set_completion_rule(HasAll(*all_endings))
     elif player_goal == PlayerGoal.option_all_roof_endings:

@@ -38,6 +38,7 @@ class IncludeRatFriendlyFire(Toggle):
 
 class IncludeRustyCrown(Toggle):
     """This controls whether locations specific to interacting with non-hostile rats are randomized."""
+    display_name = "Include Rusty Crown Locations"
 
 class IncludeTestGear(Toggle):
     """Adds Test Armor and Test Swords to the item pool. These items are incredibly busted; they make most fights trivial."""
@@ -89,6 +90,7 @@ class DeathLink(Toggle):
 class RatBabyName(FreeText):
     """This controls the rat child's name, default is 'Rat'."""
     display_name = "Rat Child Name"
+    default = "Rat"
 
 class AllowKillingShopkeepers(Toggle):
     """This controls whether players are allowed to kill Eugene or Mutt to get their stuff. Default false"""
@@ -96,7 +98,7 @@ class AllowKillingShopkeepers(Toggle):
 
 class RandomizeDoorEncounters(Toggle):
     """Randomize items from door encounters, including merchants. Default true."""
-    display_name = "Randomize Door Encounter Items"
+    display_name = "Randomize Door Encounter Rewards"
 
 
 @dataclass
@@ -151,5 +153,3 @@ option_presets = {
         "death_link": False
     },
 }
-
-

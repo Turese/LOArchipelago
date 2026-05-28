@@ -381,7 +381,8 @@ f2_east_regions_table = {
         exits={
             "LYLE_BATHROOM_F1_CONNECTION": ExitData("F1_RUINED_APARTMENT"),
             "LYLE_DARK_ROOM_DOOR": ExitData("LYLE_DARK_ROOM", Has("Dark Room Key")),
-            "LYLE_BEDROOM_DOOR": ExitData("LYLE_BEDROOM", can_clear_with_herbicide)
+            "LYLE_BEDROOM_DOOR": ExitData("LYLE_BEDROOM", can_clear_with_herbicide),
+            "LYLE_FRONT_DOOR": ExitData("FLOOR_2_EAST")
             }),
     "LYLE_DARK_ROOM": RegionData(),
     "LYLE_BEDROOM": RegionData(exits={
@@ -449,10 +450,8 @@ f1_regions_table: dict[str, RegionData] = {
         "APT_12_WAll_GAP": ExitData("APT_12_WALLS", can_clear_with_herbicide),
     }),
     "APT_12_WALLS": RegionData(exits={
-        "APT_12_UNITY_DOOR": ExitData("APT_12_UNITY_ROOM", Has("Small Red Key")),
         "APT_12_PLANETARIUM_LOCK": ExitData("APT_12_PLANETARIUM_SOUTH", planetarium_lock)
     }),
-    "APT_12_UNITY_ROOM": RegionData(),
     "APT_12_PLANETARIUM_SOUTH": RegionData(),
     "APT_18_OVERGROWN": RegionData(exits={
         "APT_18_HELLEN_QUEST_DOOR": ExitData("APT_18_HELLEN_QUEST", Has("Hellen")),
@@ -527,7 +526,7 @@ ground_regions_table: dict[str, RegionData] = {
 basement_regions_table: dict[str, RegionData] = {
     "BASEMENT_EAST": RegionData(exits={
         "SECURITY_ROOM_PLANET_DOOR": ExitData("SECURITY_ROOM", security_room_planet_lock),
-        "STEVE_APARTMENT": ExitData("STEVE_APARTMENT", Has("Antoine's Key")),  # todo: hardmode lock
+        "STEVE_APARTMENT": ExitData("STEVE_APARTMENT", Has("Antoine's Key")), 
         "APT_B1_ARTHROPOD_DOOR": ExitData("APT_B1_ARTHROPOD"),
         "APT_B2_ANTOINE_DOOR": ExitData("APT_B2_ANTOINE"),
         "B_STAIRWELL_EXIT": ExitData("STAIRWELL"),
@@ -536,7 +535,7 @@ basement_regions_table: dict[str, RegionData] = {
     "BASEMENT_SHADE": RegionData(),
     "APT_B1_ARTHROPOD": RegionData(
         exits={
-            "ARTHROPOD_BATHROOM_DOOR": ExitData("APT_B1_ARTHROPOD_BATHROOM", HasAll("Clyde's Key", "Jennifer's Key", "Auguste's Key"))  # todo: hardmode lock
+            "ARTHROPOD_BATHROOM_DOOR": ExitData("APT_B1_ARTHROPOD_BATHROOM", HasAll("Clyde's Key", "Jennifer's Key", "Auguste's Key")) 
         }
     ),
     "APT_B2_ANTOINE": RegionData(),
@@ -552,7 +551,11 @@ basement_regions_table: dict[str, RegionData] = {
     "SEWER": RegionData(exits={
         "SEWER_GRATES_E_SIDE": ExitData("SEWER_WEST", Has("Sewer Grates Lowered")),
     }),
-    "SEWER_WEST": RegionData(exits={"SEWER_GRATES_W_SIDE": ExitData("SEWER")}),
+    "SEWER_WEST": RegionData(
+        exits={
+            "BOILER_ROOM_FUNGAL_MAZE_CONNECTION": ExitData("BOILER_ROOM_FUNGAL_MAZE"),
+            "SEWER_GRATES_W_SIDE": ExitData("SEWER")
+            }),
     "BASEMENT_STORAGE_PLUTO_ROOM": RegionData(exits={
         "CROSSWORD_SAFE": ExitData("CROSSWORD_DUNGEON", Has("Book of Crossword Puzzles"))
     }),
@@ -575,7 +578,7 @@ basement_regions_table: dict[str, RegionData] = {
         "BASEMENT_WEST_EAST_DOOR": ExitData("BASEMENT_EAST"),
         "GARBAGE_ROOM_ENTRANCE": ExitData("GARBAGE_ROOM"),
         # need basement key for blackout mode because it disables the elevator
-        "BLACKOUT_MODE": ExitData("GARAGE_UTILITY_ROOM_BLACKOUT", And(can_access_elevator, Has("Basement Key"))),
+        "BLACKOUT_MODE": ExitData("GARAGE_UTILITY_ROOM_BLACKOUT", And(can_access_elevator, HasAll("Basement Key", "Padlock Key"))),
         "BOILER_ROOM_FUNGAL_MAZE_DOOR": ExitData("BOILER_ROOM_FUNGAL_MAZE"),
         "BASEMENT_SHADE_WEST": ExitData("BASEMENT_SHADE"),
         "HELLCAR_LAIR_IRIS_DOOR": ExitData("MEAT_HELLCAR", can_open_with_iris_key)

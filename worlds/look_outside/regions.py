@@ -51,7 +51,7 @@ def exclude_regions(world: LookOutsideWorld) -> set[str]:
 
 def exclude_exits(world: LookOutsideWorld) -> set[str]:
     exclude_set = set()
-    if world.options.allow_killing_shopkeepers == 0:
+    if not world.options.allow_killing_shopkeepers:
         exclude_set.add("MUTTS_BACK_DOOR")
         # if player isnt killing shopkeepers, they cant get mutt's stuff through the back door
 

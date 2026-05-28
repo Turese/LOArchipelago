@@ -2,17 +2,13 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from BaseClasses import Location, LocationProgressType
+from BaseClasses import Location
 from worlds.look_outside.locations_consts import location_name_groups, LocationData, location_table, location_to_region,\
-    UNDER_THE_STAIRS_LOCATIONS, FRONT_DOOR_LOCATIONS
+    UNDER_THE_STAIRS_LOCATIONS, FRONT_DOOR_LOCATIONS, APT_22_HARRIET_LOCATIONS
 from worlds.look_outside.items_consts import LOItem
 from worlds.look_outside.regions_consts import stairwell_planet_lock
-from worlds.look_outside.rules_consts import can_perform_flawed_ritual,\
-    can_perform_perfect_ritual, can_perform_mask_ritual, can_perform_eternal_fate_ritual,\
-    can_perform_xin_amon_ritual, can_true_final_skill, can_true_final_game
 from rule_builder.rules import Has
-from worlds.look_outside.rules_consts import can_keep_promise
-from worlds.look_outside.options import IncludeShades
+from worlds.look_outside.options import IncludeShades, PlayerGoal
 
 
 if TYPE_CHECKING:
@@ -53,6 +49,8 @@ def create_events(world: LookOutsideWorld) -> None:
 
     world.get_region("APT_24_EUGENE_SHOP").add_event("EUGENE_SHOP_INTERACT", "KILLED_EUGENE", location_type=LOLocation, item_type=LOItem)
 
+    world.get_region("APT_20_JEANNE").add_event(
+        "APT_20_ENTRYWAY", "MET_JEANNE", location_type=LOLocation, item_type=LOItem)
 
     world.get_region("AURELIUS_CLOSET").add_event("F1_AURELIUS", "MET_AURELIUS", location_type=LOLocation, item_type=LOItem)
 
@@ -88,60 +86,6 @@ def create_events(world: LookOutsideWorld) -> None:
         "MUTT_DOORWAY", "KILLED_MUTT", location_type=LOLocation, item_type=LOItem
     )
 
-    # ENDINGS
-
-    world.get_region("APT_35_SIBYL").add_event(
-        "SIBYL", "AWAKENED_SIBYL", rule=Has("Telescope"), location_type=LOLocation, item_type=LOItem
-    )
-
-    world.get_region("APT_12_UNITY_ROOM").add_event(
-        "UNITY_ENDING_NOTE", "UNITY_ENDING", location_type=LOLocation, item_type=LOItem
-    )
-
-    world.get_region("CROSSWORD_DUNGEON").add_event("FREE_WILHELMINA", "WORDS_OF_POWER_ENDING")
-
-    roof = world.get_region("ROOF")
-
-    roof.add_event(
-        "RITUAL_CIRCLE_NO_ASTRONOMERS", "FAILED_RITUAL_ENDING", location_type=LOLocation, item_type=LOItem
-    )
-    roof.add_event(
-        "RITUAL_CIRCLE_SOME_OFFERINGS", "FLAWED_RITUAL_ENDING", rule=can_perform_flawed_ritual, location_type=LOLocation, item_type=LOItem
-    )
-
-    roof.add_event(
-        "RITUAL_CIRCLE_PERFECT", "PERFECT_RITUAL_ENDING", rule=can_perform_perfect_ritual, location_type=LOLocation, item_type=LOItem
-    ) # no distinction between truth and denial here. this should fire off upon killing the E4
-
-    roof.add_event(
-        "RITUAL_CIRCLE_PERFECT_PROMISE", "PROMISE_ENDING", rule=can_keep_promise, location_type=LOLocation, item_type=LOItem
-    )
-
-    roof.add_event(
-        "RITUAL_CIRCLE_WEIRD_OFFERINGS", "MASK_ENDING", rule=can_perform_mask_ritual, location_type=LOLocation, item_type=LOItem
-    )
-
-    roof.add_event(
-        "RITUAL_CIRCLE_GUINEA_PIG", "ETERNAL_FATE_ENDING", rule=can_perform_eternal_fate_ritual, location_type=LOLocation, item_type=LOItem
-    )
-
-    roof.add_event(
-        "RITUAL_CIRCLE_GUINEA_PIG_PERFECT", "XIN_AMON_ENDING", rule=can_perform_xin_amon_ritual, location_type=LOLocation, item_type=LOItem
-    )
-
-    if world.options.include_game_skills == 1:
-        roof.add_event(
-            "RITUAL_CIRCLE_METEOR_STRIKE", "TRUE_FINAL_ENDING", rule=can_true_final_skill, location_type=LOLocation, item_type=LOItem
-        )
-    else:
-        roof.add_event(
-            "RITUAL_CIRCLE_METEOR_STRIKE", "TRUE_FINAL_ENDING", rule=can_true_final_game, location_type=LOLocation, item_type=LOItem
-        )
-
-    roof.add_event(
-        "RITUAL_CIRCLE_PERFECT_FLEE", "SCREAMING_SKIES_ENDING", rule=can_perform_perfect_ritual, location_type=LOLocation, item_type=LOItem
-    )
-
     # large shades
 
     world.get_region("FLOOR_3_HALL").add_event(
@@ -165,17 +109,19 @@ def create_events(world: LookOutsideWorld) -> None:
     
 def exclude_locations(world: LookOutsideWorld) -> None:
     exclude_set = set()
-    if world.options.include_mask == 0:
-        exclude_set.update(location_name_groups["MASK"])
-    if world.options.include_roommate_quests == 0:
+    if not world.options.include_mask:
+        exclude_set.update(location_name_groups["MASK_OFFERING"])
+    if not (world.options.goal == PlayerGoal.option_all_endings or world.options.goal == PlayerGoal.option_all_roof_endings or world.options.goal == PlayerGoal.option_mask):
+        exclude_set.update(location_name_groups["MASK_ENDING"])
+    if not world.options.include_roommate_quests:
         exclude_set.update(location_name_groups["ROOMMATE_QUEST"])
-    if world.options.friendly_fire == 0:
+    if not world.options.friendly_fire:
         exclude_set.update(location_name_groups["FRIENDLY_FIRE"])
-    if world.options.rat_friendly_fire == 0:
+    if not world.options.rat_friendly_fire:
         exclude_set.update(location_name_groups["RAT_FRIENDLY_FIRE"])
-    if world.options.rusty_crown == 0:
+    if not world.options.rusty_crown:
         exclude_set.update(location_name_groups["RUSTY_CROWN"])
-    if world.options.include_nestor_quest == 0:
+    if not world.options.include_nestor_quest:
         exclude_set.update(location_name_groups["NESTOR_QUEST"])
     if world.options.include_shades == IncludeShades.option_none:
         exclude_set.update(location_name_groups["LARGE_SHADE"])
@@ -188,6 +134,7 @@ def exclude_locations(world: LookOutsideWorld) -> None:
         exclude_set.update(location_name_groups["GAME_SKILLS"])
     if world.options.randomize_door_encounters == 0:
         exclude_set.update(FRONT_DOOR_LOCATIONS.keys())
-    if world.options.allow_killing_shopkeepers == 1:
+        exclude_set.update(APT_22_HARRIET_LOCATIONS.keys())
+    if not world.options.allow_killing_shopkeepers:
         exclude_set.update({"APT_24_EUGENE_COMBAT_VICTORY", "MUTT_COMBAT_VICTORY"})
     return exclude_set

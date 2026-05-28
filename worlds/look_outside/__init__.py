@@ -15,9 +15,6 @@ from worlds.look_outside.web_world import LookOutsideWebworld
 
 from worlds.look_outside.items import create_all_items, create_lo_item
 
-class LOSettings(settings.Group):
-    pass
-
 
 class LookOutsideWorld(CachedRuleBuilderWorld):
     """Look Outside is a survival horror RPG set in a single apartment building.
@@ -27,7 +24,7 @@ class LookOutsideWorld(CachedRuleBuilderWorld):
     game = "Look Outside"  # name of the game/world
     options_dataclass = LookOutsideOptions  # options the player can set
     options: LookOutsideOptions  # typing hints for option results
-    settings: typing.ClassVar[LOSettings]  # will be automatically assigned from type hint
+    settings: typing.ClassVar[settings.Group]  # will be automatically assigned from type hint
     topology_present = True  # show path to required location checks in spoiler
 
     item_name_groups = item_name_groups
@@ -42,8 +39,6 @@ class LookOutsideWorld(CachedRuleBuilderWorld):
     def create_regions(self) -> None:
         create_and_connect_regions(self)
         create_all_locations(self)
-        from Utils import visualize_regions
-        visualize_regions(self.multiworld.get_region("APT_33_HOME", self.player), "my_world.puml")
         
     def create_item(self, item: str) -> LOItem:
         return create_lo_item(self, item)
@@ -60,7 +55,8 @@ class LookOutsideWorld(CachedRuleBuilderWorld):
     def fill_slot_data(self) -> dict[str, any]:
         # If you need access to the player's chosen options on the client side, there is a helper for that.
         return self.options.as_dict(
-            "goal", "include_arms", "friendly_fire", "rusty_crown", "include_test_gear", "include_nestor_quest", 
+            "goal", "friendly_fire", "rusty_crown", "include_nestor_quest", 
             "include_shades", "include_mask", "include_roommate_quests", "starting_games", 
-            "death_link"
+            "death_link", "rat_baby_name", "allow_killing_shopkeepers", "randomize_door_encounters",
+            "include_game_skills"
         )

@@ -236,13 +236,13 @@ FRONT_DOOR_LOCATIONS: dict[str, LocationData] = {
     "DOOR_RECRUIT_GOTHS": LocationData("Door Encounter - Recruit Xaria and Montgomery", LC.RECRUIT, 513),
     "DOOR_GOTHS_COMBAT_VICTORY": LocationData("Door Encounter - Slay Xaria and Montgomery", LC.FRIENDLY_FIRE, 514),
     "DOOR_LIMB_THIEF_COMBAT_VICTORY": LocationData("Door Encounter - Slay Guillaume the Limb Thief", LC.COMBAT_VICTORY, 515),
-    "DOOR_HARRIET": LocationData("Door Encounter - Reunite Harriet and Sophie", LC.EVENT_ITEM, 516),
+    "DOOR_HARRIET_REUNITE": LocationData("Door Encounter - Reunite Harriet and Sophie", LC.EVENT_ITEM, 516),
     "DOOR_HARRIET_COMBAT_VICTORY": LocationData("Door Encounter - Slay Harriet", LC.FRIENDLY_FIRE, 517),
     "DOOR_HARRIET_CURSED_COMBAT_VICTORY": LocationData("Door Encounter - Slay Strange Lady", LC.COMBAT_VICTORY, 518),
     "DOOR_PIZZA": LocationData("Door Encounter - Buy Pizza", LC.EVENT_ITEM, 519),
     "DOOR_PIZZA_GUY_COMBAT_VICTORY": LocationData("Door Encounter - Slay Pizza Guy", LC.FRIENDLY_FIRE, 520),
     "DOOR_MAD_PIE_COMBAT_VICTORY": LocationData("Door Encounter - Slay Mad Pie", LC.COMBAT_VICTORY, 521),
-    "DOOR_FREE_ITEM": LocationData("Door Encounter - Empty Hall Free Item", LC.EVENT_ITEM, 522),
+    "DOOR_FREE_ITEM": LocationData("Door Encounter - Nobody There", LC.EVENT_ITEM, 522),
     "DOOR_HALLWAY_MIMIC_COMBAT_VICTORY": LocationData("Door Encounter - Slay Hallway Mimic", LC.COMBAT_VICTORY, 523),
     "DOOR_WILLIAM_PRIZE_1": LocationData("Door Encounter - Give William Helpful Item", LC.EVENT_ITEM, 524),
     "DOOR_WILLIAM_PRIZE_2": LocationData("Door Encounter - Give William Very Helpful Item", LC.EVENT_ITEM, 525),
@@ -255,12 +255,12 @@ FRONT_DOOR_LOCATIONS: dict[str, LocationData] = {
     "DOOR_FATHER_ANDREW_GIFT": LocationData("Door Encounter - Gift from Father Andrew", LC.EVENT_ITEM, 532),
     "DOOR_FATHER_ANDREW_COMBAT_VICTORY": LocationData("Door Encounter - Slay Father Andrew", LC.FRIENDLY_FIRE, 533),
     "DOOR_WARPED_PRIEST_COMBAT_VICTORY": LocationData("Door Encounter - Slay Warped Priest", LC.COMBAT_VICTORY, 534),
-    "DOOR_HUMPHREY_COMBAT_VICTORY": LocationData("Door Encounter - Slay Humphrey", LC.FRIENDLY_FIRE, 535),
-    "DOOR_GAMER_ITEM_1": LocationData("Door Encounter - Gamer Item 1", LC.MERCHANT, 537),
-    "DOOR_GAMER_ITEM_2": LocationData("Door Encounter - Gamer Item 2", LC.MERCHANT, 538),
-    "DOOR_GAMER_ITEM_3": LocationData("Door Encounter - Gamer Item 3", LC.DOOR_MERCHANT, 539),
-    "DOOR_GAMER_ITEM_4": LocationData("Door Encounter - Gamer Item 4", LC.MERCHANT, 540),
-    "DOOR_GAMER_KATANA": LocationData("Door Encounter - Accept the Gamer's Bribe", LC.MERCHANT, 541),
+    "DOOR_HUMPHREY_DEAL": LocationData("Door Encounter - Trade With Humphrey", LC.EVENT_ITEM, 535),
+    #"DOOR_GAMER_ITEM_JUMPLAD_3": LocationData("Door Encounter - Gamer Item 1", LC.MERCHANT, 537),
+    #"DOOR_GAMER_ITEM_OCTOCOOK": LocationData("Door Encounter - Gamer Item 2", LC.MERCHANT, 538),
+    #"DOOR_GAMER_ITEM_BLOOD_GHOUL": LocationData("Door Encounter - Gamer Item 3", LC.DOOR_MERCHANT, 539),
+    #"DOOR_GAMER_ITEM_MASSACRE_PRINCESS": LocationData("Door Encounter - Gamer Item 4", LC.MERCHANT, 540),
+    #"DOOR_GAMER_KATANA": LocationData("Door Encounter - Accept the Gamer's Bribe", LC.MERCHANT, 541),
     "DOOR_GAMER_COMBAT_VICTORY": LocationData("Door Encounter - Slay the Gamer", LC.FRIENDLY_FIRE, 542),
     "DOOR_TOUGH_GUY_COMBAT_VICTORY": LocationData("Door Encounter - Slay the Tough Guy", LC.FRIENDLY_FIRE, 543),
     "DOOR_BRUTE_COMBAT_VICTORY": LocationData("Door Encounter - Slay Brute", LC.COMBAT_VICTORY, 544),
@@ -270,7 +270,6 @@ FRONT_DOOR_LOCATIONS: dict[str, LocationData] = {
     "DOOR_GUN_TRADER_COMBAT_VICTORY": LocationData("Door Encounter - Slay Gun Trader", LC.FRIENDLY_FIRE, 548),
     "DOOR_GUN_TRADER_CURSED_COMBAT_VICTORY": LocationData("Door Encounter - Slay Cursed Gun Trader", LC.COMBAT_VICTORY, 549),
     "DOOR_FOOD_TRADER_COMBAT_VICTORY": LocationData("Door Encounter - Slay Food Trader", LC.FRIENDLY_FIRE, 550),
-    "BUTCHER_COMBAT VICTORY": LocationData("Door Encounter - Slay Butcher", LC.FRIENDLY_FIRE, 551),
     "DOOR_GENERAL_TRADER_COMBAT_VICTORY": LocationData("Door Encounter - Slay General Trader", LC.FRIENDLY_FIRE, 552),
     "DOOR_FLY_MAN_COMBAT_VICTORY": LocationData("Door Encounter - Slay Fly Man", LC.COMBAT_VICTORY, 553),
     "SEBASTIAN_COMBAT_VICTORY": LocationData("Door Encounter - Slay Sebastian", LC.FRIENDLY_FIRE, 554),
@@ -279,6 +278,9 @@ FRONT_DOOR_LOCATIONS: dict[str, LocationData] = {
     "DOOR_BUTCHER_COMBAT_VICTORY": LocationData("Door Encounter - Slay Butcher", LC.MERCHANT, 557),
     "DOOR_KIND_COMBAT_VICTORY": LocationData("Door Encounter - Slay Kind-Faced Man", LC.FRIENDLY_FIRE, 558),
     "DOOR_RECRUIT_KIND": LocationData("Door Encounter - Welcome Kind-Faced Man Into Your Home", LC.RECRUIT, 559),
+    "DOOR_FATHER_ANDREW_BLESSING": LocationData("Door Encounter - Blessing from Father Andrew", LC.EVENT_ITEM, 560),
+    "DOOR_FATHER_ANDREW_DONATION": LocationData("Door Encounter - Donate to Father Andrew", LC.EVENT_ITEM, 561),
+    "DOOR_PIZZA_TIP": LocationData("Door Encounter - Tip the Pizza Guy", LC.EVENT_ITEM, 562),
 }
 
 APT_33_MEAT_LOCATIONS: dict[str, LocationData] = {
@@ -912,7 +914,7 @@ APT_28_FLOODED_LOCATIONS = {
 
 F1_RUINED_APARTMENT_LOCATIONS = {
     "F1_PIPE_ROOM_RAT_COMBAT_VICTORY": LocationData("Floor 1 Pipe Room - Slay Rats", LC.RAT_FRIENDLY_FIRE, 2401),
-    "F1_PIPE_ROOM_RAT_MERCHANT": LocationData("Floor 1 Pipe Room - Secret Rat Shop Item", LC.MERCHANT, 2402),
+    #"F1_PIPE_ROOM_RAT_MERCHANT": LocationData("Floor 1 Pipe Room - Secret Rat Shop Item", LC.MERCHANT, 2402),
     "F1_PIPE_ROOM_KEVIN_COMBAT_VICTORY": LocationData("Floor 1 Pipe Room - Slay Kevin", LC.FRIENDLY_FIRE, 2403),
     "F1_LETTER_FROM_RAFTA": LocationData("Floor 1 Pipe Room - Help Rafta Write a Letter", LC.EVENT_ITEM, 2404),
     "F1_NESTOR_COMBAT_VICTORY": LocationData("Slay Nestor's Body", LC.COMBAT_VICTORY, 2405),
@@ -1010,7 +1012,8 @@ AURELIUS_CLOSET_LOCATIONS = {
     "AURELIUS_GASOLINE": LocationData("Aurelius' Closet - Item on South Table", LC.OVERWORLD_ITEM, 2805),
     "AURELIUS_FIRST_AID_KIT": LocationData("Aurelius' Closet - Item on Center Table 1", LC.OVERWORLD_ITEM, 2806, difficulty_lock={DL.EXPLORER}),
     "AURELIUS_DUSTIN_FIGURINE": LocationData("Aurelius' Closet - Item on Center Table 2", LC.OVERWORLD_ITEM, 2807),
-    "AURELIUS_COMBAT_VICTORY": LocationData("Aurelius' Closet - Slay Aurelius", LC.FRIENDLY_FIRE, 2808)
+    "AURELIUS_COMBAT_VICTORY": LocationData("Aurelius' Closet - Slay Aurelius", LC.FRIENDLY_FIRE, 2808),
+    "AURELIUS_TRASH": LocationData("Aurelius' Closet - Trash Can", LC.TRASH_LOOT, 2809)
 }
 
 ERNEST_HIDEOUT_LOCATIONS = {
@@ -1244,6 +1247,9 @@ GF_WOMENS_BATHROOM_LOCATIONS = {
     "GF_WOMENS_BATHROOM_FIRST_AID_KIT": LocationData("Women's Bathroom - Item on Counter 1", LC.OVERWORLD_ITEM, 3504),
     "GF_WOMENS_BATHROOM_VENUS_DISC": LocationData("Women's Bathroom - Item on Counter 2", LC.OVERWORLD_ITEM, 3505),
     "GF_WOMENS_BATHROOM_FAMINE_COMBAT_VICTORY": LocationData("Women's Bathroom - Slay Famine", LC.COMBAT_VICTORY, 3506),
+    "GF_WOMENS_BATHROOM_TRASH": LocationData("Women's Bathroom - Trash Can", LC.TRASH_LOOT, 3519),
+    "GF_WOMENS_BATHROOM_FIRST_AID_BOX": LocationData("Women's Bathroom - First Aid Box", LC.TRASH_LOOT, 3520)
+
 }
 
 BUS_CRASH_LOCATIONS = {
@@ -1815,7 +1821,7 @@ GARAGE_LOCATIONS = {
     "B_CAR_HELLRIDE_AUDREY_LOOT": LocationData("Basement Garage - Hellride Audrey Loot", LC.EVENT_ITEM, 5318),
     "HELL_CAR_LAIR_SWORD": LocationData("Hellride Lair - Item", LC.OVERWORLD_ITEM, 5319),
     "B_STUART_COMBAT_VICTORY": LocationData("Stuart's Hideout - Slay Stuart", LC.FRIENDLY_FIRE, 5320),
-    "B_STUART_MERCHANT": LocationData("Stuart's Hideout - Stuart Shop Item", LC.MERCHANT, 5321),
+    #"B_STUART_MERCHANT": LocationData("Stuart's Hideout - Stuart Shop Item", LC.MERCHANT, 5321),
     "B_STUART_FIRST_AID_KIT": LocationData("Stuart's Hideout - Item on Table", LC.OVERWORLD_ITEM, 5322),
     "B_STUART_SIMPLE_KEY": LocationData("Stuart's Hideout - Item on South Table", LC.OVERWORLD_ITEM, 5323),
     "B_UTILITY_JUNK_1": LocationData("Basement Utility Room - Item on Counter 1", LC.OVERWORLD_ITEM, 5324),
@@ -1964,7 +1970,8 @@ MEAT_SPINE_LOCATIONS = {
     "MEAT_SPINE_VENTRICLE_COMBAT_VICTORY": LocationData("Meat World Spine - Slay Ventricle", LC.COMBAT_VICTORY, 6101),
     "MEAT_SPINE_LOU_COMBAT_VICTORY": LocationData("Meat World Spine - Defeat Lou", LC.COMBAT_VICTORY, 6102),
     "MEAT_SPINE_TWOJAWS_COMBAT_VICTORY": LocationData("Meat World Spine - Slay Twojaws", LC.COMBAT_VICTORY, 6103),
-    "MEAT_SPINE_HAND_COMBAT_VICTORY": LocationData("Meat World Spine - Slay Hand", LC.COMBAT_VICTORY, 6104)
+    "MEAT_SPINE_HAND_COMBAT_VICTORY": LocationData("Meat World Spine - Slay Hand", LC.COMBAT_VICTORY, 6104),
+    "MEAT_SPINE_SCREAMING_GUTS_COMBAT_VICTORY": LocationData("Meat World Spine - Slay Screaming Guts", LC.COMBAT_VICTORY, 6105)
 }
 
 MEAT_LYLE_LOCATIONS = {
@@ -2215,7 +2222,6 @@ region_locs: dict[str, set[str]] = {
     "APT_12_WALLS": APT_12_WALLS_LOCATIONS.keys(),
     "APT_12_PLANETARIUM_SOUTH": APT_12_PLANETARIUM_SOUTH_LOCATIONS.keys(),
     "APT_12_KITCHEN_CLOSET": APT_12_KITCHEN_CLOSET_LOCATIONS.keys(),
-    "APT_12_UNITY_ROOM": {},
     "APT_18_OVERGROWN": APT_18_HELLEN_LOCATIONS.keys(),
     "APT_18_HELLEN_QUEST": APT_18_HELLEN_QUEST_LOCATIONS.keys(),
     # GROUND FLOOR
@@ -2300,9 +2306,10 @@ location_to_region: dict[str, str] = get_region_to_location()
 location_name_groups: dict[str, set[str]] = {
     # locations only accessible with the rusty crown item
     "AUDREY_PURCHASE": AUDREY_VENDING_LOCATIONS.keys(),
-    "RUSTY_CROWN": {"RAT_LAIR_GIANT_RAT_BURRITO", "F1_PIPE_ROOM_RAT_MERCHANT", "APT_11_RAT_FREAK_GIFT"},
+    "RUSTY_CROWN": {"RAT_LAIR_GIANT_RAT_BURRITO", "APT_11_RAT_FREAK_GIFT"},
     # mask ending areas
-    "MASK": { *CHARAN_PIT_CLEAR_LOCATIONS.keys(), *FLOOR_4_LOCATIONS.keys(), *LL_SHADE_CACHE_LOCATIONS.keys(), *GLITCH_WORLD_LOCATIONS.keys(), *ROOF_LOCATIONS.keys() },
+    "MASK_ENDING": { *ROOF_LOCATIONS.keys() },
+    "MASK_OFFERING": { *CHARAN_PIT_CLEAR_LOCATIONS.keys(), *FLOOR_4_LOCATIONS.keys(), *LL_SHADE_CACHE_LOCATIONS.keys(), *GLITCH_WORLD_LOCATIONS.keys() },
     # roomate quest areas
     "ROOMMATE_QUEST": { *APT_25_DAN_LOCATIONS.keys(), *APT_18_HELLEN_QUEST_LOCATIONS.keys(), *LEIGH_QUEST_LOCATION.keys(), "F2_GRASSHOPPER_COMBAT_VICTORY" },
     "FRIENDLY_FIRE": { id for id, data in location_table.items() if data.category == LC.FRIENDLY_FIRE },
