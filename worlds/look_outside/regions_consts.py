@@ -130,7 +130,7 @@ f3_regions_table: dict[str, RegionData] = {
             "APT_31_DOOR": ExitData("APT_31_STARGAZER"),
             "APT_32_DOOR": ExitData("APT_32_TEETH"),
             "APT_34_DOOR": ExitData("APT_34_FROZEN_ENTRANCE"),
-            "APT_35_DOOR": ExitData("APT_35_SIBYL", Has("Apt. 35 Key")),
+            "APT_35_DOOR": ExitData("APT_35_SYBIL", Has("Apt. 35 Key")),
             "APT_36_DOOR": ExitData("APT_36_WOUNDED"),
             "APT_37_DOOR": ExitData("APT_37_VINCENT"),
             "APT_38_ROOMMATES": ExitData("APT_38_ROOMMATES"),
@@ -149,9 +149,9 @@ f3_regions_table: dict[str, RegionData] = {
     "APT_32_TEETH": RegionData(exits={
         "MASTER_BEDROOM_DOOR": ExitData("APT_32_MASTER_BEDROOM_KITCHEN", Has("Door Knob"))}),
     "APT_32_MASTER_BEDROOM_KITCHEN": RegionData(),
-    "APT_35_SIBYL": RegionData(
+    "APT_35_SYBIL": RegionData(
         exits={
-            "AWAKENED_SIBYL_PORTAL": ExitData("MEAT_SIBYL", Has("AWAKENED_SIBYL"))
+            "AWAKENED_SYBIL_PORTAL": ExitData("MEAT_SYBIL", Has("AWAKENED_SYBIL"))
         }
     ),
     "APT_36_WOUNDED": RegionData(
@@ -526,7 +526,7 @@ ground_regions_table: dict[str, RegionData] = {
 basement_regions_table: dict[str, RegionData] = {
     "BASEMENT_EAST": RegionData(exits={
         "SECURITY_ROOM_PLANET_DOOR": ExitData("SECURITY_ROOM", security_room_planet_lock),
-        "STEVE_APARTMENT": ExitData("STEVE_APARTMENT", Has("Antoine's Key")), 
+        "STEVE_APARTMENT_DOOR": ExitData("STEVE_APARTMENT", Has("Antoine's Key")), 
         "APT_B1_ARTHROPOD_DOOR": ExitData("APT_B1_ARTHROPOD"),
         "APT_B2_ANTOINE_DOOR": ExitData("APT_B2_ANTOINE"),
         "B_STAIRWELL_EXIT": ExitData("STAIRWELL"),
@@ -542,6 +542,7 @@ basement_regions_table: dict[str, RegionData] = {
     "APT_B1_ARTHROPOD_BATHROOM": RegionData(),
     "STEVE_APARTMENT": RegionData(
         exits={
+            "STEVE_HALL_CONNECTION": ExitData("BASEMENT_EAST"),
             "STEVE_PLUTO_DOOR": ExitData("BASEMENT_STORAGE_PLUTO_ROOM", Has("Pluto Disc")),
             "STEVE_LOCKED_DOOR": ExitData("BASEMENT_STORAGE_LOCKED_ROOM", can_open_any_simple_lock),
             "STEVE_NEPTUNE_DOOR": ExitData("BASEMENT_STORAGE_NEPTUNE_ROOM", Has("Neptune Disc")),
@@ -549,6 +550,7 @@ basement_regions_table: dict[str, RegionData] = {
         }
     ),
     "SEWER": RegionData(exits={
+        "SEWER_STEVE_CONNECTION": ExitData("STEVE_APARTMENT"),
         "SEWER_GRATES_E_SIDE": ExitData("SEWER_WEST", Has("Sewer Grates Lowered")),
     }),
     "SEWER_WEST": RegionData(
@@ -633,7 +635,7 @@ meat_regions_table: dict[str, RegionData] = {
         }
     ),
     "MEAT_GROUND_FLOOR": RegionData(),
-    "MEAT_SIBYL": RegionData(
+    "MEAT_SYBIL": RegionData(
         exits={
             "SYBIL_1WAY_DOOR": ExitData("MEAT_CENTRAL"),
             "SYBIL_APT_1WAY_DOOR": ExitData("APT_12_KITCHEN_CLOSET")

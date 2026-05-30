@@ -83,6 +83,7 @@ def create_all_items(world: LookOutsideWorld):
         remaining_items = []
 
         excluded_items = set()
+        reduced_items = set()
 
         precollect_games(world)
         precollect_arms(world)
@@ -108,6 +109,8 @@ def create_all_items(world: LookOutsideWorld):
         for item in world.multiworld.precollected_items[world.player]:
             if ItemTag.UNIQUE in item_table[item.name].tags:
                 excluded_items.add(item.name)
+            else:
+                reduced_items.add(item.name)
 
         for item_name, item_info in item_table.items():
             if item_name in excluded_items:
@@ -115,7 +118,10 @@ def create_all_items(world: LookOutsideWorld):
             category = item_info.category
             tags = item_info.tags
             if ItemTag.PROGRESSIVE in tags or ItemTag.BREAKABLE_KEY in tags or ItemTag.AMMO in tags or ItemTag.SPECIAL_CURRENCY in tags:
-                mandatory_items += [item_name] * num_multiple_items[item_name]
+                multiplier = num_multiple_items[item_name]
+                if item_name in reduced_items:
+                    multiplier -= 1
+                mandatory_items += [item_name] * multiplier
             elif category == ItemCat.SKILL or category == ItemCat.MISC:
                 mandatory_items += [item_name]
             # todo: clean up redundant tags. all offerings besides the progressive one are already both unique and check gates
@@ -135,9 +141,8 @@ def create_all_items(world: LookOutsideWorld):
     
         slots_to_fill = num_locations - num_itempool
 
-        for i in range(slots_to_fill):
-            filler_item = remaining_items[i % len(remaining_items)]
-            world.multiworld.itempool += [create_lo_item(world, filler_item)]
+        for _ in range(slots_to_fill):
+            world.multiworld.itempool += [create_lo_item(world, world.multiworld.random.choice(remaining_items))]
 
         print(f"Added {len(world.multiworld.itempool)} items to the pool, filling {slots_to_fill} slots with filler items.")
 

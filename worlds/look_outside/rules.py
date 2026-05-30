@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from rule_builder.options import OptionFilter
-from worlds.look_outside.locations import LOLocation, get_location_name
+from worlds.look_outside.locations import LOLocation, exclude_locations, get_location_name
 from worlds.look_outside.regions import exclude_regions, exclude_exits
 
 from .options import PlayerGoal
@@ -38,6 +38,9 @@ def set_all_entrance_rules(world: LookOutsideWorld) -> None:
 
 
 def set_all_location_rules(world: LookOutsideWorld) -> None:
+
+    excluded_locations = exclude_locations(world)
+
     # game rules
     if world.options.include_game_skills != 0:
         world.set_rule(world.get_location(get_location_name("GAME_SKILL_WAKE_THE_BLOOD_KNIGHT", world)), Has("Wake the Blood Knight"))
@@ -109,6 +112,8 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
 
     world.set_rule(world.get_location(get_location_name("LAUNDRY_JEANNES_LAUNDRY", world)), Has("MET_JEANNE"))
 
+    world.set_rule(world.get_location(get_location_name("LL_BATTLEFIELD_DIG_SPOT", world)), HasAll("Spade", "Metal Detector"))
+
     world.set_rule(world.get_location(get_location_name("GF_OFFICE_JASPERS_KEY", world)), met_all_astronomers)
     world.set_rule(world.get_location(get_location_name("GF_OFFICE_JASPER_FIX_TELESCOPE", world)), Has("Telescope Pieces"))
 
@@ -143,6 +148,15 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     # basement rules
 
     world.set_rule(world.get_location(get_location_name("SECURITY_CORRECT_RECORDING", world)), And(Has("Guinea Pig"), HasAny("Blank VHS tape", "Incorrect CCTV Recording", "Correct CCTV Recording")))
+
+    world.set_rule(world.get_location(get_location_name("SEWER_NE_ZACHARY", world)), Has("Chew Toy"))
+    world.set_rule(world.get_location(get_location_name("SEWER_SE_ROXIE", world)), Has("Chew Toy"))
+
+    world.set_rule(world.get_location(get_location_name("SEWER_DAVID_GIFT", world)), HasAll("Chew Toy", "Sewer Grates Lowered"))
+
+    world.set_rule(world.get_location(get_location_name("SEWER_FURNACE_COMBAT_VICTORY", world)), Has("Sewer Grates Lowered"))
+    world.set_rule(world.get_location(get_location_name("SEWER_FURNACE_IRIS_KEY", world)), Has("Sewer Grates Lowered"))
+
 
     # audrey rules
 
@@ -181,6 +195,11 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
         world.set_rule(world.get_location(get_location_name(location_id, world)), Has("Rat Tail", count=num_multiple_items["Rat Tail"]))
     for location_id in location_name_groups["BLACK_OOZE"]:
         world.set_rule(world.get_location(get_location_name(location_id, world)), Has("Black Ooze", count=num_multiple_items["Black Ooze"]))
+
+    # setting at least 1 arm restriction for now
+    for location_id in location_name_groups["SUPER_DUPER_BOSS"]:
+        if location_id not in excluded_locations:
+                world.set_rule(world.get_location(get_location_name(location_id, world)), HasAny("Player's Left Arm", "Player's Right Arm"))
 
 
 flawed_ritual_endings = {"FLAWED_RITUAL_ENDING", "SCREAMING_SKIES_ENDING", "ETERNAL_FATE_ENDING", "XIN_AMON_ENDING", "MASK_ENDING"}

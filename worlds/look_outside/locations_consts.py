@@ -388,7 +388,7 @@ APT_34_FROZEN_LOCATIONS = {
     **APT_34_LONG_BEDROOM_EAST_LOCATIONS
 }
 
-APT_35_SIBYL_LOCATIONS: dict[str, LocationData] = {
+APT_35_SYBIL_LOCATIONS: dict[str, LocationData] = {
     "APT_35_FRIDGE": LocationData("Apt. 35 Kitchen - Fridge", LC.FRIDGE_LOOT, 801)
 }
 
@@ -926,6 +926,7 @@ F1_RUINED_APARTMENT_LOCATIONS = {
     "F1_PIPE_ROOM_KEVIN_MERCHANT_3": LocationData("Floor 1 Pipe Room - Kevin Shop Item 3", LC.MERCHANT, 2411),
     "F1_PIPE_ROOM_KEVIN_MERCHANT_4": LocationData("Floor 1 Pipe Room - Kevin Shop Item 4", LC.MERCHANT, 2412),
     "F1_PIPE_ROOM_KEVIN_MERCHANT_5": LocationData("Floor 1 Pipe Room - Kevin Shop Item 5", LC.MERCHANT, 2413),
+    "F1_GREAT_WORM_COMBAT_VICTORY": LocationData("Floor 1 Pipe Room - Slay Great and Large Worms", LC.COMBAT_VICTORY, 2414),
 }
 
 F1_MAZE_LOCATIONS = {
@@ -940,6 +941,8 @@ F1_MAZE_LOCATIONS = {
     "F1_PASSAGE_RAT_HOLE_MERCHANT_3": LocationData("Floor 1 Passage - Rat Hole Shop Item 3", LC.MERCHANT, 2510),
     "F1_PASSAGE_RAT_HOLE_MERCHANT_4": LocationData("Floor 1 Passage - Rat Hole Shop Item 4", LC.MERCHANT, 2511),
     "F1_PASSAGE_RAT_HOLE_MERCHANT_5": LocationData("Floor 1 Passage - Rat Hole Shop Item 5", LC.MERCHANT, 2512),
+    "F1_FINGER_WORMS_COMBAT_VICTORY": LocationData("Floor 1 Maze - Slay Finger Worms", LC.COMBAT_VICTORY, 2518),
+    "F1_WORMS_COMBAT_VICTORY": LocationData("Floor 1 Maze - Slay Worms and Large Worm", LC.COMBAT_VICTORY, 2519),
 }
 
 AUDREY_VENDING_LOCATIONS = {
@@ -1144,7 +1147,7 @@ APT_12_KITCHEN_CLOSET_LOCATIONS = {
     "APT_12_KITCHEN_CLOSET_IRIS_KEY": LocationData("Apt. 12 Meat World Connection - Item on Table", LC.OVERWORLD_ITEM, 3211),
 }
 
-APT_12_SIBYL_LOCATIONS = {
+APT_12_SYBIL_LOCATIONS = {
     **APT_12_ENTRYWAY_LOCATIONS,
     **APT_12_TRUE_LOCATIONS,
     **APT_12_WALLS_LOCATIONS,
@@ -1210,6 +1213,7 @@ GF_HALL_MAIN_LOCATIONS = {
     "MAILROOM_OFFICE_CELL_PHONE": LocationData("Mailroom Office - Item in Southeast Corner", LC.OVERWORLD_ITEM, 3903),
     "MAILROOM_OFFICE_SUN_DISC": LocationData("Mailroom Office - Item on Counter", LC.OVERWORLD_ITEM, 3904),
     "MAILROOM_OFFICE_TRASH": LocationData("Mailroom Office - Trash Can", LC.TRASH_LOOT, 3910),
+    "GF_HAND_WORM_COMBAT_VICTORY": LocationData("Ground Floor - Slay Hand Worms", LC.COMBAT_VICTORY, 3418),
 }
 
 GF_OFFICE_BATHROOM_LOCATIONS = {
@@ -1937,22 +1941,22 @@ ELEVATOR_LOCATIONS = {
 --- MEAT LOCATIONS --- 
 """
 
-MEAT_SIBYL_LOCATIONS = {
-    "MEAT_SIBYL_COMBAT_VICTORY": LocationData("Meat World - Slay Sibyl Core", LC.FRIENDLY_FIRE, 5901),
-    "MEAT_SIBYL_TONIC": LocationData("Meat World - Item Near Sibyl", LC.OVERWORLD_ITEM, 5902),
-    "MEAT_SIBYL_VENTRICLE_COMBAT_VICTORY": LocationData("Meat World Sibyl - Slay Ventricle", LC.COMBAT_VICTORY, 5903),
-    "MEAT_SIBYL_VENTRICLE_2_COMBAT_VICTORY": LocationData("Meat World Sibyl - Slay Ventricle 2", LC.COMBAT_VICTORY, 5904),
-    "MEAT_SIBYL_MOUTH_COMBAT_VICTORY": LocationData("Meat World Sibyl - Slay Mouth", LC.COMBAT_VICTORY, 5905),
-    "MEAT_SIBYL_CHARLES_COMBAT_VICTORY": LocationData("Meat World Sibyl - Defeat Charles", LC.COMBAT_VICTORY, 5906),
-    "MEAT_SIBYL_VENTRICLE_3_COMBAT_VICTORY": LocationData("Meat World Sibyl - Slay Ventricle 3", LC.COMBAT_VICTORY, 5907),
-    "MEAT_SIBYL_SHOTGUN_SHELLS": LocationData("Meat World Sibyl - Item In Center Room", LC.OVERWORLD_ITEM, 5908),
-    "MEAT_SIBYL_LIBRA_COMBAT_VICTORY": LocationData("Meat World Sibyl - Slay Libra", LC.COMBAT_VICTORY, 5909),
-    "MEAT_SIBYL_EMPTY_HUSK": LocationData("Meat World Sibyl - Slay Empty Husk", LC.COMBAT_VICTORY, 5910),
-    "MEAT_SIBYL_ENZYME": LocationData("Meat World Sibyl - Item Near Empty Husk", LC.OVERWORLD_ITEM, 5911),
-    "MEAT_SIBYL_DOUBLE_HUSK_COMBAT_VICTORY": LocationData("Meat World Sibyl - Slay Double Husk", LC.COMBAT_VICTORY, 5912),
-    "MEAT_SIBYL_MAD_HUSK_COMBAT_VICTORY": LocationData("Meat World Sibyl - Slay Mad Husk", LC.COMBAT_VICTORY, 5913),
-    "MEAT_SIBYL_CLUSTER_HUSK_COMBAT_VICTORY": LocationData("Meat World Sibyl - Slay Cluster Husk", LC.COMBAT_VICTORY, 5914),
-    "MEAT_SIBYL_RIFLE_BULLETS": LocationData("Meat World Sibyl - Item Near Husks", LC.OVERWORLD_ITEM, 5915)
+MEAT_SYBIL_LOCATIONS = {
+    "MEAT_SYBIL_COMBAT_VICTORY": LocationData("Meat World - Slay Sybil Core", LC.FRIENDLY_FIRE, 5901),
+    "MEAT_SYBIL_TONIC": LocationData("Meat World - Item Near Sybil", LC.OVERWORLD_ITEM, 5902),
+    "MEAT_SYBIL_VENTRICLE_COMBAT_VICTORY": LocationData("Meat World Sybil - Slay Ventricle", LC.COMBAT_VICTORY, 5903),
+    "MEAT_SYBIL_VENTRICLE_2_COMBAT_VICTORY": LocationData("Meat World Sybil - Slay Ventricle 2", LC.COMBAT_VICTORY, 5904),
+    "MEAT_SYBIL_MOUTH_COMBAT_VICTORY": LocationData("Meat World Sybil - Slay Mouth", LC.COMBAT_VICTORY, 5905),
+    "MEAT_SYBIL_CHARLES_COMBAT_VICTORY": LocationData("Meat World Sybil - Defeat Charles", LC.COMBAT_VICTORY, 5906),
+    "MEAT_SYBIL_VENTRICLE_3_COMBAT_VICTORY": LocationData("Meat World Sybil - Slay Ventricle 3", LC.COMBAT_VICTORY, 5907),
+    "MEAT_SYBIL_SHOTGUN_SHELLS": LocationData("Meat World Sybil - Item In Center Room", LC.OVERWORLD_ITEM, 5908),
+    "MEAT_SYBIL_LIBRA_COMBAT_VICTORY": LocationData("Meat World Sybil - Slay Libra", LC.COMBAT_VICTORY, 5909),
+    "MEAT_SYBIL_EMPTY_HUSK": LocationData("Meat World Sybil - Slay Empty Husk", LC.COMBAT_VICTORY, 5910),
+    "MEAT_SYBIL_ENZYME": LocationData("Meat World Sybil - Item Near Empty Husk", LC.OVERWORLD_ITEM, 5911),
+    "MEAT_SYBIL_DOUBLE_HUSK_COMBAT_VICTORY": LocationData("Meat World Sybil - Slay Double Husk", LC.COMBAT_VICTORY, 5912),
+    "MEAT_SYBIL_MAD_HUSK_COMBAT_VICTORY": LocationData("Meat World Sybil - Slay Mad Husk", LC.COMBAT_VICTORY, 5913),
+    "MEAT_SYBIL_CLUSTER_HUSK_COMBAT_VICTORY": LocationData("Meat World Sybil - Slay Cluster Husk", LC.COMBAT_VICTORY, 5914),
+    "MEAT_SYBIL_RIFLE_BULLETS": LocationData("Meat World Sybil - Item Near Husks", LC.OVERWORLD_ITEM, 5915)
 }
 
 MEAT_TV_LOCATIONS = {
@@ -2044,7 +2048,7 @@ location_table: dict[str, LocationData] = {
     **FRONT_DOOR_LOCATIONS,
     **APT_33_MEAT_LOCATIONS,
     **APT_34_FROZEN_LOCATIONS,
-    **APT_35_SIBYL_LOCATIONS,
+    **APT_35_SYBIL_LOCATIONS,
     **APT_36_WOUNDED_LOCATIONS,
     **APT_37_VINCENT_LOCATIONS,
     **APT_38_ROOMMATES_LOCATIONS,
@@ -2068,7 +2072,7 @@ location_table: dict[str, LocationData] = {
     **RAT_HELL_LOCATIONS,
     **APT_11_ABYSS_LOCATIONS,
     **FRED_APT_LOCATIONS,
-    **APT_12_SIBYL_LOCATIONS,
+    **APT_12_SYBIL_LOCATIONS,
     **APT_18_HELLEN_LOCATIONS,
     **APT_18_HELLEN_QUEST_LOCATIONS,
     **AUDREY_VENDING_LOCATIONS,
@@ -2115,7 +2119,7 @@ location_table: dict[str, LocationData] = {
     **ELEVATOR_LOCATIONS,
     **MEAT_CENTRAL_LOCATIONS,
     **MEAT_GROUND_FLOOR_LOCATIONS,
-    **MEAT_SIBYL_LOCATIONS,
+    **MEAT_SYBIL_LOCATIONS,
     **MEAT_LYLE_LOCATIONS,
     **MEAT_TV_LOCATIONS,
     **MEAT_SPINE_LOCATIONS,
@@ -2164,7 +2168,7 @@ region_locs: dict[str, set[str]] = {
     "APT_34_FROZEN_LONG_BEDROOM_CENTER": APT_34_LONG_BEDROOM_CENTER_LOCATIONS.keys(),
     "APT_34_FROZEN_LONG_BEDROOM_NORTH": APT_34_LONG_BEDROOM_NORTH_LOCATIONS.keys(),
     "APT_34_FROZEN_LONG_BEDROOM_EAST": APT_34_LONG_BEDROOM_EAST_LOCATIONS.keys(),
-    "APT_35_SIBYL": APT_35_SIBYL_LOCATIONS.keys(),
+    "APT_35_SYBIL": APT_35_SYBIL_LOCATIONS.keys(),
     "APT_36_WOUNDED": APT_36_WOUNDED_LOCATIONS.keys(),
     "APT_37_VINCENT": APT_37_VINCENT_LOCATIONS_MAIN.keys(),
     "APT_37_LOCKED_ROOM": APT_37_LOCKED_ROOM_LOCATIONS.keys(),
@@ -2280,7 +2284,7 @@ region_locs: dict[str, set[str]] = {
     # MEAT
     "MEAT_CENTRAL": MEAT_CENTRAL_LOCATIONS.keys(),
     "MEAT_GROUND_FLOOR": MEAT_GROUND_FLOOR_LOCATIONS.keys(),
-    "MEAT_SIBYL": MEAT_SIBYL_LOCATIONS.keys(),
+    "MEAT_SYBIL": MEAT_SYBIL_LOCATIONS.keys(),
     "MEAT_LYLE": MEAT_LYLE_LOCATIONS.keys(),
     "MEAT_TV": MEAT_TV_LOCATIONS.keys(),
     "MEAT_SPINE": MEAT_SPINE_LOCATIONS.keys(),
@@ -2329,7 +2333,10 @@ location_name_groups: dict[str, set[str]] = {
                      "GF_LEG_FOOT_WORM_COMBAT_VICTORY",
                      "GF_MENS_BATHROOM_MARSHALL_COMBAT_VICTORY",
                      "GF_WEST_HAND_WORMS_COMBAT_VICTORY",
-                     "B1_BATHROOM_FOOT_WORM_COMBAT_VICTORY"
+                     "B1_BATHROOM_FOOT_WORM_COMBAT_VICTORY",
+                     "F1_GREAT_WORM_COMBAT_VICTORY",
+                     "F1_FINGER_WORMS_COMBAT_VICTORY",
+                     "F1_WORMS_COMBAT_VICTORY"
                      },
     "LARGE_SHADE": {
                     "F3_LARGE_SHADE_COMBAT_VICTORY",
@@ -2338,6 +2345,22 @@ location_name_groups: dict[str, set[str]] = {
                     "GF_LARGE_SHADE_COMBAT_VICTORY",
                     "B_LARGE_SHADE_COMBAT_VICTORY"
                     },
+    "SUPER_DUPER_BOSS": {
+        "GLITCH_HONKO_COMBAT_VICTORY", 
+        "APT_32_TUNNELS_BABY_TEETH_SUPERBOSS_COMBAT_VICTORY", 
+        "FUNGUS_COMATUS_COMBAT_VICTORY", 
+        "BOILER_ROOM_COMATUS_YOGA",
+        "GLITCH_SLIME_HYDRA_COMBAT_VICTORY",
+        "GF_KOTD_COMBAT_VICTORY",
+        "APT_28_DROWNING_COMBAT_VICTORY",
+        "SEWER_FURNACE_COMBAT_VICTORY",
+        "SEWER_FURNACE_IRIS_KEY",
+        "SEWER_BOILER_BEAST_COMBAT_VICTORY",
+        "CW_WILHEMINA_VICTORY",
+        "STAIRS_CRAWLING_SHADE_COMBAT_VICTORY",
+        "STAIRS_SPIDER_RECRUIT",
+        "MUTT_COMBAT_VICTORY"
+        },
     "GAME_SKILLS": {
         *VIDEO_GAME_LOCATIONS.keys(),
     },

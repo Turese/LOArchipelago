@@ -112,8 +112,8 @@ def create_events(world: LookOutsideWorld) -> None:
     
     #endings
 
-    world.get_region("APT_35_SIBYL").add_event(
-                "SIBYL", "AWAKENED_SIBYL", rule=Has("Telescope"), location_type=LOLocation, item_type=LOItem
+    world.get_region("APT_35_SYBIL").add_event(
+                "SYBIL", "AWAKENED_SYBIL", rule=Has("Telescope"), location_type=LOLocation, item_type=LOItem
             )
 
     player_goal = world.options.goal
