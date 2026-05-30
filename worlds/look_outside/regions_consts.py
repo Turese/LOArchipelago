@@ -499,18 +499,18 @@ ground_regions_table: dict[str, RegionData] = {
         # with no multiplier, mutt's entire stock costs 1510 dollars
     }),
     "LANDLORDS_APARTMENT_PHASE_1": RegionData(exits={
-        "LANDLORD_PAYMENT_1": ExitData("LANDLORDS_APARTMENT_PHASE_2"),
+        "LANDLORD_PAYMENT_1": ExitData("LANDLORDS_APARTMENT_PHASE_2", Has("Progressive Rent Money", count=1)),
     }),
     "LANDLORDS_APARTMENT_PHASE_2": RegionData(exits={
-        "LANDLORD_PAYMENT_2": ExitData("LANDLORDS_APARTMENT_PHASE_3"),
+        "LANDLORD_PAYMENT_2": ExitData("LANDLORDS_APARTMENT_PHASE_3", Has("Progressive Rent Money", count=2)),
     }),
     "LANDLORDS_APARTMENT_PHASE_3": RegionData(exits={
-        "LANDLORD_PAYMENT_3": ExitData("LANDLORDS_APARTMENT_PHASE_4"),
+        "LANDLORD_PAYMENT_3": ExitData("LANDLORDS_APARTMENT_PHASE_4", Has("Progressive Rent Money", count=3)),
         "WARZONE_DOOR": ExitData("LANDLORDS_WARZONE")
     }),
     "LANDLORDS_WARZONE": RegionData(),
     "LANDLORDS_APARTMENT_PHASE_4": RegionData(exits={
-        "LANDLORD_PAYMENT_4": ExitData("LANDLORDS_APARTMENT_PHASE_5"),
+        "LANDLORD_PAYMENT_4": ExitData("LANDLORDS_APARTMENT_PHASE_5", Has("Progressive Rent Money", count=4)),
         "BEDROOM_HALL_CACHE_RUBBLE": ExitData("LANDLORDS_BEDROOM_HALL_CACHE", can_clear_with_sapper_charge),
         "SHADE_CACHE_RUBBLE": ExitData("SHADE_CACHE", can_clear_with_sapper_charge),
         "MEMORIAL_CACHE_RUBBLE": ExitData("MEMORIAL_CACHE", can_clear_with_sapper_charge)

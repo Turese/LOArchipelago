@@ -114,6 +114,15 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
 
     world.set_rule(world.get_location(get_location_name("LL_BATTLEFIELD_DIG_SPOT", world)), HasAll("Spade", "Metal Detector"))
 
+    world.set_rule(world.get_location(get_location_name("LL_RENT_1", world)), Has("Progressive Rent Money", count=1))
+    world.set_rule(world.get_location(get_location_name("LL_RENT_2", world)), Has("Progressive Rent Money", count=2))
+    world.set_rule(world.get_location(get_location_name("LL_RENT_3", world)), Has("Progressive Rent Money", count=3))
+    world.set_rule(world.get_location(get_location_name("LL_RENT_4", world)), Has("Progressive Rent Money", count=4))
+
+
+
+
+
     world.set_rule(world.get_location(get_location_name("GF_OFFICE_JASPERS_KEY", world)), met_all_astronomers)
     world.set_rule(world.get_location(get_location_name("GF_OFFICE_JASPER_FIX_TELESCOPE", world)), Has("Telescope Pieces"))
 

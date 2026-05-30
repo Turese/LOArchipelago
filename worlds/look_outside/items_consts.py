@@ -833,6 +833,7 @@ resource_pack_table: dict[str, ItemData] = {
     "2x Tonic": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL}, 67),
     "Landlord's Couch Cash": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 68),
     "4x Cheese": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL}, 69),
+    "Progressive Rent Money": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.CHECK_GATE, ItemTag.PROGRESSIVE}, 70),
 }
 
 trap_table: dict[str, ItemData] = {
@@ -963,6 +964,7 @@ crafting_recipes: dict[str, set[tuple[str, str]]] = {
 num_multiple_items: Dict[str, int] = {
     "Progressive Loose Manuscript": 2,
     "Progressive Rat Child": 2,
+    "Progressive Rent Money": 4,
     "Simple Key": 26, # 12 safes + 12 kaeley locks + 2 locked doors
     "green key": 1,
     "red key": 1,
