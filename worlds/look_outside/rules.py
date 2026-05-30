@@ -154,8 +154,8 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
 
     world.set_rule(world.get_location(get_location_name("SEWER_DAVID_GIFT", world)), HasAll("Chew Toy", "Sewer Grates Lowered"))
 
-    world.set_rule(world.get_location(get_location_name("SEWER_FURNACE_COMBAT_VICTORY", world)), Has("Sewer Grates Lowered"))
-    world.set_rule(world.get_location(get_location_name("SEWER_FURNACE_IRIS_KEY", world)), Has("Sewer Grates Lowered"))
+    #world.set_rule(world.get_location(get_location_name("SEWER_FURNACE_COMBAT_VICTORY", world)), Has("Sewer Grates Lowered"))
+    #world.set_rule(world.get_location(get_location_name("SEWER_FURNACE_IRIS_KEY", world)), Has("Sewer Grates Lowered"))
 
 
     # audrey rules
@@ -199,7 +199,10 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     # setting at least 1 arm restriction for now
     for location_id in location_name_groups["SUPER_DUPER_BOSS"]:
         if location_id not in excluded_locations:
-                world.set_rule(world.get_location(get_location_name(location_id, world)), HasAny("Player's Left Arm", "Player's Right Arm"))
+                if (location_id in {"SEWER_FURNACE_COMBAT_VICTORY", "SEWER_FURNACE_IRIS_KEY"}):
+                    world.set_rule(world.get_location(get_location_name(location_id, world)), And(HasAny("Player's Left Arm", "Player's Right Arm"), Has("Sewer Grates Lowered")))
+                else:
+                    world.set_rule(world.get_location(get_location_name(location_id, world)), HasAny("Player's Left Arm", "Player's Right Arm"))
 
 
 flawed_ritual_endings = {"FLAWED_RITUAL_ENDING", "SCREAMING_SKIES_ENDING", "ETERNAL_FATE_ENDING", "XIN_AMON_ENDING", "MASK_ENDING"}
