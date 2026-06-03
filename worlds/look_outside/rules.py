@@ -115,6 +115,8 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
 
     world.set_rule(world.get_location(get_location_name("TRUE_FRED_RETURN_FACE", world)), Has("Torn-Off Face"))
 
+    world.set_rule(world.get_location(get_location_name("FRED_DARK_ROOM_CORRECT_PAINTING"), HasAny("Canvas Carry Bag", "Incorrect Painting", "Correct Painting")))
+
     # gf rules
 
     world.set_rule(world.get_location(get_location_name("LAUNDRY_JEANNES_LAUNDRY", world)), Has("MET_JEANNE"))
@@ -125,10 +127,6 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     world.set_rule(world.get_location(get_location_name("LL_RENT_2", world)), Has("Progressive Rent Money", count=2))
     world.set_rule(world.get_location(get_location_name("LL_RENT_3", world)), Has("Progressive Rent Money", count=3))
     world.set_rule(world.get_location(get_location_name("LL_RENT_4", world)), Has("Progressive Rent Money", count=4))
-
-
-
-
 
     world.set_rule(world.get_location(get_location_name("GF_OFFICE_JASPERS_KEY", world)), met_all_astronomers)
     world.set_rule(world.get_location(get_location_name("GF_OFFICE_JASPER_FIX_TELESCOPE", world)), Has("Telescope Pieces"))

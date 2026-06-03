@@ -10,7 +10,7 @@ from worlds.look_outside.regions_consts import stairwell_planet_lock
 from worlds.look_outside.rules_consts import can_perform_flawed_ritual, can_keep_promise,\
     can_perform_perfect_ritual, can_perform_mask_ritual, can_perform_eternal_fate_ritual,\
     can_perform_xin_amon_ritual, can_true_final_skill, can_true_final_game
-from rule_builder.rules import Has
+from rule_builder.rules import Has, HasAll
 from worlds.look_outside.options import IncludeShades, PlayerGoal
 
 
@@ -122,7 +122,7 @@ def create_events(world: LookOutsideWorld) -> None:
     
     if player_goal == PlayerGoal.option_all_endings or player_goal == PlayerGoal.option_unity:
         world.get_region("APT_12_WALLS").add_event(
-            "UNITY_ENDING_NOTE", "UNITY_ENDING", rule=Has("Small Red Key"),location_type=LOLocation, item_type=LOItem
+            "UNITY_ENDING_NOTE", "UNITY_ENDING", rule=HasAll("Small Red Key", "AWAKENED_SYBIL"),location_type=LOLocation, item_type=LOItem
         )
     if player_goal == PlayerGoal.option_all_endings:
         world.get_region("CROSSWORD_DUNGEON").add_event("FREE_WILHELMINA", "WORDS_OF_POWER_ENDING")
