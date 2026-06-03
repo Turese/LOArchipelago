@@ -178,6 +178,8 @@ def exclude_locations(world: LookOutsideWorld) -> None:
         exclude_set.update(location_name_groups["MASK_OFFERING"])
     if not (world.options.goal == PlayerGoal.option_all_endings or world.options.goal == PlayerGoal.option_all_roof_endings or world.options.goal == PlayerGoal.option_mask):
         exclude_set.update(location_name_groups["MASK_ENDING"])
+    if not (world.options.goal == PlayerGoal.option_all_endings or world.options.goal == PlayerGoal.option_unity or world.options.friendly_fire):
+        exclude_set.add("MEAT_SYBIL_COMBAT_VICTORY")
     if not world.options.include_roommate_quests:
         exclude_set.update(location_name_groups["ROOMMATE_QUEST"])
     if not world.options.friendly_fire:

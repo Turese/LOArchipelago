@@ -154,7 +154,7 @@ class GameClassificationNoSkillRandomizationTrueFinal(LOTestBase):
         "include_game_skills": False
     }
 
-    def game_items_are_useful(self):
+    def test_game_items_are_useful(self):
         game_skill_item_names = item_name_groups["USEFUL_SKILL_VIDEO_GAME"]
 
         game_items = [item for item in self.multiworld.get_items() if item.name in game_skill_item_names]
@@ -220,7 +220,7 @@ class GameClassificationWithSkillRandomizationTrueFinal(LOTestBase):
         "include_game_skills": True
     }
 
-    def skill_items_included(self):
+    def test_skill_items_included(self):
         game_skill_item_names = item_name_groups["VIDEO_GAME_SKILL"]
 
         existing_item_names = {item.name for item in self.multiworld.get_items()}
@@ -232,13 +232,13 @@ class GameClassificationWithSkillRandomizationTrueFinal(LOTestBase):
             f"Game skill items should all be created when game skills are randomized: {sorted(excluded_items)}"
         )
 
-    def game_skills_are_useful(self):
+    def test_game_skills_are_useful(self):
         skill_item_names = item_name_groups["VIDEO_GAME_SKILL"]
 
-        skill_items = {item.name for item in self.multiworld.get_items() if item.name in skill_item_names and item.name != "Skill: Meteor Strike"}
+        skill_items = [item for item in self.multiworld.get_items() if item.name in skill_item_names and item.name != "Skill: Meteor Strike"]
 
         self.assertTrue(
-            (skill_item.classification == ItemClassification.useful for skill_item in skill_items), 
+            all(skill_item.classification == ItemClassification.useful for skill_item in skill_items), 
             f"All skill items should be useful, got: {[(skill_item.name, skill_item.classification) for skill_item in skill_items]}")
 
     def test_meteor_strike_is_progression(self):
@@ -257,13 +257,13 @@ class GameClassificationWithSkillRandomizationTrueFinal(LOTestBase):
             f"Meteor Strike should be progression when game skills are randomized and true final is part of the goal"
         )
 
-    def all_games_are_progression(self):
+    def test_all_games_are_progression(self):
         game_item_names = item_name_groups["VIDEO_GAME"]
 
-        game_items = {item.name for item in self.multiworld.get_items() if item.name in game_item_names}
+        game_items = [item for item in self.multiworld.get_items() if item.name in game_item_names]
 
         self.assertTrue(
-            (game_item.classification == ItemClassification.progression for game_item in game_items), 
+            all(game_item.classification == ItemClassification.progression for game_item in game_items), 
             f"All game items should be progression, got: {[(game_item.name, game_item.classification) for game_item in game_items]}")
 
 class GameClassificationWithSkillRandomizationNoTrueFinal(LOTestBase):
@@ -340,5 +340,37 @@ class MaskLocationsExcluded(LOTestBase):
             len(excluded_locations) == 0,
             f"Mask locations should not be created when mask option is disabled: {sorted(excluded_locations)}"
         )
-        
+
+class SybilCombatVictoryWhenPartOfGoal(LOTestBase):
+    options = {
+        "goal": PlayerGoal.option_all_endings,
+        "friendly_fire": False,
+    }
+
+
+    def test_sybil_combat_location_in_all_endings(self):
+        existing_location_names = (location.name for location in self.multiworld.get_locations())
+        sybil_name = location_table["MEAT_SYBIL_COMBAT_VICTORY"].str_name
+
+        self.assertTrue(
+            sybil_name in existing_location_names,
+            "Sybil combat victory should be a location when unity is one of the endings"
+        )
+
+class SybilCombatVictoryWhenFriendlyFire(LOTestBase):
+    options = {
+        "goal": PlayerGoal.option_all_roof_endings,
+        "friendly_fire": False,
+    }
+
+    def test_sybil_excluded_in_friendly_fire(self):
+        existing_location_names = (location.name for location in self.multiworld.get_locations())
+        sybil_name = location_table["MEAT_SYBIL_COMBAT_VICTORY"].str_name
+
+
+        self.assertTrue(
+            sybil_name not in existing_location_names,
+            "Sybil combat victory should not be a location when unity is one of the endings"
+        )
+
 # todo: other options

@@ -58,7 +58,7 @@ class IncludeShades(Choice):
     default = 0
 
 class IncludeMaskLocations(Toggle):
-    """This controls whether locations specific to the
+    """This controls whether locations in areas specific to the
     Mask ending are randomized: Glitch world, floor 4, the basement pit,
     and the landlord's hidden room."""
     display_name = "Include Mask Offering Locations"

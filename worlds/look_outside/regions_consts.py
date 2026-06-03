@@ -438,7 +438,9 @@ f1_regions_table: dict[str, RegionData] = {
     "TRUE_FRED_CLOSET": RegionData(),
     "ERNESTS_HIDEOUT": RegionData(),
     "RAT_HELL": RegionData(),
-    "RAT_LAIR": RegionData(),
+    "RAT_LAIR": RegionData(exits={
+        "RAT_LAIR_EXIT": ExitData("FLOOR_1_MAZE"),
+    }),
     "APT_11_ABYSS": RegionData(),
     "APT_12_ENTRYWAY": RegionData(exits={
         "APT_12_HIDDEN_DOOR": ExitData("APT_12_MAIN", Has("Jasper's Key"))

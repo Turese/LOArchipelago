@@ -1947,7 +1947,7 @@ ELEVATOR_LOCATIONS = {
 """
 
 MEAT_SYBIL_LOCATIONS = {
-    "MEAT_SYBIL_COMBAT_VICTORY": LocationData("Meat World - Slay Sybil Core", LC.FRIENDLY_FIRE, 5901),
+    "MEAT_SYBIL_COMBAT_VICTORY": LocationData("Meat World - Slay Sybil Core", LC.COMBAT_VICTORY, 5901),
     "MEAT_SYBIL_TONIC": LocationData("Meat World - Item Near Sybil", LC.OVERWORLD_ITEM, 5902),
     "MEAT_SYBIL_VENTRICLE_COMBAT_VICTORY": LocationData("Meat World Sybil - Slay Ventricle", LC.COMBAT_VICTORY, 5903),
     "MEAT_SYBIL_VENTRICLE_2_COMBAT_VICTORY": LocationData("Meat World Sybil - Slay Ventricle 2", LC.COMBAT_VICTORY, 5904),

@@ -8,7 +8,11 @@ It is heavily discouraged that you play this randomizer before playing the vanil
 
 Look Outside is a very large randomizer, with 1,000 locations +. Each enemy encounter is unique, and has been randomized as a location. Every overworld item as well as quest reward has also been randomized.
 
-The vanilla game has a time limit and a lot of branching quest paths and mutually exclusive content. This randomizer mod has been adjusted as carefully as possible to allow the player to achieve everything on a single save file
+The vanilla game has a time limit and a lot of branching quest paths and mutually exclusive content. This randomizer mod has been adjusted as carefully as possible to allow the player to achieve everything on a single save file.
+
+The same locations will be available on all difficulties. This means that enemies that are ordinarily only available on Cursed difficulty will appear in all difficulties. The same goes for overworld items that are normally restricted to appearing on only Explorer, Survivor, or Cursed difficulties: all three types will appear in all difficulties.
+
+If the same enemy has multiple forms depending on the difficulty, the form they appear in when engaged with in combat will still be dependent to the chosen difficulty.
 
 # Possible Player options
 
