@@ -50,19 +50,19 @@ If this option is selected, then locations will be rewarded for defeating the fi
 
 If this option is selected, then locations will be rewarded for defeating the five boss shades on each floor that spawn on high danger levels, as well as venturing into the secret room under the stairs and defeating the Spider, and defeating the Crawling Shade enemy that chases the player in the corridor before they meet the Spider.
 
-## Include Mask Locations
+### Include Mask Locations
 
 This controls whether locations in areas specific to the Mask ending are randomized: Glitch world, the entirety of floor 4, the basement pit, and the landlord's hidden room.
 
-## Include Roommate Quests
+### Include Roommate Quests
 
 This controls whether locations in areas specific to the roommate's sidequests are randomized. This includes: Hellen's plant watering quest, Leigh's cell phone quest, and Dan's NeoDuo quest.
 
-## Include Game Skills
+### Include Game Skills
 
 If enabled, the skills rewarded for completing video games will be randomized, and a location will be granted after playing each video game at least once. If disabled, each game skill will be rewarded after only one play of its respective video game.
 
-## Starting Games
+### Starting Games
 
 Which video games the player starts with.
 
