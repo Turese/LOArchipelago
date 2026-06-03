@@ -100,41 +100,41 @@ The game has been modified to encourage the player to do everything they need to
 
 The different goal options are as follows:
 
-## Any partial ritual ending
+### Any partial ritual ending
 
 Give any astronomer the correct offering, and defeat them on the roof. This goal is also rewarded when any other form of perfect or imperfect ritual goal is awarded.
 
-## Any perfect ritual ending
+### Any perfect ritual ending
 
 Give each astronomer the correct offering, and defeat them on the roof. This goal is rewarded once the player kills the Exalted Four. If this is not the only ending the player set as their goal, and the player goes on afterwards this the get the True Final ending, then it will be counted as a separate ending. This goal is also rewarded when the player achieves the Promise ending.
 
-## Screaming skies
+### Screaming skies
 
 Give each astronomer the correct offering, and flee from them once they become the Exalted Four.
 
-## Promise
+### Promise
 
 Give each astronomer the correct offering, and enter Apartment 35 to give Sybil her telescope and reignite her memories. Meet them on the roof and tell them about her to get this ending.
 
-## Mask
+### Mask
 
 Assemble the four strange offerings and give them to the astronomers. Defeat all four of them individually on the roof, and meet the masked shadow in the ritual circle.
 
 Note: if this ending is chosen as a goal, then each of the astronomer roof boss fights will be included as a location.
 
-## XIN-AMON
+### XIN-AMON
 
 Give Jasper, Aster, and Aurelius the correct offerings, and give Beryl a guinea pig. Defeat XIN-AMON on the roof after it mutates.
 
-## Unity
+### Unity
 
 Use the small red key to open the secret room in apartment 12, and read the note on the table. The door will not open while Sybil is alive.
 
-## True Final
+### True Final
 
 Learn Rush Braver's forbidden technique Meteor Strike and use it against the Visitor after defeating the Exalted Four. Win the ensuing fight.
 
-## All roof endings
+### All roof endings
 
 Get each of these endings on one save file:
 
@@ -147,7 +147,7 @@ Get each of these endings on one save file:
 - Eternal fate (lose to XIN-AMON)
 - True Final Ending
 
-## All endings
+### All endings
 
 Get each of these endings on one save file:
 
