@@ -57,7 +57,7 @@ main_item_table: dict[str, ItemData] = {
     "Healing Spray": ItemData(ItemCat.ITEM, {ItemTag.USEFUL}, 2),
     "Suturing Kit": ItemData(ItemCat.ITEM, {ItemTag.USEFUL, ItemTag.UNIQUE}, 3),
     "Medic-in-a-jar": ItemData(ItemCat.ITEM, {ItemTag.USEFUL, ItemTag.UNIQUE}, 4),
-    "Rat Baby Thing": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE}, 5),
+    "Rat Baby Thing": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 5),
     "Eye Drops": ItemData(ItemCat.ITEM, {ItemTag.USEFUL}, 6),
     "Bandage": ItemData(ItemCat.ITEM, set(), 7),
     "Tonic": ItemData(ItemCat.ITEM, {ItemTag.USEFUL}, 8),
@@ -529,7 +529,7 @@ weapon_table: dict[str, ItemData] = {
     "Mossy Hammer": ItemData(ItemCat.WEAPON, {ItemTag.USEFUL,ItemTag.UNIQUE}, 243),
     "Goblin's Claws": ItemData(ItemCat.WEAPON, {ItemTag.USEFUL,ItemTag.UNIQUE}, 246),
     "Spine Dagger": ItemData(ItemCat.WEAPON, {ItemTag.USEFUL,ItemTag.UNIQUE}, 251),
-    "Icicle Spike": ItemData(ItemCat.WEAPON, {ItemTag.USEFUL,ItemTag.UNIQUE}, 255),
+    "Icicle Spike": ItemData(ItemCat.WEAPON, {Item"HP Drain Trap":Tag.USEFUL,ItemTag.UNIQUE}, 255),
     "Electroclaw": ItemData(ItemCat.WEAPON, {ItemTag.USEFUL,ItemTag.UNIQUE}, 260),
     "Hadal Trident": ItemData(ItemCat.WEAPON, {ItemTag.USEFUL,ItemTag.UNIQUE}, 263),
     "Dual Metal Bat": ItemData(ItemCat.WEAPON, {ItemTag.USEFUL}, 266),
@@ -852,7 +852,7 @@ trap_table: dict[str, ItemData] = {
     "Danger Trap": ItemData(ItemCat.TRAP, {}, 7),
     "Poison Trap": ItemData(ItemCat.TRAP, {}, 8),
     "Bleed Trap": ItemData(ItemCat.TRAP, {}, 9),
-    "HP Drain Trap": ItemData(ItemCat.TRAP, {}, 10),
+    "HP Cut Trap": ItemData(ItemCat.TRAP, {}, 10),
 }
 
 

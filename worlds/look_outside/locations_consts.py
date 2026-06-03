@@ -213,9 +213,9 @@ APT_33_LOCATIONS: dict[str, LocationData] = {
     "APT_33_LIVING_ROOM_SCREAMATORIUM": LocationData("Apt. 33 Living Room - Item on Shelf", LC.EVENT_ITEM, 402),
     "APT_33_BEDROOM_REFUSE_SHADOW": LocationData("Apt. 33 Bedroom - Set Boundaries With Masked Shadow", LC.EVENT_ITEM, 403),
     "APT_33_BATHROOM_FIRST_AID_KIT": LocationData("Apt. 33 Bathroom - Item on Counter", LC.OVERWORLD_ITEM, 404),
-    "APT_33_BATHROOM_RECRUIT_ROACHES": LocationData("Apt. 33 Bathroom - Befriend the Roaches", LC.RECRUIT, 405),
-    "APT_33_RECRUIT_PHILLIPPE": LocationData("Apt. 33 Living Room - Recruit Phillippe", LC.RECRUIT, 406),
-    "APT_33_RECRUIT_RAT_BABY": LocationData("Apt. 33 Living Room  - Recruit Rat Child", LC.RECRUIT, 407),
+    "APT_33_BATHROOM_RECRUIT_ROACHES": LocationData("Apt. 33 - Allow the Roaches to Flourish", LC.RECRUIT, 405),
+    "APT_33_RECRUIT_PHILLIPPE": LocationData("Apt. 33 Living Room - Bring Phillippe's Remains Home", LC.RECRUIT, 406),
+    "APT_33_RECRUIT_RAT_BABY": LocationData("Apt. 33 Living Room  - Bring the Rat Baby Thing Home", LC.RECRUIT, 407),
     "APT_33_ROACH_QUEST": LocationData("Apt. 33 Living Room - Solve the Roaches' Dilemma", LC.EVENT_ITEM, 408),
     "APT_33_ROACH_WAR": LocationData("Apt. 33 - Declare War on the Roaches", LC.FRIENDLY_FIRE, 409),
 }

@@ -115,7 +115,7 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
 
     world.set_rule(world.get_location(get_location_name("TRUE_FRED_RETURN_FACE", world)), Has("Torn-Off Face"))
 
-    world.set_rule(world.get_location(get_location_name("FRED_DARK_ROOM_CORRECT_PAINTING"), HasAny("Canvas Carry Bag", "Incorrect Painting", "Correct Painting")))
+    world.set_rule(world.get_location(get_location_name("FRED_DARK_ROOM_CORRECT_PAINTING", world)), HasAny("Canvas Carry Bag", "Incorrect Painting", "Correct Painting"))
 
     # gf rules
 
