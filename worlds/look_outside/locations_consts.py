@@ -178,7 +178,7 @@ APT_32_TEETH_LOCATIONS_MAIN: dict[str, LocationData] = {
     "APT_32_TUNNELS_TOOTH_RIFLE": LocationData("Teeth Hell - Baby Teeth Tunnel Item 1", LC.OVERWORLD_ITEM, 346),
     "APT_32_TUNNELS_TOOTH_SCIMITAR": LocationData("Teeth Hell - Baby Teeth Tunnel Item 2", LC.OVERWORLD_ITEM, 347),
     "APT_32_TUNNELS_HEALING_SPRAY": LocationData("Teeth Hell - Item in Southeast Tunnel", LC.OVERWORLD_ITEM, 348),
-    "APT_32_TUNNELS_TOOTH_GROUP_B_COMBAT_VICTORY": LocationData("Teeth Hell - Slay Tooth Group (Bottom Right Tunnel)", LC.OVERWORLD_ITEM, 349),
+    "APT_32_TUNNELS_TOOTH_GROUP_B_COMBAT_VICTORY": LocationData("Teeth Hell - Slay Tooth Group (Southeast Tunnel)", LC.OVERWORLD_ITEM, 349),
     "APT_32_BATHROOM_BITING_BOOTS": LocationData("Apt. 32 Bathroom - Item West of Joel (Day 9+)", LC.OVERWORLD_ITEM, 350)
 }
 
@@ -230,7 +230,7 @@ FRONT_DOOR_LOCATIONS: dict[str, LocationData] = {
     "DOOR_RECRUIT_SOPHIE": LocationData("Door Encounter - Recruit Sophie", LC.RECRUIT, 507),
     "DOOR_BEFRIEND_TRICKSTER": LocationData("Door Encounter - Befriend Trickster", LC.EVENT_ITEM, 508),
     "DOOR_TRICKSTER_COMBAT_VICTORY": LocationData("Door Encounter - Slay Trickster", LC.FRIENDLY_FIRE, 509),
-    "DOOR_RECRUIT_MORTON": LocationData("Door Encounter - Recruit Morton", LC.RECRUIT, 510),
+    "DOOR_RECRUIT_MORTON": LocationData("Door Encounter - Give Morton 15 Junk", LC.RECRUIT, 510),
     "DOOR_MORTON_COMBAT_VICTORY": LocationData("Door Encounter - Slay Non-cursed Morton", LC.FRIENDLY_FIRE, 511),
     "DOOR_MORTON_CURSED_COMBAT_VICTORY": LocationData("Door Encounter - Slay Cursed Morton", LC.COMBAT_VICTORY, 512),
     "DOOR_RECRUIT_GOTHS": LocationData("Door Encounter - Recruit Xaria and Montgomery", LC.RECRUIT, 513),
@@ -256,11 +256,12 @@ FRONT_DOOR_LOCATIONS: dict[str, LocationData] = {
     "DOOR_FATHER_ANDREW_COMBAT_VICTORY": LocationData("Door Encounter - Slay Father Andrew", LC.FRIENDLY_FIRE, 533),
     "DOOR_WARPED_PRIEST_COMBAT_VICTORY": LocationData("Door Encounter - Slay Warped Priest", LC.COMBAT_VICTORY, 534),
     "DOOR_HUMPHREY_DEAL": LocationData("Door Encounter - Trade With Humphrey", LC.EVENT_ITEM, 535),
-    #"DOOR_GAMER_ITEM_JUMPLAD_3": LocationData("Door Encounter - Gamer Item 1", LC.MERCHANT, 537),
-    #"DOOR_GAMER_ITEM_OCTOCOOK": LocationData("Door Encounter - Gamer Item 2", LC.MERCHANT, 538),
-    #"DOOR_GAMER_ITEM_BLOOD_GHOUL": LocationData("Door Encounter - Gamer Item 3", LC.DOOR_MERCHANT, 539),
-    #"DOOR_GAMER_ITEM_MASSACRE_PRINCESS": LocationData("Door Encounter - Gamer Item 4", LC.MERCHANT, 540),
-    #"DOOR_GAMER_KATANA": LocationData("Door Encounter - Accept the Gamer's Bribe", LC.MERCHANT, 541),
+    "DOOR_MORTON_3_JUNK": LocationData("Door Encounter - Give Morton 3 Junk", LC.MERCHANT, 536),
+    "DOOR_MORTON_6_JUNK": LocationData("Door Encounter - Give Morton 6 Junk", LC.MERCHANT, 537),
+    "DOOR_MORTON_9_JUNK": LocationData("Door Encounter - Give Morton 9 Junk", LC.DOOR_MERCHANT, 538),
+    "DOOR_MORTON_12_JUNK": LocationData("Door Encounter - Give Morton 12 Junk", LC.MERCHANT, 539),
+    "DOOR_MORTON_18_JUNK": LocationData("Door Encounter - Give Morton 18 Junk", LC.MERCHANT, 540),
+    "DOOR_MORTON_21_JUNK": LocationData("Door Encounter - Give Morton 21 Junk", LC.MERCHANT, 541),
     "DOOR_GAMER_COMBAT_VICTORY": LocationData("Door Encounter - Slay the Gamer", LC.FRIENDLY_FIRE, 542),
     "DOOR_TOUGH_GUY_COMBAT_VICTORY": LocationData("Door Encounter - Slay the Tough Guy", LC.FRIENDLY_FIRE, 543),
     "DOOR_BRUTE_COMBAT_VICTORY": LocationData("Door Encounter - Slay Brute", LC.COMBAT_VICTORY, 544),
@@ -1042,8 +1043,8 @@ APT_11_ABYSS_LOCATIONS = {
 }
 
 FRED_APT_ENTRYWAY_LOCATIONS = {
-    "FRED_FIRST_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay a Fred", LC.COMBAT_VICTORY, 3101),
-    "FRED_SECOND_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay Two Freds", LC.COMBAT_VICTORY, 3102),
+    "FRED_FIRST_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay 1 Fred", LC.COMBAT_VICTORY, 3101),
+    "FRED_SECOND_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay 2 Freds", LC.COMBAT_VICTORY, 3102),
     "FRED_ENTRYWAY_CHEEZ_STIX": LocationData("Fred's Apt. Kitchen - Item on Dining Table 1", LC.OVERWORLD_ITEM, 3111),
     "FRED_ENTRYWAY_KNIVES": LocationData("Fred's Apt. Kitchen - Item on Dining Table 2", LC.OVERWORLD_ITEM, 3112),
     "FRED_ENTRYWAY_TRASH": LocationData("Fred's Apt. Kitchen - Trash Can", LC.TRASH_LOOT, 3113),
@@ -1051,13 +1052,13 @@ FRED_APT_ENTRYWAY_LOCATIONS = {
 }
 
 FRED_APT_MAIN_LOCATIONS = {
-    "FRED_THIRD_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay Three Freds", LC.COMBAT_VICTORY, 3103),
-    "FRED_FOURTH_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay Four Freds", LC.COMBAT_VICTORY, 3104),
-    "FRED_FIFTH_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay Five Freds", LC.COMBAT_VICTORY, 3105),
-    "FRED_SIXTH_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay Six Freds", LC.COMBAT_VICTORY, 3106),
-    "FRED_SEVENTH_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay Seven Freds", LC.COMBAT_VICTORY, 3107),
-    "FRED_EIGHTH_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay Eight Freds", LC.COMBAT_VICTORY, 3108),
-    "FRED_NINTH_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay Nine Freds", LC.COMBAT_VICTORY, 3109),
+    "FRED_THIRD_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay 3 Freds", LC.COMBAT_VICTORY, 3103),
+    "FRED_FOURTH_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay 4 Freds", LC.COMBAT_VICTORY, 3104),
+    "FRED_FIFTH_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay 5 Freds", LC.COMBAT_VICTORY, 3105),
+    "FRED_SIXTH_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay 6 Freds", LC.COMBAT_VICTORY, 3106),
+    "FRED_SEVENTH_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay 7 Freds", LC.COMBAT_VICTORY, 3107),
+    "FRED_EIGHTH_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay 8 Freds", LC.COMBAT_VICTORY, 3108),
+    "FRED_NINTH_COMBAT_VICTORY": LocationData("Fred's Apt. - Slay 9 Freds", LC.COMBAT_VICTORY, 3109),
     "FRED_LIVING_ROOM_VINTAGE_CONSOLE": LocationData("Fred's Apt. Living Room - Item Near TV", LC.OVERWORLD_ITEM, 3115),
     "FRED_LIVING_ROOM_BEER_STEIN": LocationData("Fred's Apt. Living Room - Item on South Table 1", LC.OVERWORLD_ITEM, 3116),
     "FRED_LIVING_ROOM_WHISKEY": LocationData("Fred's Apt. Living Room - Item on South Table 2", LC.OVERWORLD_ITEM, 3117),
@@ -1140,7 +1141,7 @@ APT_12_WALLS_LOCATIONS = {
 }
 
 APT_12_PLANETARIUM_SOUTH_LOCATIONS = {
-    "APT_12_PLANETARIUM_BROKEN_TELESCOPE": LocationData("Apt. 12 Planetarium - Item Beyond Door", LC.OVERWORLD_ITEM, 3215),
+    "APT_12_PLANETARIUM_BROKEN_TELESCOPE": LocationData("Apt. 12 Planetarium - Item Behind Locked Door", LC.OVERWORLD_ITEM, 3215),
 }
 
 APT_12_KITCHEN_CLOSET_LOCATIONS = {
@@ -1335,7 +1336,9 @@ GF_CORNER_STORE_LOCATIONS = {
     "CORNER_STORE_STORAGE_SAFE": LocationData("Corner Store Back - Safe", LC.SAFE_LOOT, 3805),
     "CORNER_STORE_STORAGE_VHS": LocationData("Corner Store Back - Item on Southwest Counter", LC.OVERWORLD_ITEM, 3806),
     "CORNER_STORE_STORAGE_DUCT_TAPE": LocationData("Corner Store Back - Item on South Counter 1", LC.OVERWORLD_ITEM, 3807),
-    "CORNER_STORE_STORAGE_HERBICIDE": LocationData("Corner Store Back - Item on South Counter 2", LC.OVERWORLD_ITEM, 3808)
+    "CORNER_STORE_STORAGE_HERBICIDE": LocationData("Corner Store Back - Item on South Counter 2", LC.OVERWORLD_ITEM, 3808),
+    "CORNER_STORE_TRASH": LocationData("Corner Store - Trash", LC.TRASH_LOOT, 3809),
+    "CORNER_STORE_STORAGE_ROACH": LocationData("Corner Store Back - Roach", LC.OVERWORLD_ITEM, 3810)
 }
 
 MAILROOM_SHIPPING_WEST_HALL_LOCATIONS = {
@@ -1400,6 +1403,7 @@ LANDLORDS_APT_PHASE_2_LOCATIONS = {
     "LL_EAST_OLD_RECORDS": LocationData("Landlord Hell East - Item on East Table 2", LC.OVERWORLD_ITEM, 4049),
     "LL_EAST_SPEAKERS": LocationData("Landlord Hell East - Item in Northeast Corner", LC.OVERWORLD_ITEM, 4050),
     "LL_WIDE_TABLE_S": LocationData("Landlord Livingroom - Side Table Loot (Phase 2+)", LC.DRAWER_LOOT, 4084),
+    "LL_EAST_CACHE": LocationData("Landlord Hell East - Item Under Floorboards", LC.DRAWER_LOOT, 4088),
 }
 
 LANDLORDS_APT_PHASE_3_LOCATIONS = {
@@ -1825,7 +1829,7 @@ GARAGE_LOCATIONS = {
     "B_CAR_HELLRIDE_AUDREY_LOOT": LocationData("Basement Garage - Hellride Audrey Loot", LC.EVENT_ITEM, 5318),
     "HELL_CAR_LAIR_SWORD": LocationData("Hellride Lair - Item", LC.OVERWORLD_ITEM, 5319),
     "B_STUART_COMBAT_VICTORY": LocationData("Stuart's Hideout - Slay Stuart", LC.FRIENDLY_FIRE, 5320),
-    #"B_STUART_MERCHANT": LocationData("Stuart's Hideout - Stuart Shop Item", LC.MERCHANT, 5321),
+    "B_CAR_SWAT_VAN_AUDREY_LOOT": LocationData("Basement Garage - Swat Van Audrey Loot", LC.EVENT_ITEM, 5321),
     "B_STUART_FIRST_AID_KIT": LocationData("Stuart's Hideout - Item on Table", LC.OVERWORLD_ITEM, 5322),
     "B_STUART_SIMPLE_KEY": LocationData("Stuart's Hideout - Item on South Table", LC.OVERWORLD_ITEM, 5323),
     "B_UTILITY_JUNK_1": LocationData("Basement Utility Room - Item on Counter 1", LC.OVERWORLD_ITEM, 5324),
@@ -1842,6 +1846,7 @@ GARAGE_LOCATIONS = {
     "B_OOZE_MACHINE_MERCHANT_4": LocationData("Black Ooze Vending Machine - Item 4", LC.MERCHANT, 5335),
     "B_OOZE_MACHINE_MERCHANT_5": LocationData("Black Ooze Vending Machine - Item 5", LC.MERCHANT, 5336),
     "B_CAR_TRASH": LocationData("Basement Garage - Trash Can", LC.TRASH_LOOT, 5337)
+    
 }
 
 BLACKOUT_LOCATIONS = {
@@ -2005,7 +2010,7 @@ MEAT_TOILET_LOCATIONS = {
 MEAT_EYEBALL_LOCATIONS = {
     "MEAT_EYEBALL_STANLEY_COMBAT_VICTORY": LocationData("Meat World Eyeball - Defeat Stanley", LC.COMBAT_VICTORY, 6301),
     "MEAT_EYEBALL_BRAIN_LEECH_COMBAT_VICTORY": LocationData("Meat World Eyeball - Slay Brain Leeches", LC.COMBAT_VICTORY, 6302),
-    "MEAT_EYEBALL_OBSERVER_COMBAT_VICTORY": LocationData("Meat World Eyeball - Slay Observer", LC.COMBAT_VICTORY, 6303),
+    "MEAT_EYEBALL_OBSERVER_COMBAT_VICTORY": LocationData("Meat World Eyeball - Slay Basilisk", LC.COMBAT_VICTORY, 6303),
     "MEAT_EYEBALL_OCULAR_TETHERBLADE": LocationData("Meat World Eyeball - West Item", LC.OVERWORLD_ITEM, 6304),
     "MEAT_EYEBALL_GLANCE_COMBAT_VICTORY": LocationData("Meat World Eyeball - Slay Glance", LC.COMBAT_VICTORY, 6305)
 }
@@ -2346,8 +2351,16 @@ location_name_groups: dict[str, set[str]] = {
                     "B_LARGE_SHADE_COMBAT_VICTORY"
                     },
     "SUPER_DUPER_BOSS": {
+        "F3_LARGE_SHADE_COMBAT_VICTORY",
+        "F2_LARGE_SHADE_COMBAT_VICTORY",
+        "F1_LARGE_SHADE_COMBAT_VICTORY",
+        "GF_LARGE_SHADE_COMBAT_VICTORY",
+        "B_LARGE_SHADE_COMBAT_VICTORY",
+        "DOOR_HALLWAY_MIMIC_COMBAT_VICTORY",
         "GLITCH_HONKO_COMBAT_VICTORY", 
         "APT_32_TUNNELS_BABY_TEETH_SUPERBOSS_COMBAT_VICTORY", 
+        "APT_32_TUNNELS_TOOTH_RIFLE",
+        "APT_32_TUNNELS_TOOTH_SCIMITAR",
         "FUNGUS_COMATUS_COMBAT_VICTORY", 
         "BOILER_ROOM_COMATUS_YOGA",
         "GLITCH_SLIME_HYDRA_COMBAT_VICTORY",

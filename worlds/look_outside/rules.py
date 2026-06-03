@@ -65,6 +65,13 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     # door rules
     if (world.options.randomize_door_encounters == 1):
         world.set_rule(world.get_location(get_location_name("DOOR_HARRIET_REUNITE", world)), Has("Sophie"))
+        world.set_rule(world.get_location(get_location_name("DOOR_MORTON_3_JUNK", world)), Has("Junk Pile", count=1))
+        world.set_rule(world.get_location(get_location_name("DOOR_MORTON_6_JUNK", world)), Has("Junk Pile", count=2))
+        world.set_rule(world.get_location(get_location_name("DOOR_MORTON_9_JUNK", world)), Has("Junk Pile", count=3))
+        world.set_rule(world.get_location(get_location_name("DOOR_MORTON_12_JUNK", world)), Has("Junk Pile", count=4))
+        world.set_rule(world.get_location(get_location_name("DOOR_RECRUIT_MORTON", world)), Has("Junk Pile", count=5))
+        world.set_rule(world.get_location(get_location_name("DOOR_MORTON_18_JUNK", world)), Has("Junk Pile", count=6))
+        world.set_rule(world.get_location(get_location_name("DOOR_MORTON_21_JUNK", world)), Has("Junk Pile", count=7))
 
     # f3 rules
     world.set_rule(world.get_location(get_location_name("APT_33_RECRUIT_PHILLIPPE", world)), Has("Phillippe's Remains"))
@@ -184,6 +191,8 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     world.set_rule(world.get_location(get_location_name("LL_TRENCH_DIGGER_AUDREY_LOOT", world)), Has("Audrey"))
     world.set_rule(world.get_location(get_location_name("LL_BATTLEFIELD_APC_AUDREY_LOOT", world)), Has("Audrey"))
     world.set_rule(world.get_location(get_location_name("B_CAR_HELLRIDE_AUDREY_LOOT", world)), Has("Audrey"))
+    world.set_rule(world.get_location(get_location_name("B_CAR_SWAT_VAN_AUDREY_LOOT", world)), Has("Audrey"))
+
 
     # vending machine rules
     world.set_rule(world.get_location(get_location_name("F3_VENDING_MACHINE_CHIPS", world)), Has("Vending Machine Snack Money", count=num_multiple_items["Vending Machine Snack Money"])) # 75c each

@@ -495,7 +495,7 @@ ground_regions_table: dict[str, RegionData] = {
     }),
     "MUTTS_STOCK": RegionData(),
     "MUTTS_SHOP": RegionData(exits={
-        "MUTTS_COUNTER": ExitData("MUTTS_STOCK", Has("Five Hundred Dollars", count=3)),
+        "MUTTS_COUNTER": ExitData("MUTTS_STOCK", Has("Two Hundred and Fifty Dollars", count=num_multiple_items["Two Hundred and Fifty Dollars"])),
         # with no multiplier, mutt's entire stock costs 1510 dollars
     }),
     "LANDLORDS_APARTMENT_PHASE_1": RegionData(exits={
