@@ -195,6 +195,7 @@ This mod can also be installed without RPGModder
     - It should be placed after everything in that file except for the `];` denoting the end of the object.
 
 ```
+    ,
     {
       "name": "archipelago",
       "status": true,
