@@ -673,6 +673,17 @@ F2_HALL_EAST_LOCATIONS: dict[str, LocationData] = {
     "F2_GRENADE": LocationData("Floor 2 Hall - Item After Beast Chase 4", LC.OVERWORLD_ITEM, 1512, difficulty_lock={DL.CURSED})
 }
 
+F2_JANITORS_CLOSET_LOCATIONS: dict[str, LocationData] = {
+    "F2_JANITORS_CLEANEREX": LocationData("F2 Janitor's Closet - Item on Northeast Table 1", LC.OVERWORLD_ITEM, 1550),
+    "F2_JANITORS_GLOVES": LocationData("F2 Janitor's Closet - Item on Northeast Table 2", LC.OVERWORLD_ITEM, 1551),
+    "F2_JANITORS_GAS_MASK": LocationData("F2 Janitor's Closet - Item on Northeast Table 3", LC.OVERWORLD_ITEM, 1552),
+    "F2_JANITORS_MOP": LocationData("F2 Janitor's Closet - Item on Table 3", LC.OVERWORLD_ITEM, 1553),
+    "F2_JANITORS_BROOM": LocationData("F2 Janitor's Closet - Item Near Bookshelf 1", LC.OVERWORLD_ITEM, 1554),
+    "F2_JANITORS_HERBICIDE": LocationData("F2 Janitor's Closet - Item on Southwest Table 1", LC.OVERWORLD_ITEM, 1555),
+    "F2_JANITORS_LUTE": LocationData("F2 Janitor's Closet - Item on Southwest Table 2", LC.OVERWORLD_ITEM, 1556),
+    "F2_JANITORS_DCLOGGER": LocationData("F2 Janitor's Closet - Item in Corner", LC.OVERWORLD_ITEM, 1557),
+}
+
 APT_20_JEANNE_PHASE1_LOCATIONS: dict[str, LocationData] = {
     "APT_20_JEANNE_COMBAT_VICTORY": LocationData("Apt. 20 Phase 1 - Slay Jeanne", LC.FRIENDLY_FIRE, 1601),
     "APT_20_CLEANEREX": LocationData("Apt. 20 Phase 1 - Item on North Table", LC.OVERWORLD_ITEM, 1602),
@@ -1215,6 +1226,7 @@ GF_HALL_MAIN_LOCATIONS = {
     "MAILROOM_OFFICE_SUN_DISC": LocationData("Mailroom Office - Item on Counter", LC.OVERWORLD_ITEM, 3904),
     "MAILROOM_OFFICE_TRASH": LocationData("Mailroom Office - Trash Can", LC.TRASH_LOOT, 3910),
     "GF_HAND_WORM_COMBAT_VICTORY": LocationData("Ground Floor - Slay Hand Worms", LC.COMBAT_VICTORY, 3418),
+    "MAILROOM_OFFICE_STATIONERY": LocationData("Mailroom Office - Item on Table", LC.COMBAT_VICTORY, 3419),
 }
 
 GF_OFFICE_BATHROOM_LOCATIONS = {
@@ -1645,7 +1657,7 @@ SEWER_LOCATIONS = {
     "SEWER_N_FLOATING_CORPSE_COMBAT_VICTORY": LocationData("Sewer North - Slay Floating Corpse", LC.COMBAT_VICTORY, 4806),
     "SEWER_N_TOP_LOCKED_ROOM_CORALIE_THOMAS": LocationData("Sewer North Past Upper Gate - Rescue Coralie and Thomas", LC.EVENT_ITEM, 4807),
     "SEWER_N_TOP_LOCKED_ROOM_VINTAGE_SNEAKERS": LocationData("Sewer North Past Upper Gate - Item", LC.OVERWORLD_ITEM, 4808),
-    "SEWER_N_LOWER_LOCKED_ROOM_": LocationData("Sewer North Past Lower Gate - Slay Caterpillar", LC.COMBAT_VICTORY, 4809),
+    "SEWER_N_LOWER_LOCKED_ROOM_CATERPILLAR_COMBAT_VICTORY": LocationData("Sewer North Past Lower Gate - Slay Caterpillar", LC.COMBAT_VICTORY, 4809),
     "SEWER_N_LOWER_LOCKED_ROOM_CATAFALQUE": LocationData("Sewer North Past Lower Gate - Item", LC.OVERWORLD_ITEM, 4810),
     "SEWER_N_PIPE_MAN_SNAKE_COMBAT_VICTORY": LocationData("Sewer North - Slay Pipe Men Snakes", LC.COMBAT_VICTORY, 4811),
     "SEWER_E_TICK_COMBAT_VICTORY": LocationData("Sewer East - Slay Tick", LC.COMBAT_VICTORY, 4812),
@@ -1956,8 +1968,8 @@ MEAT_SYBIL_LOCATIONS = {
     "MEAT_SYBIL_VENTRICLE_3_COMBAT_VICTORY": LocationData("Meat World Sybil - Slay Ventricle 3", LC.COMBAT_VICTORY, 5907),
     "MEAT_SYBIL_SHOTGUN_SHELLS": LocationData("Meat World Sybil - Item In Center Room", LC.OVERWORLD_ITEM, 5908),
     "MEAT_SYBIL_LIBRA_COMBAT_VICTORY": LocationData("Meat World Sybil - Slay Libra", LC.COMBAT_VICTORY, 5909),
-    "MEAT_SYBIL_EMPTY_HUSK": LocationData("Meat World Sybil - Slay Empty Husk", LC.COMBAT_VICTORY, 5910),
-    "MEAT_SYBIL_ENZYME": LocationData("Meat World Sybil - Item Near Empty Husk", LC.OVERWORLD_ITEM, 5911),
+    "MEAT_SYBIL_EMPTY_HUSK": LocationData("Meat World Sybil - Slay Faceless Husk", LC.COMBAT_VICTORY, 5910),
+    "MEAT_SYBIL_ENZYME": LocationData("Meat World Sybil - Item Near Faceless Husk", LC.OVERWORLD_ITEM, 5911),
     "MEAT_SYBIL_DOUBLE_HUSK_COMBAT_VICTORY": LocationData("Meat World Sybil - Slay Double Husk", LC.COMBAT_VICTORY, 5912),
     "MEAT_SYBIL_MAD_HUSK_COMBAT_VICTORY": LocationData("Meat World Sybil - Slay Mad Husk", LC.COMBAT_VICTORY, 5913),
     "MEAT_SYBIL_CLUSTER_HUSK_COMBAT_VICTORY": LocationData("Meat World Sybil - Slay Cluster Husk", LC.COMBAT_VICTORY, 5914),
@@ -2060,6 +2072,7 @@ location_table: dict[str, LocationData] = {
     **F3_JANITOR_CLOSET_LOCATIONS,
     **F2_SHADE_LOCATIONS,
     **F2_HALL_EAST_LOCATIONS,
+    **F2_JANITORS_CLOSET_LOCATIONS,
     **APT_20_JEANNE_LOCATIONS,
     **APT_21_LYLE_LOCATIONS,
     **APT_22_HARRIET_LOCATIONS,
@@ -2194,6 +2207,7 @@ region_locs: dict[str, set[str]] = {
     "FLOOR_2_SHADE": F2_SHADE_LOCATIONS.keys(),
     # the floor 2 shade can be either east or west side and both sides are blocked from one another; it gets its own region
     "FLOOR_2_EAST": F2_HALL_EAST_LOCATIONS.keys(),
+    "FLOOR_2_JANITORS_CLOSET": F2_JANITORS_CLOSET_LOCATIONS.keys(),
     "APT_20_JEANNE": APT_20_JEANNE_PHASE1_LOCATIONS.keys(),
     "APT_20_JEANNE_HYDRA": APT_20_JEANNE_PHASE2_LOCATIONS.keys(),
     "APT_21_LYLE": APT_21_LYLE_MAIN_LOCATIONS.keys(),

@@ -374,8 +374,10 @@ f2_east_regions_table = {
         "APT_24_DOOR": ExitData("APT_24_EUGENE_SHOP"),
         "F2_STAIRWELL_EXIT": ExitData("STAIRWELL"),
         "FLOOR_2_SHADE_EAST": ExitData("FLOOR_2_SHADE"),
+        "FLOOR_2_JANITORS_CLOSET_DOOR": ExitData("FLOOR_2_JANITORS_CLOSET", Has("Janitor Key Ring")),
     }),
     "APT_20_JEANNE": RegionData(),
+    "FLOOR_2_JANITORS_CLOSET": RegionData(),
     "APT_20_JEANNE_HYDRA": RegionData(),
     "APT_21_LYLE": RegionData(
         exits={
@@ -619,7 +621,7 @@ misc_regions_table: dict[str, RegionData] = {
             "ELEVATOR_FLOOR_2_EXIT": ExitData("FLOOR_2_WEST", can_access_elevator),
             "ELEVATOR_FLOOR_1_EXIT": ExitData("FLOOR_1_MAZE", can_access_elevator),
             "ELEVATOR_GROUND_FLOOR_EXIT": ExitData("MAILROOM_SHIPPING_WEST_HALL", can_access_elevator),
-            "ELEVATOR_BASEMENT_EXIT": ExitData("GARBAGE_ROOM", can_access_elevator),
+            "ELEVATOR_BASEMENT_EXIT": ExitData("GARBAGE_ROOM"),
             "ELEVATOR_FLOOR_4_EXIT": ExitData("FLOOR_4", can_access_elevator)
         }),
     "FLOOR_4": RegionData(exits={
