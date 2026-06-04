@@ -62,4 +62,3 @@ class RegionAccessTests(LOTestBase):
         self.assertFalse(state.can_reach_region("BASEMENT_WEST_PARKING_GARAGE", self.player))
         self.assertFalse(state.can_reach_region("SEWER", self.player))
         self.assertFalse(state.can_reach_region("SEWER_WEST", self.player))
-
