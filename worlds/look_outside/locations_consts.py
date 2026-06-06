@@ -1654,7 +1654,7 @@ SEWER_LOCATIONS = {
     "SEWER_N_TICKLES_DRAWING": LocationData("Sewer North - Drawing From Tickle", LC.MERCHANT, 4803),
     "SEWER_N_TICKLES_GIFT": LocationData("Sewer North - Gift From Tickle", LC.EVENT_ITEM, 4804),
     "SEWER_N_PIPE_MAN_COMBAT_VICTORY": LocationData("Sewer North - Slay Pipe Men", LC.COMBAT_VICTORY, 4805),
-    "SEWER_N_FLOATING_CORPSE_COMBAT_VICTORY": LocationData("Sewer North - Slay Floating Corpse", LC.COMBAT_VICTORY, 4806),
+    "SEWER_N_FLOATING_CORPSE_COMBAT_VICTORY": LocationData("Sewer North - Slay Floating Corpse Near Pipe Men", LC.COMBAT_VICTORY, 4806),
     "SEWER_N_TOP_LOCKED_ROOM_CORALIE_THOMAS": LocationData("Sewer North Past Upper Gate - Rescue Coralie and Thomas", LC.EVENT_ITEM, 4807),
     "SEWER_N_TOP_LOCKED_ROOM_VINTAGE_SNEAKERS": LocationData("Sewer North Past Upper Gate - Item", LC.OVERWORLD_ITEM, 4808),
     "SEWER_N_LOWER_LOCKED_ROOM_CATERPILLAR_COMBAT_VICTORY": LocationData("Sewer North Past Lower Gate - Slay Caterpillar", LC.COMBAT_VICTORY, 4809),
@@ -1702,7 +1702,7 @@ SEWER_LOCATIONS = {
     "SEWER_SW_DRAIN_FLIES_COMBAT_VICTORY": LocationData("Sewer SW - Slay Drain Flies", LC.COMBAT_VICTORY, 4851),
     "SEWER_SW_TRISTAN_CHARLIE": LocationData("Sewer SW - Rescue Tristan and Charlie", LC.EVENT_ITEM, 4852),
     "SEWER_SW_FIRST_AID_BOX_LOOT": LocationData("Sewer SW - First Aid Box", LC.FIRST_AID_BOX_LOOT, 4853),
-    "SEWER_SW_FAR_TICK_COMBAT_VICTORY": LocationData("Sewer SW - Slay Tick Near Tristan and Charlie", LC.COMBAT_VICTORY, 4854),
+    "SEWER_SW_FAR_TICK_COMBAT_VICTORY": LocationData("Sewer SW - Slay Boss Tick", LC.COMBAT_VICTORY, 4854),
     "SEWER_SW_PADDED_JACKET": LocationData("Sewer SW - Item Near Tristan and Charlie", LC.OVERWORLD_ITEM, 4855),
     "SEWER_NW_SCUTTLE_COMBAT_VICTORY": LocationData("Sewer NW - Slay Pipe Men Scuttle", LC.COMBAT_VICTORY, 4856),
     "SEWER_NW_TICK_COMBAT_VICTORY": LocationData("Sewer NW - Slay Tick", LC.COMBAT_VICTORY, 4857),
@@ -1714,6 +1714,8 @@ SEWER_LOCATIONS = {
     "SEWER_TICKLE_BLOOD_CAP": LocationData("Sewer North - Tickle Shop Item 3", LC.EVENT_ITEM, 4864),
     "SEWER_TICKLE_VAMPIRIC_JACKET": LocationData("Sewer North - Tickle Shop Item 4", LC.EVENT_ITEM, 4865),
     "SEWER_TICKLE_CRIMSON_RING": LocationData("Sewer North - Tickle Shop Item 5", LC.EVENT_ITEM, 4866),
+    "SEWER_N_FLOATING_CORPSE_2_COMBAT_VICTORY": LocationData("Sewer North - Slay Floating Corpse Near Tickle", LC.COMBAT_VICTORY, 4867),
+
 }
 
 SEWER_BOILER_ENTRANCE_LOCATIONS = {
