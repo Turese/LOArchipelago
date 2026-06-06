@@ -195,11 +195,22 @@ This mod can also be installed without RPGModder
     - It should be placed after everything in that file except for the `];` denoting the end of the object.
 
 ```
-    ,
-    {
+    ,{
       "name": "archipelago",
       "status": true,
-      "description": "archipelago.js build bundled",
+      "description": "Archipelago.js build for Look Outside client",
+      "parameters": {}
+    },
+    {
+      "name": "LocationIds",
+      "status": true,
+      "description": "global variable mapping of all location ids",
+      "parameters": {}
+    },
+    {
+      "name": "NormalizeDifficulty",
+      "status": true,
+      "description": "Make the same locations available in all difficulties",
       "parameters": {}
     },
     {
@@ -211,7 +222,7 @@ This mod can also be installed without RPGModder
     {
       "name": "BlackoutLamp",
       "status": true,
-      "description": "Allows players to switch the blackout on and off thru the bedroom lamp",
+      "description": "If player interacts with the lamp after unlocking elevator, they can toggle blackout",
       "parameters": {}
     },
     {
@@ -221,9 +232,9 @@ This mod can also be installed without RPGModder
       "parameters": {}
     },
     {
-      "name": "ConnectionStatus",
+      "name": "ShopHelpers",
       "status": true,
-      "description": "client status display",
+      "description": "helper function for overriding merchants and vending machines",
       "parameters": {}
     },
     {
@@ -233,9 +244,21 @@ This mod can also be installed without RPGModder
       "parameters": {}
     },
     {
+      "name": "ToothHelpers",
+      "status": true,
+      "description": "helper function for overriding tooth family events",
+      "parameters": {}
+    },
+    {
       "name": "EventLogicUpdates",
       "status": true,
-      "description": "Clears item drops from the game",
+      "description": "Updates unique event logic",
+      "parameters": {}
+    },
+    {
+      "name": "MassEventUpdates",
+      "status": true,
+      "description": "Bulk operations on game events",
       "parameters": {}
     },
     {
@@ -251,15 +274,15 @@ This mod can also be installed without RPGModder
       "parameters": {}
     },
     {
-      "name": "LocationIds",
-      "status": true,
-      "description": "location -> id mappings",
-      "parameters": {}
-    },
-    {
       "name": "LookOutsideAPClient",
       "status": true,
       "description": "Archipelago Client for Look Outside",
+      "parameters": {}
+    },
+    {
+      "name": "ConnectionStatus",
+      "status": true,
+      "description": "connection status display",
       "parameters": {}
     },
     {
