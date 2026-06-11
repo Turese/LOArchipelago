@@ -109,7 +109,7 @@ def create_all_items(world: LookOutsideWorld):
         for item in world.multiworld.precollected_items[world.player]:
             if ItemTag.UNIQUE in item_table[item.name].tags:
                 excluded_items.add(item.name)
-            else:
+            elif ItemTag.PROGRESSIVE in item_table[item.name].tags or ItemTag.BREAKABLE_KEY in item_table[item.name].tags or ItemTag.AMMO in item_table[item.name].tags or ItemTag.SPECIAL_CURRENCY in item_table[item.name].tags:
                 if item.name in reduced_items:
                     reduced_items[item.name] += 1
                 else:

@@ -8,3 +8,8 @@ class LOTestBase(WorldTestBase):
     game = "Look Outside"
     player: ClassVar[int] = 1
     world: LookOutsideWorld
+
+class LOMultiworldTestBase(WorldTestBase):
+    game = "Look Outside"
+    player: ClassVar[int] = 1
+    world: LookOutsideWorld
