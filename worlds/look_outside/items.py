@@ -78,12 +78,12 @@ def create_all_items(world: LookOutsideWorld):
 
         # TODO: IMPLEMENT WITH LOGIC
 
+        local_itempool = []
         mandatory_items = []
-        unique_items = []
         remaining_items = []
 
         excluded_items = set()
-        reduced_items = set()
+        reduced_items = {}
 
         precollect_games(world)
         precollect_arms(world)
@@ -110,7 +110,10 @@ def create_all_items(world: LookOutsideWorld):
             if ItemTag.UNIQUE in item_table[item.name].tags:
                 excluded_items.add(item.name)
             else:
-                reduced_items.add(item.name)
+                if item.name in reduced_items:
+                    reduced_items[item.name] += 1
+                else:
+                    reduced_items[item.name] = 1
 
         for item_name, item_info in item_table.items():
             if item_name in excluded_items:
@@ -120,31 +123,27 @@ def create_all_items(world: LookOutsideWorld):
             if ItemTag.PROGRESSIVE in tags or ItemTag.BREAKABLE_KEY in tags or ItemTag.AMMO in tags or ItemTag.SPECIAL_CURRENCY in tags:
                 multiplier = num_multiple_items[item_name]
                 if item_name in reduced_items:
-                    multiplier -= 1
-                mandatory_items += [item_name] * multiplier
-            elif category == ItemCat.SKILL or category == ItemCat.MISC:
+                    multiplier -= reduced_items[item_name]
+                if multiplier > 0:
+                    mandatory_items += [item_name] * multiplier
+            elif category == ItemCat.SKILL or category == ItemCat.MISC or ItemTag.UNIQUE in tags or ItemTag.CHECK_GATE in tags or ItemTag.OFFERING in tags:
                 mandatory_items += [item_name]
-            # todo: clean up redundant tags. all offerings besides the progressive one are already both unique and check gates
-            elif ItemTag.UNIQUE in tags or ItemTag.CHECK_GATE in tags or ItemTag.OFFERING in tags:
-                unique_items += [item_name]
             else:
                 remaining_items += [item_name]
         
         for item in mandatory_items:
-            world.multiworld.itempool += [create_lo_item(world, item)]
+            local_itempool += [create_lo_item(world, item)]
 
-        for item in unique_items:
-            world.multiworld.itempool += [create_lo_item(world, item)]
-
-        num_locations = len(world.multiworld.get_unfilled_locations())
-        num_itempool = len(world.multiworld.itempool)
+        num_locations = len(world.multiworld.get_unfilled_locations(world.player))
     
-        slots_to_fill = num_locations - num_itempool
+        slots_to_fill = num_locations - len(mandatory_items)
 
         for _ in range(slots_to_fill):
-            world.multiworld.itempool += [create_lo_item(world, world.multiworld.random.choice(remaining_items))]
+            local_itempool += [create_lo_item(world, world.multiworld.random.choice(remaining_items))]
 
-        print(f"Added {len(world.multiworld.itempool)} items to the pool, filling {slots_to_fill} slots with filler items.")
+        world.multiworld.itempool += local_itempool
+
+        print(f"Added {len(local_itempool)} items to the pool, filling {len(mandatory_items)} with unique/pr items and {slots_to_fill} slots with filler items.")
 
 
 # yaml option for starting games
