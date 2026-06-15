@@ -93,7 +93,7 @@ APT_30_MAIN_LOCATIONS: dict[str, LocationData] = {
     "APT_30_SW_TOOTHPASTE": LocationData("Apt. 30 Bathroom - Item on Counter", LC.OVERWORLD_ITEM, 1118),
     "APT_30_SE_THROWING_KNIFE": LocationData("Apt. 30 Kitchen - Item on Dining Table 1", LC.OVERWORLD_ITEM, 1119),
     "APT_30_SE_DINNER_PLATE": LocationData("Apt. 30 Kitchen - Item on Dining Table 2", LC.OVERWORLD_ITEM, 1120),
-    "APT_30_SE_SCISSORS": LocationData("Apt. 30 Kitchen - Slay Scissors", LC.COMBAT_VICTORY, 1121),
+    "APT_30_SE_SCISSORS_COMBAT_VICTORY": LocationData("Apt. 30 Kitchen - Slay Scissors", LC.COMBAT_VICTORY, 1121),
     "APT_30_SE_CHEFS_KNIFE": LocationData("Apt. 30 Kitchen - Item on Counter", LC.OVERWORLD_ITEM, 1122),
     "APT_30_FRIDGE": LocationData("Apt. 30 Kitchen - Fridge", LC.FRIDGE_LOOT, 1123),
 }
@@ -237,7 +237,6 @@ FRONT_DOOR_LOCATIONS: dict[str, LocationData] = {
     "DOOR_GOTHS_COMBAT_VICTORY": LocationData("Door Encounter - Slay Xaria and Montgomery", LC.FRIENDLY_FIRE, 514),
     "DOOR_LIMB_THIEF_COMBAT_VICTORY": LocationData("Door Encounter - Slay Guillaume the Limb Thief", LC.COMBAT_VICTORY, 515),
     "DOOR_HARRIET_REUNITE": LocationData("Door Encounter - Reunite Harriet and Sophie", LC.EVENT_ITEM, 516),
-    "DOOR_HARRIET_COMBAT_VICTORY": LocationData("Door Encounter - Slay Harriet", LC.FRIENDLY_FIRE, 517),
     "DOOR_HARRIET_CURSED_COMBAT_VICTORY": LocationData("Door Encounter - Slay Strange Lady", LC.COMBAT_VICTORY, 518),
     "DOOR_PIZZA": LocationData("Door Encounter - Buy Pizza", LC.EVENT_ITEM, 519),
     "DOOR_PIZZA_GUY_COMBAT_VICTORY": LocationData("Door Encounter - Slay Pizza Guy", LC.FRIENDLY_FIRE, 520),
@@ -409,7 +408,7 @@ APT_36_WOUNDED_LOCATIONS: dict[str, LocationData] = {
 }
 
 APT_37_VINCENT_LOCATIONS_MAIN: dict[str, LocationData] = {
-    "APT_37_LOUIS_TAIL": LocationData("Apt. 37 Living Room - Slay Louis' Tail", LC.COMBAT_VICTORY, 1001),
+    "APT_37_LOUIS_TAIL_COMBAT_VICTORY": LocationData("Apt. 37 Living Room - Slay Louis' Tail", LC.COMBAT_VICTORY, 1001),
     "APT_37_TABLE_PLATE_1": LocationData("Apt. 37 Kitchen - Item on Table 1", LC.OVERWORLD_ITEM, 1002),
     "APT_37_TABLE_THROWING_KNIVES": LocationData("Apt. 37 Kitchen - Item on Table 2", LC.OVERWORLD_ITEM, 1003),
     "APT_37_TABLE_FORKS": LocationData("Apt. 37 Kitchen - Item on Table 3", LC.OVERWORLD_ITEM, 1004),
@@ -770,6 +769,7 @@ APT_21_LYLE_LOCATIONS = {
 }
 
 APT_22_HARRIET_LOCATIONS = {
+    "DOOR_HARRIET_COMBAT_VICTORY": LocationData("Apt. 22 - Slay Harriet", LC.FRIENDLY_FIRE, 517),
     "APT_22_RUBBER_BOOTS": LocationData("Apt. 22 - Item Near Front Door", LC.OVERWORLD_ITEM, 1801),
     "APT_22_JUICE_BOX": LocationData("Apt. 22 Kitchen - Item on Table", LC.OVERWORLD_ITEM, 1802),
     "APT_22_VINEGAR": LocationData("Apt. 22 Kitchen - Item Near Fridge", LC.OVERWORLD_ITEM, 1803),
@@ -976,7 +976,7 @@ RAT_APARTMENT_MAIN_LOCATIONS = {
     "RAT_APT_CHEFS_KNIFE": LocationData("Rat Apt. - Item on Kitchen Counter", LC.OVERWORLD_ITEM, 2607),
     "RAT_APT_BEDROOM_MAGAZINES": LocationData("Rat Apt. Bedroom - Item on North Table", LC.OVERWORLD_ITEM, 2612),
     "RAT_APT_BEDROOM_DIRTY_MAGAZINES": LocationData("Rat Apt. Bedroom - Item on North Table (2nd Interaction)", LC.OVERWORLD_ITEM, 2613),
-    "RAT_APT_BEDROOM_SLAY_TAIL_RAT": LocationData("Rat Apt. Bedroom - Slay Tail Rat", LC.RAT_FRIENDLY_FIRE, 2614),
+    "RAT_APT_BEDROOM_TAIL_RAT_COMBAT_VICTORY": LocationData("Rat Apt. Bedroom - Slay Tail Rat", LC.RAT_FRIENDLY_FIRE, 2614),
     "RAT_APT_BEDROOM_CHILD_BARRIER_KEY": LocationData("Rat Apt. Bedroom - Item on Table", LC.OVERWORLD_ITEM, 2615),
     "RAT_APT_BEDROOM_TRENCH_COAT": LocationData("Rat Apt. Bedroom - Item on South Table 1", LC.OVERWORLD_ITEM, 2616, difficulty_lock={DL.EXPLORER}),
     "RAT_APT_BEDROOM_DENIM_JACKET": LocationData("Rat Apt. Bedroom - Item on South Table 2", LC.OVERWORLD_ITEM, 2617, difficulty_lock={DL.SURVIVOR}),
@@ -1823,7 +1823,7 @@ CHARAN_PIT_CLEAR_LOCATIONS = {
 }
 
 GARAGE_LOCATIONS = {
-    "B_CAR_SLAY_BERYL": LocationData("Basement Garage - Slay Beryl", LC.FRIENDLY_FIRE, 5301),
+    "B_CAR_BERYL_COMBAT_VICTORY": LocationData("Basement Garage - Slay Beryl", LC.FRIENDLY_FIRE, 5301),
     "B_CAR_LUMPY_ITEM": LocationData("Lumpytouch Room - Item", LC.OVERWORLD_ITEM, 5302),
     "B_CAR_TIRESTACK_COMBAT_VICTORY": LocationData("Basement Garage - Slay Tire Stack", LC.COMBAT_VICTORY, 5303),
     "B_CAR_TRAFFIC_CONE_COMBAT_VICTORY": LocationData("Basement Garage - Slay Traffic Cone", LC.COMBAT_VICTORY, 5304),

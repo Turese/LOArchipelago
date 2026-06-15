@@ -100,6 +100,16 @@ class RandomizeDoorEncounters(Toggle):
     """Randomize items from door encounters, including merchants. Default true."""
     display_name = "Randomize Door Encounter Rewards"
 
+class IncludeTraps(Toggle):
+    """Adds traps to the item pool."""
+    default = True
+    display_name = "Include Traps"
+
+class HideOverworldItems(Toggle):
+    """Hides the identity of overworld items until they have been picked up."""
+    default = False
+    display_name = "Hide Overworld Items"
+
 
 @dataclass
 class LookOutsideOptions(PerGameCommonOptions):
@@ -119,6 +129,8 @@ class LookOutsideOptions(PerGameCommonOptions):
     rat_baby_name: RatBabyName
     allow_killing_shopkeepers: AllowKillingShopkeepers
     randomize_door_encounters: RandomizeDoorEncounters
+    include_traps: IncludeTraps
+    hide_overworld_items: HideOverworldItems
 
 option_groups = [
     OptionGroup(
@@ -128,9 +140,9 @@ option_groups = [
     ),
     OptionGroup(
         "Item Options",
-        [IncludeTestGear, IncludeArms, StartingGames],
+        [IncludeTestGear, IncludeArms, IncludeTraps, StartingGames],
     ),
-    OptionGroup("Other Options", [DeathLink, RatBabyName])
+    OptionGroup("Other Options", [DeathLink, HideOverworldItems, RatBabyName])
 ]
 
 # Finally, we can define some option presets if we want the player to be able to quickly choose a specific "mode".
