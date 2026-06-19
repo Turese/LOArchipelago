@@ -556,11 +556,14 @@ basement_regions_table: dict[str, RegionData] = {
     "SEWER": RegionData(exits={
         "SEWER_STEVE_CONNECTION": ExitData("STEVE_APARTMENT"),
         "SEWER_GRATES_E_SIDE": ExitData("SEWER_WEST", Has("Sewer Grates Lowered")),
+        "SEWER_GRATES_CENTER": ExitData("SEWER_BEHIND_GRATE", Has("Sewer Grates Lowered")),
+
     }),
+    "SEWER_BEHIND_GRATE": RegionData(),
     "SEWER_WEST": RegionData(
         exits={
             "BOILER_ROOM_FUNGAL_MAZE_CONNECTION": ExitData("BOILER_ROOM_FUNGAL_MAZE"),
-            "SEWER_GRATES_W_SIDE": ExitData("SEWER")
+            "SEWER_GRATES_W_SIDE": ExitData("SEWER_WEST"),
             }),
     "BASEMENT_STORAGE_PLUTO_ROOM": RegionData(exits={
         "CROSSWORD_SAFE": ExitData("CROSSWORD_DUNGEON", Has("Book of Crossword Puzzles"))

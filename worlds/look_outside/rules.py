@@ -121,7 +121,7 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
 
     world.set_rule(world.get_location(get_location_name("LAUNDRY_JEANNES_LAUNDRY", world)), Has("MET_JEANNE"))
 
-    world.set_rule(world.get_location(get_location_name("LL_BATTLEFIELD_DIG_SPOT", world)), HasAll("Spade", "Metal Detector"))
+    world.set_rule(world.get_location(get_location_name("LL_BATTLEFIELD_DIG_SPOT", world)), HasAll("Spade", "Metal Detector", "Player's Right Arm"))
 
     world.set_rule(world.get_location(get_location_name("LL_RENT_1", world)), Has("Progressive Rent Money", count=1))
     world.set_rule(world.get_location(get_location_name("LL_RENT_2", world)), Has("Progressive Rent Money", count=2))
@@ -166,10 +166,22 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     world.set_rule(world.get_location(get_location_name("SEWER_NE_ZACHARY", world)), Has("Chew Toy"))
     world.set_rule(world.get_location(get_location_name("SEWER_SE_ROXIE", world)), Has("Chew Toy"))
 
+    # todo: what actually triggers the boiler beast
+    #world.set_rule(world.get_location(get_location_name("SEWER_BOILER_BEAST_COMBAT_VICTORY", world)), Has("Sewer Grates Lowered"))
     world.set_rule(world.get_location(get_location_name("SEWER_DAVID_GIFT", world)), HasAll("Chew Toy", "Sewer Grates Lowered"))
 
     #world.set_rule(world.get_location(get_location_name("SEWER_FURNACE_COMBAT_VICTORY", world)), Has("Sewer Grates Lowered"))
     #world.set_rule(world.get_location(get_location_name("SEWER_FURNACE_IRIS_KEY", world)), Has("Sewer Grates Lowered"))
+
+    # roof rules
+
+    if world.options.goal == PlayerGoal.option_all_endings or world.options.goal == PlayerGoal.option_all_roof_endings or world.options.goal == PlayerGoal.option_mask:
+        world.set_rule(world.get_location(get_location_name("DREAM_EATER_COMBAT_VICTORY", world)), Has("Old Photograph"))
+        world.set_rule(world.get_location(get_location_name("SPINE_TINGLER_COMBAT_VICTORY", world)), Has("Wrapped Painting"))
+        world.set_rule(world.get_location(get_location_name("HUNDRED_MAWS_COMBAT_VICTORY", world)), Has("Old Tape"))
+        world.set_rule(world.get_location(get_location_name("CRIMSON_SCOURGE_COMBAT_VICTORY", world)), Has("Last Will"))
+
+
 
 
     # audrey rules
@@ -190,7 +202,6 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     world.set_rule(world.get_location(get_location_name("LL_BATTLEFIELD_APC_AUDREY_LOOT", world)), Has("Audrey"))
     world.set_rule(world.get_location(get_location_name("B_CAR_HELLRIDE_AUDREY_LOOT", world)), Has("Audrey"))
     world.set_rule(world.get_location(get_location_name("B_CAR_SWAT_VAN_AUDREY_LOOT", world)), Has("Audrey"))
-
 
     # vending machine rules
     world.set_rule(world.get_location(get_location_name("F3_VENDING_MACHINE_CHIPS", world)), Has("Vending Machine Snack Money", count=num_multiple_items["Vending Machine Snack Money"])) # 75c each
@@ -219,6 +230,8 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
                     world.set_rule(world.get_location(get_location_name(location_id, world)), And(HasAny("Player's Left Arm", "Player's Right Arm"), Has("Sewer Grates Lowered")))
                 else:
                     world.set_rule(world.get_location(get_location_name(location_id, world)), HasAny("Player's Left Arm", "Player's Right Arm"))
+
+    
 
 
 flawed_ritual_endings = {"FLAWED_RITUAL_ENDING", "SCREAMING_SKIES_ENDING", "ETERNAL_FATE_ENDING", "XIN_AMON_ENDING", "MASK_ENDING"}

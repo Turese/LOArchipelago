@@ -194,7 +194,7 @@ main_item_table: dict[str, ItemData] = {
     "Soap": ItemData(ItemCat.ITEM, {ItemTag.USEFUL}, 173),
     "Toothpaste": ItemData(ItemCat.ITEM, {ItemTag.USEFUL}, 174),
     "Duct Tape": ItemData(ItemCat.ITEM, {ItemTag.USEFUL}, 176),
-    "Junk": ItemData(ItemCat.ITEM, { }, 177),
+    #"Junk": ItemData(ItemCat.ITEM, { }, 177),
     "TV Dinner": ItemData(ItemCat.ITEM, {ItemTag.INGREDIENT}, 212),
     "Frozen Pizza": ItemData(ItemCat.ITEM, {ItemTag.INGREDIENT}, 213),
     "Pizza Bites": ItemData(ItemCat.ITEM, {ItemTag.INGREDIENT}, 214),
@@ -261,9 +261,9 @@ main_item_table: dict[str, ItemData] = {
     "Ice Melt Salt": ItemData(ItemCat.ITEM, {ItemTag.BREAKABLE_KEY}, 286),
     "Length of Rope": ItemData(ItemCat.ITEM, set(), 287),
     "Sapper Charge": ItemData(ItemCat.ITEM, {ItemTag.BREAKABLE_KEY }, 289),
-    "Defused Mine": ItemData(ItemCat.ITEM, set(), 290),
-    "Dog Tags": ItemData(ItemCat.ITEM, { }, 291),
-    "Supply Crate": ItemData(ItemCat.ITEM, {ItemTag.USEFUL}, 292),
+    #"Defused Mine": ItemData(ItemCat.ITEM, set(), 290),
+    "Dog Tags": ItemData(ItemCat.ITEM, set(), 291),
+    "Supply Crate": ItemData(ItemCat.ITEM, set(), 292),
     "Painter's Key": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 293),
     "Stained Key": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 294),
     "Twilight Valve": ItemData(ItemCat.ITEM, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 296),
@@ -557,12 +557,12 @@ armor_table: dict[str, ItemData] = {
     "Hauberk": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 17),
     "Breastplate": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 18),
     "Flak Jacket": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 19),
-    "Kevlar Suit": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL}, 20),
+    "Kevlar Suit": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 20),
     "Studded Jacket": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL}, 21),
     "Strange Robe": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 22),
     "Dark Robes": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 23),
     #"Mackinaw Jacket": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 24), <- pap starts with this one
-    "Old Uniform": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL}, 25),
+    "Old Uniform": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 25),
     "Elegant Suit": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 26),
     #"Monty's Jacket": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 28), <- monty starts with this one
     "Floral Shirt": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 29),
@@ -612,7 +612,7 @@ armor_table: dict[str, ItemData] = {
     "Winter Boots": ItemData(ItemCat.ARMOR, set(), 87),
     "Army Boots": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL}, 88),
     #"Work Boots": ItemData(ItemCat.ARMOR, set(), 89), <- pap starts with this one
-    "Cowboy Boots": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL}, 90),
+    "Cowboy Boots": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 90),
     "Vintage Sneakers": ItemData(ItemCat.ARMOR, set(), 91),
     "High Heels": ItemData(ItemCat.ARMOR, {ItemTag.UNIQUE}, 92),
     "Jade Earrings": ItemData(ItemCat.ARMOR, {ItemTag.UNIQUE}, 94),
@@ -1008,8 +1008,8 @@ num_multiple_items: Dict[str, int] = {
     "5x Magnum Bullets": 3,
     "10x Magnum Bullets": 2,
     "3x Shotgun Shells": 5,
-    "5x Shotgun Shells": 3,
-    "10x Shotgun Shells": 2,
+    "5x Shotgun Shells": 4,
+    "10x Shotgun Shells": 3,
     # currencies
     "Worm Egg": 17, # traded to kevin
     "Cassette Tape": 16, #traded to emmanuel
