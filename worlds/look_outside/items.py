@@ -30,7 +30,7 @@ def check_gate_classification_by_options(item: str, options: LookOutsideOptions)
             return ItemClassification.progression
         else:
             return ItemClassification.useful
-    if item == "Sophie":
+    if item == "Sophie" or item == 'Junk Pile':
         if options.randomize_door_encounters:
             return ItemClassification.progression
         else:
@@ -38,11 +38,16 @@ def check_gate_classification_by_options(item: str, options: LookOutsideOptions)
     if item in item_name_groups["USEFUL_SKILL_VIDEO_GAME"]:
         if options.include_game_skills:
             return ItemClassification.progression
+    if item in item_name_groups["KOTD_FIGURE"]:
+        if options.include_superbosses:
+            return ItemClassification.progression
+        else:
+            return ItemClassification.useful
     if options.include_mask:
         if item == "Honko's Grand Journey": # needed to fight honko
             return ItemClassification.progression
     if options.allow_killing_shopkeepers:
-        if item in item_name_groups["SHOPKEEPER_PROGRESSION_CASH"]:
+        if item in item_name_groups["MUTT_PROGRESSION_CASH"]:
             return ItemClassification.useful
         else:
             return ItemClassification.progression

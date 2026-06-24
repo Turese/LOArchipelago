@@ -112,7 +112,7 @@ Give any astronomer the correct offering, and defeat them on the roof. This goal
 
 Give each astronomer the correct offering, and defeat them on the roof. This goal is rewarded once the player kills the Exalted Four. If this is not the only ending the player set as their goal, and the player goes on afterwards this the get the True Final ending, then it will be counted as a separate ending. This goal is also rewarded when the player achieves the Promise ending.
 
-### Screaming skies
+### Screaming Sky
 
 Give each astronomer the correct offering, and flee from them once they become the Exalted Four.
 
@@ -144,7 +144,7 @@ Get each of these endings on one save file:
 
 - Flawed ritual
 - Perfect ritual (Truth and Denial are counted as the same. See "Any perfect ritual ending" above for clarification)
-- Screaming Skies
+- Screaming Sky
 - Promise
 - Mask
 - XIN-AMON
@@ -157,7 +157,7 @@ Get each of these endings on one save file:
 
 - Flawed ritual
 - Perfect ritual (Truth and Denial are counted as the same. See "Any perfect ritual ending" above for clarification)
-- Screaming Skies
+- Screaming Sky
 - Promise
 - Mask
 - XIN-AMON

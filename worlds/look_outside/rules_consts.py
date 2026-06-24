@@ -1,4 +1,4 @@
-from rule_builder.rules import Has, HasAll, Or, And, HasAny
+from rule_builder.rules import CanReachRegion, Has, HasAll, Or, And, HasAny
 
 from worlds.look_outside.items_consts import item_name_groups, num_multiple_items
 

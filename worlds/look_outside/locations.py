@@ -167,7 +167,7 @@ def create_events(world: LookOutsideWorld) -> None:
             )
 
     roof.add_event(
-        "RITUAL_CIRCLE_PERFECT_FLEE", "SCREAMING_SKIES_ENDING", rule=can_perform_perfect_ritual, location_type=LOLocation, item_type=LOItem
+        "RITUAL_CIRCLE_PERFECT_FLEE", "SCREAMING_SKY_ENDING", rule=can_perform_perfect_ritual, location_type=LOLocation, item_type=LOItem
     )
 
 
@@ -204,4 +204,6 @@ def exclude_locations(world: LookOutsideWorld) -> None:
         exclude_set.update(APT_22_HARRIET_LOCATIONS.keys())
     if not world.options.allow_killing_shopkeepers:
         exclude_set.update({"APT_24_EUGENE_COMBAT_VICTORY", "MUTT_COMBAT_VICTORY"})
+    if not world.options.include_superbosses:
+        exclude_set.update(location_name_groups["SUPER_DUPER_BOSS"])
     return exclude_set

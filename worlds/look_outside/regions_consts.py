@@ -58,7 +58,6 @@ mailroom_planet_lock = And(bring_earth_mars_disc_to_gf,
     )
 )
 
-
 security_room_solution_1 = HasAll("Sun Disc", "Pluto Disc", "Mars Disc", "Neptune Disc")
 
 security_room_solution_2 = HasAll("Sun Disc", "Pluto Disc", "Negative Disc", "Uranus Disc")
@@ -394,8 +393,22 @@ f2_east_regions_table = {
     "LEIGHS_APARTMENT": RegionData(),
     "LEIGHS_APARTMENT_QUEST": RegionData(),
     "APT_24_EUGENE_SHOP": RegionData(exits={
-        "APT_24_EUGENE_BACKDOOR": ExitData("APT_24_EUGENE_APT", Has("Eugene's Key"))
+        "APT_24_EUGENE_BACKDOOR": ExitData("APT_24_EUGENE_APT", Has("Eugene's Key")),
+        "SHOP_LEVELUP_1": ExitData("APT_24_EUGENE_SHOP_LVL_1", Has("One Hundred Dollars", count=1))
     }),
+    "APT_24_EUGENE_SHOP_LVL_1": RegionData(exits={
+        "SHOP_LEVELUP_2": ExitData("APT_24_EUGENE_SHOP_LVL_2", Has("One Hundred Dollars", count=2))
+    }),
+    "APT_24_EUGENE_SHOP_LVL_2": RegionData(exits={
+        "SHOP_LEVELUP_3": ExitData("APT_24_EUGENE_SHOP_LVL_3", Has("One Hundred Dollars", count=3))
+    }),
+    "APT_24_EUGENE_SHOP_LVL_3": RegionData(exits={
+        "SHOP_LEVELUP_4": ExitData("APT_24_EUGENE_SHOP_LVL_4", Has("One Hundred Dollars", count=4))
+    }),
+    "APT_24_EUGENE_SHOP_LVL_4": RegionData(exits={
+        "SHOP_LEVELUP_5": ExitData("APT_24_EUGENE_SHOP_LVL_5", Has("One Hundred Dollars", count=5))
+    }),
+    "APT_24_EUGENE_SHOP_LVL_5": RegionData(exits={}),
     "APT_24_EUGENE_APT": RegionData(exits={
         "APT_24_EUGENE_SECRET_BOOKCASE": ExitData("APT_24_EUGENE_SEWING_CLOSET")
     }),
@@ -563,7 +576,8 @@ basement_regions_table: dict[str, RegionData] = {
     "SEWER_WEST": RegionData(
         exits={
             "BOILER_ROOM_FUNGAL_MAZE_CONNECTION": ExitData("BOILER_ROOM_FUNGAL_MAZE"),
-            "SEWER_GRATES_W_SIDE": ExitData("SEWER_WEST"),
+            "SEWER_GRATES_W_SIDE": ExitData("SEWER"),
+            "BOILER_ROOM_STEVE_DOOR": ExitData("STEVE_APARTMENT")
             }),
     "BASEMENT_STORAGE_PLUTO_ROOM": RegionData(exits={
         "CROSSWORD_SAFE": ExitData("CROSSWORD_DUNGEON", Has("Book of Crossword Puzzles"))

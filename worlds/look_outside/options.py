@@ -7,7 +7,7 @@ class PlayerGoal(Choice):
     display_name = "Ending Goal"
     option_any_partial_ritual_ending = 0
     option_any_perfect_ritual_ending = 1
-    option_screaming_skies = 2
+    option_screaming_sky = 2
     option_promise = 3
     option_mask = 4
     option_xin_amon = 5
@@ -30,23 +30,28 @@ class IncludeFriendlyFire(Toggle):
     """This controls whether locations specific to attacking non-hostile
     characters and potential recruits are included. This includes all merchants, Spine, and Marc-André."""
     display_name = "Include Friendly Fire"
+    default = False
 
 class IncludeRatFriendlyFire(Toggle):
     """This controls whether locations specific to attacking rats that become non-hostile
     when wearing the rusty crown are included."""
     display_name = "Include Rat Friendly Fire"
+    default = True
 
 class IncludeRustyCrown(Toggle):
     """This controls whether locations specific to interacting with non-hostile rats are randomized."""
     display_name = "Include Rusty Crown Locations"
+    default = True
 
 class IncludeTestGear(Toggle):
     """Adds Test Armor and Test Swords to the item pool. These items are incredibly busted; they make most fights trivial."""
     display_name = "Include Test Armor/Test Swords"
+    default = False
 
 class IncludeNestorQuest(Toggle):
     """This controls whether locations specific to the Nestor and Rafta romance quest are randomized."""
     display_name = "Include Nestor and Rafta Quest"
+    default = True
 
 class IncludeShades(Choice):
     """This controls whether locations specific to the Spider recruitment quest are randomized."""
@@ -62,16 +67,19 @@ class IncludeMaskLocations(Toggle):
     Mask ending are randomized: Glitch world, floor 4, the basement pit,
     and the landlord's hidden room."""
     display_name = "Include Mask Offering Locations"
+    default = True
 
 class IncludeRoommateQuests(Toggle):
     """This controls whether roommate quests that involve escorting companions to their own apartments are
     randomized: Dan, Hellen, and Leigh's quests."""
     display_name = "Include Long Roommate Sidequests"
+    default = True
     
 
 class IncludeGameSkills(Toggle):
     """This controls whether the skills given by completing each of the video games are randomized."""
     display_name = "Randomize Video Game Skill Rewards"
+    default = True
 
 class StartingGames(Choice):
     """This controls which games are available at the start of the game.
@@ -86,6 +94,7 @@ class DeathLink(Toggle):
     """This controls death link enablement.
     If you game over, other players with death link enabled will also game over, and vice versa."""
     display_name = "Death Link"
+    default = False
     
 class RatBabyName(FreeText):
     """This controls the rat child's name, default is 'Rat'."""
@@ -95,10 +104,12 @@ class RatBabyName(FreeText):
 class AllowKillingShopkeepers(Toggle):
     """This controls whether players are allowed to kill Eugene or Mutt to get their stuff. Default false"""
     display_name = "Allow Killing Mutt and Eugene"
+    default = False
 
 class RandomizeDoorEncounters(Toggle):
     """Randomize items from door encounters, including merchants. Default true."""
     display_name = "Randomize Door Encounter Rewards"
+    default = True
 
 class IncludeTraps(Toggle):
     """Adds traps to the item pool."""
@@ -109,6 +120,12 @@ class HideOverworldItems(Toggle):
     """Hides the identity of overworld items until they have been picked up."""
     default = False
     display_name = "Hide Overworld Items"
+
+class IncludeSuperBosses(Toggle):
+    """Includes locations for defeating superbosses 
+    (Honko, Baby Teeth Day 9, Swordmaster Comatus, KOTD, Slime Hydra, Drowning, Godmutt, Boiler Beast, and Furnace)."""
+    default = False
+    display_name = "Include Superbosses"
 
 
 @dataclass
@@ -131,11 +148,12 @@ class LookOutsideOptions(PerGameCommonOptions):
     randomize_door_encounters: RandomizeDoorEncounters
     include_traps: IncludeTraps
     hide_overworld_items: HideOverworldItems
+    include_superbosses: IncludeSuperBosses
 
 option_groups = [
     OptionGroup(
         "Location Options",
-        [PlayerGoal, IncludeFriendlyFire, IncludeRustyCrown, IncludeRatFriendlyFire, IncludeNestorQuest, IncludeShades,
+        [PlayerGoal, IncludeFriendlyFire, IncludeSuperBosses, IncludeRustyCrown, IncludeRatFriendlyFire, IncludeNestorQuest, IncludeShades,
          IncludeMaskLocations, IncludeRoommateQuests, IncludeGameSkills, RandomizeDoorEncounters, AllowKillingShopkeepers],
     ),
     OptionGroup(

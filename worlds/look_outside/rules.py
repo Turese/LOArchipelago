@@ -103,11 +103,13 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
 
     world.set_rule(world.get_location(get_location_name("APT_27_COMPLETE_MANUSCRIPT", world)), Has("Progressive Loose Manuscript"))
 
-    if (world.options.allow_killing_shopkeepers):
-        world.set_rule(world.get_location(get_location_name("APT_24_REPTILE_FOOTBALL", world)), HasAny("Two Hundred Dollars", "KILLED_EUGENE")) 
+    """if (world.options.allow_killing_shopkeepers):
+        for location_id in APT_24_EUGENE_STOCK_LOCATIONS.keys():
+            world.set_rule(world.get_location(get_location_name(location_id, world)), HasAny("Two Hundred Dollars", "KILLED_EUGENE")) 
     else:
-        world.set_rule(world.get_location(get_location_name("APT_24_REPTILE_FOOTBALL", world)), Has("Two Hundred Dollars")) 
-    
+        for location_id in APT_24_EUGENE_STOCK_LOCATIONS.keys():
+            world.set_rule(world.get_location(get_location_name(location_id, world)), HasAny("Two Hundred Dollars", "KILLED_EUGENE")) 
+    """
     # f1 rules
 
     world.set_rule(world.get_location(get_location_name("F1_AUDREY_RECRUIT", world)), And(Has("Vending Machine Key"), Has("Advice Can Funds", count=num_multiple_items["Advice Can Funds"])))
@@ -133,9 +135,10 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
 
     world.set_rule(world.get_location(get_location_name("MUTT_SPIDER_HUSK_HEART", world)), Has("MET_SPIDER_HUSK"))
     
-    world.set_rule(world.get_location(get_location_name("GF_KOTD_COMBAT_VICTORY", world)), HasAll(*item_name_groups["KOTD_FIGURE"]))
-    if world.options.include_mask != 0:
-        world.set_rule(world.get_location(get_location_name("GLITCH_SLIME_HYDRA_COMBAT_VICTORY", world)), HasAll(*item_name_groups["KOTD_FIGURE"]))
+    if world.options.include_superbosses != 0:
+        world.set_rule(world.get_location(get_location_name("GF_KOTD_COMBAT_VICTORY", world)), HasAll(*item_name_groups["KOTD_FIGURE"]))
+        if world.options.include_mask != 0:
+            world.set_rule(world.get_location(get_location_name("GLITCH_SLIME_HYDRA_COMBAT_VICTORY", world)), HasAll(*item_name_groups["KOTD_FIGURE"]))
 
     # one more piranhas fight, dragonfish + 2x piranhas, is defeatable before piranhas activated. 
     # player will fight only the dragonfish, but the victory will still count.
@@ -224,17 +227,17 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
         world.set_rule(world.get_location(get_location_name(location_id, world)), Has("Black Ooze", count=num_multiple_items["Black Ooze"]))
 
     # setting at least 1 arm restriction for now
-    for location_id in location_name_groups["SUPER_DUPER_BOSS"]:
+    for location_id in {*location_name_groups["SUPER_DUPER_BOSS"], *location_name_groups["LARGE_SHADE"], "STAIRS_CRAWLING_SHADE_COMBAT_VICTORY", "STAIRS_SPIDER_RECRUIT"}:
         if location_id not in excluded_locations:
-                if (location_id in {"SEWER_FURNACE_COMBAT_VICTORY", "SEWER_FURNACE_IRIS_KEY"}):
-                    world.set_rule(world.get_location(get_location_name(location_id, world)), And(HasAny("Player's Left Arm", "Player's Right Arm"), Has("Sewer Grates Lowered")))
-                else:
-                    world.set_rule(world.get_location(get_location_name(location_id, world)), HasAny("Player's Left Arm", "Player's Right Arm"))
+            if (location_id in {"SEWER_FURNACE_COMBAT_VICTORY", "SEWER_FURNACE_IRIS_KEY"}):
+                world.set_rule(world.get_location(get_location_name(location_id, world)), And(HasAny("Player's Left Arm", "Player's Right Arm"), Has("Sewer Grates Lowered")))
+            else:
+                world.set_rule(world.get_location(get_location_name(location_id, world)), HasAny("Player's Left Arm", "Player's Right Arm"))
 
     
 
 
-flawed_ritual_endings = {"FLAWED_RITUAL_ENDING", "SCREAMING_SKIES_ENDING", "ETERNAL_FATE_ENDING", "XIN_AMON_ENDING", "MASK_ENDING"}
+flawed_ritual_endings = {"FLAWED_RITUAL_ENDING", "SCREAMING_SKY_ENDING", "ETERNAL_FATE_ENDING", "XIN_AMON_ENDING", "MASK_ENDING"}
 
 advanced_perfect_rituals = {"PROMISE_ENDING", "TRUE_FINAL_ENDING"}
 
@@ -254,8 +257,8 @@ def set_completion_condition(world: LookOutsideWorld) -> None:
         world.set_completion_rule(HasAny(*all_rituals))
     elif player_goal == PlayerGoal.option_any_perfect_ritual_ending:
         world.set_completion_rule(Has("PERFECT_RITUAL_ENDING"))
-    elif player_goal == PlayerGoal.option_screaming_skies:
-        world.set_completion_rule(Has("SCREAMING_SKIES_ENDING"))
+    elif player_goal == PlayerGoal.option_screaming_sky:
+        world.set_completion_rule(Has("SCREAMING_SKY_ENDING"))
     elif player_goal == PlayerGoal.option_promise:
         world.set_completion_rule(Has("PROMISE_ENDING"))
     elif player_goal == PlayerGoal.option_mask:

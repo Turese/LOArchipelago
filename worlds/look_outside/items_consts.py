@@ -512,6 +512,7 @@ weapon_table: dict[str, ItemData] = {
     "Sky Piercer": ItemData(ItemCat.WEAPON, {ItemTag.USEFUL, ItemTag.UNIQUE}, 186),
     "Wizards' Staff": ItemData(ItemCat.WEAPON, {ItemTag.USEFUL, ItemTag.UNIQUE}, 188),
     "Rabu Hammer": ItemData(ItemCat.WEAPON, {ItemTag.USEFUL, ItemTag.UNIQUE}, 190),
+    "Sword of Regicide": ItemData(ItemCat.WEAPON, {ItemTag.USEFUL, ItemTag.UNIQUE}, 192),
     "Rotten Fang": ItemData(ItemCat.WEAPON, {ItemTag.USEFUL, ItemTag.UNIQUE}, 194),
     "Voidblade": ItemData(ItemCat.WEAPON, {ItemTag.USEFUL, ItemTag.UNIQUE}, 196),
     "Whisperblade": ItemData(ItemCat.WEAPON, {ItemTag.USEFUL, ItemTag.UNIQUE}, 201),
@@ -784,8 +785,8 @@ resource_pack_table: dict[str, ItemData] = {
     "Advice Can Funds": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.CHECK_GATE, ItemTag.SPECIAL_CURRENCY}, 17),
     "Ten Dollars": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL}, 18),
     "Fifty Dollars": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL}, 19),
-    "One Hundred Dollars": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL}, 20),
-    "Two Hundred Dollars": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.CHECK_GATE, ItemTag.SPECIAL_CURRENCY}, 21),
+    "One Hundred Dollars": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.CHECK_GATE, ItemTag.SPECIAL_CURRENCY}, 20),
+    #"Two Hundred Dollars": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.CHECK_GATE, ItemTag.SPECIAL_CURRENCY}, 21),
     "Two Hundred and Fifty Dollars": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.CHECK_GATE, ItemTag.SPECIAL_CURRENCY}, 22),
     "20 Marble Pack": ItemData(ItemCat.RESOURCE_PACK, { ItemTag.AMMO }, 23),
     "Rare Marble Pack": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.AMMO}, 24),
@@ -869,7 +870,7 @@ item_table: dict[str, ItemData] = {
 
 item_name_groups: dict[str, set[str]] = {
     "QUEST_ROOMMATES": {"Dan", "Hellen", "Leigh"},
-    "SHOPKEEPER_PROGRESSION_CASH": {"Two Hundred Dollars", "Two Hundred and Fifty Dollars"},
+    "MUTT_PROGRESSION_CASH": {"Two Hundred and Fifty Dollars"},
     "OFFERING": {k for k, v in item_table.items() if ItemTag.OFFERING in v.tags},
     "PERFECT_OFFERING": {"Progressive Loose Manuscript",
                          "Correct Painting",
@@ -990,8 +991,7 @@ num_multiple_items: Dict[str, int] = {
     "Ice Melt Salt": 19,
     "Vending Machine Snack Money": 6, # used for the 4 $0.75 items on the 3rd floor machine and the $1.50 coffee machine on gf
     "Advice Can Funds": 2, # progression for vending machine key, and then progression for recruit audrey
-    "Two Hundred Dollars": 4,
-    "One Hundred Dollars": 4,
+    "One Hundred Dollars": 5,
     "Two Hundred and Fifty Dollars": 6,
     "20 Marble Pack": 1,
     "Rare Marble Pack": 1,

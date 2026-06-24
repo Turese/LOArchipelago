@@ -18,7 +18,8 @@ class AllLocationOptionsTest(LOTestBase):
         "include_shades": IncludeShades.option_large_shades_and_spider_and_crawling_shade,
         "include_nestor_quest": True,
         "rusty_crown": True,
-        "include_game_skills": True
+        "include_game_skills": True,
+        "include_superbosses": True
     }
 
     def test_all_locations_included(self):
@@ -36,7 +37,8 @@ class FriendlyFireExcluded(LOTestBase):
         "friendly_fire": False,
         "include_roommate_quests": True,
         "randomize_door_encounters": True,
-        "include_mask": True
+        "include_mask": True,
+        "include_superbosses": True
     }
 
     def test_friendly_fire_locations_are_excluded_when_disabled(self):
@@ -58,7 +60,8 @@ class FriendlyFireIncluded(LOTestBase):
         "allow_killing_shopkeepers": True,
         "include_roommate_quests": True,
         "randomize_door_encounters": True,
-        "include_mask": True
+        "include_mask": True,
+        "include_superbosses": True
     }
 
     def test_friendly_fire_locations_are_included_when_enabled(self):
@@ -367,10 +370,26 @@ class SybilCombatVictoryWhenFriendlyFire(LOTestBase):
         existing_location_names = (location.name for location in self.multiworld.get_locations())
         sybil_name = location_table["MEAT_SYBIL_COMBAT_VICTORY"].str_name
 
-
         self.assertTrue(
             sybil_name not in existing_location_names,
-            "Sybil combat victory should not be a location when unity is one of the endings"
+            "Sybil combat victory should not be a location when unity is not one of the endings"
         )
+
+class DisabledSuperbosses(LOTestBase):
+    options = {
+        "goal": PlayerGoal.option_all_roof_endings,
+    }
+
+    def test_superbosses_disabled(self):
+        superboss_location_name = set(location_table[location_id].str_name for location_id in location_name_groups["SUPER_DUPER_BOSS"])
+        existing_location_names = {location.name for location in self.multiworld.get_locations()}
+
+        excluded_locations = superboss_location_name & existing_location_names
+
+        self.assertTrue(
+            len(excluded_locations) == 0,
+            f"Superboss locations should not be created when superboss option is disabled: {sorted(excluded_locations)}"
+        )
+
 
 # todo: other options
