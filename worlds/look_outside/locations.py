@@ -70,7 +70,7 @@ def create_events(world: LookOutsideWorld) -> None:
         "GROUND_FLOOR_LOBBY", "BUS_CRASH", location_type=LOLocation, item_type=LOItem
     )
     world.get_region("FLOOR_1_MAZE").add_event(
-        "F1_HALL", "MET_AUDREY", rule=Has("Advice Can Funds"), location_type=LOLocation, item_type=LOItem
+        "F1_HALL", "MET_AUDREY", rule=Has("3x Dollar Coins"), location_type=LOLocation, item_type=LOItem
     )
 
     world.get_region("F1_RUINED_APARTMENT").add_event(

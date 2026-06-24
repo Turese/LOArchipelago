@@ -546,7 +546,7 @@ armor_table: dict[str, ItemData] = {
     "T-Shirt": ItemData(ItemCat.ARMOR, set(), 5),
     "Tank Top": ItemData(ItemCat.ARMOR, set(), 6),
     "Hoodie": ItemData(ItemCat.ARMOR, set(), 7),
-    "Christmas Sweater": ItemData(ItemCat.ARMOR, set(), 8),
+    "Christmas Sweater": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 8),
     "Denim Vest": ItemData(ItemCat.ARMOR, set(), 9),
     "Windbreaker Jacket": ItemData(ItemCat.ARMOR, set(), 10),
     "Leather Vest": ItemData(ItemCat.ARMOR, set(), 11),
@@ -554,7 +554,7 @@ armor_table: dict[str, ItemData] = {
     "Trench Coat": ItemData(ItemCat.ARMOR, set(), 13),
     "Padded Jacket": ItemData(ItemCat.ARMOR, set(), 14),
     "Army Jacket": ItemData(ItemCat.ARMOR, set(), 15),
-    "Chest Guard": ItemData(ItemCat.ARMOR, set(), 16),
+    "Chest Guard": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 16),
     "Hauberk": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 17),
     "Breastplate": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 18),
     "Flak Jacket": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 19),
@@ -596,7 +596,7 @@ armor_table: dict[str, ItemData] = {
     #"Arrowed Sash": ItemData(ItemCat.ARMOR, {ItemTag.UNIQUE}, 69), <- pap starts with this one
     "Scarf": ItemData(ItemCat.ARMOR, set(), 70),
     "Four of Spades": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 71),
-    "Rat Tail Belt": ItemData(ItemCat.ARMOR, set(), 72),
+    "Rat Tail Belt": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 72),
     "Glasses": ItemData(ItemCat.ARMOR, set(), 73),
     "Shades": ItemData(ItemCat.ARMOR, set(), 74),
     "Tie": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 75),
@@ -612,7 +612,7 @@ armor_table: dict[str, ItemData] = {
     "Clogs": ItemData(ItemCat.ARMOR, set(), 86),
     "Winter Boots": ItemData(ItemCat.ARMOR, set(), 87),
     "Army Boots": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL}, 88),
-    #"Work Boots": ItemData(ItemCat.ARMOR, set(), 89), <- pap starts with this one
+    "Work Boots": ItemData(ItemCat.ARMOR, set(), 89),
     "Cowboy Boots": ItemData(ItemCat.ARMOR, {ItemTag.USEFUL, ItemTag.UNIQUE}, 90),
     "Vintage Sneakers": ItemData(ItemCat.ARMOR, set(), 91),
     "High Heels": ItemData(ItemCat.ARMOR, {ItemTag.UNIQUE}, 92),
@@ -781,15 +781,15 @@ resource_pack_table: dict[str, ItemData] = {
     "Harriet's Spare Cash": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 13),
     "Toxic Fred's Spare Cash": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 14),
     "Hellen's Spare Cash": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.UNIQUE}, 15),
-    "Vending Machine Snack Money": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.CHECK_GATE, ItemTag.SPECIAL_CURRENCY}, 16),
-    "Advice Can Funds": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.CHECK_GATE, ItemTag.SPECIAL_CURRENCY}, 17),
-    "Ten Dollars": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL}, 18),
+    "3x Quarters": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.CHECK_GATE, ItemTag.SPECIAL_CURRENCY}, 16),
+    "3x Dollar Coins": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.CHECK_GATE, ItemTag.SPECIAL_CURRENCY}, 17),
+    "Ten Dollars": ItemData(ItemCat.RESOURCE_PACK, set(), 18),
     "Fifty Dollars": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL}, 19),
     "One Hundred Dollars": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.CHECK_GATE, ItemTag.SPECIAL_CURRENCY}, 20),
-    #"Two Hundred Dollars": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.CHECK_GATE, ItemTag.SPECIAL_CURRENCY}, 21),
+    #"Two Hundred Dollars": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL}, 21),
     "Two Hundred and Fifty Dollars": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.CHECK_GATE, ItemTag.SPECIAL_CURRENCY}, 22),
-    "20 Marble Pack": ItemData(ItemCat.RESOURCE_PACK, { ItemTag.AMMO }, 23),
-    "Rare Marble Pack": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.AMMO}, 24),
+    "20x Marbles": ItemData(ItemCat.RESOURCE_PACK, { ItemTag.AMMO }, 23),
+    "Rare Marbles": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.AMMO}, 24),
     "3x Pistol Bullets": ItemData(ItemCat.RESOURCE_PACK, { ItemTag.AMMO }, 25),
     "5x Pistol Bullets": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL, ItemTag.AMMO}, 26),
     "10x Pistol Bullets": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL,ItemTag.AMMO}, 27),
@@ -841,7 +841,13 @@ resource_pack_table: dict[str, ItemData] = {
     "2x Beer": ItemData(ItemCat.RESOURCE_PACK, set(), 73),
     "2x Whiskey": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL}, 74),
     "2x Vodka": ItemData(ItemCat.RESOURCE_PACK, {ItemTag.USEFUL}, 75),
-    "2x Cloth": ItemData(ItemCat.RESOURCE_PACK, set(), 76)
+    "2x Cloth": ItemData(ItemCat.RESOURCE_PACK, set(), 76),
+    "Five Dollars": ItemData(ItemCat.RESOURCE_PACK, set(), 77),
+    "2x Soap": ItemData(ItemCat.RESOURCE_PACK, set(), 78),
+    "2x Toothpaste": ItemData(ItemCat.RESOURCE_PACK, set(), 79),
+    "2x Duct Tape": ItemData(ItemCat.RESOURCE_PACK, set(), 80),
+    "2x Shuriken": ItemData(ItemCat.RESOURCE_PACK, set(), 81),
+    "10 Marbles": ItemData(ItemCat.RESOURCE_PACK, set(), 82),
 }
 
 trap_table: dict[str, ItemData] = {
@@ -856,7 +862,6 @@ trap_table: dict[str, ItemData] = {
     "Bleed Trap": ItemData(ItemCat.TRAP, {}, 9),
     "HP Cut Trap": ItemData(ItemCat.TRAP, {}, 10),
 }
-
 
 item_table: dict[str, ItemData] = {
     **main_item_table,
@@ -989,12 +994,12 @@ num_multiple_items: Dict[str, int] = {
     "Iris Key": 6,
     "Herbicide": 6,
     "Ice Melt Salt": 19,
-    "Vending Machine Snack Money": 6, # used for the 4 $0.75 items on the 3rd floor machine and the $1.50 coffee machine on gf
-    "Advice Can Funds": 2, # progression for vending machine key, and then progression for recruit audrey
+    "3x Quarters": 6, # used for the 4 $0.75 items on the 3rd floor machine and the $1.50 coffee machine on gf
+    "3x Dollar Coins": 2, # progression for vending machine key, and then progression for recruit audrey
     "One Hundred Dollars": 5,
     "Two Hundred and Fifty Dollars": 6,
-    "20 Marble Pack": 1,
-    "Rare Marble Pack": 1,
+    "20x Marbles": 1,
+    "Rare Marbles": 1,
     "3x Pistol Bullets": 5,
     "5x Pistol Bullets": 3,
     "10x Pistol Bullets": 2,

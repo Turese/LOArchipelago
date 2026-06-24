@@ -112,8 +112,8 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     """
     # f1 rules
 
-    world.set_rule(world.get_location(get_location_name("F1_AUDREY_RECRUIT", world)), And(Has("Vending Machine Key"), Has("Advice Can Funds", count=num_multiple_items["Advice Can Funds"])))
-    world.set_rule(world.get_location(get_location_name("F1_AUDREY_RESTOCK", world)), And(Has("Vending Machine Key"), Has("Advice Can Funds", count=num_multiple_items["Advice Can Funds"])))
+    world.set_rule(world.get_location(get_location_name("F1_AUDREY_RECRUIT", world)), And(Has("Vending Machine Key"), Has("3x Dollar Coins", count=num_multiple_items["3x Dollar Coins"])))
+    world.set_rule(world.get_location(get_location_name("F1_AUDREY_RESTOCK", world)), And(Has("Vending Machine Key"), Has("3x Dollar Coins", count=num_multiple_items["3x Dollar Coins"])))
 
     world.set_rule(world.get_location(get_location_name("TRUE_FRED_RETURN_FACE", world)), Has("Torn-Off Face"))
 
@@ -193,10 +193,10 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     # dollar coins for audrey items
     # and special quarter packs for advice cans
     # player will likely have far more than needed when they get this point
-    world.set_rule(world.get_location(get_location_name("MUTT_VENDING_MACHINE_KEY", world)), HasAll("MET_AUDREY", "Advice Can Funds"))
+    world.set_rule(world.get_location(get_location_name("MUTT_VENDING_MACHINE_KEY", world)), HasAll("MET_AUDREY", "3x Dollar Coins"))
 
     for location_id in location_name_groups["AUDREY_PURCHASE"]:
-        world.set_rule(world.get_location(get_location_name(location_id, world)), Or(Has("Dollar Coin", count=num_multiple_items["Dollar Coin"]), Has("Dollar Coin", count=num_multiple_items["Two-Dollar Coin"])))
+        world.set_rule(world.get_location(get_location_name(location_id, world)), Or(Has("Dollar Coin", count=num_multiple_items["Dollar Coin"]), Has("Two-Dollar Coin", count=num_multiple_items["Two-Dollar Coin"])))
 
     world.set_rule(world.get_location(get_location_name("APT_30_TAXIDERMY_AUDREY_LOOT", world)), Has("Audrey"))
     world.set_rule(world.get_location(get_location_name("APT_28_SHRIMP_KNIGHT_AUDREY_LOOT", world)), Has("Audrey"))
@@ -207,14 +207,14 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     world.set_rule(world.get_location(get_location_name("B_CAR_SWAT_VAN_AUDREY_LOOT", world)), Has("Audrey"))
 
     # vending machine rules
-    world.set_rule(world.get_location(get_location_name("F3_VENDING_MACHINE_CHIPS", world)), Has("Vending Machine Snack Money", count=num_multiple_items["Vending Machine Snack Money"])) # 75c each
-    world.set_rule(world.get_location(get_location_name("F3_VENDING_MACHINE_SPICY", world)), Has("Vending Machine Snack Money", count=num_multiple_items["Vending Machine Snack Money"])) # 75c each
-    world.set_rule(world.get_location(get_location_name("F3_VENDING_MACHINE_GUMMI_BEARS", world)), Has("Vending Machine Snack Money", count=num_multiple_items["Vending Machine Snack Money"])) # 75c each
-    world.set_rule(world.get_location(get_location_name("F3_VENDING_MACHINE_CHEESE", world)), Has("Vending Machine Snack Money", count=num_multiple_items["Vending Machine Snack Money"])) # 75c each
-    world.set_rule(world.get_location(get_location_name("F3_VENDING_MACHINE_ONIONOS", world)), Has("Vending Machine Snack Money", count=num_multiple_items["Vending Machine Snack Money"])) # 75c each
-    world.set_rule(world.get_location(get_location_name("F3_VENDING_MACHINE_ONIONOS", world)), Has("Vending Machine Snack Money", count=num_multiple_items["Vending Machine Snack Money"])) # 75c each
-    world.set_rule(world.get_location(get_location_name("GF_COFFEE_MACHINE_MERCHANT", world)), Has("Vending Machine Snack Money", count=num_multiple_items["Vending Machine Snack Money"])) # 1.50 each
-    world.set_rule(world.get_location(get_location_name("GF_CANDY_MACHINE_MERCHANT", world)), Has("Vending Machine Snack Money", count=num_multiple_items["Vending Machine Snack Money"])) # 25c each; assuming player will have some money leftover
+    world.set_rule(world.get_location(get_location_name("F3_VENDING_MACHINE_CHIPS", world)), Has("3x Quarters", count=num_multiple_items["3x Quarters"])) # 75c each
+    world.set_rule(world.get_location(get_location_name("F3_VENDING_MACHINE_SPICY", world)), Has("3x Quarters", count=num_multiple_items["3x Quarters"])) # 75c each
+    world.set_rule(world.get_location(get_location_name("F3_VENDING_MACHINE_GUMMI_BEARS", world)), Has("3x Quarters", count=num_multiple_items["3x Quarters"])) # 75c each
+    world.set_rule(world.get_location(get_location_name("F3_VENDING_MACHINE_CHEESE", world)), Has("3x Quarters", count=num_multiple_items["3x Quarters"])) # 75c each
+    world.set_rule(world.get_location(get_location_name("F3_VENDING_MACHINE_ONIONOS", world)), Has("3x Quarters", count=num_multiple_items["3x Quarters"])) # 75c each
+    world.set_rule(world.get_location(get_location_name("F3_VENDING_MACHINE_ONIONOS", world)), Has("3x Quarters", count=num_multiple_items["3x Quarters"])) # 75c each
+    world.set_rule(world.get_location(get_location_name("GF_COFFEE_MACHINE_MERCHANT", world)), Has("3x Quarters", count=num_multiple_items["3x Quarters"])) # 1.50 each
+    world.set_rule(world.get_location(get_location_name("GF_CANDY_MACHINE_MERCHANT", world)), Has("3x Quarters", count=num_multiple_items["3x Quarters"])) # 25c each; assuming player will have some money leftover
 
     # special merchant rules
     for location_id in location_name_groups["CASSETTE_TAPE"]:
