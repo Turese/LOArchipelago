@@ -391,5 +391,21 @@ class DisabledSuperbosses(LOTestBase):
             f"Superboss locations should not be created when superboss option is disabled: {sorted(excluded_locations)}"
         )
 
+class DisabledTraps(LOTestBase):
+    options = {
+        "include_traps": False,
+    }
+
+    def test_traps_disabled(self):
+        trap_item_names = item_name_groups["TRAP"]
+
+        existing_item_names = {item.name for item in self.multiworld.get_items()}
+
+        excluded_items = trap_item_names & existing_item_names
+
+        self.assertTrue(
+            len(excluded_items) == 0,
+            f"Trap items should not be created when trap option is disabled: {sorted(excluded_items)}"
+        )
 
 # todo: other options
