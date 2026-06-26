@@ -109,6 +109,10 @@ def create_all_items(world: LookOutsideWorld):
         if not world.options.include_mask:
             for item in item_name_groups["MASK_AREA_ENTRY"]:
                 excluded_items.add(item)
+        
+        if not world.options.include_traps:
+            for item in item_name_groups["TRAP"]:
+                excluded_items.add(item)
 
         if not world.options.include_game_skills:
             excluded_items.update(item_name_groups["VIDEO_GAME_SKILL"])

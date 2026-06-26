@@ -876,6 +876,7 @@ item_name_groups: dict[str, set[str]] = {
     "QUEST_ROOMMATES": {"Dan", "Hellen", "Leigh"},
     "MUTT_PROGRESSION_CASH": {"Two Hundred and Fifty Dollars"},
     "OFFERING": {k for k, v in item_table.items() if ItemTag.OFFERING in v.tags},
+    "TRAP": trap_table.keys(),
     "PERFECT_OFFERING": {"Progressive Loose Manuscript",
                          "Correct Painting",
                          "Correct Photograph",
