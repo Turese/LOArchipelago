@@ -278,7 +278,7 @@ FRONT_DOOR_LOCATIONS: dict[str, LocationData] = {
     "SEBASTIAN_COMBAT_VICTORY": LocationData("Door Encounter - Slay Sebastian", LC.FRIENDLY_FIRE, 554),
     "DOOR_MYSTERY_TRADER_COMBAT_VICTORY": LocationData("Door Encounter - Slay Key Woman", LC.FRIENDLY_FIRE, 555),
     "DOOR_BUTCHER_ITEM": LocationData("Door Encounter - Buy Meat From the Butcher", LC.MERCHANT, 556),
-    "DOOR_BUTCHER_COMBAT_VICTORY": LocationData("Door Encounter - Slay Butcher", LC.MERCHANT, 557),
+    "DOOR_BUTCHER_COMBAT_VICTORY": LocationData("Door Encounter - Slay Butcher", LC.FRIENDLY_FIRE, 557),
     "DOOR_KIND_COMBAT_VICTORY": LocationData("Door Encounter - Slay Kind-Faced Man", LC.FRIENDLY_FIRE, 558),
     "DOOR_RECRUIT_KIND": LocationData("Door Encounter - Welcome Kind-Faced Man Into Your Home", LC.RECRUIT, 559),
     "DOOR_FATHER_ANDREW_BLESSING": LocationData("Door Encounter - Blessing from Father Andrew", LC.EVENT_ITEM, 560),
