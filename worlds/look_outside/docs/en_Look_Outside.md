@@ -50,8 +50,6 @@ Any recruitment or location checks that depend on reaching a certain disposition
 
 - If the player makes the wrong dialogue choice during the encounter with the spider husk, they can restart the conversation by leaving and re-initiating.
 
-- The player can start the blackout event at any time by interacting with the lamp in their bedroom after they have been granted the “Elevator Activation” item. The blackout can be ended prematurely by interacting with the lamp again.
-
 - The player will be able to summon any door encounter that they don’t yet have the location check for from the cheat event near their front door. The player will always be able to summon any merchant encounter, as well as Hobbs the cook, even after killing them.
 
 - The clock in the player’s living room has been turned into a spot where the player can set the current time of day.
@@ -173,3 +171,11 @@ Any recruitment or location checks that depend on reaching a certain disposition
 - Wilhelmina.
 
     - Only available if the player picked "all endings" as their goal. If the player has killed Wilhelmina but still has not achieved the Words of Power ending, then she will come back to life.
+
+# In-game Events
+
+Since the player can accomplish things out of order, some in-game events may have unclear trigger requirements. Here are some examples:
+
+- The player can start the blackout event at any time by interacting with the lamp in their bedroom after they have been granted the “Elevator Activation” item. The blackout can be ended prematurely by interacting with the lamp again.
+
+- Jeanne's final stage of mutation, Harriet and Sophie's return to their apartment, and Ernest's kidnapping are all triggered by entering the ground floor through the planet-locked door through the stairwell. Entering the ground floor through the elevator will have no effect. (This is also the case in the vanilla game, though not seen because in vanilla it is impossible to use the elevator before entering the ground floor through the stairwell)

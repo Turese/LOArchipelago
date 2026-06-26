@@ -246,7 +246,13 @@ This mod can also be installed without RPGModder
     {
       "name": "ToothHelpers",
       "status": true,
-      "description": "helper function for overriding tooth family events",
+      "description": "helper functions for overriding tooth family events",
+      "parameters": {}
+    },
+    {
+      "name": "ItemImages",
+      "status": true,
+      "description": "Manages overworld item image overrides",
       "parameters": {}
     },
     {
