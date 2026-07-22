@@ -1,4 +1,4 @@
-from rule_builder.rules import CanReachRegion, Has, HasAll, Or, And, HasAny
+from rule_builder.rules import Has, HasAll, HasGroup, Or, And, HasAny
 
 from worlds.look_outside.items_consts import item_name_groups, num_multiple_items
 
@@ -24,6 +24,22 @@ can_open_with_iris_key = Has("Iris Key", count=num_multiple_items["Iris Key"])
 
 
 met_all_astronomers = HasAll("MET_ASTER", "MET_JASPER", "MET_AURELIUS", "MET_BERYL")
+
+has_aster_offering = HasGroup("ASTER_OFFERING", count=1)
+has_jasper_offering = HasGroup("JASPER_OFFERING", count=1)
+has_aurelius_offering = HasGroup("AURELIUS_OFFERING", count=1)
+has_beryl_offering = HasGroup("BERYL_OFFERING", count=1)
+
+# todo: in AP > 0.6.7 change this Or block to utilize AtLeast
+can_do_any_ritual = And(met_all_astronomers, 
+    Or(
+        And(has_aster_offering, has_jasper_offering, has_aurelius_offering, has_beryl_offering),
+        And(has_aster_offering, has_jasper_offering, has_aurelius_offering, Has("Guinea Pig")),
+        And(has_aster_offering, has_jasper_offering, has_beryl_offering, Has("Guinea Pig")),
+        And(has_aster_offering, has_aurelius_offering, has_beryl_offering, Has("Guinea Pig")),
+        And(has_jasper_offering, has_aurelius_offering, has_beryl_offering, Has("Guinea Pig"))
+    )
+)
 
 can_access_elevator = Has("Elevator Activation")
 can_access_floor_2_east = can_access_stairwell

@@ -67,7 +67,7 @@ def create_lo_item(world: LookOutsideWorld, item: str) -> LOItem:
     classification = ItemClassification.filler
     item_info = item_table[item]
 
-    if ItemTag.CHECK_GATE in item_info.tags or ItemTag.BREAKABLE_KEY in item_info.tags or ItemTag.OFFERING in item_info.tags or ItemTag.SPECIAL_CURRENCY in item_info.tags:
+    if ItemTag.CHECK_GATE in item_info.tags or ItemTag.BREAKABLE_KEY in item_info.tags or ItemTag.SPECIAL_CURRENCY in item_info.tags:
         classification = check_gate_classification_by_options(item, world.options)
     elif item_info.category == ItemCat.SKILL:
         classification = ItemClassification.useful
@@ -101,6 +101,7 @@ def create_all_items(world: LookOutsideWorld):
         if not world.options.include_nestor_quest:
             for item in item_name_groups["NESTOR_QUEST_INTRO"]:
                 excluded_items.add(item)
+            excluded_items.add("Worm Egg")
 
         if not world.options.include_test_gear:
             for item in item_name_groups["BROKEN_TEST_ITEM"]:
@@ -140,10 +141,15 @@ def create_all_items(world: LookOutsideWorld):
                     multiplier -= reduced_items[item_name]
                 if multiplier > 0:
                     mandatory_items += [item_name] * multiplier
-            elif category == ItemCat.SKILL or category == ItemCat.MISC or ItemTag.UNIQUE in tags or ItemTag.CHECK_GATE in tags or ItemTag.OFFERING in tags:
+            elif category == ItemCat.SKILL or category == ItemCat.MISC or ItemTag.UNIQUE in tags or ItemTag.CHECK_GATE in tags:
                 mandatory_items += [item_name]
             else:
-                remaining_items += [item_name]
+                if ItemTag.WEIGHT_HEAVIEST in tags:
+                    remaining_items += [item_name] * 3
+                elif ItemTag.WEIGHT_HEAVY in tags:
+                    remaining_items += [item_name] * 2
+                else:
+                    remaining_items += [item_name]
         
         for item in mandatory_items:
             local_itempool += [create_lo_item(world, item)]

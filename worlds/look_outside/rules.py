@@ -13,7 +13,7 @@ from worlds.look_outside.items_consts import LOItem, item_name_groups, \
 
 from worlds.look_outside.regions_consts import all_regions_table
 from worlds.look_outside.rules_consts import can_nestor_rafta, can_open_any_simple_lock, can_access_basement, can_leigh_quest,\
-    met_all_astronomers
+    met_all_astronomers, can_do_any_ritual
 from rule_builder.rules import Has, And, HasAll, HasAny, Or
 from worlds.look_outside.locations_consts import location_name_groups
 
@@ -54,6 +54,7 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
         world.set_rule(world.get_location(get_location_name("GAME_SKILL_MASSACRE_PRINCESS", world)), Has("Massacre Princess"))
         world.set_rule(world.get_location(get_location_name("GAME_SKILL_KILL_TO_SHOOT", world)), Has("Kill to Shoot"))
         world.set_rule(world.get_location(get_location_name("GAME_SKILL_MYRMIDON", world)), Has("Myrmidon"))
+        world.set_rule(world.get_location(get_location_name("GAME_SKILL_MYRMIDON_XII", world)), Has("Myrmidon XII"))
         world.set_rule(world.get_location(get_location_name("GAME_SKILL_SCREAMATORIUM", world)), Has("Screamatorium"))
         world.set_rule(world.get_location(get_location_name("GAME_SKILL_FROGIT_ABOUT_IT", world)), Has("Frogit About It"))
         world.set_rule(world.get_location(get_location_name("GAME_SKILL_BLOOD_GHOUL_ORGY_3", world)), Has("Blood Ghoul Orgy 3"))
@@ -86,6 +87,7 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
 
     world.set_rule(world.get_location(get_location_name("APT_32_CHILD_BEDROOM_BEN_PLAY", world)), Has("Army Guy Figure"))
 
+    world.set_rule(world.get_location(get_location_name("APT_32_BATHROOM_DOOR_KNOB", world)), Has("Teddy"))
     world.set_rule(world.get_location(get_location_name("APT_32_BATHROOM_RECRUIT_JOEL", world)), HasAll("Teddy", "Door Knob"))
 
     world.set_rule(world.get_location(get_location_name("APT_37_PROJECTOR_ROOM_PHOTO", world)), And(Has("Negative Disc"), Has("Photo Paper")))
@@ -131,13 +133,15 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     world.set_rule(world.get_location(get_location_name("LL_RENT_4", world)), Has("Progressive Rent Money", count=4))
 
     world.set_rule(world.get_location(get_location_name("GF_OFFICE_JASPERS_KEY", world)), met_all_astronomers)
+    # rules: has at least one of each offering type, or 3/4 offering types and a guinea pig
+    world.set_rule(world.get_location(get_location_name("GF_OFFICE_JASPER_GIFT_OFFERING", world)), can_do_any_ritual)
     world.set_rule(world.get_location(get_location_name("GF_OFFICE_JASPER_FIX_TELESCOPE", world)), Has("Telescope Pieces"))
 
     world.set_rule(world.get_location(get_location_name("MUTT_SPIDER_HUSK_HEART", world)), Has("MET_SPIDER_HUSK"))
     
-    if world.options.include_superbosses != 0:
+    if world.options.include_superbosses:
         world.set_rule(world.get_location(get_location_name("GF_KOTD_COMBAT_VICTORY", world)), HasAll(*item_name_groups["KOTD_FIGURE"]))
-        if world.options.include_mask != 0:
+        if world.options.include_mask:
             world.set_rule(world.get_location(get_location_name("GLITCH_SLIME_HYDRA_COMBAT_VICTORY", world)), HasAll(*item_name_groups["KOTD_FIGURE"]))
 
     # one more piranhas fight, dragonfish + 2x piranhas, is defeatable before piranhas activated. 
@@ -154,6 +158,8 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     if world.options.include_nestor_quest != 0:
         for location_id in location_name_groups["NESTOR_QUEST"]:
             world.set_rule(world.get_location(get_location_name(location_id, world)), can_nestor_rafta)
+        for location_id in location_name_groups["WORM_EGG"]:
+            world.set_rule(world.get_location(get_location_name(location_id, world)), And(Has("MET_NESTOR"), Has("Worm Egg", count=num_multiple_items["Worm Egg"])))
     
     if world.options.rusty_crown != 0:
         for location_id in location_name_groups["RUSTY_CROWN"]:
@@ -219,8 +225,6 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     # special merchant rules
     for location_id in location_name_groups["CASSETTE_TAPE"]:
         world.set_rule(world.get_location(get_location_name(location_id, world)), Has("Cassette Tape", count=num_multiple_items["Cassette Tape"]))
-    for location_id in location_name_groups["WORM_EGG"]:
-        world.set_rule(world.get_location(get_location_name(location_id, world)), Has("Worm Egg", count=num_multiple_items["Worm Egg"]))
     for location_id in location_name_groups["RAT_TAIL"]:
         world.set_rule(world.get_location(get_location_name(location_id, world)), Has("Rat Tail", count=num_multiple_items["Rat Tail"]))
     for location_id in location_name_groups["BLACK_OOZE"]:
