@@ -190,6 +190,7 @@ def exclude_locations(world: LookOutsideWorld) -> None:
         exclude_set.update(location_name_groups["RUSTY_CROWN"])
     if not world.options.include_nestor_quest:
         exclude_set.update(location_name_groups["NESTOR_QUEST"])
+        exclude_set.update(location_name_groups["WORM_EGG"])
     if world.options.include_shades == IncludeShades.option_none:
         exclude_set.update(location_name_groups["LARGE_SHADE"])
         exclude_set.update(UNDER_THE_STAIRS_LOCATIONS.keys())

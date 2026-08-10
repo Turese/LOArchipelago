@@ -116,6 +116,7 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
 
     world.set_rule(world.get_location(get_location_name("F1_AUDREY_RECRUIT", world)), And(Has("Vending Machine Key"), Has("3x Dollar Coins", count=num_multiple_items["3x Dollar Coins"])))
     world.set_rule(world.get_location(get_location_name("F1_AUDREY_RESTOCK", world)), And(Has("Vending Machine Key"), Has("3x Dollar Coins", count=num_multiple_items["3x Dollar Coins"])))
+    world.set_rule(world.get_location(get_location_name("APT_13_DISC", world)), Has("Rat Baby Thing"))
 
     world.set_rule(world.get_location(get_location_name("TRUE_FRED_RETURN_FACE", world)), Has("Torn-Off Face"))
 

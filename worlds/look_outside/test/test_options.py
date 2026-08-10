@@ -128,7 +128,7 @@ class NestorRaftaDisabledItems(LOTestBase):
     }
 
     def test_nestor_rafta_locations_are_excluded_when_disabled(self):
-        nestor_rafta_location_names = location_name_groups["NESTOR_QUEST"]
+        nestor_rafta_location_names = location_name_groups["NESTOR_QUEST"].union(location_name_groups["WORM_EGG"])
 
         existing_location_names = {location.name for location in self.multiworld.get_locations()}
 
