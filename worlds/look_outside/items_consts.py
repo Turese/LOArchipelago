@@ -764,6 +764,11 @@ misc_table: dict[str, ItemData] = {
     "Book of Crossword Puzzles": ItemData(ItemCat.MISC, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 22),
     "Elevator Activation": ItemData(ItemCat.MISC, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 23),
     "Sewer Grates Lowered": ItemData(ItemCat.MISC, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 24),
+    "Elevator Floor 1 Access": ItemData(ItemCat.MISC, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 25),
+    "Elevator Floor 2 Access": ItemData(ItemCat.MISC, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 26),
+    "Elevator Floor 4 Access": ItemData(ItemCat.MISC, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 27),
+    "Elevator Basement Access": ItemData(ItemCat.MISC, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 28),
+    "Elevator Ground Floor Access": ItemData(ItemCat.MISC, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 29),
 }
 
 resource_pack_table: dict[str, ItemData] = {
@@ -876,6 +881,22 @@ item_table: dict[str, ItemData] = {
 
 item_name_groups: dict[str, set[str]] = {
     "QUEST_ROOMMATES": {"Dan", "Hellen", "Leigh"},
+    "ALL_ROOMMATES": { "Aster", 
+                      "Audrey", 
+                      "Joel", 
+                      "Leigh", 
+                      "Lyle", 
+                      "Xaria and Montgomery", 
+                      "Morton", 
+                      "Progressive Rat Child", 
+                      "Spider", 
+                      "Hellen", 
+                      "Dan", 
+                      "Ernest", 
+                      "Roaches", 
+                      "Sophie", 
+                      "Phillippe", 
+                      "Papineau" },
     "MUTT_PROGRESSION_CASH": {"Two Hundred and Fifty Dollars"},
     "TRAP": trap_table.keys(),
     "JASPER_OFFERING": {"Progressive Loose Manuscript", "Crumpled Manuscript", "Clean Manuscript"},

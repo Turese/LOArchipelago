@@ -1,14 +1,15 @@
 from test.general import setup_multiworld, setup_solo_multiworld
 
 from worlds.look_outside import LookOutsideWorld
-from worlds.look_outside.items_consts import num_multiple_items
+from worlds.look_outside.items_consts import num_multiple_items, item_name_groups
 from worlds.look_outside.options import IncludeArms, StartingGames
 from worlds.look_outside.test.bases import LOTestBase
 
 class TestOptionsPrecollectedNotInPool(LOTestBase):
     options = {
         "starting_games": StartingGames.option_vanilla,
-        "include_arms": IncludeArms.option_start_with_both_arms
+        "include_arms": IncludeArms.option_start_with_both_arms,
+        "starting_roommates": 16
     }
 
     def test_precollected_games(self):        
@@ -38,7 +39,22 @@ class TestOptionsPrecollectedNotInPool(LOTestBase):
                 itempool_names,
                 f"{arm} should be precollected and not also present in the item pool"
             )
-    
+
+
+    def test_precollected_roommates(self):
+        roommate_names = item_name_groups["ALL_ROOMMATES"]
+        itempool_names = [item.name for item in self.multiworld.itempool]
+
+        for roommate in roommate_names:
+            if roommate == "Progressive Rat Child":
+                self.assertTrue(itempool_names.count(roommate) == 1, f"First {roommate} should be precollected and so only have one left in the item pool.")
+            else:
+                self.assertNotIn(
+                    roommate,
+                    itempool_names,
+                    f"{roommate} should be precollected and not also present in the item pool"
+                )
+      
 class TestRegularPrecollectedNotInPool(LOTestBase):
 
     def test_multiple_item(self):

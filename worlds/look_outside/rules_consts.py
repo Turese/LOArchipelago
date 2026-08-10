@@ -41,13 +41,25 @@ can_do_any_ritual = And(met_all_astronomers,
     )
 )
 
-can_access_elevator = Has("Elevator Activation")
+can_access_elevator_floor_1 = HasAny("Elevator Floor 1 Access", "Elevator Activation")
+can_access_elevator_floor_2 = HasAny("Elevator Floor 2 Access", "Elevator Activation")
+can_access_elevator_floor_4 = HasAny("Elevator Floor 4 Access", "Elevator Activation")
+can_access_elevator_basement = HasAny("Elevator Basement Access", "Elevator Activation")
+can_access_elevator_ground_floor = HasAny("Elevator Ground Floor Access", "Elevator Activation")
+
+can_enter_elevator = HasAny(
+    "Elevator Activation", 
+    "Elevator Floor 1 Access", 
+    "Elevator Floor 2 Access", 
+    "Elevator Floor 4 Access", 
+    "Elevator Basement Access",
+    "Elevator Ground Floor Access"
+    )
 can_access_floor_2_east = can_access_stairwell
-can_access_floor_2_west = can_access_elevator
-can_access_basement = Or(can_access_elevator, And(
+can_access_floor_2_west = can_access_elevator_floor_2
+can_access_basement = Or(can_access_elevator_basement, And(
     can_access_stairwell, Has("Basement Key")))
-can_access_floor_4 = can_access_elevator
-can_access_metro = And(can_access_floor_4, Has("Metro Ticket"))
+can_access_metro = And(can_access_elevator_floor_4, Has("Metro Ticket"))
 can_nestor_rafta = And(HasAll(*item_name_groups["NESTOR_QUEST_INTRO"]), Has("MET_RAFTA"), Has("MET_NESTOR"))
 can_leigh_quest = And(Has("Leigh"), Has("Phone"))
 

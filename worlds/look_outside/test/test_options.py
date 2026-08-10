@@ -328,6 +328,19 @@ class VanillaRandomStartingGamesTest(LOTestBase):
             ("Myrmidon" in precollected_item_names and "Madwheels 97" in precollected_item_names and "Super Jumplad" in precollected_item_names),
             f"Precollected items should be Myrmidon, Madwheels 97, and Super Jumplad, got: {self.multiworld.precollected_items}")
 
+
+class NoRandomStartingItemsTest(LOTestBase):
+    options = {
+        "starting_roommates": 0,
+        "starting_games": StartingGames.option_none
+    }
+    def test_no_random_roommates_games(self):
+        precollected_items = self.multiworld.precollected_items[self.player]
+        self.assertTrue(
+            len(precollected_items) == 0,
+            f"No items should be precollected, got: {len(precollected_items)}"
+        )
+
 class MaskLocationsExcluded(LOTestBase):
     options = {
         "include_mask": False

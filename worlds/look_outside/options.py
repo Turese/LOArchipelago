@@ -127,6 +127,18 @@ class IncludeSuperBosses(Toggle):
     default = False
     display_name = "Include Superbosses"
 
+class ElevatorByFloor(Toggle):
+    """Elevator access is unlocked floor-by-floor rather than all at once."""
+    default = False
+    display_name = "Floor-by-Floor Elevator Access"
+
+class StartingRoommates(NamedRange):
+    """This controls how many roommates the player starts with. Default 0, maximum of 16 (all recruits)."""
+    display_name = "Starting Roommates"
+    range_start = 0
+    range_end = 16
+    default = 0
+
 
 @dataclass
 class LookOutsideOptions(PerGameCommonOptions):
@@ -142,6 +154,8 @@ class LookOutsideOptions(PerGameCommonOptions):
     include_roommate_quests: IncludeRoommateQuests
     include_game_skills: IncludeGameSkills
     starting_games: StartingGames
+    starting_roommates: StartingRoommates
+    elevator_by_floor: ElevatorByFloor
     death_link: DeathLink
     rat_baby_name: RatBabyName
     allow_killing_shopkeepers: AllowKillingShopkeepers
@@ -177,6 +191,8 @@ option_presets = {
         "include_mask": True,
         "include_roommate_quests": True,
         "starting_games": StartingGames.option_none,
+        "starting_roommates": 0,
+        "elevator_by_floor": True,
         "include_game_skills": True,
         "randomize_door_encounters": True,
         "allow_killing_shopkeepers": False,

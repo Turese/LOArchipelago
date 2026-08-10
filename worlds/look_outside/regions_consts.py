@@ -4,8 +4,10 @@ from worlds.look_outside.items_consts import num_multiple_items
 
 from typing_extensions import NamedTuple
 from worlds.look_outside.rules_consts import can_leigh_quest, can_open_any_simple_lock, \
-can_access_stairwell, can_clear_with_herbicide, can_clear_with_sapper_charge, can_access_elevator, \
-can_open_with_iris_key
+can_access_stairwell, can_clear_with_herbicide, can_clear_with_sapper_charge, \
+can_open_with_iris_key, can_access_elevator_ground_floor, \
+can_access_elevator_floor_2, can_access_elevator_floor_1, can_access_elevator_basement, \
+can_access_elevator_floor_4, can_enter_elevator
 
 # shade rules go here because i use them here
 can_access_all_large_shades = And(
@@ -31,8 +33,8 @@ planetarium_lock = HasAll(
     "Neptune Disc"
 )
 
-bring_earth_mars_disc_to_gf = Or(HasAll("Sun Disc", "Negative Disc"), can_access_elevator)
-bring_sun_disc_to_gf = Or(HasAll("Earth Disc", "Mars Disc"), can_access_elevator)
+bring_earth_mars_disc_to_gf = Or(HasAll("Sun Disc", "Negative Disc"), can_access_elevator_ground_floor)
+bring_sun_disc_to_gf = Or(HasAll("Earth Disc", "Mars Disc"), can_access_elevator_ground_floor)
 
 jaspers_room_solution_1 = And(HasAll("Uranus Disc", "Earth Disc"), bring_earth_mars_disc_to_gf)
 
@@ -124,7 +126,7 @@ f3_regions_table: dict[str, RegionData] = {
     "FLOOR_3_HALL": RegionData(
         exits={
             "F3_STAIRWELL_EXIT": ExitData("STAIRWELL", can_access_stairwell),
-            "F3_ELEVATOR_EXIT": ExitData("ELEVATOR", can_access_elevator),
+            "F3_ELEVATOR_EXIT": ExitData("ELEVATOR", can_enter_elevator),
             "APT_30_DOOR": ExitData("APT_30_TAXIDERMY"),
             "APT_31_DOOR": ExitData("APT_31_STARGAZER"),
             "APT_32_DOOR": ExitData("APT_32_TEETH"),
@@ -421,7 +423,7 @@ f1_regions_table: dict[str, RegionData] = {
             "APT_18_OVERGROWN_DOOR": ExitData("APT_18_OVERGROWN"),
             "APT_11_PLANET_DOOR": ExitData("APT_11_ABYSS", Has("Earth Disc")),
             "APT_12_MEAT_DOOR": ExitData("APT_12_ENTRYWAY", can_clear_with_herbicide),
-            "F1_ELEVATOR_EXIT": ExitData("ELEVATOR", can_access_elevator),
+            "F1_ELEVATOR_EXIT": ExitData("ELEVATOR", can_enter_elevator),
             "RAT_LAIR_DOOR": ExitData("RAT_LAIR"),
             "RAT_INFESTED_APARTMENT_DOOR": ExitData("RAT_INFESTED_APARTMENT"),
             "FRED_APARTMENT_DOOR": ExitData("FRED_APARTMENT_ENTRANCE"),
@@ -479,6 +481,7 @@ f1_regions_table: dict[str, RegionData] = {
 ground_regions_table: dict[str, RegionData] = {
     "GROUND_FLOOR_HALL_EAST": RegionData(
         exits={
+            "GF_STAIRWELL_EXIT": ExitData("STAIRWELL"),
             "WOMENS_BATHROOM_DOOR": ExitData("WOMENS_BATHROOM", can_clear_with_herbicide),
             "LANDLORDS_DOOR": ExitData("LANDLORDS_APARTMENT_PHASE_1"),
             "MUTTS_SHOP_DOOR": ExitData("MUTTS_SHOP"),
@@ -601,7 +604,7 @@ basement_regions_table: dict[str, RegionData] = {
         "BASEMENT_WEST_EAST_DOOR": ExitData("BASEMENT_EAST"),
         "GARBAGE_ROOM_ENTRANCE": ExitData("GARBAGE_ROOM"),
         # need basement key for blackout mode because it disables the elevator
-        "BLACKOUT_MODE": ExitData("GARAGE_UTILITY_ROOM_BLACKOUT", And(can_access_elevator, HasAll("Basement Key", "Padlock Key"))),
+        "BLACKOUT_MODE": ExitData("GARAGE_UTILITY_ROOM_BLACKOUT", And(can_enter_elevator, HasAll("Basement Key", "Padlock Key"))),
         "BOILER_ROOM_FUNGAL_MAZE_DOOR": ExitData("BOILER_ROOM_FUNGAL_MAZE"),
         "BASEMENT_SHADE_WEST": ExitData("BASEMENT_SHADE"),
         "HELLCAR_LAIR_IRIS_DOOR": ExitData("MEAT_HELLCAR", can_open_with_iris_key)
@@ -634,12 +637,12 @@ misc_regions_table: dict[str, RegionData] = {
     "ROOF": RegionData(),
     "ELEVATOR": RegionData(
         exits={
-            "ELEVATOR_FLOOR_3_EXIT": ExitData("FLOOR_3_HALL", can_access_elevator),
-            "ELEVATOR_FLOOR_2_EXIT": ExitData("FLOOR_2_WEST", can_access_elevator),
-            "ELEVATOR_FLOOR_1_EXIT": ExitData("FLOOR_1_MAZE", can_access_elevator),
-            "ELEVATOR_GROUND_FLOOR_EXIT": ExitData("MAILROOM_SHIPPING_WEST_HALL", can_access_elevator),
-            "ELEVATOR_BASEMENT_EXIT": ExitData("GARBAGE_ROOM"),
-            "ELEVATOR_FLOOR_4_EXIT": ExitData("FLOOR_4", can_access_elevator)
+            "ELEVATOR_FLOOR_3_EXIT": ExitData("FLOOR_3_HALL"),
+            "ELEVATOR_FLOOR_2_EXIT": ExitData("FLOOR_2_WEST", can_access_elevator_floor_2),
+            "ELEVATOR_FLOOR_1_EXIT": ExitData("FLOOR_1_MAZE", can_access_elevator_floor_1),
+            "ELEVATOR_GROUND_FLOOR_EXIT": ExitData("MAILROOM_SHIPPING_WEST_HALL", can_access_elevator_ground_floor),
+            "ELEVATOR_BASEMENT_EXIT": ExitData("GARBAGE_ROOM", can_access_elevator_basement),
+            "ELEVATOR_FLOOR_4_EXIT": ExitData("FLOOR_4", can_access_elevator_floor_4)
         }),
     "FLOOR_4": RegionData(exits={
         "FLOOR_4_TURNSTILE": ExitData("FLOOR_4_STATION", Has("Metro Ticket")),

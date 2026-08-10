@@ -97,6 +97,15 @@ def create_all_items(world: LookOutsideWorld):
 
         precollect_games(world)
         precollect_arms(world)
+        precollect_roommates(world)
+
+        if world.options.elevator_by_floor:
+            excluded_items.add("Elevator Activation")
+        else:
+            excluded_items.add("Elevator Basement Access")
+            excluded_items.add("Elevator Floor 1 Access")
+            excluded_items.add("Elevator Floor 2 Access")
+            excluded_items.add("Elevator Floor 4 Access")
 
         if not world.options.include_nestor_quest:
             for item in item_name_groups["NESTOR_QUEST_INTRO"]:
@@ -110,6 +119,7 @@ def create_all_items(world: LookOutsideWorld):
         if not world.options.include_mask:
             for item in item_name_groups["MASK_AREA_ENTRY"]:
                 excluded_items.add(item)
+                excluded_items.add("Elevator Floor 4 Access")
         
         if not world.options.include_traps:
             for item in item_name_groups["TRAP"]:
@@ -178,6 +188,14 @@ def precollect_games(world: LookOutsideWorld):
         world.multiworld.random.shuffle(game_list)
         for game in game_list[:3]:
             world.multiworld.push_precollected(create_lo_item(world, game))
+
+def precollect_roommates(world: LookOutsideWorld):
+    num_roommates = world.options.starting_roommates
+    if num_roommates > 0:
+        roommate_list = list(item_name_groups["ALL_ROOMMATES"])
+        world.multiworld.random.shuffle(roommate_list)
+        for i in range(num_roommates):
+            world.multiworld.push_precollected(create_lo_item(world, roommate_list[i]))
 
 # yaml option for starting arms
 def precollect_arms(world: LookOutsideWorld):
