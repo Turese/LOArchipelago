@@ -341,6 +341,18 @@ class NoRandomStartingItemsTest(LOTestBase):
             f"No items should be precollected, got: {len(precollected_items)}"
         )
 
+class StartingRoommates(LOTestBase):
+    options = {
+        "starting_roommates": 3,
+        "starting_games": StartingGames.option_none
+    }
+    def test_num_starting_roommates(self):
+        precollected_items = self.multiworld.precollected_items[self.player]
+        self.assertTrue(
+            len(precollected_items) == 3,
+            f"Three items should be precollected, got: {len(precollected_items)}"
+        )
+
 class MaskLocationsExcluded(LOTestBase):
     options = {
         "include_mask": False

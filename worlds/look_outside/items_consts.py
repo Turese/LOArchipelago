@@ -853,7 +853,7 @@ resource_pack_table: dict[str, ItemData] = {
     "2x Toothpaste": ItemData(ItemCat.RESOURCE_PACK, set(), 79),
     "2x Duct Tape": ItemData(ItemCat.RESOURCE_PACK, set(), 80),
     "2x Shuriken": ItemData(ItemCat.RESOURCE_PACK, set(), 81),
-    "10 Marbles": ItemData(ItemCat.RESOURCE_PACK, set(), 82),
+    "10x Marbles": ItemData(ItemCat.RESOURCE_PACK, set(), 82),
 }
 
 trap_table: dict[str, ItemData] = {

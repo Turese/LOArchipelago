@@ -129,7 +129,7 @@ class IncludeSuperBosses(Toggle):
 
 class ElevatorByFloor(Toggle):
     """Elevator access is unlocked floor-by-floor rather than all at once."""
-    default = False
+    default = True
     display_name = "Floor-by-Floor Elevator Access"
 
 class StartingRoommates(NamedRange):
@@ -168,11 +168,11 @@ option_groups = [
     OptionGroup(
         "Location Options",
         [PlayerGoal, IncludeFriendlyFire, IncludeSuperBosses, IncludeRustyCrown, IncludeRatFriendlyFire, IncludeNestorQuest, IncludeShades,
-         IncludeMaskLocations, IncludeRoommateQuests, IncludeGameSkills, RandomizeDoorEncounters, AllowKillingShopkeepers],
+         IncludeMaskLocations, IncludeRoommateQuests, IncludeGameSkills, RandomizeDoorEncounters, AllowKillingShopkeepers, ElevatorByFloor],
     ),
     OptionGroup(
         "Item Options",
-        [IncludeTestGear, IncludeArms, IncludeTraps, StartingGames],
+        [IncludeTestGear, IncludeArms, IncludeTraps, StartingGames, StartingRoommates],
     ),
     OptionGroup("Other Options", [DeathLink, HideOverworldItems, RatBabyName])
 ]
