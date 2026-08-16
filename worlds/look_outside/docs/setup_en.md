@@ -62,9 +62,13 @@ This controls whether locations in areas specific to the Mask ending are randomi
 
 This controls whether locations in areas specific to the roommate's sidequests are randomized. This includes: Hellen's plant watering quest, Leigh's cell phone quest, and Dan's NeoDuo quest.
 
-### Include Game Skills
+### Randomize Video Game Skill Rewards
 
 If enabled, the skills rewarded for completing video games will be randomized, and a location will be granted after playing each video game at least once. If disabled, each game skill will be rewarded after only one play of its respective video game.
+
+### Floor-by-Floor Elevator Access
+
+If enabled, the option to use the elevator will be granted to players one floor at a time rather than all at once. The elevator will always have the option to return to floor 3.
 
 ### Starting Games
 
