@@ -92,7 +92,7 @@ Picks what name the Rat Baby party member will have. The player will not get the
 
 ### Allow Killing Shopkeepers
 
-If this is enabled, then the player will be able to kill Mutt and Eugene whenever they want to steal their stock. If this is disabled, the option to attack them will disabled in-game. Nestor is still attackable when killing Eugene, but Eugene will survive the encounter.
+If this is enabled, then the player will be able to kill Mutt and Eugene whenever they want to steal their stock. If this is disabled, the option to attack them will disabled in-game. Nestor is still attackable when posessing Eugene, but Eugene will survive the encounter.
 
 ### Randomize Door Encounters
 
