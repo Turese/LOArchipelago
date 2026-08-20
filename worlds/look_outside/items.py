@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 def check_gate_classification_by_options(item: str, options: LookOutsideOptions) -> ItemClassification:
     
     if item == "Small Red Key":
-        if options.goal == PlayerGoal.option_all_endings or options.goal == PlayerGoal.option_unity:
+        if PlayerGoal.UNITY_ENDING in options.goal.value:
             return ItemClassification.progression
         else:
             return ItemClassification.filler
@@ -35,31 +35,31 @@ def check_gate_classification_by_options(item: str, options: LookOutsideOptions)
             return ItemClassification.progression
         else:
             return ItemClassification.useful
-    if item in item_name_groups["USEFUL_SKILL_VIDEO_GAME"]:
-        if not options.include_game_skills:
+    if item in item_name_groups["VIDEO_GAME"] and not options.include_game_skills:
+        if item == "Massacre Princess":
+            if PlayerGoal.TRUE_FINAL_ENDING in options.goal.value:
+                return ItemClassification.progression
+            else:
+                return ItemClassification.filler
+        if item == "Honko's Grand Journey": # needed for honko boss in glitch world
+            if options.include_mask and options.include_superbosses:
+                return ItemClassification.progression
+        else:
             return ItemClassification.useful
     if item in item_name_groups["KOTD_FIGURE"]:
         if options.include_superbosses:
             return ItemClassification.progression
         else:
-            return ItemClassification.useful
-    if options.include_mask:
-        if item == "Honko's Grand Journey": # needed to fight honko
-            return ItemClassification.progression
+            return ItemClassification.filler
     if options.allow_killing_shopkeepers:
         if item in item_name_groups["MUTT_PROGRESSION_CASH"]:
             return ItemClassification.useful
         else:
             return ItemClassification.progression
-    if options.goal in { PlayerGoal.option_all_roof_endings, PlayerGoal.option_all_endings, PlayerGoal.option_true_final }:
-        if item == "Skill: Meteor Strike":
+    if item == "Skill: Meteor Strike":
+        if PlayerGoal.TRUE_FINAL_ENDING in options.goal.value:
             return ItemClassification.progression
-        if item == "Massacre Princess":
-            return ItemClassification.progression
-    else:
-        if item == "Skill: Meteor Strike":
-            return ItemClassification.filler
-        if item == "Massacre Princess" and not options.include_game_skills:
+        else:
             return ItemClassification.filler
     return ItemClassification.progression
 
@@ -173,7 +173,7 @@ def create_all_items(world: LookOutsideWorld):
 
         world.multiworld.itempool += local_itempool
 
-        print(f"Added {len(local_itempool)} items to the pool, filling {len(mandatory_items)} with unique/pr items and {slots_to_fill} slots with filler items.")
+        print(f"(Look Outside) Added {len(local_itempool)} items to the pool, filling {len(mandatory_items)} slots with unique or progression items and {slots_to_fill} slots with filler items.")
 
 
 # yaml option for starting games

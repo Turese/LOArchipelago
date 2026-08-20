@@ -24,7 +24,6 @@ def create_all_regions(world: LookOutsideWorld) -> None:
         regions.append(Region(region_name, world.player, world.multiworld))
 
     world.multiworld.regions += regions
-    print(all_regions_table["STAIRWELL"])
 
 
 def connect_regions(world: LookOutsideWorld) -> None:

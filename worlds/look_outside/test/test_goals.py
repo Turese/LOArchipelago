@@ -10,7 +10,7 @@ from worlds.look_outside.test.bases import LOTestBase
 def ending_test(goal_id):
     multiworld = setup_multiworld(
             LookOutsideWorld,
-            options={ "goal": goal_id }
+            options={ "goal": set([goal_id]) }
         )
     assert not multiworld.has_beaten_game(multiworld.state, 1)
     state = CollectionState(multiworld)
@@ -20,13 +20,14 @@ def ending_test(goal_id):
 
 class TestCompleteableGoals(LOTestBase):
     def test_endings(self):
-        ending_test(PlayerGoal.option_any_partial_ritual_ending)
-        ending_test(PlayerGoal.option_any_perfect_ritual_ending)
-        ending_test(PlayerGoal.option_screaming_sky)
-        ending_test(PlayerGoal.option_promise)
-        ending_test(PlayerGoal.option_mask)
-        ending_test(PlayerGoal.option_xin_amon)
-        ending_test(PlayerGoal.option_unity)
-        ending_test(PlayerGoal.option_true_final)
-        ending_test(PlayerGoal.option_all_roof_endings)
-        ending_test(PlayerGoal.option_all_endings)
+        ending_test(PlayerGoal.FAILED_RITUAL)
+        ending_test(PlayerGoal.ANY_RITUAL)
+        ending_test(PlayerGoal.PERFECT_RITUAL)
+        ending_test(PlayerGoal.SCREAMING_SKY_ENDING)
+        ending_test(PlayerGoal.PROMISE_ENDING)
+        ending_test(PlayerGoal.MASK_ENDING)
+        ending_test(PlayerGoal.XIN_AMON_ENDING)
+        ending_test(PlayerGoal.ETERNAL_FATE_ENDING)
+        ending_test(PlayerGoal.UNITY_ENDING)
+        ending_test(PlayerGoal.TRUE_FINAL_ENDING)
+        ending_test(PlayerGoal.WORDS_OF_POWER_ENDING)

@@ -6,9 +6,23 @@ from worlds.look_outside.items_consts import item_name_groups
 from worlds.look_outside.options import IncludeShades, PlayerGoal, StartingGames
 from worlds.look_outside.test.bases import LOTestBase
 
+all_endings_array = [
+        PlayerGoal.FAILED_RITUAL,
+        PlayerGoal.ANY_RITUAL,
+        PlayerGoal.PERFECT_RITUAL,
+        PlayerGoal.SCREAMING_SKY_ENDING,
+        PlayerGoal.PROMISE_ENDING,
+        PlayerGoal.MASK_ENDING,
+        PlayerGoal.XIN_AMON_ENDING,
+        PlayerGoal.ETERNAL_FATE_ENDING,
+        PlayerGoal.UNITY_ENDING,
+        PlayerGoal.TRUE_FINAL_ENDING,
+        PlayerGoal.WORDS_OF_POWER_ENDING
+    ]
+
 class AllLocationOptionsTest(LOTestBase):
     options = {
-        "goal": PlayerGoal.option_all_endings,
+        "goal": set(all_endings_array),
         "friendly_fire": True,
         "allow_killing_shopkeepers": True,
         "include_roommate_quests": True,
@@ -123,7 +137,7 @@ class ShopKeeperFriendlyFire(LOTestBase):
 
 class NestorRaftaDisabledItems(LOTestBase):
     options = {
-        "goal": PlayerGoal.option_all_endings,
+        "goal": set([PlayerGoal.PROMISE_ENDING]),
         "include_nestor_quest": False
     }
 
@@ -153,8 +167,10 @@ class NestorRaftaDisabledItems(LOTestBase):
 
 class GameClassificationNoSkillRandomizationTrueFinal(LOTestBase):
     options = {
-        "goal": PlayerGoal.option_all_endings,
-        "include_game_skills": False
+        "goal": set([PlayerGoal.TRUE_FINAL_ENDING]),
+        "include_game_skills": False,
+        "include_superbosses": True,
+        "options.include_mask": True
     }
 
     def test_game_items_are_useful(self):
@@ -166,13 +182,29 @@ class GameClassificationNoSkillRandomizationTrueFinal(LOTestBase):
             (game_item.classification == ItemClassification.useful for game_item in game_items), 
             f"Game items should be useful, got: {[(game_item.name, game_item.classification) for game_item in game_items]}")
 
+
+    def test_honko_is_progression(self):
+        honko_item_array = [item for item in self.multiworld.get_items() if item.name == "Honko's Grand Journey"]
+
+        self.assertTrue(
+            len(honko_item_array) == 1,
+            "Honko's Grand Journey should be included in the item pool"
+        )
+
+        honko_item = honko_item_array[0]
+
+        self.assertEqual(
+            honko_item.classification,
+            ItemClassification.progression,
+            "Honko's Grand Journey should be progression when superbosses and mask offering locations are enabled"
+        )
     def test_massacre_princess_is_progression(self):
 
         massacre_princess_item_array = [item for item in self.multiworld.get_items() if item.name == "Massacre Princess"]
 
         self.assertTrue(
             len(massacre_princess_item_array) == 1,
-            f"Massacre Princess should be included in the item pool"
+            "Massacre Princess should be included in the item pool"
         )
 
         massacre_princess_item = massacre_princess_item_array[0]
@@ -180,7 +212,7 @@ class GameClassificationNoSkillRandomizationTrueFinal(LOTestBase):
         self.assertEqual(
             massacre_princess_item.classification,
             ItemClassification.progression,
-            f"Massacre Princess should be progression when game skills are not randomized and true final is part of the goal"
+            "Massacre Princess should be progression when game skills are not randomized and true final is part of the goal"
         )
 
     def skill_items_not_included(self):
@@ -197,7 +229,7 @@ class GameClassificationNoSkillRandomizationTrueFinal(LOTestBase):
 
 class GameClassificationNoSkillRandomization(LOTestBase):
     options = {
-        "goal": PlayerGoal.option_unity,
+        "goal": set([PlayerGoal.UNITY_ENDING]),
         "include_game_skills": False
     }
 
@@ -219,7 +251,7 @@ class GameClassificationNoSkillRandomization(LOTestBase):
 
 class GameClassificationWithSkillRandomizationTrueFinal(LOTestBase):
     options = {
-        "goal": PlayerGoal.option_all_endings,
+        "goal": set([PlayerGoal.TRUE_FINAL_ENDING]),
         "include_game_skills": True
     }
 
@@ -271,7 +303,7 @@ class GameClassificationWithSkillRandomizationTrueFinal(LOTestBase):
 
 class GameClassificationWithSkillRandomizationNoTrueFinal(LOTestBase):
     options = {
-        "goal": PlayerGoal.option_promise,
+        "goal": set([PlayerGoal.PROMISE_ENDING]),
         "include_game_skills": True
     }
 
@@ -371,10 +403,9 @@ class MaskLocationsExcluded(LOTestBase):
 
 class SybilCombatVictoryWhenPartOfGoal(LOTestBase):
     options = {
-        "goal": PlayerGoal.option_all_endings,
+        "goal": set(all_endings_array),
         "friendly_fire": False,
     }
-
 
     def test_sybil_combat_location_in_all_endings(self):
         existing_location_names = (location.name for location in self.multiworld.get_locations())
@@ -387,7 +418,7 @@ class SybilCombatVictoryWhenPartOfGoal(LOTestBase):
 
 class SybilCombatVictoryWhenFriendlyFire(LOTestBase):
     options = {
-        "goal": PlayerGoal.option_all_roof_endings,
+        "goal": set([PlayerGoal.PROMISE_ENDING]),
         "friendly_fire": False,
     }
 
@@ -402,7 +433,7 @@ class SybilCombatVictoryWhenFriendlyFire(LOTestBase):
 
 class DisabledSuperbosses(LOTestBase):
     options = {
-        "goal": PlayerGoal.option_all_roof_endings,
+        "goal": set([PlayerGoal.PROMISE_ENDING]),
     }
 
     def test_superbosses_disabled(self):

@@ -120,11 +120,12 @@ def create_events(world: LookOutsideWorld) -> None:
 
     # ENDINGS
     
-    if player_goal == PlayerGoal.option_all_endings or player_goal == PlayerGoal.option_unity:
+    # checks for at least 1 iris key so the player can reach at least some of the organs
+    if PlayerGoal.UNITY_ENDING in player_goal.value:
         world.get_region("APT_12_WALLS").add_event(
-            "UNITY_ENDING_NOTE", "UNITY_ENDING", rule=HasAll("Small Red Key", "AWAKENED_SYBIL"),location_type=LOLocation, item_type=LOItem
+            "UNITY_ENDING_NOTE", "UNITY_ENDING", rule=HasAll("Small Red Key", "AWAKENED_SYBIL", "Iris Key"),location_type=LOLocation, item_type=LOItem
         )
-    if player_goal == PlayerGoal.option_all_endings:
+    if PlayerGoal.WORDS_OF_POWER_ENDING in player_goal.value:
         world.get_region("CROSSWORD_DUNGEON").add_event("FREE_WILHELMINA", "WORDS_OF_POWER_ENDING")
 
     roof = world.get_region("ROOF")
@@ -156,7 +157,7 @@ def create_events(world: LookOutsideWorld) -> None:
         "RITUAL_CIRCLE_GUINEA_PIG_PERFECT", "XIN_AMON_ENDING", rule=can_perform_xin_amon_ritual, location_type=LOLocation, item_type=LOItem
     )
 
-    if player_goal == PlayerGoal.option_all_endings or player_goal == PlayerGoal.option_all_roof_endings or player_goal == PlayerGoal.option_true_final:
+    if PlayerGoal.TRUE_FINAL_ENDING in player_goal.value:
         if world.options.include_game_skills:
             roof.add_event(
                 "RITUAL_CIRCLE_METEOR_STRIKE", "TRUE_FINAL_ENDING", rule=can_true_final_skill, location_type=LOLocation, item_type=LOItem
@@ -171,14 +172,13 @@ def create_events(world: LookOutsideWorld) -> None:
     )
 
 
-
 def exclude_locations(world: LookOutsideWorld) -> None:
     exclude_set = set()
     if not world.options.include_mask:
         exclude_set.update(location_name_groups["MASK_OFFERING"])
-    if not (world.options.goal == PlayerGoal.option_all_endings or world.options.goal == PlayerGoal.option_all_roof_endings or world.options.goal == PlayerGoal.option_mask):
+    if not (PlayerGoal.MASK_ENDING in world.options.goal.value):
         exclude_set.update(location_name_groups["MASK_ENDING"])
-    if not (world.options.goal == PlayerGoal.option_all_endings or world.options.goal == PlayerGoal.option_unity or world.options.friendly_fire):
+    if not world.options.friendly_fire and not PlayerGoal.UNITY_ENDING in world.options.goal.value and not world.options.include_superbosses:
         exclude_set.add("MEAT_SYBIL_COMBAT_VICTORY")
     if not world.options.include_roommate_quests:
         exclude_set.update(location_name_groups["ROOMMATE_QUEST"])

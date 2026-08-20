@@ -2,8 +2,9 @@ from Options import Choice, Toggle, PerGameCommonOptions, OptionGroup, NamedRang
     FreeText
 from dataclasses import dataclass
 
+"""
 class PlayerGoal(Choice):
-    """Ending of the game required to win."""
+    ""Ending of the game required to win.""
     display_name = "Ending Goal"
     option_any_partial_ritual_ending = 0
     option_any_perfect_ritual_ending = 1
@@ -16,6 +17,45 @@ class PlayerGoal(Choice):
     option_all_roof_endings = 8
     option_all_endings = 9
     default = 3
+"""
+
+class PlayerGoal(OptionSet):
+    """Goal(s) required in order to finish."""
+
+    FAILED_RITUAL = "Failed Ritual"
+    ANY_RITUAL = "Flawed Ritual"
+    PERFECT_RITUAL = "Perfect Ritual"
+    SCREAMING_SKY_ENDING = "Screaming Sky Ending"
+    PROMISE_ENDING = "Promise Ending"
+    MASK_ENDING = "Mask Ending"
+    XIN_AMON_ENDING = "XIN-AMON Ending"
+    ETERNAL_FATE_ENDING = "Eternal Fate Ending"
+    UNITY_ENDING = "Unity Ending"
+    TRUE_FINAL_ENDING = "True Final Ending"
+    WORDS_OF_POWER_ENDING = "Words of Power Ending"
+    #DEFEAT_DISASTER = "Boss Gauntlet: Defeat Disaster"
+    #SMOOCH_THE_SULTAN = "Smooch the Sultan"
+
+    display_name = "Ending Goal(s)"
+    valid_keys = {
+        FAILED_RITUAL,
+        ANY_RITUAL,
+        PERFECT_RITUAL,
+        SCREAMING_SKY_ENDING,
+        PROMISE_ENDING,
+        MASK_ENDING,
+        XIN_AMON_ENDING,
+        ETERNAL_FATE_ENDING,
+        UNITY_ENDING,
+        TRUE_FINAL_ENDING,
+        WORDS_OF_POWER_ENDING,
+    }
+    default=set([PROMISE_ENDING])
+    def verify(self, world, player_name, plando_options):
+        super().verify(world, player_name, plando_options)
+
+        if not self.value:
+            raise ValueError("At least one Ending Goal must be selected.")
 
 class IncludeArms(Choice):
     """Adds the player character's arms to the item pool."""
@@ -180,7 +220,7 @@ option_groups = [
 # Finally, we can define some option presets if we want the player to be able to quickly choose a specific "mode".
 option_presets = {
     "default": {
-        "goal": PlayerGoal.option_promise,
+        "goal": set([PlayerGoal.PROMISE_ENDING]),
         "include_arms": IncludeArms.option_start_unarmed,
         "friendly_fire": False,
         "rat_friendly_fire": False,
@@ -196,6 +236,7 @@ option_presets = {
         "include_game_skills": True,
         "randomize_door_encounters": True,
         "allow_killing_shopkeepers": False,
-        "death_link": False
+        "death_link": False,
+        "include_superbosses": False
     },
 }

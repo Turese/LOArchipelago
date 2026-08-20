@@ -185,7 +185,7 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
 
     # roof rules
 
-    if world.options.goal == PlayerGoal.option_all_endings or world.options.goal == PlayerGoal.option_all_roof_endings or world.options.goal == PlayerGoal.option_mask:
+    if PlayerGoal.MASK_ENDING in world.options.goal:
         world.set_rule(world.get_location(get_location_name("DREAM_EATER_COMBAT_VICTORY", world)), Has("Old Photograph"))
         world.set_rule(world.get_location(get_location_name("SPINE_TINGLER_COMBAT_VICTORY", world)), Has("Wrapped Painting"))
         world.set_rule(world.get_location(get_location_name("HUNDRED_MAWS_COMBAT_VICTORY", world)), Has("Old Tape"))
@@ -239,38 +239,45 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
             else:
                 world.set_rule(world.get_location(get_location_name(location_id, world)), HasAny("Player's Left Arm", "Player's Right Arm"))
 
-    
 
+failed_ritual_name = "FAILED_RITUAL_ENDING"
+flawed_ritual_name = "FLAWED_RITUAL_ENDING"
+screaming_sky_name = "SCREAMING_SKY_ENDING"
+eternal_fate_name = "ETERNAL_FATE_ENDING"
+xin_amon_name = "XIN_AMON_ENDING"
+mask_name = "MASK_ENDING"
+promise_name = "PROMISE_ENDING"
+true_final_name = "TRUE_FINAL_ENDING"
+perfect_ritual_name = "PERFECT_RITUAL_ENDING"
+words_of_power_name = "WORDS_OF_POWER_ENDING"
+unity_name = "UNITY_ENDING"
 
-flawed_ritual_endings = {"FLAWED_RITUAL_ENDING", "SCREAMING_SKY_ENDING", "ETERNAL_FATE_ENDING", "XIN_AMON_ENDING", "MASK_ENDING"}
-
-advanced_perfect_rituals = {"PROMISE_ENDING", "TRUE_FINAL_ENDING"}
-
-all_rituals = {*flawed_ritual_endings, "PERFECT_RITUAL_ENDING", *advanced_perfect_rituals}
-
-all_roof_endings = {*all_rituals, "FAILED_RITUAL_ENDING"}
-
-all_endings = {*all_roof_endings, "UNITY_ENDING", "WORDS_OF_POWER_ENDING"}
 
 def set_completion_condition(world: LookOutsideWorld) -> None:
     player_goal = world.options.goal
-    if player_goal == PlayerGoal.option_all_endings:
-        world.set_completion_rule(HasAll(*all_endings))
-    elif player_goal == PlayerGoal.option_all_roof_endings:
-        world.set_completion_rule(HasAll(*all_roof_endings))
-    elif player_goal == PlayerGoal.option_any_partial_ritual_ending:
-        world.set_completion_rule(HasAny(*all_rituals))
-    elif player_goal == PlayerGoal.option_any_perfect_ritual_ending:
-        world.set_completion_rule(Has("PERFECT_RITUAL_ENDING"))
-    elif player_goal == PlayerGoal.option_screaming_sky:
-        world.set_completion_rule(Has("SCREAMING_SKY_ENDING"))
-    elif player_goal == PlayerGoal.option_promise:
-        world.set_completion_rule(Has("PROMISE_ENDING"))
-    elif player_goal == PlayerGoal.option_mask:
-        world.set_completion_rule(Has("MASK_ENDING"))
-    elif player_goal == PlayerGoal.option_true_final:
-        world.set_completion_rule(Has("TRUE_FINAL_ENDING"))
-    elif player_goal == PlayerGoal.option_xin_amon:
-        world.set_completion_rule(Has("XIN_AMON_ENDING"))
-    elif player_goal == PlayerGoal.option_unity:
-        world.set_completion_rule(Has("UNITY_ENDING"))
+    goal_requirements = []
+    if PlayerGoal.FAILED_RITUAL in player_goal.value:
+        goal_requirements.append(failed_ritual_name)
+    if PlayerGoal.ANY_RITUAL in player_goal.value:
+        goal_requirements.append(flawed_ritual_name)
+    if PlayerGoal.PERFECT_RITUAL in player_goal.value:
+        goal_requirements.append(perfect_ritual_name)
+    if PlayerGoal.SCREAMING_SKY_ENDING in player_goal.value:
+        goal_requirements.append(screaming_sky_name)
+    if PlayerGoal.PROMISE_ENDING in player_goal.value:
+        goal_requirements.append(promise_name)
+    if PlayerGoal.MASK_ENDING in player_goal.value:
+        goal_requirements.append(mask_name)
+    if PlayerGoal.XIN_AMON_ENDING in player_goal.value:
+        goal_requirements.append(xin_amon_name)
+    if PlayerGoal.ETERNAL_FATE_ENDING in player_goal.value:
+        goal_requirements.append(eternal_fate_name)
+    if PlayerGoal.UNITY_ENDING in player_goal.value:
+        goal_requirements.append(unity_name)
+    if PlayerGoal.TRUE_FINAL_ENDING in player_goal.value:
+        goal_requirements.append(true_final_name)
+    if PlayerGoal.WORDS_OF_POWER_ENDING in player_goal.value:
+        goal_requirements.append(words_of_power_name)
+    if len(goal_requirements) == 0:
+        raise ValueError(f"Player {world.player_name} did not choose a goal!")
+    world.set_completion_rule(HasAll(*goal_requirements))

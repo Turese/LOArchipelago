@@ -436,7 +436,8 @@ APT_37_VINCENT_LOCATIONS_MAIN: dict[str, LocationData] = {
     "APT_37_BEDROOM_GUINEA_PIG": LocationData("Apt. 37 Bedroom - Item by Door", LC.OVERWORLD_ITEM, 1023),
     "APT_37_BEDROOM_GLASSES": LocationData("Apt. 37 Bedroom - Item On Table 1", LC.OVERWORLD_ITEM, 1024),
     "APT_37_BEDROOM_CASH": LocationData("Apt. 37 Bedroom - Item On Table 2", LC.OVERWORLD_ITEM, 1025),
-    "APT_37_BEDROOM_ONLOOKER_A_COMBAT_VICTORY": LocationData("Apt. 37 Bedroom - Slay Onlookers", LC.COMBAT_VICTORY, 1026),
+    "APT_37_BEDROOM_ONLOOKER_A_COMBAT_VICTORY": LocationData("Apt. 37 Bedroom - Slay Onlooker 1", LC.COMBAT_VICTORY, 1026),
+    "APT_37_BEDROOM_ONLOOKER_B_COMBAT_VICTORY": LocationData("Apt. 37 Bedroom - Slay Onlooker 2", LC.COMBAT_VICTORY, 1040),
     "APT_37_BEDROOM_TRASH": LocationData("Apt. 37 Bedroom - Trash Can", LC.TRASH_LOOT, 1027)
 }
     
@@ -450,7 +451,9 @@ APT_37_LOCKED_ROOM_LOCATIONS: dict[str, LocationData] = {
     "APT_37_LOCKED_ROOM_FIRST_AID_KIT": LocationData("Apt. 37 Locked Room - Item on West Table 4", LC.OVERWORLD_ITEM, 1034),
     "APT_37_LOCKED_ROOM_CLOGS": LocationData("Apt. 37 Locked Room - Item on Floor by Bed", LC.OVERWORLD_ITEM, 1035),
     "APT_37_LOCKED_ROOM_CLOTH": LocationData("Apt. 37 Locked Room - Item on Table by Bed", LC.OVERWORLD_ITEM, 1036),
-    "APT_37_LOCKED_ROOM_EYE_MONSTERS_COMBAT_VICTORY": LocationData("Apt. 37 Locked Room - Slay Eye Monsters", LC.COMBAT_VICTORY, 1037)
+    "APT_37_LOCKED_ROOM_EYE_LEGS_COMBAT_VICTORY": LocationData("Apt. 37 Locked Room - Slay Eye Legs", LC.COMBAT_VICTORY, 1037),
+    "APT_37_LOCKED_ROOM_EYE_SHOULDER_COMBAT_VICTORY": LocationData("Apt. 37 Locked Room - Slay Eye Shoulder", LC.COMBAT_VICTORY, 1038),
+    "APT_37_LOCKED_ROOM_WIGGLE_EYE_COMBAT_VICTORY": LocationData("Apt. 37 Locked Room - Slay Wiggle Eye", LC.COMBAT_VICTORY, 1039)
 }
 
 APT_37_VINCENT_LOCATIONS = {
@@ -1508,7 +1511,7 @@ LANDLORDS_APT_PHASE_4_LOCATIONS = {
     "LL_RENT_4": LocationData("Landlord Apt. - Final Rent Payment", LC.EVENT_ITEM, 4004),
     "LL_BASEMENT_KEY": LocationData("Landlord Entryway - Northwest Corner Item", LC.OVERWORLD_ITEM, 4006),
     "LL_MANATARMS_COMBAT_VICTORY": LocationData("Landlord Entryway - Slay Man at Arms (Phase 4)", LC.COMBAT_VICTORY, 4013),
-    "LL_HELL_S_HALL_GATLING": LocationData("Landlord Hell South Hall - Slay Gatling", LC.COMBAT_VICTORY, 4080),
+    "LL_HELL_S_HALL_GATLING_COMBAT_VICTORY": LocationData("Landlord Hell South Hall - Slay Gatling", LC.COMBAT_VICTORY, 4080),
     "LL_MEMORIAL_MEMORIAL_COMBAT_VICTORY": LocationData("Landlord Memorial Room - Slay Memorial", LC.FRIENDLY_FIRE, 4061),
     "LL_MEMORIAL_GRENADE": LocationData("Landlord Memorial Room - Item 1", LC.OVERWORLD_ITEM, 4062),
     "LL_MEMORIAL_DETONATOR": LocationData("Landlord Memorial Room - Item 2", LC.OVERWORLD_ITEM, 4063),
@@ -2442,7 +2445,8 @@ location_name_groups: dict[str, set[str]] = {
         "SEWER_FURNACE_COMBAT_VICTORY",
         "SEWER_FURNACE_IRIS_KEY",
         "SEWER_BOILER_BEAST_COMBAT_VICTORY",
-        "MUTT_COMBAT_VICTORY"
+        "MUTT_COMBAT_VICTORY",
+        #"MEAT_SYBIL_COMBAT_VICTORY" covered separately because unity ending overrides this
         },
     "GAME_SKILLS": {
         *VIDEO_GAME_LOCATIONS.keys(),
