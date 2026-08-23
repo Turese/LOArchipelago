@@ -64,7 +64,7 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
         world.set_rule(world.get_location(get_location_name("GAME_SKILL_CROSSWORD_CHALLENGE", world)), Has("Auntie Wilma's Crossword Challenge"))
 
     # door rules
-    if (world.options.randomize_door_encounters == 1):
+    if (world.options.include_door_encounters == 1):
         world.set_rule(world.get_location(get_location_name("DOOR_HARRIET_REUNITE", world)), Has("Sophie"))
         world.set_rule(world.get_location(get_location_name("DOOR_MORTON_3_JUNK", world)), Has("Junk Pile", count=1))
         world.set_rule(world.get_location(get_location_name("DOOR_MORTON_6_JUNK", world)), Has("Junk Pile", count=2))
@@ -162,7 +162,7 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
         for location_id in location_name_groups["WORM_EGG"]:
             world.set_rule(world.get_location(get_location_name(location_id, world)), And(Has("MET_NESTOR"), Has("Worm Egg", count=num_multiple_items["Worm Egg"])))
     
-    if world.options.rusty_crown != 0:
+    if world.options.include_rusty_crown != 0:
         for location_id in location_name_groups["RUSTY_CROWN"]:
             world.set_rule(world.get_location(get_location_name(location_id, world)), Has("Rusty Crown"))
 

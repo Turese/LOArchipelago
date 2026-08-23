@@ -69,13 +69,13 @@ class IncludeArms(Choice):
 class IncludeFriendlyFire(Toggle):
     """This controls whether locations specific to attacking non-hostile
     characters and potential recruits are included. This includes all merchants, Spine, and Marc-André."""
-    display_name = "Include Friendly Fire"
+    display_name = "Include Friendly Fire Locations"
     default = False
 
 class IncludeRatFriendlyFire(Toggle):
     """This controls whether locations specific to attacking rats that become non-hostile
     when wearing the rusty crown are included."""
-    display_name = "Include Rat Friendly Fire"
+    display_name = "Include Rat Friendly Fire Locations"
     default = True
 
 class IncludeRustyCrown(Toggle):
@@ -90,27 +90,27 @@ class IncludeTestGear(Toggle):
 
 class IncludeNestorQuest(Toggle):
     """This controls whether locations specific to the Nestor and Rafta romance quest are randomized."""
-    display_name = "Include Nestor and Rafta Quest"
+    display_name = "Include Nestor and Rafta's Quest"
     default = True
 
 class IncludeShades(Choice):
     """This controls whether locations specific to the Spider recruitment quest are randomized."""
     display_name = "Include the Spider's Recruitment Quest"
-    option_none = 0
-    option_large_shades = 1
-    option_large_shades_and_spider = 2
-    option_large_shades_and_spider_and_crawling_shade = 3
+    option_exclude_all_locations = 0
+    option_include_large_shades = 1
+    option_include_large_shades_and_spider = 2
+    option_include_large_shades_and_spider_and_crawling_shade = 3
     default = 0
 
 class IncludeMaskLocations(Toggle):
-    """This controls whether locations in areas specific to the
-    Mask ending are randomized: Glitch world, floor 4, the basement pit,
+    """When checked, areas specific to the
+    Mask ending will be randomized: Glitch world, floor 4, the basement pit,
     and the landlord's hidden room."""
     display_name = "Include Mask Offering Locations"
     default = True
 
 class IncludeRoommateQuests(Toggle):
-    """This controls whether roommate quests that involve escorting companions to their own apartments are
+    """When checked, items from roommate quests that involve escorting companions to their own apartments are
     randomized: Dan, Hellen, and Leigh's quests."""
     display_name = "Include Long Roommate Sidequests"
     default = True
@@ -118,7 +118,7 @@ class IncludeRoommateQuests(Toggle):
 
 class IncludeGameSkills(Toggle):
     """This controls whether the skills given by completing each of the video games are randomized."""
-    display_name = "Randomize Video Game Skill Rewards"
+    display_name = "Include Video Game Skill Locations"
     default = True
 
 class StartingGames(Choice):
@@ -146,9 +146,9 @@ class AllowKillingShopkeepers(Toggle):
     display_name = "Allow Killing Mutt and Eugene"
     default = False
 
-class RandomizeDoorEncounters(Toggle):
+class IncludeDoorEncounters(Toggle):
     """Randomize items from door encounters, including merchants. Default true."""
-    display_name = "Randomize Door Encounter Rewards"
+    display_name = "Include Door Encounter Locations"
     default = True
 
 class IncludeTraps(Toggle):
@@ -184,9 +184,9 @@ class StartingRoommates(NamedRange):
 class LookOutsideOptions(PerGameCommonOptions):
     goal: PlayerGoal
     include_arms: IncludeArms
-    friendly_fire: IncludeFriendlyFire
-    rat_friendly_fire: IncludeRatFriendlyFire
-    rusty_crown: IncludeRustyCrown
+    include_friendly_fire: IncludeFriendlyFire
+    include_rat_friendly_fire: IncludeRatFriendlyFire
+    include_rusty_crown: IncludeRustyCrown
     include_test_gear: IncludeTestGear
     include_nestor_quest: IncludeNestorQuest
     include_shades: IncludeShades
@@ -199,22 +199,22 @@ class LookOutsideOptions(PerGameCommonOptions):
     death_link: DeathLink
     rat_baby_name: RatBabyName
     allow_killing_shopkeepers: AllowKillingShopkeepers
-    randomize_door_encounters: RandomizeDoorEncounters
+    include_door_encounters: IncludeDoorEncounters
     include_traps: IncludeTraps
     hide_overworld_items: HideOverworldItems
     include_superbosses: IncludeSuperBosses
 
 option_groups = [
     OptionGroup(
-        "Location Options",
-        [PlayerGoal, IncludeFriendlyFire, IncludeSuperBosses, IncludeRustyCrown, IncludeRatFriendlyFire, IncludeNestorQuest, IncludeShades,
-         IncludeMaskLocations, IncludeRoommateQuests, IncludeGameSkills, RandomizeDoorEncounters, AllowKillingShopkeepers, ElevatorByFloor],
+        "Progression Locations",
+        [IncludeFriendlyFire, IncludeSuperBosses, IncludeRustyCrown, IncludeRatFriendlyFire, IncludeNestorQuest, IncludeShades,
+        IncludeMaskLocations, IncludeRoommateQuests, IncludeGameSkills, IncludeDoorEncounters, AllowKillingShopkeepers],
     ),
     OptionGroup(
-        "Item Options",
-        [IncludeTestGear, IncludeArms, IncludeTraps, StartingGames, StartingRoommates],
+        "Item Randomization Options",
+        [IncludeTestGear, IncludeArms, IncludeTraps, ElevatorByFloor, StartingGames, StartingRoommates],
     ),
-    OptionGroup("Other Options", [DeathLink, HideOverworldItems, RatBabyName])
+    OptionGroup("Other Options", [HideOverworldItems, RatBabyName])
 ]
 
 # Finally, we can define some option presets if we want the player to be able to quickly choose a specific "mode".
@@ -222,19 +222,19 @@ option_presets = {
     "default": {
         "goal": set([PlayerGoal.PROMISE_ENDING]),
         "include_arms": IncludeArms.option_start_unarmed,
-        "friendly_fire": False,
-        "rat_friendly_fire": False,
-        "rusty_crown": True,
+        "include_friendly_fire": False,
+        "include_rat_friendly_fire": False,
+        "include_rusty_crown": True,
         "include_test_gear": False,
         "include_nestor_quest": False,
-        "include_shades": IncludeShades.option_large_shades_and_spider,
+        "include_shades": IncludeShades.option_exclude_all_locations,
         "include_mask": True,
         "include_roommate_quests": True,
         "starting_games": StartingGames.option_none,
         "starting_roommates": 0,
         "elevator_by_floor": True,
         "include_game_skills": True,
-        "randomize_door_encounters": True,
+        "include_door_encounters": True,
         "allow_killing_shopkeepers": False,
         "death_link": False,
         "include_superbosses": False

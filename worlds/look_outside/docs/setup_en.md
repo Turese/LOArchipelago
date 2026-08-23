@@ -54,7 +54,7 @@ If this option is selected, then locations will be rewarded for defeating the fi
 
 If this option is selected, then locations will be rewarded for defeating the five boss shades on each floor that spawn on high danger levels, as well as venturing into the secret room under the stairs and defeating the Spider, and defeating the Crawling Shade enemy that chases the player in the corridor before they meet the Spider.
 
-### Include Mask Locations
+### Include Mask Offering Locations
 
 This controls whether locations in areas specific to the Mask ending are randomized: Glitch world, the entirety of floor 4, the basement pit, and the landlord's hidden room.
 

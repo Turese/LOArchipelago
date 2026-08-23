@@ -23,15 +23,15 @@ all_endings_array = [
 class AllLocationOptionsTest(LOTestBase):
     options = {
         "goal": set(all_endings_array),
-        "friendly_fire": True,
+        "include_friendly_fire": True,
         "allow_killing_shopkeepers": True,
         "include_roommate_quests": True,
-        "randomize_door_encounters": True,
+        "include_door_encounters": True,
         "include_mask": True,
-        "rat_friendly_fire": True,
-        "include_shades": IncludeShades.option_large_shades_and_spider_and_crawling_shade,
+        "include_rat_friendly_fire": True,
+        "include_shades": IncludeShades.option_include_large_shades_and_spider_and_crawling_shade,
         "include_nestor_quest": True,
-        "rusty_crown": True,
+        "include_rusty_crown": True,
         "include_game_skills": True,
         "include_superbosses": True
     }
@@ -48,9 +48,9 @@ class AllLocationOptionsTest(LOTestBase):
 
 class FriendlyFireExcluded(LOTestBase):
     options = {
-        "friendly_fire": False,
+        "include_friendly_fire": False,
         "include_roommate_quests": True,
-        "randomize_door_encounters": True,
+        "include_door_encounters": True,
         "include_mask": True,
         "include_superbosses": True
     }
@@ -70,10 +70,10 @@ class FriendlyFireExcluded(LOTestBase):
 
 class FriendlyFireIncluded(LOTestBase):
     options = {
-        "friendly_fire": True,
+        "include_friendly_fire": True,
         "allow_killing_shopkeepers": True,
         "include_roommate_quests": True,
-        "randomize_door_encounters": True,
+        "include_door_encounters": True,
         "include_mask": True,
         "include_superbosses": True
     }
@@ -92,15 +92,15 @@ class FriendlyFireIncluded(LOTestBase):
 
 class ShopKeeperFriendlyFire(LOTestBase):
     options = {
-        "friendly_fire": True,
+        "include_friendly_fire": True,
         "allow_killing_shopkeepers": False,
         "include_roommate_quests": True,
-        "randomize_door_encounters": True,
+        "include_door_encounters": True,
         "include_mask": True,
-        "rat_friendly_fire": True,
-        "include_shades": IncludeShades.option_large_shades_and_spider_and_crawling_shade,
+        "include_rat_friendly_fire": True,
+        "include_shades": IncludeShades.option_include_large_shades_and_spider_and_crawling_shade,
         "include_nestor_quest": True,
-        "rusty_crown": True,
+        "include_rusty_crown": True,
         "include_game_skills": True
     }
 
@@ -404,7 +404,7 @@ class MaskLocationsExcluded(LOTestBase):
 class SybilCombatVictoryWhenPartOfGoal(LOTestBase):
     options = {
         "goal": set(all_endings_array),
-        "friendly_fire": False,
+        "include_friendly_fire": False,
     }
 
     def test_sybil_combat_location_in_all_endings(self):
@@ -419,7 +419,7 @@ class SybilCombatVictoryWhenPartOfGoal(LOTestBase):
 class SybilCombatVictoryWhenFriendlyFire(LOTestBase):
     options = {
         "goal": set([PlayerGoal.PROMISE_ENDING]),
-        "friendly_fire": False,
+        "include_friendly_fire": False,
     }
 
     def test_sybil_excluded_in_friendly_fire(self):

@@ -55,8 +55,8 @@ class LookOutsideWorld(CachedRuleBuilderWorld):
     def fill_slot_data(self) -> dict[str, any]:
         # If you need access to the player's chosen options on the client side, there is a helper for that.
         return self.options.as_dict(
-            "goal", "friendly_fire", "rusty_crown", "include_nestor_quest", 
-            "include_shades", "include_mask", "include_roommate_quests", "starting_games", 
-            "death_link", "rat_baby_name", "allow_killing_shopkeepers", "randomize_door_encounters",
-            "include_game_skills", "hide_overworld_items"
+            "goal", "starting_games", "death_link", "rat_baby_name", "hide_overworld_items",
+            "include_friendly_fire", "include_superbosses", "include_rusty_crown", "include_rat_friendly_fire", 
+            "include_nestor_quest", "include_shades", "include_mask", "include_roommate_quests", "include_game_skills",
+            "include_door_encounters", "allow_killing_shopkeepers"
         )

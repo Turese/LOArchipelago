@@ -436,8 +436,8 @@ APT_37_VINCENT_LOCATIONS_MAIN: dict[str, LocationData] = {
     "APT_37_BEDROOM_GUINEA_PIG": LocationData("Apt. 37 Bedroom - Item by Door", LC.OVERWORLD_ITEM, 1023),
     "APT_37_BEDROOM_GLASSES": LocationData("Apt. 37 Bedroom - Item On Table 1", LC.OVERWORLD_ITEM, 1024),
     "APT_37_BEDROOM_CASH": LocationData("Apt. 37 Bedroom - Item On Table 2", LC.OVERWORLD_ITEM, 1025),
-    "APT_37_BEDROOM_ONLOOKER_A_COMBAT_VICTORY": LocationData("Apt. 37 Bedroom - Slay Onlooker 1", LC.COMBAT_VICTORY, 1026),
-    "APT_37_BEDROOM_ONLOOKER_B_COMBAT_VICTORY": LocationData("Apt. 37 Bedroom - Slay Onlooker 2", LC.COMBAT_VICTORY, 1040),
+    "APT_37_BEDROOM_ONLOOKER_A_COMBAT_VICTORY": LocationData("Apt. 37 Bedroom - Slay Onlooker A", LC.COMBAT_VICTORY, 1026),
+    "APT_37_BEDROOM_ONLOOKER_B_COMBAT_VICTORY": LocationData("Apt. 37 Bedroom - Slay Onlooker B", LC.COMBAT_VICTORY, 1040),
     "APT_37_BEDROOM_TRASH": LocationData("Apt. 37 Bedroom - Trash Can", LC.TRASH_LOOT, 1027)
 }
     

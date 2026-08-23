@@ -21,7 +21,7 @@ def check_gate_classification_by_options(item: str, options: LookOutsideOptions)
         else:
             return ItemClassification.filler
     if item == "Rusty Crown":
-        if options.rusty_crown:
+        if options.include_rusty_crown:
             return ItemClassification.progression
         else:
             return ItemClassification.useful
@@ -31,7 +31,7 @@ def check_gate_classification_by_options(item: str, options: LookOutsideOptions)
         else:
             return ItemClassification.useful
     if item == "Sophie" or item == 'Junk Pile':
-        if options.randomize_door_encounters:
+        if options.include_door_encounters:
             return ItemClassification.progression
         else:
             return ItemClassification.useful
@@ -41,11 +41,9 @@ def check_gate_classification_by_options(item: str, options: LookOutsideOptions)
                 return ItemClassification.progression
             else:
                 return ItemClassification.filler
-        if item == "Honko's Grand Journey": # needed for honko boss in glitch world
-            if options.include_mask and options.include_superbosses:
-                return ItemClassification.progression
-        else:
-            return ItemClassification.useful
+        if item == "Honko's Grand Journey" and options.include_mask and options.include_superbosses: # needed for honko boss in glitch world
+            return ItemClassification.progression
+        return ItemClassification.useful
     if item in item_name_groups["KOTD_FIGURE"]:
         if options.include_superbosses:
             return ItemClassification.progression

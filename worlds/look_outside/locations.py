@@ -178,29 +178,29 @@ def exclude_locations(world: LookOutsideWorld) -> None:
         exclude_set.update(location_name_groups["MASK_OFFERING"])
     if not (PlayerGoal.MASK_ENDING in world.options.goal.value):
         exclude_set.update(location_name_groups["MASK_ENDING"])
-    if not world.options.friendly_fire and not PlayerGoal.UNITY_ENDING in world.options.goal.value and not world.options.include_superbosses:
+    if not world.options.include_friendly_fire and not PlayerGoal.UNITY_ENDING in world.options.goal.value and not world.options.include_superbosses:
         exclude_set.add("MEAT_SYBIL_COMBAT_VICTORY")
     if not world.options.include_roommate_quests:
         exclude_set.update(location_name_groups["ROOMMATE_QUEST"])
-    if not world.options.friendly_fire:
+    if not world.options.include_friendly_fire:
         exclude_set.update(location_name_groups["FRIENDLY_FIRE"])
-    if not world.options.rat_friendly_fire:
+    if not world.options.include_rat_friendly_fire:
         exclude_set.update(location_name_groups["RAT_FRIENDLY_FIRE"])
-    if not world.options.rusty_crown:
+    if not world.options.include_rusty_crown:
         exclude_set.update(location_name_groups["RUSTY_CROWN"])
     if not world.options.include_nestor_quest:
         exclude_set.update(location_name_groups["NESTOR_QUEST"])
         exclude_set.update(location_name_groups["WORM_EGG"])
-    if world.options.include_shades == IncludeShades.option_none:
+    if world.options.include_shades == IncludeShades.option_exclude_all_locations:
         exclude_set.update(location_name_groups["LARGE_SHADE"])
         exclude_set.update(UNDER_THE_STAIRS_LOCATIONS.keys())
-    elif world.options.include_shades == IncludeShades.option_large_shades:
+    elif world.options.include_shades == IncludeShades.option_include_large_shades:
         exclude_set.update(UNDER_THE_STAIRS_LOCATIONS.keys())
-    elif world.options.include_shades == IncludeShades.option_large_shades_and_spider:
+    elif world.options.include_shades == IncludeShades.option_include_large_shades_and_spider:
         exclude_set.add("STAIRS_CRAWLING_SHADE_COMBAT_VICTORY")
     if world.options.include_game_skills == 0:
         exclude_set.update(location_name_groups["GAME_SKILLS"])
-    if world.options.randomize_door_encounters == 0:
+    if world.options.include_door_encounters == 0:
         exclude_set.update(FRONT_DOOR_LOCATIONS.keys())
         exclude_set.update(APT_22_HARRIET_LOCATIONS.keys())
     if not world.options.allow_killing_shopkeepers:
