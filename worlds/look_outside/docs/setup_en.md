@@ -193,7 +193,7 @@ Note: if you're having trouble getting the game to patch, ensure that your clean
 
 This mod can also be installed without RPGModder
 
-1. Unzip `LOAPClient.zip`. You should have a folder titled `Look Outside`
+1. Unzip `LOAPClient.zip`. You should have a folder titled `Look Outside` (if not, then you can rename this folder to `Look Outside`)
 2. Drag this folder over your Look Outside installation. This can be found at `\SteamLibrary\steamapps\common\Look Outside`
 3. Add this text to the second to last line on the bottom of `\SteamLibrary\steamapps\common\Look Outside\js\plugins.js:`
     - It should be placed after everything in that file except for the `];` denoting the end of the object.
