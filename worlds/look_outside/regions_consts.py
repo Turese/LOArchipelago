@@ -227,6 +227,8 @@ ice_melts_needed = {
     "APT_34_FROZEN_LONG_BEDROOM_EAST": num_multiple_items["Ice Melt Salt"]
 }
 
+# todo: do the same as above for herbicide
+
 frozen_apartment_regions_table = {
     "APT_34_FROZEN_ENTRANCE": RegionData(exits={
         "ENTRANCE_EAST_ICE_BLOCK": ExitData("APT_34_FROZEN_BEDROOM_WEST", Has("Ice Melt Salt", count=ice_melts_needed["APT_34_FROZEN_BEDROOM_WEST"])),
@@ -339,7 +341,7 @@ glitch_world_regions_table = {
 
 f2_west_regions_table = {
     "FLOOR_2_WEST": RegionData(exits={
-        "APT_25_DOOR": ExitData("APT_25_DAN", Has("Dan")),
+        "APT_25_DOOR": ExitData("APT_25_DAN", HasAll("Dan", "Basement Key")),
         "APT_27_DOOR": ExitData("APT_27_TYPEWRITHER"),
         "APT_28_DOOR": ExitData("APT_28_FLOODED_ENTRYWAY"),
         "FLOOR_2_SHADE_WEST": ExitData("FLOOR_2_SHADE"),
@@ -460,8 +462,15 @@ f1_regions_table: dict[str, RegionData] = {
     }),
     "APT_11_ABYSS": RegionData(),
     "APT_12_ENTRYWAY": RegionData(exits={
-        "APT_12_HIDDEN_DOOR": ExitData("APT_12_MAIN", Has("Jasper's Key"))
+        "APT_12_HIDDEN_DOOR": ExitData("APT_12_MAIN", Has("Jasper's Key")),
+        "APT_12_BATHROOM_DOOR": ExitData("APT_12_BATHROOM", can_clear_with_herbicide),
+        "APT_12_BEDROOM_DOOR": ExitData("APT_12_BEDROOM", can_clear_with_herbicide),
     }),
+    "APT_12_BATHROOM": RegionData(),
+    "APT_12_BEDROOM": RegionData(exits={
+        "APT_12_BEDROOM_CLOSET_DOOR": ExitData("APT_12_BEDROOM_CLOSET", can_clear_with_herbicide),
+    }),
+    "APT_12_BEDROOM_CLOSET": RegionData(),
     "APT_12_KITCHEN_CLOSET": RegionData(exits={
         "APT_12_KITCHEN_CLOSET_DOOR" : ExitData("APT_12_MAIN")
     }),
@@ -481,7 +490,6 @@ f1_regions_table: dict[str, RegionData] = {
 ground_regions_table: dict[str, RegionData] = {
     "GROUND_FLOOR_HALL_EAST": RegionData(
         exits={
-            "GF_STAIRWELL_EXIT": ExitData("STAIRWELL"),
             "WOMENS_BATHROOM_DOOR": ExitData("WOMENS_BATHROOM", can_clear_with_herbicide),
             "LANDLORDS_DOOR": ExitData("LANDLORDS_APARTMENT_PHASE_1"),
             "MUTTS_SHOP_DOOR": ExitData("MUTTS_SHOP"),

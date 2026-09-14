@@ -17,7 +17,9 @@ all_endings_array = [
         PlayerGoal.ETERNAL_FATE_ENDING,
         PlayerGoal.UNITY_ENDING,
         PlayerGoal.TRUE_FINAL_ENDING,
-        PlayerGoal.WORDS_OF_POWER_ENDING
+        PlayerGoal.WORDS_OF_POWER_ENDING,
+        PlayerGoal.SMOOCH_SULTAN,
+        PlayerGoal.SMOOCH_VISITOR
     ]
 
 class AllLocationOptionsTest(LOTestBase):
@@ -33,7 +35,8 @@ class AllLocationOptionsTest(LOTestBase):
         "include_nestor_quest": True,
         "include_rusty_crown": True,
         "include_game_skills": True,
-        "include_superbosses": True
+        "include_superbosses": True,
+        "casanova_mode": True
     }
 
     def test_all_locations_included(self):

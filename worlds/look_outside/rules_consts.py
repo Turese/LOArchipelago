@@ -12,7 +12,7 @@ turned_in_cctv = HasAll("Correct CCTV Recording", "MET_BERYL")
 has_any_perfect_offering = Or(
     turned_in_complete_manuscript, turned_in_painting, turned_in_photo, turned_in_cctv)
 # All perfect offerings (all four, with correct counts)
-has_all_perfect_offerings = And(
+can_perform_perfect_ritual = And(
     turned_in_complete_manuscript, turned_in_painting, turned_in_photo, turned_in_cctv)
 
 can_open_any_simple_lock = Or(Has("Lockpicks"), Has("Simple Key", count=num_multiple_items["Simple Key"]))
@@ -21,6 +21,11 @@ can_access_stairwell = Has("Padlock Key")
 can_clear_with_herbicide = Has("Herbicide", count=num_multiple_items["Herbicide"])
 can_clear_with_sapper_charge = Has("Sapper Charge", count=num_multiple_items["Sapper Charge"])
 can_open_with_iris_key = Has("Iris Key", count=num_multiple_items["Iris Key"])
+
+# kiss total needed to kiss the sultan, both as a location and goal
+sultan_smooch_req = 49
+
+can_kiss_sultan = Has("SMOOCH_COUNT", count=sultan_smooch_req)
 
 
 met_all_astronomers = HasAll("MET_ASTER", "MET_JASPER", "MET_AURELIUS", "MET_BERYL")
@@ -64,7 +69,6 @@ can_nestor_rafta = And(HasAll(*item_name_groups["NESTOR_QUEST_INTRO"]), Has("MET
 can_leigh_quest = And(Has("Leigh"), Has("Phone"))
 
 can_perform_flawed_ritual = has_any_perfect_offering
-can_perform_perfect_ritual = has_all_perfect_offerings
 can_true_final_skill = And(can_perform_perfect_ritual, Has("Skill: Meteor Strike"))
 can_true_final_game = And(can_perform_perfect_ritual, Has("Massacre Princess"))
 can_keep_promise = And(can_perform_perfect_ritual, Has("AWAKENED_SYBIL"))

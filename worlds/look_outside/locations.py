@@ -4,13 +4,13 @@ from typing import TYPE_CHECKING
 
 from BaseClasses import Location
 from worlds.look_outside.locations_consts import location_name_groups, LocationData, location_table, location_to_region,\
-    UNDER_THE_STAIRS_LOCATIONS, FRONT_DOOR_LOCATIONS, APT_22_HARRIET_LOCATIONS
+    UNDER_THE_STAIRS_LOCATIONS, FRONT_DOOR_LOCATIONS, APT_22_HARRIET_LOCATIONS, should_casanova
 from worlds.look_outside.items_consts import LOItem
 from worlds.look_outside.regions_consts import stairwell_planet_lock
 from worlds.look_outside.rules_consts import can_perform_flawed_ritual, can_keep_promise,\
     can_perform_perfect_ritual, can_perform_mask_ritual, can_perform_eternal_fate_ritual,\
-    can_perform_xin_amon_ritual, can_true_final_skill, can_true_final_game
-from rule_builder.rules import Has, HasAll
+    can_perform_xin_amon_ritual, can_true_final_skill, can_true_final_game, can_kiss_sultan
+from rule_builder.rules import Has, HasAll, HasAny
 from worlds.look_outside.options import IncludeShades, PlayerGoal
 
 
@@ -42,6 +42,49 @@ def create_regular_locations(world: LookOutsideWorld) -> None:
         parent_region = world.get_region(parent_region_name)
         location = LOLocation(world.player, location_info.str_name, location_info.id, parent_region)
         parent_region.locations.append(location)
+
+def get_location_region(multiworld, location_id, player):
+    location_name = get_location_name(location_id, multiworld)
+    location = multiworld.get_location(location_name, player)
+    return location.parent_region
+
+def create_smooch_events(world: LookOutsideWorld) -> None:
+    arm_rule = HasAny("Player's Left Arm", "Player's Right Arm")
+
+    excluded_smooches = {"SMOOCH_VISITOR", "SMOOCH_SULTAN", "SMOOCH_EXALTED_FOUR"}  # these cant count as smooches for the sultan goal
+
+    smooch_locations = location_name_groups["SMOOCH"] - excluded_smooches
+
+    smooch_rules = {
+        "SMOOCH_SWORDMASTER_COMATUS": arm_rule,
+        "SMOOCH_SPIDER": arm_rule,
+        "SMOOCH_F3_LARGE_SHADE": arm_rule,
+        "SMOOCH_F2_LARGE_SHADE": arm_rule,
+        "SMOOCH_F1_LARGE_SHADE": arm_rule,
+        "SMOOCH_GF_LARGE_SHADE": arm_rule,
+        "SMOOCH_B_LARGE_SHADE": arm_rule,
+        "SMOOCH_DREAM_EATER": HasAll("Old Photograph", "Aster"),
+        "SMOOCH_HONKO": arm_rule,
+    }
+
+    for smooch_location_id in smooch_locations:
+        smooch_region = None
+        try:
+            smooch_region = get_location_region(world.multiworld, smooch_location_id, world.player)
+        except KeyError:
+            continue  # location is excluded, so we dont need to add it
+
+        rule = smooch_rules.get(smooch_location_id)
+
+        if rule is None:
+            smooch_region.add_event(
+                smooch_location_id, "SMOOCH_COUNT", location_type=LOLocation, item_type=LOItem
+            )
+        else:
+            smooch_region.add_event(
+                smooch_location_id, "SMOOCH_COUNT", rule=rule, location_type=LOLocation, item_type=LOItem
+            )
+
 
 def create_events(world: LookOutsideWorld) -> None:
     world.get_region("STAIRWELL").add_event(
@@ -128,6 +171,11 @@ def create_events(world: LookOutsideWorld) -> None:
     if PlayerGoal.WORDS_OF_POWER_ENDING in player_goal.value:
         world.get_region("CROSSWORD_DUNGEON").add_event("FREE_WILHELMINA", "WORDS_OF_POWER_ENDING")
 
+    if should_casanova(world.options):
+        world.get_region("CROSSWORD_DUNGEON").add_event(
+            "KISS_THE_SULTAN", "SMOOCH_SULTAN_GOAL", rule=can_kiss_sultan, location_type=LOLocation, item_type=LOItem
+        ) # KISS SULTAN
+
     roof = world.get_region("ROOF")
 
     roof.add_event(
@@ -140,6 +188,10 @@ def create_events(world: LookOutsideWorld) -> None:
     roof.add_event(
         "RITUAL_CIRCLE_PERFECT", "PERFECT_RITUAL_ENDING", rule=can_perform_perfect_ritual, location_type=LOLocation, item_type=LOItem
     ) # no distinction between truth and denial here. this should fire off upon killing the E4
+
+    roof.add_event(
+        "RITUAL_CIRCLE_PERFECT_CASANOVA", "SMOOCH_VISITOR_GOAL", rule=can_perform_perfect_ritual, location_type=LOLocation, item_type=LOItem
+    ) # KISS VISITOR
 
     roof.add_event(
         "RITUAL_CIRCLE_PERFECT_PROMISE", "PROMISE_ENDING", rule=can_keep_promise, location_type=LOLocation, item_type=LOItem
@@ -171,6 +223,8 @@ def create_events(world: LookOutsideWorld) -> None:
         "RITUAL_CIRCLE_PERFECT_FLEE", "SCREAMING_SKY_ENDING", rule=can_perform_perfect_ritual, location_type=LOLocation, item_type=LOItem
     )
 
+    if should_casanova(world.options):
+        create_smooch_events(world)
 
 def exclude_locations(world: LookOutsideWorld) -> None:
     exclude_set = set()
@@ -207,4 +261,6 @@ def exclude_locations(world: LookOutsideWorld) -> None:
         exclude_set.update({"APT_24_EUGENE_COMBAT_VICTORY", "MUTT_COMBAT_VICTORY"})
     if not world.options.include_superbosses:
         exclude_set.update(location_name_groups["SUPER_DUPER_BOSS"])
+    if not should_casanova(world.options):
+        exclude_set.update(location_name_groups["SMOOCH"])
     return exclude_set

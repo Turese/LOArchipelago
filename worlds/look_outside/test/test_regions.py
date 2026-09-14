@@ -84,11 +84,12 @@ class RegionAccessTests(LOTestBase):
 
         state.collect(self.get_item_by_name("Elevator Ground Floor Access"))
 
-        self.assertTrue(state.can_reach_region("STAIRWELL", self.player))
+        self.assertFalse(state.can_reach_region("STAIRWELL", self.player))
         self.assertFalse(state.can_reach_region("FLOOR_1_MAZE", self.player))
-        self.assertTrue(state.can_reach_region("FLOOR_2_EAST", self.player))
+        self.assertFalse(state.can_reach_region("FLOOR_2_EAST", self.player))
         self.assertFalse(state.can_reach_region("FLOOR_2_WEST", self.player))
         self.assertTrue(state.can_reach_region("MAILROOM_SHIPPING_WEST_HALL", self.player))
+        self.assertTrue(state.can_reach_region("GROUND_FLOOR_HALL_EAST", self.player))
         self.assertFalse(state.can_reach_region("BASEMENT_EAST", self.player))
         self.assertFalse(state.can_reach_region("BASEMENT_WEST_PARKING_GARAGE", self.player))
         self.assertFalse(state.can_reach_region("SEWER", self.player))

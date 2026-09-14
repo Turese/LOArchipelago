@@ -740,7 +740,7 @@ armor_table: dict[str, ItemData] = {
 }
 
 misc_table: dict[str, ItemData] = {
-    "Aster": ItemData(ItemCat.MISC, {ItemTag.USEFUL, ItemTag.UNIQUE}, 1),
+    "Aster": ItemData(ItemCat.MISC, {ItemTag.CHECK_GATE, ItemTag.USEFUL, ItemTag.UNIQUE}, 1),
     "Audrey": ItemData(ItemCat.MISC, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 2),
     "Joel": ItemData(ItemCat.MISC, {ItemTag.USEFUL, ItemTag.UNIQUE}, 3),
     "Leigh": ItemData(ItemCat.MISC, {ItemTag.CHECK_GATE, ItemTag.UNIQUE}, 4),
@@ -880,7 +880,6 @@ item_table: dict[str, ItemData] = {
 }
 
 item_name_groups: dict[str, set[str]] = {
-    "QUEST_ROOMMATES": {"Dan", "Hellen", "Leigh"},
     "ALL_ROOMMATES": { "Aster", 
                       "Audrey", 
                       "Joel", 
@@ -1023,7 +1022,7 @@ num_multiple_items: Dict[str, int] = {
     "Two-Dollar Coin": 2,
     "Dollar Coin": 4,
     "Iris Key": 6,
-    "Herbicide": 6,
+    "Herbicide": 9,
     "Ice Melt Salt": 19,
     "3x Quarters": 6, # used for the 4 $0.75 items on the 3rd floor machine and the $1.50 coffee machine on gf
     "3x Dollar Coins": 2, # progression for vending machine key, and then progression for recruit audrey

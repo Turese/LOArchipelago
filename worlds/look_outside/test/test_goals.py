@@ -31,3 +31,5 @@ class TestCompleteableGoals(LOTestBase):
         ending_test(PlayerGoal.UNITY_ENDING)
         ending_test(PlayerGoal.TRUE_FINAL_ENDING)
         ending_test(PlayerGoal.WORDS_OF_POWER_ENDING)
+        ending_test(PlayerGoal.SMOOCH_SULTAN)
+        ending_test(PlayerGoal.SMOOCH_VISITOR)

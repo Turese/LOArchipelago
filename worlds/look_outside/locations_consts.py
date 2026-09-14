@@ -2,6 +2,8 @@ from typing import NamedTuple
 
 from enum import IntFlag, auto
 
+from worlds.look_outside.options import LookOutsideOptions, PlayerGoal
+
 
 # location categories
 class LC(IntFlag):
@@ -75,7 +77,9 @@ F3_HALL_LOCATIONS: dict[str, LocationData] = {
     "F3_VENDING_MACHINE_GUMMI_BEARS": LocationData("Floor 3 Hall - Vending Machine Item 3", LC.MERCHANT, 112),
     "F3_VENDING_MACHINE_CHEESE": LocationData("Floor 3 Hall - Vending Machine Item 4", LC.MERCHANT, 113),
     "F3_VENDING_MACHINE_ONIONOS": LocationData("Floor 3 Hall - Vending Machine Item 5", LC.MERCHANT, 114),
-    "MASKED_SHADOW_TONGUE": LocationData("Masked Shadow - First Gift", LC.EVENT_ITEM, 115)
+    "MASKED_SHADOW_TONGUE": LocationData("Masked Shadow - First Gift", LC.EVENT_ITEM, 115),
+    "SMOOCH_MASKED_SHADOW": LocationData("Masked Shadow - Kiss Masked Shadow", LC.EVENT_ITEM, 116),
+    "SMOOCH_F3_LARGE_SHADE": LocationData("Floor 3 - Kiss Large Shade '??? ?? ?????'", LC.EVENT_ITEM, 117)
 }
 
 APT_30_MAIN_LOCATIONS: dict[str, LocationData] = {
@@ -117,7 +121,10 @@ APT_30_FLESH_LOCATIONS: dict[str, LocationData] = {
     "APT_30_FLESH_SE_LIMBS_COMBAT_VICTORY": LocationData("Apt. 30 Flesh Southeast - Slay Limbs", LC.COMBAT_VICTORY, 1133),
     "APT_30_FLESH_NW_CROCODILE_COMBAT_VICTORY": LocationData("Apt. 30 Flesh Northwest - Slay Crocodile", LC.COMBAT_VICTORY, 1134),
     "APT_30_FLESH_NW_PATCHWORK_JACKET": LocationData("Apt. 30 Flesh Northwest - Item on Table", LC.OVERWORLD_ITEM, 1135),
-    "APT_30_NE_SAFE": LocationData("Apt. 30 Office - Safe", LC.SAFE_LOOT, 1136)
+    "APT_30_NE_SAFE": LocationData("Apt. 30 Office - Safe", LC.SAFE_LOOT, 1136),
+    "SMOOCH_CROW": LocationData("Apt. 30 Flesh Northeast - Kiss Crow", LC.EVENT_ITEM, 1137),
+    "SMOOCH_LIMBS": LocationData("Apt. 30 Flesh Southeast - Kiss Limbs", LC.EVENT_ITEM, 1138),
+    "SMOOCH_CROCODILE": LocationData("Apt. 30 Flesh Northwest - Kiss Crocodile", LC.EVENT_ITEM, 1139),
 }
 
 APT_30_TAXIDERMY_LOCATIONS: dict[str, LocationData] = {
@@ -144,7 +151,8 @@ APT_31_STARGAZER_LOCATIONS: dict[str, LocationData] = {
     "APT_31_OBSERVATORY_PLUTO_DISC": LocationData("Apt. 31 Observatory - Item Near Door", LC.OVERWORLD_ITEM, 216),
     "APT_31_OBSERVATORY_VOID_DISC": LocationData("Apt. 31 Observatory - Item On Center Table", LC.OVERWORLD_ITEM, 217),
     "APT_31_OBSERVATORY_TRASH": LocationData("Apt. 31 Observatory - Trash Can", LC.TRASH_LOOT, 218),
-    "APT_31_TELESCOPE_DISC_EXPOSURE": LocationData("Apt. 31 Observatory - Expose Void Disc to Telescope", LC.EVENT_ITEM, 219)
+    "APT_31_TELESCOPE_DISC_EXPOSURE": LocationData("Apt. 31 Observatory - Expose Void Disc to Telescope", LC.EVENT_ITEM, 219),
+    "SMOOCH_STARGAZER": LocationData("Apt. 31 - Kiss Stargazer", LC.EVENT_ITEM, 220),
 }
 
 APT_32_TEETH_LOCATIONS_MAIN: dict[str, LocationData] = {
@@ -292,7 +300,7 @@ APT_33_MEAT_LOCATIONS: dict[str, LocationData] = {
     "APT_33_MEAT_CONFUSION_COMBAT_VICTORY": LocationData("Apt. 33 Meat World Bedroom - Slay Confusion", LC.COMBAT_VICTORY, 603),
     "APT_33_MEAT_STRETCH_FACE_COMBAT_VICTORY": LocationData("Apt. 33 Meat World Bathroom - Slay Stretch Face", LC.COMBAT_VICTORY, 604),
     "APT_33_MEAT_SPINE_GIFT": LocationData("Apt. 33 Meat World Living Room - Gift From Spine", LC.EVENT_ITEM, 605),
-
+    "SMOOCH_SPINE": LocationData("Apt. 33 Meat World Living Room - Kiss Spine", LC.EVENT_ITEM, 606),
 }
 
 APT_34_FROZEN_ENTRYWAY_LOCATIONS: dict[str, LocationData] = {
@@ -362,6 +370,7 @@ APT_34_LONG_BEDROOM_SW_LOCATIONS: dict[str, LocationData] = {
 
 APT_34_LONG_BEDROOM_CENTER_LOCATIONS: dict[str, LocationData] = {
     "APT_34_LONG_BEDROOM_POMPOM_COMBAT_VICTORY": LocationData("Apt. 34 South Bedroom - Slay Pompom", LC.COMBAT_VICTORY, 717),
+    "SMOOCH_POMPOM": LocationData("Apt. 34 South Bedroom - Kiss Pompom", LC.EVENT_ITEM, 737),
 }
 
 APT_34_LONG_BEDROOM_NORTH_LOCATIONS: dict[str, LocationData] = {
@@ -392,7 +401,8 @@ APT_34_FROZEN_LOCATIONS = {
 }
 
 APT_35_SYBIL_LOCATIONS: dict[str, LocationData] = {
-    "APT_35_FRIDGE": LocationData("Apt. 35 Kitchen - Fridge", LC.FRIDGE_LOOT, 801)
+    "APT_35_FRIDGE": LocationData("Apt. 35 Kitchen - Fridge", LC.FRIDGE_LOOT, 801),
+    "SMOOCH_SYBIL": LocationData("Apt. 35 Living Room - Kiss Sybil", LC.EVENT_ITEM, 802),
 }
 
 APT_36_WOUNDED_LOCATIONS: dict[str, LocationData] = {
@@ -407,7 +417,8 @@ APT_36_WOUNDED_LOCATIONS: dict[str, LocationData] = {
     "APT_36_BATHROOM_WOUNDED_NEIGHBOR_COMBAT_VICTORY": LocationData("Apt. 36 Bathroom - Slay Wounded Neighbor", LC.COMBAT_VICTORY, 909),
     "APT_36_BEDROOM_SAFE_ITEM": LocationData("Apt. 36 Bedroom - Safe", LC.SAFE_LOOT, 910),
     "APT_36_BEDROOM_SIMPLE_KEY": LocationData("Apt. 36 Bedroom - Item on Table", LC.OVERWORLD_ITEM, 911),
-    "APT_36_BEDROOM_OBSERVER_COMBAT_VICTORY": LocationData("Apt. 36 Bedroom - Slay Observer", LC.COMBAT_VICTORY, 912)
+    "APT_36_BEDROOM_OBSERVER_COMBAT_VICTORY": LocationData("Apt. 36 Bedroom - Slay Observer", LC.COMBAT_VICTORY, 912),
+    "SMOOCH_WOUNDED_NEIGHBOR": LocationData("Apt. 36 Bathroom - Kiss Wounded Neighbor", LC.EVENT_ITEM, 913)
 }
 
 APT_37_VINCENT_LOCATIONS_MAIN: dict[str, LocationData] = {
@@ -427,7 +438,7 @@ APT_37_VINCENT_LOCATIONS_MAIN: dict[str, LocationData] = {
     "APT_37_BATHROOM_CLEANEREX": LocationData("Apt. 37 Bathroom - Item on Floor", LC.OVERWORLD_ITEM, 1014),
     "APT_37_BATHROOM_MEDICELL": LocationData("Apt. 37 Bathroom - Item on Counter 1", LC.OVERWORLD_ITEM, 1015),
     "APT_37_BATHROOM_BANDAGES": LocationData("Apt. 37 Bathroom - Item on Counter 2", LC.OVERWORLD_ITEM, 1016),
-    "APT_37_BATHROOM_GAWKER_COMBAT_VICTORY": LocationData("Apt. 37 Bathroom - Slay Gawker", LC.COMBAT_VICTORY, 1017),
+    "APT_37_BATHROOM_GAWKER_COMBAT_VICTORY": LocationData("Apt. 37 Bathroom - Slay Gawker/Eternal Eye", LC.COMBAT_VICTORY, 1017),
     "APT_37_PROJECTOR_ROOM_ONLOOKER_COMBAT_VICTORY": LocationData("Apt. 37 Projector Room - Slay Onlooker", LC.COMBAT_VICTORY, 1018),
     "APT_37_PROJECTOR_ROOM_WIZARDS_HELL": LocationData("Apt. 37 Projector Room - Item on Lower Left Table", LC.OVERWORLD_ITEM, 1019),
     "APT_37_PROJECTOR_ROOM_GOLF_CLUB": LocationData("Apt. 37 Projector Room - Item on Projector Table 1", LC.OVERWORLD_ITEM, 1020),
@@ -438,7 +449,9 @@ APT_37_VINCENT_LOCATIONS_MAIN: dict[str, LocationData] = {
     "APT_37_BEDROOM_CASH": LocationData("Apt. 37 Bedroom - Item On Table 2", LC.OVERWORLD_ITEM, 1025),
     "APT_37_BEDROOM_ONLOOKER_A_COMBAT_VICTORY": LocationData("Apt. 37 Bedroom - Slay Onlooker A", LC.COMBAT_VICTORY, 1026),
     "APT_37_BEDROOM_ONLOOKER_B_COMBAT_VICTORY": LocationData("Apt. 37 Bedroom - Slay Onlooker B", LC.COMBAT_VICTORY, 1040),
-    "APT_37_BEDROOM_TRASH": LocationData("Apt. 37 Bedroom - Trash Can", LC.TRASH_LOOT, 1027)
+    "APT_37_BEDROOM_TRASH": LocationData("Apt. 37 Bedroom - Trash Can", LC.TRASH_LOOT, 1027),
+    "SMOOCH_VINCENT": LocationData("Apt. 37 Living Room - Kiss Vincent", LC.EVENT_ITEM, 1041),
+    "SMOOCH_ETERNAL_EYE": LocationData("Apt. 37 Bathroom - Kiss Eternal Eye", LC.EVENT_ITEM, 1042)
 }
     
 APT_37_LOCKED_ROOM_LOCATIONS: dict[str, LocationData] = {
@@ -480,12 +493,15 @@ APT_38_ROOMMATES_LOCATIONS_MAIN: dict[str, LocationData] = {
     "APT_38_PIERRE_CLOWN_WIG": LocationData("Apt. 38 Pierre's Room - Pierre Combat Reward", LC.EVENT_ITEM, 1236),
     "APT_38_BATHROOM_FIRST_AID_KIT": LocationData("Apt. 38 Bathroom - Item on Counter 1", LC.OVERWORLD_ITEM, 1237),
     "APT_38_BATHROOM_CLOTH": LocationData("Apt. 38 Bathroom - Item on Counter 2", LC.OVERWORLD_ITEM, 1238),
-    "APT_38_BATHROOM_CLEANEREX": LocationData("Apt. 38 Bathroom - Item Near Sink", LC.OVERWORLD_ITEM, 1239)
+    "APT_38_BATHROOM_CLEANEREX": LocationData("Apt. 38 Bathroom - Item Near Sink", LC.OVERWORLD_ITEM, 1239),
+    "SMOOCH_LOUIS": LocationData("Apt. 38 - Kiss Fiber Dragon", LC.EVENT_ITEM, 1240),
+    "SMOOCH_PIERRE": LocationData("Apt. 38 Pierre's Room - Kiss Pierre", LC.EVENT_ITEM, 1241),
 }
 
 APT_38_KAELEY_INTRO_LOCATIONS = {
     "APT_38_KAELEY_COMBAT_VICTORY": LocationData("Apt. 38 - Slay Kaeley", LC.FRIENDLY_FIRE, 1212),
     "APT_38_KAELEY_PURCHASE": LocationData("Apt. 38 - Purchase Item from Kaeley", LC.MERCHANT, 1213),
+    "SMOOCH_KAELEY": LocationData("Apt. 38 - Kiss Kaeley", LC.EVENT_ITEM, 1242)
 }
 
 KAELEY_NW_LOCATIONS = {
@@ -623,6 +639,7 @@ GLITCH_WORLD_SE_LOCATIONS: dict[str, LocationData] = {
 
 GLITCH_WORLD_HONKO_LOCATIONS: dict[str, LocationData] = {
     "GLITCH_HONKO_COMBAT_VICTORY": LocationData("Glitch World - Slay Honko", LC.COMBAT_VICTORY, 1420),
+    "SMOOCH_HONKO": LocationData("Glitch World - Kiss Honko", LC.EVENT_ITEM, 1441),
 }
 
 GATE_ROOM_NE_LOCATIONS: dict[str, LocationData] = {
@@ -637,6 +654,7 @@ GATE_ROOM_WEST_GHOST_METALBAT_LOCATIONS: dict[str, LocationData] = {
 GATE_ROOM_SE_HAIRHEAD_GUN_LOCATIONS: dict[str, LocationData] = {
     "GLITCH_HAIRHE3AD_COMBAT_VICTORY": LocationData("Glitch World Gate Room East - Slay hAiRhE3ad", LC.COMBAT_VICTORY, 1407),
     "GLITCH_GUN_COMBAT_VICTORY": LocationData("Glitch World Gate Room East - Slay gun", LC.COMBAT_VICTORY, 1408),
+    "SMOOCH_HAIRHEAD": LocationData("Glitch World Gate Room East - Kiss hAiRhE3ad", LC.EVENT_ITEM, 1440),
 }
 
 GLITCH_WORLD_LOCATIONS: dict[str, LocationData] = {
@@ -662,6 +680,7 @@ GLITCH_WORLD_LOCATIONS: dict[str, LocationData] = {
 
 F2_SHADE_LOCATIONS: dict[str, LocationData] = {    
     "F2_LARGE_SHADE_COMBAT_VICTORY": LocationData("Floor 2 Hall - Slay Large Shade '????? ??? ??'", LC.COMBAT_VICTORY, 1501),
+    "SMOOCH_F2_LARGE_SHADE": LocationData("Floor 2 Hall - Kiss Large Shade '????? ??? ??'", LC.EVENT_ITEM, 1516)
 }
 
 F2_HALL_EAST_LOCATIONS: dict[str, LocationData] = {
@@ -676,6 +695,8 @@ F2_HALL_EAST_LOCATIONS: dict[str, LocationData] = {
     "F2_RECRUIT_ASTER": LocationData("Floor 2 Hall - Recruit Aster", LC.RECRUIT, 1510),
     "F2_ASTER_COMBAT_VICTORY": LocationData("Floor 2 Hall - Slay Aster", LC.FRIENDLY_FIRE, 1511),
     "F2_GRENADE": LocationData("Floor 2 Hall - Item After Beast Chase 4", LC.OVERWORLD_ITEM, 1512, difficulty_lock={DL.CURSED}),
+    "SMOOCH_GRINNING_BEAST": LocationData("Floor 2 Hall - Kiss the Grinning Beast", LC.EVENT_ITEM, 1514),
+    "SMOOCH_ASTER": LocationData("Floor 2 Hall - Kiss Aster", LC.EVENT_ITEM, 1515)
 }
 
 F2_JANITORS_CLOSET_LOCATIONS: dict[str, LocationData] = {
@@ -700,6 +721,7 @@ APT_20_JEANNE_PHASE1_LOCATIONS: dict[str, LocationData] = {
     "APT_20_BATHROOM_MEDICINE_CABINET": LocationData("Apt. 20 Bathroom Phase 1 - Medicine Cabinet", LC.MIRROR_LOOT, 1608),
     "APT_20_BATHROOM_ROACH": LocationData("Apt. 20 Bathroom Phase 1 - Roach", LC.OVERWORLD_ITEM, 1609),
     "APT_20_BATHROOM_SOAP": LocationData("Apt. 20 Bathroom Phase 1 - Item on Counter", LC.OVERWORLD_ITEM, 1610),
+    "SMOOCH_JEANNE_PHASE_1": LocationData("Apt. 20 Phase 1 - Hug Jeanne", LC.EVENT_ITEM, 1626),
 }
 
 APT_20_JEANNE_PHASE2_LOCATIONS: dict[str, LocationData] = {
@@ -717,7 +739,8 @@ APT_20_JEANNE_PHASE2_LOCATIONS: dict[str, LocationData] = {
     "APT_20_E_STUDDED_JACKET": LocationData("Apt. 20 Phase 2 East - Item on Southeast Table", LC.OVERWORLD_ITEM, 1622),
     "APT_20_E_CASH": LocationData("Apt. 20 Phase 2 East - Item on East Table", LC.OVERWORLD_ITEM, 1623),
     "APT_20_HYDRA_HEADS": LocationData("Apt. 20 Phase 2 - Reward From Jeanne (All Heads Slain)", LC.EVENT_ITEM, 1624),
-    "APT_20_HYDRA_LAUNDRY": LocationData("Apt. 20 Phase 2 - Retrieve Jeanne's Laundry", LC.EVENT_ITEM, 1625)
+    "APT_20_HYDRA_LAUNDRY": LocationData("Apt. 20 Phase 2 - Retrieve Jeanne's Laundry", LC.EVENT_ITEM, 1625),
+    "SMOOCH_JEANNE_PHASE_2": LocationData("Apt. 20 Phase 2 - Kiss Jeanne", LC.EVENT_ITEM, 1627),
     # todo: hydra body combat victory
 }
 
@@ -745,6 +768,7 @@ APT_21_LYLE_MAIN_LOCATIONS = {
     "APT_21_BATHROOM_EYECLUSTER_COMBAT_VICTORY": LocationData("Apt. 21 Bathroom - Slay Eyecluster", LC.COMBAT_VICTORY, 1716),
     "APT_21_BATHROOM_MEDICINE_CABINET": LocationData("Apt. 21 Bathroom - Medicine Cabinet", LC.MIRROR_LOOT, 1717),
     "APT_21_PUROCARE": LocationData("Apt. 21 - Item on Counter", LC.OVERWORLD_ITEM, 1733),
+    "SMOOCH_EYECLUSTER": LocationData("Apt. 21 Bathroom - Kiss Eyecluster", LC.EVENT_ITEM, 1735),
 }
 
 APT_21_LYLE_DARK_ROOM_LOCATIONS = {
@@ -838,6 +862,7 @@ APT_24_EUGENE_LVL_5_STOCK_LOCATIONS = {
 
 APT_24_EUGENE_SHOP_LOCATIONS = {
     "APT_24_EUGENE_COMBAT_VICTORY": LocationData("Eugene's Shop - Slay Eugene", LC.FRIENDLY_FIRE, 2002),
+    "SMOOCH_NESTOR_HEAD": LocationData("Eugene's Shop - Kiss Nestor's Head", LC.EVENT_ITEM, 2038),
     **APT_24_EUGENE_INITIAL_STOCK_LOCATIONS
 }
 
@@ -923,6 +948,7 @@ APT_28_FLOODED_MAIN_LOCATIONS = {
     "APT_28_GARBAGE_ENZYME": LocationData("Apt. 28 Garbage Room Closet - Item on Table", LC.OVERWORLD_ITEM, 2319),
     "APT_28_GARBAGE_DRAGONFISH_COMBAT_VICTORY": LocationData("Apt. 28 Garbage Room Closet - Slay Dragonfish", LC.COMBAT_VICTORY, 2320),
     "APT_28_GARBAGE_REBREATHER": LocationData("Apt. 28 Garbage Room - Item Behind Trash", LC.COMBAT_VICTORY, 2333),
+    "SMOOCH_DROWNING": LocationData("Apt. 28 - Kiss Drowning", LC.EVENT_ITEM, 2340),
 }
 
 APT_28_TWILIGHT_LOCATIONS = {
@@ -934,6 +960,7 @@ APT_28_TWILIGHT_LOCATIONS = {
     "APT_28_TWILIGHT_CRAB_COMBAT_VICTORY": LocationData("Apt. 28 Twilight South - Slay Crabs", LC.COMBAT_VICTORY, 2308),
     "APT_28_JELLYFISH_COMBAT_VICTORY": LocationData("Apt. 28 Twilight South Closet - Slay Jellyfish", LC.COMBAT_VICTORY, 2309),
     "APT_28_MIDNIGHT_VALVE": LocationData("Apt. 28 Twilight South Closet - Item Behind Jellyfish", LC.OVERWORLD_ITEM, 2310),
+    "SMOOCH_PIRANHA_GUY": LocationData("Apt. 28 Twilight - Kiss Piranha Guy", LC.EVENT_ITEM, 2335),
 }
 
 APT_28_MIDNIGHT_LOCATIONS = {
@@ -954,10 +981,14 @@ APT_28_ABYSSAL_LOCATIONS = {
     "APT_28_SHRIMP_KNIGHT_COMBAT_VICTORY": LocationData("Apt. 28 Final Corridor - Slay Shrimp Knight", LC.COMBAT_VICTORY, 2330),
     "APT_28_SHRIMP_KNIGHT_AUDREY_LOOT": LocationData("Apt. 28 Final Corridor - Shrimp Knight Audrey Loot", LC.EVENT_ITEM, 2331),
     "APT_28_ABYSSAL_HADAL_TRIDENT": LocationData("Apt. 28 Abyssal Garbage Maze - Southwest Item", LC.COMBAT_VICTORY, 2334),
+    "SMOOCH_STARFISH": LocationData("Apt. 28 Abyssal Corridor - Kiss Starfish", LC.EVENT_ITEM, 2336),
+    "SMOOCH_SHARK": LocationData("Apt. 28 Abyssal West - Kiss Shark", LC.EVENT_ITEM, 2337),
+    "SMOOCH_SHRIMP_KNIGHT": LocationData("Apt. 28 Final Corridor - Kiss Shrimp Knight", LC.EVENT_ITEM, 2338),
 }
 
 APT_28_HADAL_LOCATIONS = {
-    "APT_28_HADAL_LETHARGY_COMBAT_VICTORY": LocationData("Apt. 28 Hadal Room - Defeat Lethargy", LC.COMBAT_VICTORY, 2332)
+    "APT_28_HADAL_LETHARGY_COMBAT_VICTORY": LocationData("Apt. 28 Hadal Room - Defeat Lethargy", LC.COMBAT_VICTORY, 2332),
+    "SMOOCH_LETHARGY": LocationData("Apt. 28 Hadal Room - Kiss Lethargy", LC.EVENT_ITEM, 2339)
 }
 
 APT_28_FLOODED_LOCATIONS = {
@@ -987,6 +1018,7 @@ F1_RUINED_APARTMENT_LOCATIONS = {
     "F1_PIPE_ROOM_KEVIN_MERCHANT_4": LocationData("Floor 1 Pipe Room - Kevin Shop Item 4", LC.MERCHANT, 2412),
     "F1_PIPE_ROOM_KEVIN_MERCHANT_5": LocationData("Floor 1 Pipe Room - Kevin Shop Item 5", LC.MERCHANT, 2413),
     "F1_GREAT_WORM_COMBAT_VICTORY": LocationData("Floor 1 Pipe Room - Slay Great and Large Worms", LC.COMBAT_VICTORY, 2414),
+    "SMOOCH_KEVIN": LocationData("Floor 1 Pipe Room - Kiss Kevin", LC.EVENT_ITEM, 2415),
 }
 
 F1_MAZE_LOCATIONS = {
@@ -1003,6 +1035,9 @@ F1_MAZE_LOCATIONS = {
     "F1_PASSAGE_RAT_HOLE_MERCHANT_5": LocationData("Floor 1 Passage - Rat Hole Shop Item 5", LC.MERCHANT, 2512),
     "F1_FINGER_WORMS_COMBAT_VICTORY": LocationData("Floor 1 Maze - Slay Finger Worms", LC.COMBAT_VICTORY, 2518),
     "F1_WORMS_COMBAT_VICTORY": LocationData("Floor 1 Maze - Slay Worms and Large Worm", LC.COMBAT_VICTORY, 2519),
+    "SMOOCH_RAT_KING": LocationData("Floor 1 Maze - Kiss Rat King", LC.EVENT_ITEM, 2520),
+    "SMOOCH_RAT_HOLE": LocationData("Floor 1 Passage - Kiss Rat Hole", LC.EVENT_ITEM, 2521),
+    "SMOOCH_F1_LARGE_SHADE": LocationData("Floor 1 - Kiss Large Shade '? ???? ?????'", LC.EVENT_ITEM, 2522),
 }
 
 AUDREY_VENDING_LOCATIONS = {
@@ -1031,7 +1066,8 @@ RAT_APARTMENT_MAIN_LOCATIONS = {
     "RAT_APT_BEDROOM_HOODIE": LocationData("Rat Apt. Bedroom - Item on South Table 3", LC.OVERWORLD_ITEM, 2618, difficulty_lock={DL.CURSED}),
     "RAT_APT_BATHROOM_LEG_WORMS_COMBAT_VICTORY": LocationData("Rat Apt. Bathroom - Slay Leg Worms", LC.COMBAT_VICTORY, 2619),
     "RAT_APT_BATHROOM_TONIC": LocationData("Rat Apt. Bathroom - Item on Center Counter", LC.OVERWORLD_ITEM, 2620, difficulty_lock={DL.EXPLORER}),
-    "RAT_APT_BATHROOM_TOOTHPASTE": LocationData("Rat Apt. Bathroom - Item on Counter", LC.OVERWORLD_ITEM, 2621)
+    "RAT_APT_BATHROOM_TOOTHPASTE": LocationData("Rat Apt. Bathroom - Item on Counter", LC.OVERWORLD_ITEM, 2621),
+    "SMOOCH_TAIL_RAT": LocationData("Rat Apt. Bedroom - Kiss Tail Rat", LC.EVENT_ITEM, 2623),
 }
 
 RAT_APARTMENT_NURSERY_LOCATIONS = {
@@ -1064,7 +1100,9 @@ F1_RAT_LAIR_LOCATIONS = {
     "RAT_LAIR_GUARDED_CHEESE_1": LocationData("Rat Lair South - Item From Stash 1", LC.RAT_FRIENDLY_FIRE, 2714),
     "RAT_LAIR_GUARDED_CHEESE_2": LocationData("Rat Lair South - Item From Stash 2", LC.RAT_FRIENDLY_FIRE, 2715),
     "RAT_LAIR_GUARDED_CHEESE_3": LocationData("Rat Lair South - Item From Stash 3", LC.RAT_FRIENDLY_FIRE, 2716),
-    "RAT_LAIR_GUARDED_CHEESE_4": LocationData("Rat Lair South - Item From Stash 4", LC.RAT_FRIENDLY_FIRE, 2717)
+    "RAT_LAIR_GUARDED_CHEESE_4": LocationData("Rat Lair South - Item From Stash 4", LC.RAT_FRIENDLY_FIRE, 2717),
+    "SMOOCH_BELLY_RAT": LocationData("Rat Lair North - Kiss Belly Rat", LC.EVENT_ITEM, 2718),
+    "SMOOCH_GUARDIAN_RAT": LocationData("Rat Lair South - Kiss Rat Guardian", LC.EVENT_ITEM, 2719),
 }
 
 AURELIUS_CLOSET_LOCATIONS = {
@@ -1076,7 +1114,8 @@ AURELIUS_CLOSET_LOCATIONS = {
     "AURELIUS_FIRST_AID_KIT": LocationData("Aurelius' Closet - Item on Center Table 1", LC.OVERWORLD_ITEM, 2806, difficulty_lock={DL.EXPLORER}),
     "AURELIUS_DUSTIN_FIGURINE": LocationData("Aurelius' Closet - Item on Center Table 2", LC.OVERWORLD_ITEM, 2807),
     "AURELIUS_COMBAT_VICTORY": LocationData("Aurelius' Closet - Slay Aurelius", LC.FRIENDLY_FIRE, 2808),
-    "AURELIUS_TRASH": LocationData("Aurelius' Closet - Trash Can", LC.TRASH_LOOT, 2809)
+    "AURELIUS_TRASH": LocationData("Aurelius' Closet - Trash Can", LC.TRASH_LOOT, 2809),
+    "SMOOCH_AURELIUS": LocationData("Aurelius' Closet - Kiss Aurelius", LC.EVENT_ITEM, 2810),
 }
 
 ERNEST_HIDEOUT_LOCATIONS = {
@@ -1098,7 +1137,8 @@ APT_11_ABYSS_LOCATIONS = {
     "APT_11_RAT_FREAK_COMBAT_VICTORY": LocationData("Apt. 11 - Slay Rat Freak", LC.RAT_FRIENDLY_FIRE, 3001),
     "APT_11_RAT_FREAK_GIFT": LocationData("Apt. 11 - Gift From Rat Freak", LC.EVENT_ITEM, 3002),
     "APT_11_MARS_DISC": LocationData("Apt. 11 - Item Behind Rat Freak", LC.OVERWORLD_ITEM, 3003),
-    "APT_11_ODD_NECKLACE": LocationData("Apt. 11 - Side Room Item", LC.OVERWORLD_ITEM, 3004)
+    "APT_11_ODD_NECKLACE": LocationData("Apt. 11 - Side Room Item", LC.OVERWORLD_ITEM, 3004),
+    "SMOOCH_RAT_FREAK": LocationData("Apt. 11 - Kiss Rat Freak", LC.EVENT_ITEM, 3005),
 }
 
 FRED_APT_ENTRYWAY_LOCATIONS = {
@@ -1108,6 +1148,8 @@ FRED_APT_ENTRYWAY_LOCATIONS = {
     "FRED_ENTRYWAY_KNIVES": LocationData("Fred's Apt. Kitchen - Item on Dining Table 2", LC.OVERWORLD_ITEM, 3112),
     "FRED_ENTRYWAY_TRASH": LocationData("Fred's Apt. Kitchen - Trash Can", LC.TRASH_LOOT, 3113),
     "FRED_ENTRYWAY_MACHETE": LocationData("Fred's Apt. Kitchen - Machete", LC.OVERWORLD_ITEM, 3114, difficulty_lock={DL.EXPLORER}),
+    "SMOOCH_WRIGGLY_FRED": LocationData("Fred's Apt. Kitchen - Kiss Wriggly Fred", LC.EVENT_ITEM, 3150),
+    "SMOOCH_FACE_TAKER": LocationData("Fred's Apt. Kitchen - Kiss Face Taker", LC.EVENT_ITEM, 3151),
 }
 
 FRED_APT_MAIN_LOCATIONS = {
@@ -1176,13 +1218,23 @@ APT_12_ENTRYWAY_LOCATIONS = {
 
 APT_12_TRUE_LOCATIONS = {
     "APT_12_DROOLING_HUSK_COMBAT_VICTORY": LocationData("Apt. 12 - Slay Drooling Husk", LC.FRIENDLY_FIRE, 3206),
+    "APT_12_KITCHEN_FLESHY_HUSK_COMBAT_VICTORY": LocationData("Apt. 12 Kitchen - Slay Fleshy Husk", LC.FRIENDLY_FIRE, 3210),
+   }
+
+APT_12_BATHROOM_LOCATIONS = {
     "APT_12_BATHROOM_SPIDER_HUSK_COMBAT_VICTORY": LocationData("Apt. 12 Bathroom - Help the Spider Husk", LC.COMBAT_VICTORY, 3207),
     "APT_12_BATHROOM_VINEGAR": LocationData("Apt. 12 Bathroom - Item on Counter", LC.OVERWORLD_ITEM, 3208),
     "APT_12_BATHROOM_CLEANEREX": LocationData("Apt. 12 Bathroom - Item Near Toilet", LC.OVERWORLD_ITEM, 3209),
-    "APT_12_KITCHEN_FLESHY_HUSK_COMBAT_VICTORY": LocationData("Apt. 12 Kitchen - Slay Fleshy Husk", LC.FRIENDLY_FIRE, 3210),
+    "SMOOCH_SPIDER_HUSK": LocationData("Apt. 12 Bathroom - Kiss Spider Husk", LC.EVENT_ITEM, 3230),
+}
+
+APT_12_BEDROOM_LOCATIONS = {
     "APT_12_GAUNT_HUSK_COMBAT_VICTORY": LocationData("Apt. 12 Bedroom - Slay Gaunt Husk", LC.FRIENDLY_FIRE, 3212),
+}
+
+APT_12_BEDROOM_CLOSET_LOCATIONS = {
     "APT_12_HOLLOW_HUSK_COMBAT_VICTORY": LocationData("Apt. 12 Closet - Slay Hollow Husk", LC.COMBAT_VICTORY, 3213),
-   }
+}
 
 APT_12_WALLS_LOCATIONS = {
     "APT_12_INNER_WALL_HEALING_SPRAY": LocationData("Apt. 12 Inside Wall - Item in North Room", LC.OVERWORLD_ITEM, 3214),
@@ -1197,7 +1249,8 @@ APT_12_WALLS_LOCATIONS = {
     "APT_12_WALLS_RIFLE_BULLETS": LocationData("Apt. 12 Walls Large Room North - Item on West Table", LC.OVERWORLD_ITEM, 3224),
     "APT_12_WALLS_SHURIKEN": LocationData("Apt. 12 Walls Large Room North - Item on North Table 1", LC.OVERWORLD_ITEM, 3225),
     "APT_12_WALLS_TONIC": LocationData("Apt. 12 Walls Large Room North - Item on North Table 2", LC.OVERWORLD_ITEM, 3226),
-    "APT_12_WALLS_BANDAGES": LocationData("Apt. 12 Walls Large Room - Item on East Table", LC.OVERWORLD_ITEM, 3228)
+    "APT_12_WALLS_BANDAGES": LocationData("Apt. 12 Walls Large Room - Item on East Table", LC.OVERWORLD_ITEM, 3228),
+    "SMOOCH_OBSESSION": LocationData("Apt. 12 Walls - Kiss Obsession", LC.EVENT_ITEM, 3229)
 }
 
 APT_12_PLANETARIUM_SOUTH_LOCATIONS = {
@@ -1210,6 +1263,9 @@ APT_12_KITCHEN_CLOSET_LOCATIONS = {
 
 APT_12_SYBIL_LOCATIONS = {
     **APT_12_ENTRYWAY_LOCATIONS,
+    **APT_12_BATHROOM_LOCATIONS,
+    **APT_12_BEDROOM_LOCATIONS,
+    **APT_12_BEDROOM_CLOSET_LOCATIONS,
     **APT_12_TRUE_LOCATIONS,
     **APT_12_WALLS_LOCATIONS,
     **APT_12_PLANETARIUM_SOUTH_LOCATIONS,
@@ -1276,6 +1332,8 @@ GF_HALL_MAIN_LOCATIONS = {
     "MAILROOM_OFFICE_TRASH": LocationData("Mailroom Office - Trash Can", LC.TRASH_LOOT, 3910),
     "GF_HAND_WORM_COMBAT_VICTORY": LocationData("Ground Floor - Slay Hand Worms", LC.COMBAT_VICTORY, 3418),
     "MAILROOM_OFFICE_STATIONERY": LocationData("Mailroom Office - Item on Table", LC.COMBAT_VICTORY, 3419),
+    "SMOOCH_JASPER": LocationData("GF Office - Kiss Jasper", LC.EVENT_ITEM, 3420),
+    "SMOOCH_GF_LARGE_SHADE": LocationData("Ground Floor - Kiss Large Shade '??? ?? ?? ???'", LC.EVENT_ITEM, 3421),
 }
 
 GF_OFFICE_BATHROOM_LOCATIONS = {
@@ -1307,6 +1365,7 @@ GF_MENS_BATHROOM_LAUNDRY_LOCATIONS = {
     "LAUNDRY_CERULEAN_FIGURE": LocationData("Laundromat - Item on Southwest Counter", LC.OVERWORLD_ITEM, 3515),
     "LAUNDRY_KLYSOX_2": LocationData("Laundromat - Item on Southeast Counter", LC.OVERWORLD_ITEM, 3516),
     "LAUNDRY_KLYSOX_3": LocationData("Laundromat - Item in Southeast Corner", LC.OVERWORLD_ITEM, 3517),
+    "SMOOCH_WORM": LocationData("Laundromat - Kiss Worm", LC.EVENT_ITEM, 3522),
 }
 
 GF_WOMENS_BATHROOM_LOCATIONS = {
@@ -1314,7 +1373,8 @@ GF_WOMENS_BATHROOM_LOCATIONS = {
     "GF_WOMENS_BATHROOM_VENUS_DISC": LocationData("Women's Bathroom - Item on Counter 2", LC.OVERWORLD_ITEM, 3505),
     "GF_WOMENS_BATHROOM_FAMINE_COMBAT_VICTORY": LocationData("Women's Bathroom - Slay Famine", LC.COMBAT_VICTORY, 3506),
     "GF_WOMENS_BATHROOM_TRASH": LocationData("Women's Bathroom - Trash Can", LC.TRASH_LOOT, 3519),
-    "GF_WOMENS_BATHROOM_FIRST_AID_BOX": LocationData("Women's Bathroom - First Aid Box", LC.TRASH_LOOT, 3520)
+    "GF_WOMENS_BATHROOM_FIRST_AID_BOX": LocationData("Women's Bathroom - First Aid Box", LC.TRASH_LOOT, 3520),
+    "SMOOCH_FAMINE": LocationData("Women's Bathroom - Kiss Famine", LC.EVENT_ITEM, 3521),
 
 }
 
@@ -1330,7 +1390,8 @@ BUS_CRASH_LOCATIONS = {
     "BUS_MILLEDOIGTS_COMBAT_VICTORY": LocationData("Bus Crash - Slay Milledoigts", LC.COMBAT_VICTORY, 3609),
     "BUS_MAIN_GAUCHE_COMBAT_VICTORY": LocationData("Bus Crash - Slay Main Gauche", LC.COMBAT_VICTORY, 3610),
     "BUS_HIGH_FIVE_COMBAT_VICTORY": LocationData("Bus Crash - Slay High Five", LC.COMBAT_VICTORY, 3611),
-    "BUS_CRAWLING_HAND_COMBAT_VICTORY": LocationData("Bus Crash - Slay Crawling Hand", LC.COMBAT_VICTORY, 3612)
+    "BUS_CRAWLING_HAND_COMBAT_VICTORY": LocationData("Bus Crash - Slay Crawling Hand", LC.COMBAT_VICTORY, 3612),
+    "SMOOCH_CRAWLING_HAND": LocationData("Bus Crash - Kiss Crawling Hand", LC.EVENT_ITEM, 3614),
 }
 
 GF_HALL_LOCATIONS = {
@@ -1372,6 +1433,8 @@ MUTT_MAIN_LOCATIONS = {
     "MUTT_EMMANUEL_MERCHANT_3": LocationData("Mutt's Shop - Emmanuel Item 3", LC.MERCHANT, 3733),
     "MUTT_EMMANUEL_MERCHANT_4": LocationData("Mutt's Shop - Emmanuel Item 4", LC.MERCHANT, 3734),
     "MUTT_EMMANUEL_MERCHANT_5": LocationData("Mutt's Shop - Emmanuel Item 5", LC.MERCHANT, 3735),
+    "SMOOCH_EMMANUEL": LocationData("Mutt's Shop - Kiss Emmanuel", LC.EVENT_ITEM, 3736),
+    "SMOOCH_MUTT": LocationData("Mutt's Shop - Kiss Mutt", LC.EVENT_ITEM, 3737),
 }
 
 MUTT_BACKROOM_LOCATIONS = {
@@ -1399,13 +1462,15 @@ GF_CORNER_STORE_LOCATIONS = {
     "CORNER_STORE_STORAGE_DUCT_TAPE": LocationData("Corner Store Back - Item on South Counter 1", LC.OVERWORLD_ITEM, 3807),
     "CORNER_STORE_STORAGE_HERBICIDE": LocationData("Corner Store Back - Item on South Counter 2", LC.OVERWORLD_ITEM, 3808),
     "CORNER_STORE_TRASH": LocationData("Corner Store - Trash", LC.TRASH_LOOT, 3809),
-    "CORNER_STORE_STORAGE_ROACH": LocationData("Corner Store Back - Roach", LC.OVERWORLD_ITEM, 3810)
+    "CORNER_STORE_STORAGE_ROACH": LocationData("Corner Store Back - Roach", LC.OVERWORLD_ITEM, 3810),
+    "SMOOCH_CENTIFINGERS": LocationData("Corner Store - Kiss Centifingers", LC.EVENT_ITEM, 3811),
 }
 
 MAILROOM_SHIPPING_WEST_HALL_LOCATIONS = {
     "MAILROOM_N_GARBAGE_WORM_COMBAT_VICTORY": LocationData("Mailroom North - Slay Garbage Worm", LC.COMBAT_VICTORY, 3901),
     "MAILROOM_N_SAFE": LocationData("Mailroom North - Safe", LC.SAFE_LOOT, 3902),
     "GF_WEST_HAND_WORMS_COMBAT_VICTORY": LocationData("Ground Floor West - Slay Hand Worms", LC.COMBAT_VICTORY, 3909),
+    "SMOOCH_GARBAGE_WORM": LocationData("Mailroom North - Kiss Garbage Worm", LC.EVENT_ITEM, 3911),
 }
 
 MAILROOM_STORAGE_LOCATIONS = {
@@ -1455,7 +1520,6 @@ LANDLORDS_APT_PHASE_2_LOCATIONS = {
     "LL_OFFICE_CASH": LocationData("Landlord Office - Item on Center Table", LC.OVERWORLD_ITEM, 4085),	
     "LL_EAST_SOLDIER_COMBAT_VICTORY": LocationData("Landlord Hell East - Slay Soldier", LC.COMBAT_VICTORY, 4041),
     "LL_EAST_SIDE_TABLE": LocationData("Landlord Hell East - Side Table Loot", LC.DRAWER_LOOT, 4042),
-    "LL_EAST_GATLING_COMBAT_VICTORY": LocationData("Landlord Hell East - Slay Gatling", LC.COMBAT_VICTORY, 4043),
     "LL_EAST_DRAWER_E": LocationData("Landlord Hell East - East Drawer Loot", LC.DRAWER_LOOT, 4044),
     "LL_EAST_DRAWER_W": LocationData("Landlord Hell East - West Drawer Loot", LC.DRAWER_LOOT, 4045),
     "LL_EAST_SHOTGUN_SHELLS": LocationData("Landlord Hell East - Item on West Table 1", LC.OVERWORLD_ITEM, 4046),
@@ -1465,6 +1529,7 @@ LANDLORDS_APT_PHASE_2_LOCATIONS = {
     "LL_EAST_SPEAKERS": LocationData("Landlord Hell East - Item in Northeast Corner", LC.OVERWORLD_ITEM, 4050),
     "LL_WIDE_TABLE_S": LocationData("Landlord Livingroom - Side Table Loot (Phase 2-4)", LC.DRAWER_LOOT, 4084),
     "LL_EAST_CACHE": LocationData("Landlord Hell East - Item Under Floorboards", LC.DRAWER_LOOT, 4088),
+    "SMOOCH_SCOUT": LocationData("Landlord Dining Room - Kiss Scout", LC.EVENT_ITEM, 4090),
 }
 
 LANDLORDS_APT_PHASE_3_LOCATIONS = {
@@ -1480,6 +1545,7 @@ LANDLORDS_APT_PHASE_3_LOCATIONS = {
     "LL_NORTH_SIDE_TABLE_W": LocationData("Landlord Hell North - Drawer Loot", LC.DRAWER_LOOT, 4057),
     "LL_WEST_DRAWER": LocationData("Landlord Hell West - Drawer Loot", LC.DRAWER_LOOT, 4086),
     "LL_WEST_MANATARMS_COMBAT_VICTORY": LocationData("Landlord Hell West - Slay Man at Arms", LC.COMBAT_VICTORY, 4087),
+    "LL_EAST_GATLING_COMBAT_VICTORY": LocationData("Landlord Hell East - Slay Gatling", LC.COMBAT_VICTORY, 4043),
 }
 
 LL_BEDROOM_HALL_CACHE_LOCATIONS = {
@@ -1517,6 +1583,7 @@ LANDLORDS_APT_PHASE_4_LOCATIONS = {
     "LL_MEMORIAL_DETONATOR": LocationData("Landlord Memorial Room - Item 2", LC.OVERWORLD_ITEM, 4063),
     "LL_NE_BAYONET_COMBAT_VICTORY": LocationData("Landlord Northeast Hall - Slay Bayonet Trio", LC.COMBAT_VICTORY, 4081),
     "LL_HELL_WRAITHSCOURGE": LocationData("Landlord Hell Wraithscourge Room - Item", LC.OVERWORLD_ITEM, 4077),
+    "SMOOCH_MEMORIAL": LocationData("Landlord Memorial Room - Hug Memorial", LC.EVENT_ITEM, 4089),
 }
 
 LANDLORDS_APT_PHASE_5_LOCATIONS = {
@@ -1525,6 +1592,7 @@ LANDLORDS_APT_PHASE_5_LOCATIONS = {
     "LL_TRENCH_DIGGER_AUDREY_LOOT": LocationData("Landlord Hell - Trench Digger Audrey Loot", LC.EVENT_ITEM, 4011),
     "LL_END_ELIXIR": LocationData("Landlord Hell End - Item on Table", LC.OVERWORLD_ITEM, 4076),
     "LL_JUPITER_DISC": LocationData("Landlord Hell Jupiter Room - Item", LC.OVERWORLD_ITEM, 4075),
+    "SMOOCH_TRENCH_DIGGER": LocationData("Landlord Hell - Kiss Trench Digger", LC.EVENT_ITEM, 4093),
 }
 
 LANDLORDS_WARZONE_LOCATIONS = {
@@ -1555,7 +1623,10 @@ LANDLORDS_WARZONE_LOCATIONS = {
     "LL_MINESWEEPER_GIFT": LocationData("Landlord Minesweeper Tent - Gift From Minesweeper", LC.EVENT_ITEM, 4125),
     "LL_MINESWEEPER_12_MINE_PRIZE": LocationData("Landlord Minesweeper Tent - Prize for 12 Mines", LC.EVENT_ITEM, 4126),
     "LL_SMALL_TENT_RIFLE_BULLETS": LocationData("Landlord Small Tent - Item", LC.EVENT_ITEM, 4127),
-    "LL_BATTLEFIELD_FRIDGE": LocationData("Landlord Battlefield - Fridge", LC.EVENT_ITEM, 4128)
+    "LL_BATTLEFIELD_FRIDGE": LocationData("Landlord Battlefield - Fridge", LC.EVENT_ITEM, 4128),
+    "SMOOCH_MINESWEEPER": LocationData("Landlord Minesweeper Tent - Kiss Minesweeper", LC.EVENT_ITEM, 4091),
+    "SMOOCH_SAPPER": LocationData("Landlord Sapper Tent - Kiss Sapper", LC.EVENT_ITEM, 4092),
+
 }
 
 GF_NORTH_JANITORS_CLOSET_LOCATIONS = {
@@ -1592,11 +1663,13 @@ GF_SOUTH_JANITORS_CLOSET_LOCATIONS = {
 
 BASEMENT_SHADE_LOCATIONS = {
     "B_LARGE_SHADE_COMBAT_VICTORY": LocationData("Basement - Slay Large Shade '? ? ? ?? ? ?? ??'", LC.COMBAT_VICTORY, 4301),
+    "SMOOCH_B_LARGE_SHADE": LocationData("Basement - Kiss Large Shade '? ? ? ?? ? ?? ??'", LC.EVENT_ITEM, 4304),
 }
 
 BASEMENT_EAST_LOCATIONS = {
     "B_MAURICE_COMBAT_VICTORY": LocationData("Basement - Slay (Some of) Maurice", LC.FRIENDLY_FIRE, 4302),
     "B_MAURICE_FRIDGE": LocationData("Maurice's Fridge", LC.FRIDGE_LOOT, 4303),
+    "SMOOCH_SULTAN": LocationData("Basement - Kiss The Sultan", LC.EVENT_ITEM, 4305),
 }
 
 APT_B1_ARTHROPOD_MAIN_LOCATIONS = {
@@ -1608,6 +1681,9 @@ APT_B1_ARTHROPOD_MAIN_LOCATIONS = {
     "B1_BEDROOM_SIDE_TABLE_W": LocationData("Apt. B1 East Bedroom - Drawer Loot", LC.DRAWER_LOOT, 4406),
     "B1_BEDROOM_ALBUM": LocationData("Apt. B1 East Bedroom - Item on South Table", LC.OVERWORLD_ITEM, 4407),
     "B1_BEDROOM_AUGUSTE_COMBAT_VICTORY": LocationData("Apt. B1 North Bedroom - Slay Auguste", LC.COMBAT_VICTORY, 4408),
+    "SMOOCH_CLYDE": LocationData("Apt. B1 - Kiss Clyde", LC.EVENT_ITEM, 4416),
+    "SMOOCH_AUGUSTE": LocationData("Apt. B1 - Kiss Auguste", LC.EVENT_ITEM, 4417),
+    "SMOOCH_JENNIFER": LocationData("Apt. B1 - Kiss Jennifer", LC.EVENT_ITEM, 4418),
 }
 
 APT_B1_ARTHROPOD_BATHROOM_LOCATIONS = {
@@ -1637,7 +1713,8 @@ APT_B2_ANTOINE_LOCATIONS = {
     "B2_BOCKY": LocationData("Apt. B2 - Item Near TV", LC.OVERWORLD_ITEM, 4509),
     "B2_MANGA_PILE_3": LocationData("Apt. B2 - Item on Floor South", LC.OVERWORLD_ITEM, 4510),
     "B2_SHURIKEN": LocationData("Apt. B2 - Item on Table 1", LC.OVERWORLD_ITEM, 4511),
-    "B2_FIGURINE": LocationData("Apt. B2 - Item on Table 2", LC.OVERWORLD_ITEM, 4512)
+    "B2_FIGURINE": LocationData("Apt. B2 - Item on Table 2", LC.OVERWORLD_ITEM, 4512),
+    "SMOOCH_ANTOINE": LocationData("Apt. B2 - Kiss Antoine", LC.EVENT_ITEM, 4513),
 }
 
 STEVE_APARTMENT_LOCATIONS_MAIN = {
@@ -1650,6 +1727,7 @@ STEVE_APARTMENT_LOCATIONS_MAIN = {
     "B_STEVE_JUNK_2": LocationData("Basement Storage - Item on South Table", LC.OVERWORLD_ITEM, 4607),
     "B_STEVE_JUNK_3": LocationData("Basement Storage - Item on Counter 1", LC.OVERWORLD_ITEM, 4608),
     "B_STEVE_JUNK_4": LocationData("Basement Storage - Item on Counter 2", LC.OVERWORLD_ITEM, 4609),
+    "SMOOCH_STEVE": LocationData("Basement Storage - Kiss Steve", LC.EVENT_ITEM, 4625),
 }
 
 BASEMENT_STORAGE_PLUTO_ROOM_LOCATIONS = {
@@ -1661,6 +1739,7 @@ BASEMENT_STORAGE_NEPTUNE_ROOM_LOCATIONS = {
     "B_NEPTUNE_ROOM_FIRST_AID_KIT": LocationData("Basement Neptune Room - Item on East Table 1", LC.OVERWORLD_ITEM, 4612),
     "B_NEPTUNE_ROOM_TONIC": LocationData("Basement Neptune Room - Item on East Table 2", LC.OVERWORLD_ITEM, 4613),
     "B_NEPTUNE_ROOM_BANDAGES": LocationData("Basement Neptune Room - Item on West Table", LC.OVERWORLD_ITEM, 4615),
+    "SMOOCH_ARGOT": LocationData("Basement Neptune Room - Kiss Argot", LC.EVENT_ITEM, 4624),
 }
 
 BASEMENT_STORAGE_NEPTUNE_ROOM_ICE_LOCATIONS = {
@@ -1723,6 +1802,7 @@ SEWER_LOCATIONS = {
     "SEWER_NW_LEECH_COMBAT_VICTORY": LocationData("Sewer NW - Slay Leech", LC.COMBAT_VICTORY, 4858),
     "SEWER_NE_FLOATING_CORPSE_COMBAT_VICTORY": LocationData("Sewer NE - Slay Floating Corpse", LC.COMBAT_VICTORY, 4860),
     "SEWER_N_FLOATING_CORPSE_2_COMBAT_VICTORY": LocationData("Sewer North - Slay Floating Corpse Near Tickle", LC.COMBAT_VICTORY, 4867),
+    "SMOOCH_HARVESTMAN": LocationData("Sewer West - Kiss Harvestman", LC.EVENT_ITEM, 4873),
 }
 
 SEWER_BEHIND_CENTER_GRATE_LOCATIONS = {
@@ -1767,6 +1847,11 @@ SEWER_BEHIND_CENTER_GRATE_LOCATIONS = {
     "SEWER_TICKLE_BLOOD_CAP": LocationData("Sewer North - Tickle Shop Item 3", LC.EVENT_ITEM, 4864),
     "SEWER_TICKLE_VAMPIRIC_JACKET": LocationData("Sewer North - Tickle Shop Item 4", LC.EVENT_ITEM, 4865),
     "SEWER_TICKLE_CRIMSON_RING": LocationData("Sewer North - Tickle Shop Item 5", LC.EVENT_ITEM, 4866), 
+    "SMOOCH_DAVID": LocationData("David's Lair - Kiss David", LC.EVENT_ITEM, 4868), 
+    "SMOOCH_TICKLE": LocationData("Sewer North - Hug Tickle", LC.EVENT_ITEM, 4869), 
+    "SMOOCH_SLUGMAN": LocationData("Sewer West Grate Path - Hug Slug Man", LC.EVENT_ITEM, 4870),
+    "SMOOCH_TALL_PIPE_MAN": LocationData("Sewer East - Kiss Tall Pipe Man", LC.EVENT_ITEM, 4871),
+    "SMOOCH_SEWER_BEAST": LocationData("Sewer SE - Kiss Sewer Beast", LC.EVENT_ITEM, 4872),
 }
 
 SEWER_BOILER_ENTRANCE_LOCATIONS = {
@@ -1794,6 +1879,11 @@ BOILER_ROOM_LOCATIONS = {
     "BOILER_ROOM_MUSHROOM_2": LocationData("Boiler Room - Item Near South Exit 2", LC.OVERWORLD_ITEM, 5018),
     "BOILER_ROOM_ROACH_2": LocationData("Boiler Room - Roach 2", LC.EVENT_ITEM, 5019),
     "BOILER_ROOM_ROACH_1": LocationData("Boiler Room - Roach 1", LC.EVENT_ITEM, 5038),
+    "SMOOCH_MUSETTE": LocationData("Boiler Room Crew - Kiss Musette", LC.EVENT_ITEM, 5039),
+    "SMOOCH_CARD_PLAYERS": LocationData("Boiler Room Crew - Kiss Card Players", LC.EVENT_ITEM, 5040),
+    "SMOOCH_MICHAEL": LocationData("Boiler Room Crew - Kiss Michael", LC.EVENT_ITEM, 5041),
+    "SMOOCH_ROBERT": LocationData("Boiler Room Crew - Kiss Robert", LC.EVENT_ITEM, 5042),
+    "SMOOCH_PLACIDE": LocationData("Boiler Room Crew - Kiss Placide", LC.EVENT_ITEM, 5043),
     }
 
 BOILER_STORAGE_LOCATIONS = {
@@ -1854,14 +1944,16 @@ FUNGUS_MAZE_LOCATIONS = {
     "FUNGUS_DEPTHS_MUSHROOM_11": LocationData("Fungus Maze Depths - Item 11", LC.OVERWORLD_ITEM, 5134),
     "FUNGUS_DEPTHS_MUSHROOM_12": LocationData("Fungus Maze Depths - Item 12", LC.OVERWORLD_ITEM, 5135),
     "FUNGUS_DEPTHS_MUSHROOM_13": LocationData("Fungus Maze Depths - Item 13", LC.OVERWORLD_ITEM, 5136),
-    "FUNGUS_COMATUS_COMBAT_VICTORY": LocationData("Fungus Maze - Defeat Swordmaster Comatus", LC.COMBAT_VICTORY, 5137),
+    "FUNGUS_COMATUS_COMBAT_VICTORY": LocationData("Fungus Maze Depths - Defeat Swordmaster Comatus", LC.COMBAT_VICTORY, 5137),
     "FUNGUS_PHILLIPPE_COMBAT_VICTORY": LocationData("Fungus Maze - Slay Phillippe", LC.COMBAT_VICTORY, 5138),
     "FUNGUS_SYLVAIN_COMBAT_VICTORY": LocationData("Fungus Maze Depths - Slay Sylvain", LC.COMBAT_VICTORY, 5139),
     "FUNGUS_DANIELLE_COMBAT_VICTORY": LocationData("Fungus Maze Depths - Slay Danielle", LC.COMBAT_VICTORY, 5140),
     "FUNGUS_JEAN_P_COMBAT_VICTORY": LocationData("Fungus Maze Depths - Slay Jean Pierre", LC.COMBAT_VICTORY, 5141),
     "FUNGUS_CLAIRE_COMBAT_VICTORY": LocationData("Fungus Maze Depths - Slay Claire", LC.COMBAT_VICTORY, 5142),
     "FUNGUS_DEPTHS_MUSHROOM_COMATUS": LocationData("Fungus Maze Depths - Item on Comatus Path", LC.OVERWORLD_ITEM, 5143),
-
+    "SMOOCH_PHILLIPPE": LocationData("Fungus Maze - Kiss Phillippe", LC.EVENT_ITEM, 5144),
+    "SMOOCH_SPORE_GUARDIAN": LocationData("Fungus Maze Depths - Kiss Spore Guardian", LC.EVENT_ITEM, 5145),
+    "SMOOCH_SWORDMASTER_COMATUS": LocationData("Fungus Maze Depths - Kiss Swordmaster Comatus", LC.EVENT_ITEM, 5146),
 }
 
 CHARAN_PIT_CLEAR_LOCATIONS = {
@@ -1910,8 +2002,13 @@ GARAGE_LOCATIONS = {
     "B_OOZE_MACHINE_MERCHANT_3": LocationData("Black Ooze Vending Machine - Item 3", LC.MERCHANT, 5334),
     "B_OOZE_MACHINE_MERCHANT_4": LocationData("Black Ooze Vending Machine - Item 4", LC.MERCHANT, 5335),
     "B_OOZE_MACHINE_MERCHANT_5": LocationData("Black Ooze Vending Machine - Item 5", LC.MERCHANT, 5336),
-    "B_CAR_TRASH": LocationData("Basement Garage - Trash Can", LC.TRASH_LOOT, 5337)
-    
+    "B_CAR_TRASH": LocationData("Basement Garage - Trash Can", LC.TRASH_LOOT, 5337),
+    "SMOOCH_ROADKILL": LocationData("Basement Garage - Kiss Roadkill", LC.EVENT_ITEM, 5338),
+    "SMOOCH_STUART": LocationData("Stuart's Hideout - Kiss Stuart", LC.EVENT_ITEM, 5339),
+    "SMOOCH_COP_CAR": LocationData("Basement Garage - Kiss Cop Car", LC.EVENT_ITEM, 5340),
+    "SMOOCH_HELLRIDE": LocationData("Basement Garage - Kiss Hellride", LC.EVENT_ITEM, 5341),
+    "SMOOCH_CHARAN": LocationData("Basement Pit - Kiss Charan", LC.EVENT_ITEM, 5342),
+    "SMOOCH_BERYL": LocationData("Basement Garage - Kiss Beryl", LC.EVENT_ITEM, 5343),
 }
 
 BLACKOUT_LOCATIONS = {
@@ -1974,7 +2071,8 @@ FLOOR_4_STATION_LOCATIONS = {
     "F4_HEALING_SPRAY": LocationData("F4 Station Upper Closet - Item 2", LC.OVERWORLD_ITEM, 5617),
     "F4_THROWING_DARTS": LocationData("F4 Station Upper Closet - Item 3", LC.OVERWORLD_ITEM, 5618),
     "F4_STIMULANT": LocationData("F4 Station Lower Closet - Item 1", LC.OVERWORLD_ITEM, 5619),
-    "F4_OLD_TAPE": LocationData("F4 Station Lower Closet - Item 2", LC.OVERWORLD_ITEM, 5620)
+    "F4_OLD_TAPE": LocationData("F4 Station Lower Closet - Item 2", LC.OVERWORLD_ITEM, 5620),
+    "SMOOCH_SADIPEDE": LocationData("F4 Station Upper - Kiss Sadipede", LC.EVENT_ITEM, 5621),
 }
 
 FLOOR_4_LOCATIONS = {
@@ -1993,14 +2091,18 @@ STAIRWELL_LOCATIONS = {
 
 UNDER_THE_STAIRS_LOCATIONS = {
     "STAIRS_SPIDER_RECRUIT": LocationData("Under the Stairs - Recruit Spider", LC.RECRUIT, 5702),
-    "STAIRS_CRAWLING_SHADE_COMBAT_VICTORY": LocationData("Under the Stairs - Slay Crawling Shade", LC.COMBAT_VICTORY, 5703)
+    "STAIRS_CRAWLING_SHADE_COMBAT_VICTORY": LocationData("Under the Stairs - Slay Crawling Shade", LC.COMBAT_VICTORY, 5703),
+    "SMOOCH_SPIDER": LocationData("Under the Stairs - Kiss Spider", LC.EVENT_ITEM, 5704)
 }
 
 ROOF_LOCATIONS = {
     "DREAM_EATER_COMBAT_VICTORY": LocationData("Roof - Slay Dream Eater", LC.COMBAT_VICTORY, 5801),
     "SPINE_TINGLER_COMBAT_VICTORY": LocationData("Roof - Slay Spine Tingler", LC.COMBAT_VICTORY, 5802),
     "HUNDRED_MAWS_COMBAT_VICTORY": LocationData("Roof - Slay Hundred Maws", LC.COMBAT_VICTORY, 5803),
-    "CRIMSON_SCOURGE_COMBAT_VICTORY": LocationData("Roof - Slay Crimson Scourge", LC.COMBAT_VICTORY, 5804)
+    "CRIMSON_SCOURGE_COMBAT_VICTORY": LocationData("Roof - Slay Crimson Scourge", LC.COMBAT_VICTORY, 5804),
+    "SMOOCH_EXALTED_FOUR": LocationData("Roof - Kiss Exalted Four", LC.EVENT_ITEM, 5806),
+    "SMOOCH_VISITOR": LocationData("Roof - Kiss Visitor", LC.EVENT_ITEM, 5807),
+    "SMOOCH_DREAM_EATER": LocationData("Roof - Kiss Dream Eater", LC.EVENT_ITEM, 5808),
 }
 
 ELEVATOR_LOCATIONS = {
@@ -2026,7 +2128,8 @@ MEAT_SYBIL_LOCATIONS = {
     "MEAT_SYBIL_DOUBLE_HUSK_COMBAT_VICTORY": LocationData("Meat World Sybil - Slay Double Husk", LC.COMBAT_VICTORY, 5912),
     "MEAT_SYBIL_MAD_HUSK_COMBAT_VICTORY": LocationData("Meat World Sybil - Slay Mad Husk", LC.COMBAT_VICTORY, 5913),
     "MEAT_SYBIL_CLUSTER_HUSK_COMBAT_VICTORY": LocationData("Meat World Sybil - Slay Cluster Husk", LC.COMBAT_VICTORY, 5914),
-    "MEAT_SYBIL_RIFLE_BULLETS": LocationData("Meat World Sybil - Item Near Husks", LC.OVERWORLD_ITEM, 5915)
+    "MEAT_SYBIL_RIFLE_BULLETS": LocationData("Meat World Sybil - Item Near Husks", LC.OVERWORLD_ITEM, 5915),
+    "SMOOCH_SYBIL_CORE": LocationData("Meat World - Kiss Sybil Core", LC.EVENT_ITEM, 5916)
 }
 
 MEAT_TV_LOCATIONS = {
@@ -2045,14 +2148,16 @@ MEAT_SPINE_LOCATIONS = {
     "MEAT_SPINE_LOU_COMBAT_VICTORY": LocationData("Meat World Spine - Defeat Lou", LC.COMBAT_VICTORY, 6102),
     "MEAT_SPINE_TWOJAWS_COMBAT_VICTORY": LocationData("Meat World Spine - Slay Twojaws", LC.COMBAT_VICTORY, 6103),
     "MEAT_SPINE_HAND_COMBAT_VICTORY": LocationData("Meat World Spine - Slay Hand", LC.COMBAT_VICTORY, 6104),
-    "MEAT_SPINE_SCREAMING_GUTS_COMBAT_VICTORY": LocationData("Meat World Spine - Slay Screaming Guts", LC.COMBAT_VICTORY, 6105)
+    "MEAT_SPINE_SCREAMING_GUTS_COMBAT_VICTORY": LocationData("Meat World Spine - Slay Screaming Guts", LC.COMBAT_VICTORY, 6105),
+    "SMOOCH_LOU": LocationData("Meat World Spine - Kiss Lou", LC.EVENT_ITEM, 6106),
 }
 
 MEAT_LYLE_LOCATIONS = {
     "MEAT_LYLE_CATELINE_COMBAT_VICTORY": LocationData("Meat World Lyle - Defeat Cateline", LC.COMBAT_VICTORY, 6151),
     "MEAT_LYLE_PEEKING_COMBAT_VICTORY": LocationData("Meat World Lyle - Slay Peeking", LC.COMBAT_VICTORY, 6152),
     "MEAT_LYLE_VENTRICLE_COMBAT_VICTORY": LocationData("Meat World Lyle - Slay Ventricle", LC.COMBAT_VICTORY, 6153),
-    "MEAT_LYLE_PISTOL_BULLETS": LocationData("Meat World Lyle - Item", LC.OVERWORLD_ITEM, 6154)
+    "MEAT_LYLE_PISTOL_BULLETS": LocationData("Meat World Lyle - Item", LC.OVERWORLD_ITEM, 6154),
+    "SMOOCH_CATELINE": LocationData("Meat World Lyle - Kiss Cateline", LC.EVENT_ITEM, 6155)
 }
 
 MEAT_SUMMER_LOCATIONS = {
@@ -2099,12 +2204,14 @@ MEAT_CENTRAL_LOCATIONS = {
     "MEAT_CENTRAL_BASEMENT_BITE_ELEMENTAL_COMBAT_VICTORY": LocationData("Meat World Central Basement - Slay Bite Elemental", LC.COMBAT_VICTORY, 6416),
     "MEAT_WEST_BASEMENT_CRUSHER_COMBAT_VICTORY": LocationData("Meat World Basement West - Slay Crusher", LC.COMBAT_VICTORY, 6417),
     "MEAT_WEST_BASEMENT_SHURIKEN": LocationData("Meat World Basement West - Item", LC.OVERWORLD_ITEM, 6418),
-    "MEAT_FELE_G_IRIS_KEY": LocationData("Meat World Central - GF Elevator Room Item", LC.OVERWORLD_ITEM, 6419)
+    "MEAT_FELE_G_IRIS_KEY": LocationData("Meat World Central - GF Elevator Room Item", LC.OVERWORLD_ITEM, 6419),
+    "SMOOCH_UNDERBITE": LocationData("Meat World Central - Kiss Underbite", LC.EVENT_ITEM, 6420),
 }
 
 MEAT_HELLCAR_LOCATIONS = {
     "MEAT_UTERUS_MARCUS_COMBAT_VICTORY": LocationData("Meat World Garage - Defeat Marcus", LC.COMBAT_VICTORY, 6351),
-    "MEAT_UTERUS_HUNGER_COMBAT_VICTORY": LocationData("Meat World Garage - Slay Hunger", LC.COMBAT_VICTORY, 6352)
+    "MEAT_UTERUS_HUNGER_COMBAT_VICTORY": LocationData("Meat World Garage - Slay Hunger", LC.COMBAT_VICTORY, 6352),
+    "SMOOCH_MARCUS": LocationData("Meat World Garage - Kiss Marcus", LC.EVENT_ITEM, 6353),
 }
 
 location_table: dict[str, LocationData] = {
@@ -2304,6 +2411,9 @@ region_locs: dict[str, set[str]] = {
     "TRUE_FRED_CLOSET": TRUE_FRED_CLOSET_LOCATIONS.keys(),
     "APT_12_ENTRYWAY": APT_12_ENTRYWAY_LOCATIONS.keys(),
     "APT_12_MAIN": APT_12_TRUE_LOCATIONS.keys(),
+    "APT_12_BATHROOM": APT_12_BATHROOM_LOCATIONS.keys(),
+    "APT_12_BEDROOM": APT_12_BEDROOM_LOCATIONS.keys(),
+    "APT_12_BEDROOM_CLOSET": APT_12_BEDROOM_CLOSET_LOCATIONS.keys(),
     "APT_12_WALLS": APT_12_WALLS_LOCATIONS.keys(),
     "APT_12_PLANETARIUM_SOUTH": APT_12_PLANETARIUM_SOUTH_LOCATIONS.keys(),
     "APT_12_KITCHEN_CLOSET": APT_12_KITCHEN_CLOSET_LOCATIONS.keys(),
@@ -2386,6 +2496,10 @@ def get_region_to_location():
             mapping[location_entry.str_name] = region
     return mapping
 
+def should_casanova(options: LookOutsideOptions) -> bool:
+    if options.casanova_mode or PlayerGoal.SMOOCH_SULTAN in options.goal.value or PlayerGoal.SMOOCH_VISITOR in options.goal.value:
+        return True
+    return False
 
 location_to_region: dict[str, str] = get_region_to_location()
 
@@ -2394,7 +2508,7 @@ location_name_groups: dict[str, set[str]] = {
     "AUDREY_PURCHASE": AUDREY_VENDING_LOCATIONS.keys(),
     "RUSTY_CROWN": {"RAT_LAIR_GIANT_RAT_BURRITO", "APT_11_RAT_FREAK_GIFT"},
     # mask ending areas
-    "MASK_ENDING": { *ROOF_LOCATIONS.keys() },
+    "MASK_ENDING": { "DREAM_EATER_COMBAT_VICTORY", "SPINE_TINGLER_COMBAT_VICTORY", "HUNDRED_MAWS_COMBAT_VICTORY", "CRIMSON_SCOURGE_COMBAT_VICTORY", "SMOOCH_DREAM_EATER" },
     "MASK_OFFERING": { *CHARAN_PIT_CLEAR_LOCATIONS.keys(), *FLOOR_4_LOCATIONS.keys(), *LL_SHADE_CACHE_LOCATIONS.keys(), *GLITCH_WORLD_LOCATIONS.keys() },
     # roomate quest areas
     "ROOMMATE_QUEST": { *APT_25_DAN_LOCATIONS.keys(), *APT_18_HELLEN_QUEST_LOCATIONS.keys(), *LEIGH_QUEST_LOCATION.keys(), "F2_GRASSHOPPER_COMBAT_VICTORY" },
@@ -2423,22 +2537,31 @@ location_name_groups: dict[str, set[str]] = {
                      "F1_GREAT_WORM_COMBAT_VICTORY",
                      "F1_FINGER_WORMS_COMBAT_VICTORY",
                      "F1_WORMS_COMBAT_VICTORY",
-                     "GF_MENS_BATHROOM_LEG_FOOT_WORM_COMBAT_VICTORY"
+                     "GF_MENS_BATHROOM_LEG_FOOT_WORM_COMBAT_VICTORY",
+                     "SMOOCH_KEVIN",
+                     "SMOOCH_NESTOR_HEAD",
                      },
     "LARGE_SHADE": {
                     "F3_LARGE_SHADE_COMBAT_VICTORY",
                     "F2_LARGE_SHADE_COMBAT_VICTORY",
                     "F1_LARGE_SHADE_COMBAT_VICTORY",
                     "GF_LARGE_SHADE_COMBAT_VICTORY",
-                    "B_LARGE_SHADE_COMBAT_VICTORY"
+                    "B_LARGE_SHADE_COMBAT_VICTORY",
+                    "SMOOCH_F3_LARGE_SHADE",
+                    "SMOOCH_F2_LARGE_SHADE",
+                    "SMOOCH_F1_LARGE_SHADE",
+                    "SMOOCH_GF_LARGE_SHADE",
+                    "SMOOCH_B_LARGE_SHADE"
                     },
     "SUPER_DUPER_BOSS": {
-        "GLITCH_HONKO_COMBAT_VICTORY", 
+        "GLITCH_HONKO_COMBAT_VICTORY",
+        "SMOOCH_HONKO",
         "APT_32_TUNNELS_BABY_TEETH_SUPERBOSS_COMBAT_VICTORY", 
         "APT_32_TUNNELS_TOOTH_RIFLE",
         "APT_32_TUNNELS_TOOTH_SCIMITAR",
         "FUNGUS_COMATUS_COMBAT_VICTORY", 
         "BOILER_ROOM_COMATUS_YOGA",
+        "SMOOCH_SWORDMASTER_COMATUS",
         "GLITCH_SLIME_HYDRA_COMBAT_VICTORY",
         "GF_KOTD_COMBAT_VICTORY",
         "APT_28_DROWNING_COMBAT_VICTORY",
@@ -2448,6 +2571,105 @@ location_name_groups: dict[str, set[str]] = {
         "MUTT_COMBAT_VICTORY",
         #"MEAT_SYBIL_COMBAT_VICTORY" covered separately because unity ending overrides this
         },
+    "SMOOCH": {
+        "SMOOCH_WOUNDED_NEIGHBOR",
+        "SMOOCH_VINCENT",
+        "SMOOCH_ETERNAL_EYE",
+        "SMOOCH_JEANNE_PHASE_1",
+        "SMOOCH_JEANNE_PHASE_2",
+        "SMOOCH_GRINNING_BEAST",
+        "SMOOCH_EYECLUSTER",
+        "SMOOCH_RAT_KING",
+        "SMOOCH_BELLY_RAT",
+        "SMOOCH_TAIL_RAT",
+        "SMOOCH_GUARDIAN_RAT",
+        "SMOOCH_RAT_FREAK",
+        "SMOOCH_RAT_HOLE",
+        "SMOOCH_WRIGGLY_FRED",
+        "SMOOCH_SHADOW_FRED",
+        "SMOOCH_TOXIC_FRED",
+        "SMOOCH_FACE_TAKER",
+        "SMOOCH_STARGAZER",
+        "SMOOCH_SPINE",
+        "SMOOCH_LOUIS", 
+        "SMOOCH_KAELEY",
+        "SMOOCH_PIERRE",
+        "SMOOCH_CROW",
+        "SMOOCH_LIMBS",
+        "SMOOCH_CROCODILE",
+        "SMOOCH_POMPOM",
+        "SMOOCH_WORM",
+        "SMOOCH_FAMINE",
+        "SMOOCH_CRAWLING_HAND",
+        "SMOOCH_MUTT",
+        "SMOOCH_EMMANUEL",
+        "SMOOCH_SCOUT",
+        "SMOOCH_MINESWEEPER",
+        "SMOOCH_SAPPER",
+        "SMOOCH_MEMORIAL",
+        "SMOOCH_TRENCH_DIGGER",
+        "SMOOCH_ANTOINE",
+        "SMOOCH_CLYDE",
+        "SMOOCH_JENNIFER",
+        "SMOOCH_AUGUSTE",
+        "SMOOCH_STEVE",
+        "SMOOCH_DAVID",
+        "SMOOCH_TICKLE",
+        "SMOOCH_SLUGMAN",
+        "SMOOCH_TALL_PIPE_MAN",
+        "SMOOCH_HARVESTMAN",
+        "SMOOCH_SEWER_BEAST",
+        "SMOOCH_MUSETTE",
+        "SMOOCH_CARD_PLAYERS",
+        "SMOOCH_MICHAEL",
+        "SMOOCH_ROBERT",
+        "SMOOCH_PLACIDE",
+        "SMOOCH_PHILLIPPE",
+        "SMOOCH_SPORE_GUARDIAN",
+        "SMOOCH_SWORDMASTER_COMATUS",
+        "SMOOCH_ARGOT",
+        "SMOOCH_ROADKILL",
+        "SMOOCH_STUART",
+        "SMOOCH_COP_CAR",
+        "SMOOCH_HELLRIDE",
+        "SMOOCH_GARBAGE_WORM",
+        "SMOOCH_PIRANHA_GUY",
+        "SMOOCH_STARFISH",
+        "SMOOCH_SHARK",
+        "SMOOCH_SHRIMP_KNIGHT",
+        "SMOOCH_LETHARGY",
+        "SMOOCH_DROWNING",
+        "SMOOCH_CENTIFINGERS",
+        "SMOOCH_KEVIN",
+        "SMOOCH_NESTOR_HEAD",
+        "SMOOCH_UNDERBITE",
+        "SMOOCH_CATELINE",
+        "SMOOCH_LOU",
+        "SMOOCH_MARCUS",
+        "SMOOCH_OBSESSION",
+        "SMOOCH_CHARAN",
+        "SMOOCH_MASKED_SHADOW",
+        "SMOOCH_ASTER",
+        "SMOOCH_AURELIUS",
+        "SMOOCH_JASPER",
+        "SMOOCH_BERYL",
+        "SMOOCH_EXALTED_FOUR",
+        "SMOOCH_SPIDER_HUSK",
+        "SMOOCH_SYBIL",
+        "SMOOCH_SYBIL_CORE",
+        "SMOOCH_SPIDER",
+        "SMOOCH_F3_LARGE_SHADE",
+        "SMOOCH_F2_LARGE_SHADE",
+        "SMOOCH_F1_LARGE_SHADE",
+        "SMOOCH_GF_LARGE_SHADE",
+        "SMOOCH_B_LARGE_SHADE",
+        "SMOOCH_SADIPEDE",
+        "SMOOCH_DREAM_EATER",
+        "SMOOCH_HAIRHEAD",
+        "SMOOCH_HONKO",
+        "SMOOCH_VISITOR",
+        "SMOOCH_SULTAN",
+    },
     "GAME_SKILLS": {
         *VIDEO_GAME_LOCATIONS.keys(),
     },

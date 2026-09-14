@@ -8,6 +8,8 @@ from worlds.look_outside.options import StartingGames, IncludeArms,\
 from worlds.look_outside.items_consts import ItemCat, ItemTag, item_table, item_name_groups,\
     num_multiple_items, LOItem
 
+from worlds.look_outside.locations_consts import should_casanova
+
 from BaseClasses import ItemClassification
 
 if TYPE_CHECKING:
@@ -25,8 +27,10 @@ def check_gate_classification_by_options(item: str, options: LookOutsideOptions)
             return ItemClassification.progression
         else:
             return ItemClassification.useful
-    if item in item_name_groups["QUEST_ROOMMATES"]:
-        if options.include_roommate_quests:
+    if item in item_name_groups["ALL_ROOMMATES"]:
+        if item == "Aster" and should_casanova(options) and PlayerGoal.MASK_ENDING in options.goal.value:
+            return ItemClassification.progression
+        elif options.include_roommate_quests:
             return ItemClassification.progression
         else:
             return ItemClassification.useful
@@ -78,13 +82,6 @@ def create_lo_item(world: LookOutsideWorld, item: str) -> LOItem:
     return LOItem(item, classification, world.item_name_to_id[item], world.player)
     
 def create_all_items(world: LookOutsideWorld):
-    # Add items to the Multiworld.
-        # If there are two of the same item, the item has to be twice in the pool.
-        # Which items are added to the pool may depend on player options, e.g. custom win condition like triforce hunt.
-        # Having an item in the start inventory won't remove it from the pool.
-        # If you want to do that, use start_inventory_from_pool
-
-        # TODO: IMPLEMENT WITH LOGIC
 
         local_itempool = []
         mandatory_items = []

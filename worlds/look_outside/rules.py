@@ -13,9 +13,9 @@ from worlds.look_outside.items_consts import LOItem, item_name_groups, \
 
 from worlds.look_outside.regions_consts import all_regions_table
 from worlds.look_outside.rules_consts import can_nestor_rafta, can_open_any_simple_lock, can_access_basement, can_leigh_quest,\
-    met_all_astronomers, can_do_any_ritual
+    met_all_astronomers, can_do_any_ritual, can_perform_perfect_ritual, can_kiss_sultan
 from rule_builder.rules import Has, And, HasAll, HasAny, Or
-from worlds.look_outside.locations_consts import location_name_groups
+from worlds.look_outside.locations_consts import location_name_groups, should_casanova
 
 if TYPE_CHECKING:
     from .__init__ import LookOutsideWorld
@@ -134,6 +134,12 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     world.set_rule(world.get_location(get_location_name("LL_RENT_4", world)), Has("Progressive Rent Money", count=4))
 
     world.set_rule(world.get_location(get_location_name("GF_OFFICE_JASPERS_KEY", world)), met_all_astronomers)
+
+    if should_casanova(world.options):
+        world.set_rule(world.get_location(get_location_name("SMOOCH_EXALTED_FOUR", world)), can_perform_perfect_ritual)
+        world.set_rule(world.get_location(get_location_name("SMOOCH_VISITOR", world)), can_perform_perfect_ritual)
+        world.set_rule(world.get_location(get_location_name("SMOOCH_SULTAN", world)), can_kiss_sultan)
+
     # rules: has at least one of each offering type, or 3/4 offering types and a guinea pig
     world.set_rule(world.get_location(get_location_name("GF_OFFICE_JASPER_GIFT_OFFERING", world)), can_do_any_ritual)
     world.set_rule(world.get_location(get_location_name("GF_OFFICE_JASPER_FIX_TELESCOPE", world)), Has("Telescope Pieces"))
@@ -158,6 +164,8 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     # nestor quest rules
     if world.options.include_nestor_quest != 0:
         for location_id in location_name_groups["NESTOR_QUEST"]:
+            if location_id.startswith("SMOOCH") and not should_casanova(world.options):
+                continue
             world.set_rule(world.get_location(get_location_name(location_id, world)), can_nestor_rafta)
         for location_id in location_name_groups["WORM_EGG"]:
             world.set_rule(world.get_location(get_location_name(location_id, world)), And(Has("MET_NESTOR"), Has("Worm Egg", count=num_multiple_items["Worm Egg"])))
@@ -187,12 +195,11 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
 
     if PlayerGoal.MASK_ENDING in world.options.goal:
         world.set_rule(world.get_location(get_location_name("DREAM_EATER_COMBAT_VICTORY", world)), Has("Old Photograph"))
+        if should_casanova(world.options):
+            world.set_rule(world.get_location(get_location_name("SMOOCH_DREAM_EATER", world)), HasAll("Old Photograph", "Aster"))
         world.set_rule(world.get_location(get_location_name("SPINE_TINGLER_COMBAT_VICTORY", world)), Has("Wrapped Painting"))
         world.set_rule(world.get_location(get_location_name("HUNDRED_MAWS_COMBAT_VICTORY", world)), Has("Old Tape"))
         world.set_rule(world.get_location(get_location_name("CRIMSON_SCOURGE_COMBAT_VICTORY", world)), Has("Last Will"))
-
-
-
 
     # audrey rules
 
@@ -232,13 +239,12 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
         world.set_rule(world.get_location(get_location_name(location_id, world)), Has("Black Ooze", count=num_multiple_items["Black Ooze"]))
 
     # setting at least 1 arm restriction for now
-    for location_id in {*location_name_groups["SUPER_DUPER_BOSS"], *location_name_groups["LARGE_SHADE"], "STAIRS_CRAWLING_SHADE_COMBAT_VICTORY", "STAIRS_SPIDER_RECRUIT"}:
+    for location_id in {*location_name_groups["SUPER_DUPER_BOSS"], *location_name_groups["LARGE_SHADE"], "STAIRS_CRAWLING_SHADE_COMBAT_VICTORY", "STAIRS_SPIDER_RECRUIT", "SMOOCH_SPIDER"}:
         if location_id not in excluded_locations:
             if (location_id in {"SEWER_FURNACE_COMBAT_VICTORY", "SEWER_FURNACE_IRIS_KEY"}):
                 world.set_rule(world.get_location(get_location_name(location_id, world)), And(HasAny("Player's Left Arm", "Player's Right Arm"), Has("Sewer Grates Lowered")))
             else:
                 world.set_rule(world.get_location(get_location_name(location_id, world)), HasAny("Player's Left Arm", "Player's Right Arm"))
-
 
 failed_ritual_name = "FAILED_RITUAL_ENDING"
 flawed_ritual_name = "FLAWED_RITUAL_ENDING"
@@ -251,6 +257,8 @@ true_final_name = "TRUE_FINAL_ENDING"
 perfect_ritual_name = "PERFECT_RITUAL_ENDING"
 words_of_power_name = "WORDS_OF_POWER_ENDING"
 unity_name = "UNITY_ENDING"
+smooch_sultan_name = "SMOOCH_SULTAN_GOAL"
+smooch_visitor_name = "SMOOCH_VISITOR_GOAL"
 
 
 def set_completion_condition(world: LookOutsideWorld) -> None:
@@ -278,6 +286,10 @@ def set_completion_condition(world: LookOutsideWorld) -> None:
         goal_requirements.append(true_final_name)
     if PlayerGoal.WORDS_OF_POWER_ENDING in player_goal.value:
         goal_requirements.append(words_of_power_name)
+    if PlayerGoal.SMOOCH_SULTAN in player_goal.value:
+        goal_requirements.append(smooch_sultan_name)
+    if PlayerGoal.SMOOCH_VISITOR in player_goal.value:
+        goal_requirements.append(smooch_visitor_name)
     if len(goal_requirements) == 0:
         raise ValueError(f"Player {world.player_name} did not choose a goal!")
     world.set_completion_rule(HasAll(*goal_requirements))

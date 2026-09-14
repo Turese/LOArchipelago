@@ -31,10 +31,11 @@ class PlayerGoal(OptionSet):
     XIN_AMON_ENDING = "XIN-AMON Ending"
     ETERNAL_FATE_ENDING = "Eternal Fate Ending"
     UNITY_ENDING = "Unity Ending"
-    TRUE_FINAL_ENDING = "True Final Ending"
+    TRUE_FINAL_ENDING = "Final True Ending"
     WORDS_OF_POWER_ENDING = "Words of Power Ending"
     #DEFEAT_DISASTER = "Boss Gauntlet: Defeat Disaster"
-    #SMOOCH_THE_SULTAN = "Smooch the Sultan"
+    SMOOCH_SULTAN = "Smooch the Sultan"
+    SMOOCH_VISITOR = "Smooch the Visitor"
 
     display_name = "Ending Goal(s)"
     valid_keys = {
@@ -49,6 +50,8 @@ class PlayerGoal(OptionSet):
         UNITY_ENDING,
         TRUE_FINAL_ENDING,
         WORDS_OF_POWER_ENDING,
+        SMOOCH_SULTAN,
+        SMOOCH_VISITOR
     }
     default=set([PROMISE_ENDING])
     def verify(self, world, player_name, plando_options):
@@ -114,7 +117,12 @@ class IncludeRoommateQuests(Toggle):
     randomized: Dan, Hellen, and Leigh's quests."""
     display_name = "Include Long Roommate Sidequests"
     default = True
-    
+
+class CasanovaMode(Toggle):
+    """When checked, Casanova mode will be activated, and locations added for each possible kiss.
+    Note: kiss locations will always be included if a Casanova mode goal is selected, regardless of this option's setting."""
+    display_name = "Casanova Mode"
+    default = False
 
 class IncludeGameSkills(Toggle):
     """This controls whether the skills given by completing each of the video games are randomized."""
@@ -203,11 +211,12 @@ class LookOutsideOptions(PerGameCommonOptions):
     include_traps: IncludeTraps
     hide_overworld_items: HideOverworldItems
     include_superbosses: IncludeSuperBosses
+    casanova_mode: CasanovaMode
 
 option_groups = [
     OptionGroup(
         "Progression Locations",
-        [IncludeFriendlyFire, IncludeSuperBosses, IncludeRustyCrown, IncludeRatFriendlyFire, IncludeNestorQuest, IncludeShades,
+        [IncludeFriendlyFire, IncludeSuperBosses, CasanovaMode, IncludeRustyCrown, IncludeRatFriendlyFire, IncludeNestorQuest, IncludeShades,
         IncludeMaskLocations, IncludeRoommateQuests, IncludeGameSkills, IncludeDoorEncounters, AllowKillingShopkeepers],
     ),
     OptionGroup(
@@ -237,6 +246,7 @@ option_presets = {
         "include_door_encounters": True,
         "allow_killing_shopkeepers": False,
         "death_link": False,
-        "include_superbosses": False
+        "include_superbosses": False,
+        "casanova_mode": False
     },
 }
