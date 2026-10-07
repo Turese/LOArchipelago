@@ -2183,7 +2183,7 @@ MEAT_EYEBALL_LOCATIONS = {
     "MEAT_EYEBALL_STANLEY_COMBAT_VICTORY": LocationData("Meat World Eyeball - Defeat Stanley", LC.COMBAT_VICTORY, 6301),
     "MEAT_EYEBALL_BRAIN_LEECH_COMBAT_VICTORY": LocationData("Meat World Eyeball - Slay Brain Leeches", LC.COMBAT_VICTORY, 6302),
     "MEAT_EYEBALL_OBSERVER_COMBAT_VICTORY": LocationData("Meat World Eyeball - Slay Basilisk", LC.COMBAT_VICTORY, 6303),
-    "MEAT_EYEBALL_OCULAR_TETHERBLADE": LocationData("Meat World Eyeball - West Item", LC.OVERWORLD_ITEM, 6304),
+    "MEAT_EYEBALL_OCULAR_TETHERBLADE": LocationData("Meat World Eyeball - Item Behind Basilisk", LC.OVERWORLD_ITEM, 6304),
     "MEAT_EYEBALL_GLANCE_COMBAT_VICTORY": LocationData("Meat World Eyeball - Slay Glance", LC.COMBAT_VICTORY, 6305)
 }
 
@@ -2193,8 +2193,6 @@ MEAT_CENTRAL_LOCATIONS = {
     "MEAT_MAZE_SCRABBLY_COMBAT_VICTORY": LocationData("Meat World Central Maze - Slay Scrabbly", LC.COMBAT_VICTORY, 6403),
     "MEAT_MAZE_SPLIT_TAIL_COMBAT_VICTORY": LocationData("Meat World Central Maze - Slay Split Tail", LC.COMBAT_VICTORY, 6404),
     "MEAT_MAZE_SPLIT_TAIL_2_COMBAT_VICTORY": LocationData("Meat World Central Maze - Slay Split Tail 2", LC.COMBAT_VICTORY, 6405),
-    "MEAT_MAZE_OBSERVER_COMBAT_VICTORY": LocationData("Meat World Central - Slay Observer", LC.COMBAT_VICTORY, 6406),
-    "MEAT_MAZE_OCULAR_TETHERBLADE": LocationData("Meat World Central - Item Behind Observer", LC.OVERWORLD_ITEM, 6407),
     "MEAT_MAZE_BRAIN_LEECH_COMBAT_VICTORY": LocationData("Meat World Central - Slay Brainleech", LC.COMBAT_VICTORY, 6408),
     "MEAT_GROCERY_UNDERBITE_COMBAT_VICTORY": LocationData("Meat World Corner Store - Slay Underbite", LC.COMBAT_VICTORY, 6409),
     "MEAT_GROCERY_IRIS_KEY": LocationData("Meat World Corner Store - Item 1", LC.OVERWORLD_ITEM, 6410),
