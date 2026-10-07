@@ -180,6 +180,7 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     # basement rules
 
     world.set_rule(world.get_location(get_location_name("SECURITY_CORRECT_RECORDING", world)), And(Has("Guinea Pig"), HasAny("Blank VHS tape", "Incorrect CCTV Recording", "Correct CCTV Recording")))
+    world.set_rule(world.get_location(get_location_name("SECURITY_CINNAMON_COMBAT_VICTORY", world)), Has("Guinea Pig"))
 
     world.set_rule(world.get_location(get_location_name("SEWER_NE_ZACHARY", world)), Has("Chew Toy"))
     world.set_rule(world.get_location(get_location_name("SEWER_SE_ROXIE", world)), Has("Chew Toy"))
@@ -212,13 +213,8 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     for location_id in location_name_groups["AUDREY_PURCHASE"]:
         world.set_rule(world.get_location(get_location_name(location_id, world)), Or(Has("Dollar Coin", count=num_multiple_items["Dollar Coin"]), Has("Two-Dollar Coin", count=num_multiple_items["Two-Dollar Coin"])))
 
-    world.set_rule(world.get_location(get_location_name("APT_30_TAXIDERMY_AUDREY_LOOT", world)), Has("Audrey"))
-    world.set_rule(world.get_location(get_location_name("APT_28_SHRIMP_KNIGHT_AUDREY_LOOT", world)), Has("Audrey"))
-    world.set_rule(world.get_location(get_location_name("LL_MEMORIAL_TANK_AUDREY_LOOT", world)), Has("Audrey"))
-    world.set_rule(world.get_location(get_location_name("LL_TRENCH_DIGGER_AUDREY_LOOT", world)), Has("Audrey"))
-    world.set_rule(world.get_location(get_location_name("LL_BATTLEFIELD_APC_AUDREY_LOOT", world)), Has("Audrey"))
-    world.set_rule(world.get_location(get_location_name("B_CAR_HELLRIDE_AUDREY_LOOT", world)), Has("Audrey"))
-    world.set_rule(world.get_location(get_location_name("B_CAR_SWAT_VAN_AUDREY_LOOT", world)), Has("Audrey"))
+    for location_id in location_name_groups["AUDREY_LOOT"]:
+        world.set_rule(world.get_location(get_location_name(location_id, world)), Has("Audrey"))
 
     # vending machine rules
     world.set_rule(world.get_location(get_location_name("F3_VENDING_MACHINE_CHIPS", world)), Has("3x Quarters", count=num_multiple_items["3x Quarters"])) # 75c each

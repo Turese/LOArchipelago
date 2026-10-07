@@ -921,6 +921,17 @@ item_name_groups: dict[str, set[str]] = {
                          "Testarmor mk2",
                          "Testsword",
                          "Testsword mk2"},
+    "FINAL_TRUE_ITEM": {
+        "Heirloom Greatsword",
+        "Demon Knuckles",
+        "World Tree's Bane",
+        "Sky Piercer",
+        "Wizards' Staff",
+        "Rabu Hammer",
+        "Sword of Regicide",
+        "Rotten Fang",
+        "Ring of Torment"
+    },
     "KOTD_FIGURE": {"Dustin Figure",
                     "Ratavia Figure",
                     "Musk Figure",

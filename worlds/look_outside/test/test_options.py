@@ -467,4 +467,40 @@ class DisabledTraps(LOTestBase):
             f"Trap items should not be created when trap option is disabled: {sorted(excluded_items)}"
         )
 
+class DisabledTestItems(LOTestBase):
+    options = {
+        "include_test_gear": False,
+    }
+
+    def test_test_gear_disabled(self):
+        test_item_names = item_name_groups["BROKEN_TEST_ITEM"]
+
+        existing_item_names = {item.name for item in self.multiworld.get_items()}
+
+        excluded_items = test_item_names & existing_item_names
+
+        self.assertTrue(
+            len(excluded_items) == 0,
+            f"Test items should not be created when test gear option is disabled: {sorted(excluded_items)}"
+        )
+
+
+class DisabledFinalTrueGear(LOTestBase):
+    options = {
+        "include_final_true_gear": False,
+    }
+
+    def test_final_true_gear_disabled(self):
+        final_true_item_names = item_name_groups["FINAL_TRUE_ITEM"]
+
+        existing_item_names = {item.name for item in self.multiworld.get_items()}
+
+        excluded_items = final_true_item_names & existing_item_names
+
+        self.assertTrue(
+            len(excluded_items) == 0,
+            f"Final True items should not be created when final true gear option is disabled: {sorted(excluded_items)}"
+        )
+
+
 # todo: other options

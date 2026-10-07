@@ -58,5 +58,5 @@ class LookOutsideWorld(CachedRuleBuilderWorld):
             "goal", "starting_games", "death_link", "rat_baby_name", "hide_overworld_items",
             "include_friendly_fire", "include_superbosses", "include_rusty_crown", "include_rat_friendly_fire", 
             "include_nestor_quest", "include_shades", "include_mask", "include_roommate_quests", "include_game_skills",
-            "include_door_encounters", "allow_killing_shopkeepers"
+            "include_door_encounters", "allow_killing_shopkeepers", "casanova_mode"
         )

@@ -111,6 +111,10 @@ def create_all_items(world: LookOutsideWorld):
             for item in item_name_groups["BROKEN_TEST_ITEM"]:
                 excluded_items.add(item)
 
+        if not world.options.include_final_true_gear:
+            for item in item_name_groups["FINAL_TRUE_ITEM"]:
+                excluded_items.add(item)
+
         if not world.options.include_mask:
             for item in item_name_groups["MASK_AREA_ENTRY"]:
                 excluded_items.add(item)

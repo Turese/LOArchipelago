@@ -862,6 +862,7 @@ APT_24_EUGENE_LVL_5_STOCK_LOCATIONS = {
 
 APT_24_EUGENE_SHOP_LOCATIONS = {
     "APT_24_EUGENE_COMBAT_VICTORY": LocationData("Eugene's Shop - Slay Eugene", LC.FRIENDLY_FIRE, 2002),
+    "APT_24_NESTOR_HEAD_CUSTOM_GUN": LocationData("Eugene's Shop - Gift From Nestor's Head", LC.EVENT_ITEM, 2039),
     "SMOOCH_NESTOR_HEAD": LocationData("Eugene's Shop - Kiss Nestor's Head", LC.EVENT_ITEM, 2038),
     **APT_24_EUGENE_INITIAL_STOCK_LOCATIONS
 }
@@ -1150,6 +1151,7 @@ FRED_APT_ENTRYWAY_LOCATIONS = {
     "FRED_ENTRYWAY_MACHETE": LocationData("Fred's Apt. Kitchen - Machete", LC.OVERWORLD_ITEM, 3114, difficulty_lock={DL.EXPLORER}),
     "SMOOCH_WRIGGLY_FRED": LocationData("Fred's Apt. Kitchen - Kiss Wriggly Fred", LC.EVENT_ITEM, 3150),
     "SMOOCH_FACE_TAKER": LocationData("Fred's Apt. Kitchen - Kiss Face Taker", LC.EVENT_ITEM, 3151),
+    "FRED_PAINTERS_KEY": LocationData("Fred's Apt. - Gift from Fred", LC.EVENT_ITEM, 3152),
 }
 
 FRED_APT_MAIN_LOCATIONS = {
@@ -1947,7 +1949,7 @@ FUNGUS_MAZE_LOCATIONS = {
     "FUNGUS_COMATUS_COMBAT_VICTORY": LocationData("Fungus Maze Depths - Defeat Swordmaster Comatus", LC.COMBAT_VICTORY, 5137),
     "FUNGUS_PHILLIPPE_COMBAT_VICTORY": LocationData("Fungus Maze - Slay Phillippe", LC.COMBAT_VICTORY, 5138),
     "FUNGUS_SYLVAIN_COMBAT_VICTORY": LocationData("Fungus Maze Depths - Slay Sylvain", LC.COMBAT_VICTORY, 5139),
-    "FUNGUS_DANIELLE_COMBAT_VICTORY": LocationData("Fungus Maze Depths - Slay Danielle", LC.COMBAT_VICTORY, 5140),
+    #"FUNGUS_DANIELLE_COMBAT_VICTORY": LocationData("Fungus Maze Depths - Slay Danielle", LC.COMBAT_VICTORY, 5140),
     "FUNGUS_JEAN_P_COMBAT_VICTORY": LocationData("Fungus Maze Depths - Slay Jean Pierre", LC.COMBAT_VICTORY, 5141),
     "FUNGUS_CLAIRE_COMBAT_VICTORY": LocationData("Fungus Maze Depths - Slay Claire", LC.COMBAT_VICTORY, 5142),
     "FUNGUS_DEPTHS_MUSHROOM_COMATUS": LocationData("Fungus Maze Depths - Item on Comatus Path", LC.OVERWORLD_ITEM, 5143),
@@ -2540,6 +2542,7 @@ location_name_groups: dict[str, set[str]] = {
                      "GF_MENS_BATHROOM_LEG_FOOT_WORM_COMBAT_VICTORY",
                      "SMOOCH_KEVIN",
                      "SMOOCH_NESTOR_HEAD",
+                     "APT_24_NESTOR_HEAD_CUSTOM_GUN"
                      },
     "LARGE_SHADE": {
                     "F3_LARGE_SHADE_COMBAT_VICTORY",
@@ -2669,6 +2672,17 @@ location_name_groups: dict[str, set[str]] = {
         "SMOOCH_HONKO",
         "SMOOCH_VISITOR",
         "SMOOCH_SULTAN",
+    },
+    "AUDREY_LOOT": {
+        "APT_30_TAXIDERMY_AUDREY_LOOT",
+        "APT_28_SHRIMP_KNIGHT_AUDREY_LOOT",
+        "LL_MEMORIAL_TANK_AUDREY_LOOT",
+        "LL_TRENCH_DIGGER_AUDREY_LOOT",
+        "LL_BATTLEFIELD_APC_AUDREY_LOOT",
+        "FUNGUS_SPORE_GUARDIAN_AUDREY_LOOT",
+        "B_CAR_COP_CAR_AUDREY_LOOT",
+        "B_CAR_HELLRIDE_AUDREY_LOOT",
+        "B_CAR_SWAT_VAN_AUDREY_LOOT"
     },
     "GAME_SKILLS": {
         *VIDEO_GAME_LOCATIONS.keys(),

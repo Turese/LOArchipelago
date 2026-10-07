@@ -91,6 +91,11 @@ class IncludeTestGear(Toggle):
     display_name = "Include Test Armor/Test Swords"
     default = False
 
+class IncludeFinalTrueGear(Toggle):
+    """Adds the equipment wielded by the cast of Massacre Princess to the item pool. These items are unbalanced; they make most fights easier."""
+    display_name = "Include Final True Ending Equipment"
+    default = False
+
 class IncludeNestorQuest(Toggle):
     """This controls whether locations specific to the Nestor and Rafta romance quest are randomized."""
     display_name = "Include Nestor and Rafta's Quest"
@@ -211,6 +216,7 @@ class LookOutsideOptions(PerGameCommonOptions):
     include_traps: IncludeTraps
     hide_overworld_items: HideOverworldItems
     include_superbosses: IncludeSuperBosses
+    include_final_true_gear: IncludeFinalTrueGear
     casanova_mode: CasanovaMode
 
 option_groups = [
@@ -221,7 +227,7 @@ option_groups = [
     ),
     OptionGroup(
         "Item Randomization Options",
-        [IncludeTestGear, IncludeArms, IncludeTraps, ElevatorByFloor, StartingGames, StartingRoommates],
+        [IncludeTestGear, IncludeFinalTrueGear, IncludeArms, IncludeTraps, ElevatorByFloor, StartingGames, StartingRoommates],
     ),
     OptionGroup("Other Options", [HideOverworldItems, RatBabyName])
 ]
@@ -247,6 +253,7 @@ option_presets = {
         "allow_killing_shopkeepers": False,
         "death_link": False,
         "include_superbosses": False,
+        "include_final_true_gear": False,
         "casanova_mode": False
     },
 }
