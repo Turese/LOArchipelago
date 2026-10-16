@@ -954,7 +954,7 @@ APT_28_FLOODED_MAIN_LOCATIONS = {
 
 APT_28_TWILIGHT_LOCATIONS = {
     "APT_28_TWILIGHT_PIRANHAS_COMBAT_VICTORY": LocationData("Apt. 28 Twilight - Slay Piranhas", LC.COMBAT_VICTORY, 2303),
-    "APT_28_TWILIGHT_PIRANHA_GUY_COMBAT_VICTORY": LocationData("Apt. 28 Twilight - Slay Piranha Guy", LC.FRIENDLY_FIRE, 2304),
+    "APT_28_TWILIGHT_PIRANHA_GUY_COMBAT_VICTORY": LocationData("Apt. 28 Twilight - Slay Piranha Guy", LC.COMBAT_VICTORY, 2304),
     "APT_28_TWILIGHT_FIRST_AID_KIT": LocationData("Apt. 28 Twilight - Item", LC.OVERWORLD_ITEM, 2305),
     "APT_28_TWILIGHT_SHURIKEN": LocationData("Apt. 28 Twilight West - Item on Table", LC.OVERWORLD_ITEM, 2306),
     "APT_28_DRAGONFISH_COMBAT_VICTORY": LocationData("Apt. 28 Twilight West - Slay Crab and Dragonfish", LC.COMBAT_VICTORY, 2307),
@@ -1006,7 +1006,6 @@ APT_28_FLOODED_LOCATIONS = {
 
 F1_RUINED_APARTMENT_LOCATIONS = {
     "F1_PIPE_ROOM_RAT_COMBAT_VICTORY": LocationData("Floor 1 Pipe Room - Slay Rats", LC.RAT_FRIENDLY_FIRE, 2401),
-    #"F1_PIPE_ROOM_RAT_MERCHANT": LocationData("Floor 1 Pipe Room - Secret Rat Shop Item", LC.MERCHANT, 2402),
     "F1_PIPE_ROOM_KEVIN_COMBAT_VICTORY": LocationData("Floor 1 Pipe Room - Slay Kevin", LC.FRIENDLY_FIRE, 2403),
     "F1_LETTER_FROM_RAFTA": LocationData("Floor 1 Pipe Room - Help Rafta Write a Letter", LC.EVENT_ITEM, 2404),
     "F1_NESTOR_COMBAT_VICTORY": LocationData("Slay Nestor's Body", LC.COMBAT_VICTORY, 2405),
@@ -1192,6 +1191,9 @@ FRED_APT_MAIN_LOCATIONS = {
     "FRED_DARK_ROOM_BEER_1": LocationData("Fred's Studio - Item on East Room Table", LC.OVERWORLD_ITEM, 3142),
     "FRED_DARK_ROOM_BEER_2": LocationData("Fred's Studio - Second Item on East Room Table", LC.OVERWORLD_ITEM, 3143, difficulty_lock={DL.EXPLORER}),
     "FRED_ROOM_HONKO": LocationData("Fred's Studio - Item on East Room Counter", LC.OVERWORLD_ITEM, 3144),
+    "SMOOCH_SHADOW_FRED": LocationData("Fred's Studio - Kiss Shadow Fred", LC.EVENT_ITEM, 3153),
+    "SMOOCH_TOXIC_FRED": LocationData("Toxic Fred's Room - Kiss Toxic Fred", LC.EVENT_ITEM, 3154),
+
 }
 
 TRUE_FRED_CLOSET_LOCATIONS = {
@@ -2182,8 +2184,6 @@ MEAT_TOILET_LOCATIONS = {
 MEAT_EYEBALL_LOCATIONS = {
     "MEAT_EYEBALL_STANLEY_COMBAT_VICTORY": LocationData("Meat World Eyeball - Defeat Stanley", LC.COMBAT_VICTORY, 6301),
     "MEAT_EYEBALL_BRAIN_LEECH_COMBAT_VICTORY": LocationData("Meat World Eyeball - Slay Brain Leeches", LC.COMBAT_VICTORY, 6302),
-    "MEAT_EYEBALL_OBSERVER_COMBAT_VICTORY": LocationData("Meat World Eyeball - Slay Basilisk", LC.COMBAT_VICTORY, 6303),
-    "MEAT_EYEBALL_OCULAR_TETHERBLADE": LocationData("Meat World Eyeball - Item Behind Basilisk", LC.OVERWORLD_ITEM, 6304),
     "MEAT_EYEBALL_GLANCE_COMBAT_VICTORY": LocationData("Meat World Eyeball - Slay Glance", LC.COMBAT_VICTORY, 6305)
 }
 
@@ -2193,6 +2193,8 @@ MEAT_CENTRAL_LOCATIONS = {
     "MEAT_MAZE_SCRABBLY_COMBAT_VICTORY": LocationData("Meat World Central Maze - Slay Scrabbly", LC.COMBAT_VICTORY, 6403),
     "MEAT_MAZE_SPLIT_TAIL_COMBAT_VICTORY": LocationData("Meat World Central Maze - Slay Split Tail", LC.COMBAT_VICTORY, 6404),
     "MEAT_MAZE_SPLIT_TAIL_2_COMBAT_VICTORY": LocationData("Meat World Central Maze - Slay Split Tail 2", LC.COMBAT_VICTORY, 6405),
+    "MEAT_MAZE_OBSERVER_COMBAT_VICTORY": LocationData("Meat World Central - Slay Basilisk", LC.COMBAT_VICTORY, 6406),
+    "MEAT_MAZE_OCULAR_TETHERBLADE": LocationData("Meat World Central - Item Behind Basilisk", LC.OVERWORLD_ITEM, 6407),
     "MEAT_MAZE_BRAIN_LEECH_COMBAT_VICTORY": LocationData("Meat World Central - Slay Brainleech", LC.COMBAT_VICTORY, 6408),
     "MEAT_GROCERY_UNDERBITE_COMBAT_VICTORY": LocationData("Meat World Corner Store - Slay Underbite", LC.COMBAT_VICTORY, 6409),
     "MEAT_GROCERY_IRIS_KEY": LocationData("Meat World Corner Store - Item 1", LC.OVERWORLD_ITEM, 6410),

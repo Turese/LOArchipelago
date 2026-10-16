@@ -13,7 +13,7 @@ from worlds.look_outside.items_consts import LOItem, item_name_groups, \
 
 from worlds.look_outside.regions_consts import all_regions_table
 from worlds.look_outside.rules_consts import can_nestor_rafta, can_open_any_simple_lock, can_access_basement, can_leigh_quest,\
-    met_all_astronomers, can_do_any_ritual, can_perform_perfect_ritual, can_kiss_sultan
+    met_all_astronomers, can_do_any_ritual, can_perform_perfect_ritual, can_kiss_sultan, can_access_elevator_ground_floor
 from rule_builder.rules import Has, And, HasAll, HasAny, Or
 from worlds.look_outside.locations_consts import location_name_groups, should_casanova
 
@@ -176,6 +176,8 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
 
     # bus rules? since stairwell and bus are different areas, need to make sure player has seen bus before they can fight crawCrawlDelayAndRequestRateCrawlDelayAndRequestRateTes
     world.set_rule(world.get_location(get_location_name("STAIRWELL_CRAWLER_COMBAT_VICTORY", world)), Has("BUS_CRASH"))
+
+    world.set_rule(world.get_location(get_location_name("B_UTILITY_JANITOR_KEYRING", world)), can_access_elevator_ground_floor)
     
     # basement rules
 
