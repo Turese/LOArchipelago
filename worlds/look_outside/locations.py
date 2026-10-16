@@ -172,7 +172,7 @@ def create_events(world: LookOutsideWorld) -> None:
         world.get_region("CROSSWORD_DUNGEON").add_event("FREE_WILHELMINA", "WORDS_OF_POWER_ENDING")
 
     if should_casanova(world.options):
-        world.get_region("CROSSWORD_DUNGEON").add_event(
+        world.get_region("BASEMENT_EAST").add_event(
             "KISS_THE_SULTAN", "SMOOCH_SULTAN_GOAL", rule=can_kiss_sultan, location_type=LOLocation, item_type=LOItem
         ) # KISS SULTAN
 
