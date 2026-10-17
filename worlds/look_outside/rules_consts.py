@@ -35,6 +35,8 @@ has_jasper_offering = HasGroup("JASPER_OFFERING", count=1)
 has_aurelius_offering = HasGroup("AURELIUS_OFFERING", count=1)
 has_beryl_offering = HasGroup("BERYL_OFFERING", count=1)
 
+has_an_arm = HasAny("Player's Left Arm", "Player's Right Arm")
+
 # todo: in AP > 0.6.7 change this Or block to utilize AtLeast
 can_do_any_ritual = And(met_all_astronomers, 
     Or(

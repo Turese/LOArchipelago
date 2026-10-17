@@ -13,7 +13,7 @@ from worlds.look_outside.items_consts import LOItem, item_name_groups, \
 
 from worlds.look_outside.regions_consts import all_regions_table
 from worlds.look_outside.rules_consts import can_nestor_rafta, can_open_any_simple_lock, can_access_basement, can_leigh_quest,\
-    met_all_astronomers, can_do_any_ritual, can_perform_perfect_ritual, can_kiss_sultan, can_access_elevator_ground_floor
+    met_all_astronomers, can_do_any_ritual, can_perform_perfect_ritual, can_kiss_sultan, can_access_elevator_ground_floor, has_an_arm
 from rule_builder.rules import Has, And, HasAll, HasAny, Or
 from worlds.look_outside.locations_consts import location_name_groups, should_casanova
 
@@ -139,6 +139,7 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
         world.set_rule(world.get_location(get_location_name("SMOOCH_EXALTED_FOUR", world)), can_perform_perfect_ritual)
         world.set_rule(world.get_location(get_location_name("SMOOCH_VISITOR", world)), can_perform_perfect_ritual)
         world.set_rule(world.get_location(get_location_name("SMOOCH_SULTAN", world)), can_kiss_sultan)
+        world.set_rule(world.get_location(get_location_name("SMOOCH_DAVID", world)), HasAll("Chew Toy", "Sewer Grates Lowered")) # need to save kids first
 
     # rules: has at least one of each offering type, or 3/4 offering types and a guinea pig
     world.set_rule(world.get_location(get_location_name("GF_OFFICE_JASPER_GIFT_OFFERING", world)), can_do_any_ritual)
@@ -174,7 +175,7 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
         for location_id in location_name_groups["RUSTY_CROWN"]:
             world.set_rule(world.get_location(get_location_name(location_id, world)), Has("Rusty Crown"))
 
-    # bus rules? since stairwell and bus are different areas, need to make sure player has seen bus before they can fight crawCrawlDelayAndRequestRateCrawlDelayAndRequestRateTes
+    # since stairwell and bus are different areas, need to make sure player has seen bus before they can fight the crawler
     world.set_rule(world.get_location(get_location_name("STAIRWELL_CRAWLER_COMBAT_VICTORY", world)), Has("BUS_CRASH"))
 
     world.set_rule(world.get_location(get_location_name("B_UTILITY_JANITOR_KEYRING", world)), can_access_elevator_ground_floor)
@@ -187,12 +188,7 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     world.set_rule(world.get_location(get_location_name("SEWER_NE_ZACHARY", world)), Has("Chew Toy"))
     world.set_rule(world.get_location(get_location_name("SEWER_SE_ROXIE", world)), Has("Chew Toy"))
 
-    # todo: what actually triggers the boiler beast
-    #world.set_rule(world.get_location(get_location_name("SEWER_BOILER_BEAST_COMBAT_VICTORY", world)), Has("Sewer Grates Lowered"))
     world.set_rule(world.get_location(get_location_name("SEWER_DAVID_GIFT", world)), HasAll("Chew Toy", "Sewer Grates Lowered"))
-
-    #world.set_rule(world.get_location(get_location_name("SEWER_FURNACE_COMBAT_VICTORY", world)), Has("Sewer Grates Lowered"))
-    #world.set_rule(world.get_location(get_location_name("SEWER_FURNACE_IRIS_KEY", world)), Has("Sewer Grates Lowered"))
 
     # roof rules
 
@@ -240,9 +236,9 @@ def set_all_location_rules(world: LookOutsideWorld) -> None:
     for location_id in {*location_name_groups["SUPER_DUPER_BOSS"], *location_name_groups["LARGE_SHADE"], "STAIRS_CRAWLING_SHADE_COMBAT_VICTORY", "STAIRS_SPIDER_RECRUIT", "SMOOCH_SPIDER"}:
         if location_id not in excluded_locations:
             if (location_id in {"SEWER_FURNACE_COMBAT_VICTORY", "SEWER_FURNACE_IRIS_KEY"}):
-                world.set_rule(world.get_location(get_location_name(location_id, world)), And(HasAny("Player's Left Arm", "Player's Right Arm"), Has("Sewer Grates Lowered")))
+                world.set_rule(world.get_location(get_location_name(location_id, world)), And(has_an_arm, Has("Sewer Grates Lowered")))
             else:
-                world.set_rule(world.get_location(get_location_name(location_id, world)), HasAny("Player's Left Arm", "Player's Right Arm"))
+                world.set_rule(world.get_location(get_location_name(location_id, world)), has_an_arm)
 
 failed_ritual_name = "FAILED_RITUAL_ENDING"
 flawed_ritual_name = "FLAWED_RITUAL_ENDING"

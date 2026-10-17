@@ -9,7 +9,7 @@ from worlds.look_outside.items_consts import LOItem
 from worlds.look_outside.regions_consts import stairwell_planet_lock
 from worlds.look_outside.rules_consts import can_perform_flawed_ritual, can_keep_promise,\
     can_perform_perfect_ritual, can_perform_mask_ritual, can_perform_eternal_fate_ritual,\
-    can_perform_xin_amon_ritual, can_true_final_skill, can_true_final_game, can_kiss_sultan
+    can_perform_xin_amon_ritual, can_true_final_skill, can_true_final_game, can_kiss_sultan, has_an_arm
 from rule_builder.rules import Has, HasAll, HasAny
 from worlds.look_outside.options import IncludeShades, PlayerGoal
 
@@ -49,22 +49,20 @@ def get_location_region(multiworld, location_id, player):
     return location.parent_region
 
 def create_smooch_events(world: LookOutsideWorld) -> None:
-    arm_rule = HasAny("Player's Left Arm", "Player's Right Arm")
-
     excluded_smooches = {"SMOOCH_VISITOR", "SMOOCH_SULTAN", "SMOOCH_EXALTED_FOUR"}  # these cant count as smooches for the sultan goal
 
     smooch_locations = location_name_groups["SMOOCH"] - excluded_smooches
 
     smooch_rules = {
-        "SMOOCH_SWORDMASTER_COMATUS": arm_rule,
-        "SMOOCH_SPIDER": arm_rule,
-        "SMOOCH_F3_LARGE_SHADE": arm_rule,
-        "SMOOCH_F2_LARGE_SHADE": arm_rule,
-        "SMOOCH_F1_LARGE_SHADE": arm_rule,
-        "SMOOCH_GF_LARGE_SHADE": arm_rule,
-        "SMOOCH_B_LARGE_SHADE": arm_rule,
+        "SMOOCH_SWORDMASTER_COMATUS": has_an_arm,
+        "SMOOCH_SPIDER": has_an_arm,
+        "SMOOCH_F3_LARGE_SHADE": has_an_arm,
+        "SMOOCH_F2_LARGE_SHADE": has_an_arm,
+        "SMOOCH_F1_LARGE_SHADE": has_an_arm,
+        "SMOOCH_GF_LARGE_SHADE": has_an_arm,
+        "SMOOCH_B_LARGE_SHADE": has_an_arm,
         "SMOOCH_DREAM_EATER": HasAll("Old Photograph", "Aster"),
-        "SMOOCH_HONKO": arm_rule,
+        "SMOOCH_HONKO": has_an_arm,
     }
 
     for smooch_location_id in smooch_locations:
