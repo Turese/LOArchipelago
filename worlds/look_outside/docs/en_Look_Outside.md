@@ -144,7 +144,7 @@ Any recruitment or location checks that depend on reaching a certain disposition
 
 - Ernest. (kidnapped)
 
-    - If the player allowed a day to pass since Ernest’s kidnapping and missed their opportunity to enter rat hell and recruit him, then the quest state will revert to him being freshly kidnapped.
+    - If the player allowed a day to pass since Ernest’s kidnapping or killed the Colonel instead of entering rat hell, then the quest state will revert to him being freshly kidnapped. 
 
 - Ernest. (killed by player)
 
@@ -170,6 +170,10 @@ Any recruitment or location checks that depend on reaching a certain disposition
 
     - If the player killed Spine, she will come back to life.
 
+- The Minesweeper
+
+    - If the player killed the Minesweeper in the battlefield section of the landlord's apartment, he will come back to life.
+
 - Wilhelmina.
 
     - Only available if the player picked "all endings" as their goal. If the player has killed Wilhelmina but still has not achieved the Words of Power ending, then she will come back to life.
@@ -181,3 +185,7 @@ Since the player can accomplish things out of order, some in-game events may hav
 - The player can start the blackout event at any time by interacting with the lamp in their bedroom after they have been granted the “Elevator Activation” item. The blackout can be ended prematurely by interacting with the lamp again.
 
 - Jeanne's final stage of mutation, Harriet and Sophie's return to their apartment, and Ernest's kidnapping are all triggered by entering the ground floor through the planet-locked door through the stairwell. Entering the ground floor through the elevator will have no effect. (This is also the case in the vanilla game, though not seen because in vanilla it is impossible to use the elevator before entering the ground floor through the stairwell)
+
+# Casanova mode
+
+- -WARNING- Missing a kiss in casanova mode is not revertible in the current build. Make sure to always be prepared to smooch!

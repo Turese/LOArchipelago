@@ -2,6 +2,8 @@
 
 See the latest release [here!](https://github.com/Turese/LOArchipelagoPlugins/releases) 
 
+This guide is compatible with version 1.2.3 Alpha
+
 Make sure you have archipelago installed before you start playing.
 
 This game uses archipelago version 0.6.7
@@ -16,41 +18,108 @@ Consult [the official archipelago setup guide](https://archipelago.gg/tutorial/A
 
 These are the various player options you can select in the archipelago options creator:
 
-### Include Arms
+## Ending Goal(s)
 
-Player can decide if the player character start with both arms, left arm, right arm, or with no arms at all. The arms they didn't start with will be available as item drops in the multiworld.
+This YAML option allows the player to select their goal for the run. The player can mix and match as many goals as they desire.
 
-### Include Friendly Fire
+The game has been modified to encourage the player to do everything they need to get access locations in one save file. If the player selected the yaml option to set the goal to multiple endings, then all of those endings must be achieved on the same save file. The player can check their progress towards their goal with an event in the third floor stairwell.
+
+The different goal options are as follows:
+
+
+### Failed Ritual
+
+Go to the roof without giving the astronomers any correct offerings
+
+### Flawed Ritual
+
+Give the astronomers at least one correct offering and defeat them on the roof
+
+### Perfect Ritual
+
+Give the astronomers all four correct offerings and defeat them on the roof
+
+### Screaming Sky Ending
+
+Give the astronomers all four correct offerings and flee from their final form on the roof
+
+### Promise Ending 
+
+Give the astronomers all four correct offerings and defeat them on the roof after making a promise to Sybil
+
+### Mask Ending 
+
+Give the astronomers all four weird offerings and face the Masked Shadow on the roof
+
+### XIN-AMON Ending
+
+Give three correct offerings and a Guinea Pig to Beryl, and then defeat XIN-AMON on the roof
+
+### Eternal Fate Ending
+
+Give the Guinea Pig as any offering and face it on the roof
+
+### Unity Ending
+
+Kill Sybil and enter the red door in the observatory to learn the truth
+
+### Final True Ending
+
+Give the astronomers all four correct offerings, defeat them on the roof, then unleash the true power of your Meteor Strike!
+
+### Words of Power Ending
+
+Complete all crosswords for the secret key, then accept Wilhelmina’s offer in the Tomb of Crosswords
+
+### Smooch the Sultan
+
+Power up by kissing 49 or more enemies and then give the Sultan of Kissing a kiss (selecting this goal activates Casanova Mode + locations)
+
+### Smooch The Visitor
+
+Give the astronomers all four correct offerings, defeat them on the roof, then give the Visitor a kiss. (selecting this goal activates Casanova Mode + locations)
+
+## Other Game Options
+
+### Death Link
+
+Enables death link. If the player gets a game over, then it will trigger a game over for any other player who is currently online that also has death link enabled, and vice versa.
+
+## Progression Locations
+
+### Include Friendly Fire Locations
 
 If disabled, locations will not be rewarded for killing characters that are not hostile to the player. If enabled, single character that it is possible to select "attack" as their option will be included as a location.
 
-### Include Rat Friendly Fire
+### Include Rat Friendly Fire Locations
 
 Friendly fire for rats. If disabled, locations will not be rewarded for killing hostile rats that become friendly when the player or any of their party members wears the rusty crown.
 
-### Include Rusty Crown
+### Include Rusty Crown Locations
 
 If enabled, locations will be rewarded for the two gifts it is possible to get from rats when the rusty crown is worn.
 
-### Include Test Gear
-
-If enabled, the testsword and testarmor, both original and mkII, will be added to the item pool. Note: these items give massive attack and defense buffs to the point it makes most fights trivial.
-
-### Include Nestor Quest
+### Include Nestor and Rafta's Quest
 
 If enabled, locations for helping Rafta write a letter, as well as killing all of Nestor's body parts and the worms that spawn from them will be enabled. Note: the game has been modified so worm enemies will still spawn even if their corresponding body part has been killed. If this option is disabled, the Love Letter, Stationery, and Pen items will be removed from the item pool, making this quest impossible to complete.
 
-### Include Shades
+### Include The Spider's Recruitment Quest
 
-#### Large Shades
+Activates locations related to recruiting the Spider
+
+#### Exclude All Locations
+
+If this option is selected, then locations will not be rewarded for defeating the five boss shades on each floor that spawn on high danger levels, nor for any enemies past the secret door under the stairwell.
+
+#### Include Large Shades
 
 If this option is selected, then locations will be rewarded for defeating the five boss shades on each floor that spawn on high danger levels. Interacting with the secret door under the stairwell will tell the player which shades they have not yet defeated.
 
-#### Large Shades and Spider
+#### Include Large Shades and Spider
 
 If this option is selected, then locations will be rewarded for defeating the five boss shades on each floor that spawn on high danger levels, as well as venturing into the secret room under the stairs and defeating the Spider. 
 
-#### Large Shades, Spider, and Crawling Shade
+#### Include Large Shades, Spider, and Crawling Shade
 
 If this option is selected, then locations will be rewarded for defeating the five boss shades on each floor that spawn on high danger levels, as well as venturing into the secret room under the stairs and defeating the Spider, and defeating the Crawling Shade enemy that chases the player in the corridor before they meet the Spider.
 
@@ -58,17 +127,62 @@ If this option is selected, then locations will be rewarded for defeating the fi
 
 This controls whether locations in areas specific to the Mask ending are randomized: Glitch world, the entirety of floor 4, the basement pit, and the landlord's hidden room.
 
-### Include Roommate Quests
+### Include Long Roommate Sidequests
 
-This controls whether locations in areas specific to the roommate's sidequests are randomized. This includes: Hellen's plant watering quest, Leigh's cell phone quest, and Dan's NeoDuo quest.
+This controls whether locations in areas specific to the roommate's apartment visit sidequests are randomized. This includes: Hellen's plant watering quest, Leigh's cell phone quest, and Dan's NeoDuo quest.
 
-### Randomize Video Game Skill Rewards
+### Include Video Game Skill Locations
 
 If enabled, the skills rewarded for completing video games will be randomized, and a location will be granted after playing each video game at least once. If disabled, each game skill will be rewarded after only one play of its respective video game.
 
-### Floor-by-Floor Elevator Access
+### Allow Killing Mutt and Eugene
 
-If enabled, the option to use the elevator will be granted to players one floor at a time rather than all at once. The elevator will always have the option to return to floor 3.
+If this is enabled, then the player will be able to kill Mutt and Eugene whenever they want to steal their stock. If this is disabled, the option to attack them will disabled in-game. Nestor is still attackable when posessing Eugene, but Eugene will survive the encounter.
+
+### Include Door Encounter Locations
+
+If this is enabled, locations will be rewarded for gifts and combat rewards granted from killing shopkeepers. If disabled, item rewards from door encounters will still be disabled.
+
+Note: door shopkeepers are unaffected by this option. They still have their regular stock, though the Gamer will never sell video games and the Mystery Trader will never sell the key to the boss rush arena or any special currencies besides black ooze.
+
+### Include Superbosses
+
+If this is enables, locations will be rewarded for gifts and combat rewards granted from defeating superbosses.
+
+The locations affected by this option are as follows:
+
+- "Glitch World - Slay Honko"
+  - "Glitch World - Kiss Honko"
+- "Teeth Hell - Slay Baby Teeth (Day 9+)"
+  - "Teeth Hell - Baby Teeth Tunnel Item 1"
+  - "Teeth Hell - Baby Teeth Tunnel Item 2"
+- "Fungus Maze Depths - Defeat Swordmaster Comatus"
+  - "Fungus Maze Depths - Kiss Swordmaster Comatus"
+  - "Boiler Room - Learn Yoga From Comatus"
+- "GF Break Room - Slay KOTD Characters"
+- "Glitch World - Slay Slime Hydra"
+- "Apt. 28 - Slay Drowning"
+- "Sewer Center - Slay the Furnace"
+- "Sewer Center - Item Dropped by Furnace"
+- "Sewer - Slay the Boiler Beast"
+- "Mutt's Shop - Slay Mutt"
+- "Meat World - Slay Sybil Core"
+
+Note that some of these locations may also be independently disabled by other game options.
+
+### Casanova Mode
+
+If this is enabled, casanova mode will be activated in-game, giving the player the option to kiss various enemy characters. Locations will be rewarded for each successful kiss.
+
+## Item Randomization Options
+
+### Include Test Armor/Test Swords
+
+If enabled, the testsword and testarmor, both original and mkII, will be added to the item pool. Note: these items give massive attack and defense buffs to the point it makes most fights trivial.
+
+### Randomize Player Arms
+
+Player can decide if the player character start with both arms, left arm, right arm, or with no arms at all. The arms they didn't start with will be available as item drops in the multiworld.
 
 ### Starting Games
 
@@ -82,96 +196,39 @@ The player starts with 3 random video games
 
 The player starts with the same 3 video games they would start with in the main game: Madwheels 97, Super Jump Lad, and Myrmidon.
 
-### Death Link
+### Floor-by-Floor Elevator Access
 
-Enables death link. If the player gets a game over, then it will trigger a game over for any other player who is currently online that also has death link enabled, and vice versa.
+If enabled, the option to use the elevator will be granted to players one floor at a time rather than all at once. The elevator will always have the option to return to floor 3.
 
-### Rat Baby Name
+### Include Traps
+
+If enabled, includes traps in the item pool
+
+### Include Final True Ending Equipment
+
+If enabled, adds equipment from the Visitor battle from the Final True Ending to the item pool.
+
+Items affected:
+
+- "Heirloom Greatsword",
+- "Demon Knuckles",
+- "World Tree's Bane",
+- "Sky Piercer",
+- "Wizards' Staff",
+- "Rabu Hammer",
+- "Sword of Regicide",
+- "Rotten Fang",
+- "Ring of Torment"
+
+## Other options
+
+### Rat Child Name
 
 Picks what name the Rat Baby party member will have. The player will not get the opportunity to change this in-game. The default name is "Rat."
 
-### Allow Killing Shopkeepers
+### Hide Overworld Items
 
-If this is enabled, then the player will be able to kill Mutt and Eugene whenever they want to steal their stock. If this is disabled, the option to attack them will disabled in-game. Nestor is still attackable when posessing Eugene, but Eugene will survive the encounter.
-
-### Randomize Door Encounters
-
-If this is enabled, locations will be enabled for gifts and combat rewards granted from killing shopkeepers. If disabled, item rewards from door encounters will still be disabled.
-
-Note: door shopkeepers are unaffected by this option. They still have their regular stock, though the Gamer will never sell video games and the Mystery Trader will never sell the key to the boss rush arena or any special currencies besides black ooze.
-
-## Goals
-
-One YAML option allows the player to select their goal.
-
-The game has been modified to encourage the player to do everything they need to get access locations in one save file. If the player selected the yaml option to set the goal to multiple endings, then all of those endings must be achieved on the same save file. The player can check their progress towards their goal with an event in the third floor stairwell.
-
-The different goal options are as follows:
-
-### Any partial ritual ending
-
-Give any astronomer the correct offering, and defeat them on the roof. This goal is also rewarded when any other form of perfect or imperfect ritual goal is awarded.
-
-### Any perfect ritual ending
-
-Give each astronomer the correct offering, and defeat them on the roof. This goal is rewarded once the player kills the Exalted Four. If this is not the only ending the player set as their goal, and the player goes on afterwards this the get the True Final ending, then it will be counted as a separate ending. This goal is also rewarded when the player achieves the Promise ending.
-
-### Screaming Sky
-
-Give each astronomer the correct offering, and flee from them once they become the Exalted Four.
-
-### Promise
-
-Give each astronomer the correct offering, and enter Apartment 35 to give Sybil her telescope and reignite her memories. Meet them on the roof and tell them about her to get this ending.
-
-### Mask
-
-Assemble the four strange offerings and give them to the astronomers. Defeat all four of them individually on the roof, and meet the masked shadow in the ritual circle.
-
-Note: if this ending is chosen as a goal, then each of the astronomer roof boss fights will be included as a location.
-
-### XIN-AMON
-
-Give Jasper, Aster, and Aurelius the correct offerings, and give Beryl a guinea pig. Defeat XIN-AMON on the roof after it mutates.
-
-### Unity
-
-Use the small red key to open the secret room in apartment 12, and read the note on the table. The door will not open while Sybil is alive.
-
-### True Final
-
-Learn Rush Braver's forbidden technique Meteor Strike and use it against the Visitor after defeating the Exalted Four. Win the ensuing fight.
-
-### All roof endings
-
-Get each of these endings on one save file:
-
-- Flawed ritual
-- Perfect ritual (Truth and Denial are counted as the same. See "Any perfect ritual ending" above for clarification)
-- Screaming Sky
-- Promise
-- Mask
-- XIN-AMON
-- Eternal fate (lose to XIN-AMON)
-- True Final Ending
-
-### All endings
-
-Get each of these endings on one save file:
-
-- Flawed ritual
-- Perfect ritual (Truth and Denial are counted as the same. See "Any perfect ritual ending" above for clarification)
-- Screaming Sky
-- Promise
-- Mask
-- XIN-AMON
-- Eternal fate (lose to XIN-AMON)
-- True Final Ending
-- Unity
-- Words of Power (accept Wilhelmena's offer in the crossword dungeon)
-- No Going Back (exit the apartment once 15 days have passed)
-
-Note: Failed Ritual, as a distinct ending from Flawed Ritual, is not needed for any goals.
+Hides the identity of overworld items until after player picks them up; removes confirmation dialogue when picking up items.
 
 # Installing the game client
 
