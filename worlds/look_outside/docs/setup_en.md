@@ -151,22 +151,22 @@ If this is enables, locations will be rewarded for gifts and combat rewards gran
 
 The locations affected by this option are as follows:
 
-- "Glitch World - Slay Honko"
-  - "Glitch World - Kiss Honko"
-- "Teeth Hell - Slay Baby Teeth (Day 9+)"
-  - "Teeth Hell - Baby Teeth Tunnel Item 1"
-  - "Teeth Hell - Baby Teeth Tunnel Item 2"
-- "Fungus Maze Depths - Defeat Swordmaster Comatus"
-  - "Fungus Maze Depths - Kiss Swordmaster Comatus"
-  - "Boiler Room - Learn Yoga From Comatus"
-- "GF Break Room - Slay KOTD Characters"
-- "Glitch World - Slay Slime Hydra"
-- "Apt. 28 - Slay Drowning"
-- "Sewer Center - Slay the Furnace"
-- "Sewer Center - Item Dropped by Furnace"
-- "Sewer - Slay the Boiler Beast"
-- "Mutt's Shop - Slay Mutt"
-- "Meat World - Slay Sybil Core"
+- Glitch World - Slay Honko
+  - Glitch World - Kiss Honko
+- Teeth Hell - Slay Baby Teeth (Day 9+)
+  - Teeth Hell - Baby Teeth Tunnel Item 1
+  - Teeth Hell - Baby Teeth Tunnel Item 2
+- Fungus Maze Depths - Defeat Swordmaster Comatus
+  - Fungus Maze Depths - Kiss Swordmaster Comatus
+  - Boiler Room - Learn Yoga From Comatus
+- GF Break Room - Slay KOTD Characters
+- Glitch World - Slay Slime Hydra
+- Apt. 28 - Slay Drowning
+- Sewer Center - Slay the Furnace
+  - Sewer Center - Item Dropped by Furnace
+- Sewer - Slay the Boiler Beast
+- Mutt's Shop - Slay Mutt
+- Meat World - Slay Sybil Core
 
 Note that some of these locations may also be independently disabled by other game options.
 
@@ -210,15 +210,15 @@ If enabled, adds equipment from the Visitor battle from the Final True Ending to
 
 Items affected:
 
-- "Heirloom Greatsword",
-- "Demon Knuckles",
-- "World Tree's Bane",
-- "Sky Piercer",
-- "Wizards' Staff",
-- "Rabu Hammer",
-- "Sword of Regicide",
-- "Rotten Fang",
-- "Ring of Torment"
+- Heirloom Greatsword
+- Demon Knuckles
+- World Tree's Bane
+- Sky Piercer
+- Wizards' Staff
+- Rabu Hammer
+- Sword of Regicide
+- Rotten Fang
+- Ring of Torment
 
 ## Other options
 
