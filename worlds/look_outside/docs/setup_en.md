@@ -89,7 +89,9 @@ Enables death link. If the player gets a game over, then it will trigger a game 
 
 ### Include Friendly Fire Locations
 
-If disabled, locations will not be rewarded for killing characters that are not hostile to the player. If enabled, single character that it is possible to select "attack" as their option will be included as a location.
+If disabled, locations will not be rewarded for killing characters that are not hostile to the player. If enabled, then a location will be granted for defeating every single character with a selectable "attack" option on their encounter screen.
+
+(Note: there are currently bugs in the vanilla game can crash the game when the player attacks the non-hostile cursed people in the boiler room, so locations for killing them are removed from the randomizer as of the current patch 1.2.3)
 
 ### Include Rat Friendly Fire Locations
 
