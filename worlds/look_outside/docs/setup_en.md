@@ -20,7 +20,7 @@ These are the various player options you can select in the archipelago options c
 
 ## Ending Goal(s)
 
-This YAML option allows the player to select their goal for the run. The player can mix and match as many goals as they desire.
+This YAML option allows the player to select their goal for the run. The player can mix and match as many goals as they desire, and the randomizer will be won once every single individual goal in the list has been completed.
 
 The game has been modified to encourage the player to do everything they need to get access locations in one save file. If the player selected the yaml option to set the goal to multiple endings, then all of those endings must be achieved on the same save file. The player can check their progress towards their goal with an event in the third floor stairwell.
 
