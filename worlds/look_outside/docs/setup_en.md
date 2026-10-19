@@ -147,7 +147,7 @@ Note: door shopkeepers are unaffected by this option. They still have their regu
 
 ### Include Superbosses
 
-If this is enables, locations will be rewarded for gifts and combat rewards granted from defeating superbosses.
+If this is enabled, locations will be granted for defeating superbosses, as well as for gifts and overworld items that cannot be acquired without defeating superbosses.
 
 The locations affected by this option are as follows:
 
